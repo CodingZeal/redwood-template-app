@@ -1,0 +1,47 @@
+version: "3.8"
+
+name: redwood-template-app
+
+services:
+  web:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile.web
+    command: yarn rw:web
+    environment:
+      - SESSION_SECRET='its dangerous to go alone. take this 🗡'
+      - DATABASE_URL=postgresql://development:development@db:5432/redwood-template-app
+    depends_on:
+      - api
+    ports:
+      - 8910:8910
+    volumes:
+      - ..:/app
+  api:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile.api
+    entrypoint: yarn rw:api
+    depends_on:
+      - db
+    links:
+      - db
+    ports:
+      - 8911:8911
+    volumes:
+      - ..:/app
+  db:
+    image: postgres:14-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=development
+      - POSTGRES_PASSWORD=development
+      - POSTGRES_DB=residency_development
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - development_db:/var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
+
+volumes:
+  development_db:

@@ -1,0 +1,10 @@
+extends: "@redwoodjs/eslint-config"
+root: true
+rules:
+  quotes:
+    - 2
+    - "single"
+    - avoidEscape: true
+  semi:
+    - 2
+    - "always"
