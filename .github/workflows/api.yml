@@ -1,0 +1,44 @@
+name: Api Tests
+
+on: push
+
+jobs:
+  api_test:
+    runs-on: ubuntu-latest
+    container: node:16-alpine
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: test
+          POSTGRES_USER: test
+          POSTGRES_DB: rw_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Restore workspace cache
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run Migrations & seeds
+        run: yarn rw prisma migrate dev && yarn rw prisma db seed
+        env:
+          POSTGRES_HOST: postgres
+          DATABASE_URL: 'postgresql://test:test@postgres:5432/rw_test'
+
+      - name: Run api tests
+        run: yarn rw test api
+        env:
+          DATABASE_HOST: postgres
+          TEST_DATABASE_URL: postgresql://test:test@postgres:5432/rw_test

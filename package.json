@@ -21,5 +21,17 @@
   "prisma": {
     "seed": "yarn rw exec seed"
   },
-  "packageManager": "yarn@3.2.1"
+  "packageManager": "yarn@3.2.1",
+  "scripts": {
+    "dev": "yarn db && yarn rw dev",
+    "test": "yarn rw test --no-watch",
+    "test:watch": "yarn rw test",
+    "testdb": "docker compose up -d testdb",
+    "testdb:down": "docker compose rm -sf testdb",
+    "db": "yarn db:down && docker compose up -d db",
+    "db:down": "docker compose down",
+    "db:migrate": "yarn rw prisma migrate dev",
+    "db:seed": "yarn rw prisma db seed",
+    "db:setup": "yarn rw prisma migrate reset"
+  }
 }
