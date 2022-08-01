@@ -1,9 +1,9 @@
 ---
 name: Chore
 about: Create a chore when working on something that isn't a bug or a feature
-title: "🧹 - DESCRIPTION"
+title: '🧹 - DESCRIPTION'
 labels: chore
-assignees: ""
+assignees: ''
 ---
 
 ## Description
