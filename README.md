@@ -9,19 +9,32 @@ This is a template application using RedwoodJS. It establishes common patterns f
 > - Redwood requires [Node.js](https://nodejs.org/en/) (>=14.19.x <=16.x) and [Yarn](https://yarnpkg.com/) (>=1.15)
 > - Are you on Windows? For best results, follow our [Windows development setup](https://redwoodjs.com/docs/how-to/windows-development-setup) guide
 
-Start by installing dependencies:
+## ⚡️ Quickstart
 
-```shell
+```bash
+# install dependencies
 yarn install
+
+# setup .env
+cp .env.example .env
+
+# start dev server and database
+# Your browser should automatically open to <http://localhost:8910>.
+yarn dev
+
+# (first run) run command in a separate terminal to setup database and seed data
+yarn db:setup
+
+# See extra helper scripts in package.json
+
 ```
 
-Then start the development server:
+## 🔍 Testing
 
-```shell
-yarn redwood dev
+```bash
+yarn test # <api|web>
+yarn test:watch # <api|web>
 ```
-
-Your browser should automatically open to <http://localhost:8910>.
 
 ## Github Templates
 
