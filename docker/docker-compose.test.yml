@@ -1,0 +1,16 @@
+version: "3.8"
+
+name: redwood-template-app
+
+services:
+  test_db:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=residency_test
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - test_db:/var/lib/postgresql/data/pgdata
+    ports:
+      - 5433:5432

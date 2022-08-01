@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "npx concurrently \"yarn:db:up:daemon\" \"yarn:rw:web\" \"yarn:rw:api\"",
     "serve": "yarn rw serve",
-    "test": "yarn db:test:stop && yarn db:test:daemon && yarn rw test --no-watch --detectOpenHandles",
+    "test": "yarn db:test:stop && yarn db:test && yarn rw test --no-watch --detectOp enHandles",
     "test:watch": "yarn db:test:stop && yarn db:test:daemon && yarn rw test",
     "rw:dev": "yarn rw dev",
     "rw:web": "yarn rw:dev web",
@@ -50,7 +50,8 @@
     "db:up:daemon": "yarn app:run:daemon -p 5432:5432 db",
     "db:test": "yarn db:test:stop && yarn test:compose run --rm -p 5433:5432 test_db",
     "db:test:stop": "yarn test:compose stop test_db",
-    "db:test:daemon": "yarn db:test:stop && yarn test:compose run --rm -p 5433:5432 -d test_db"
+    "lint": "yarn rw lint",
+    "lint:fix": "yarn rw lint --fix"
   },
   "devDependencies": {
     "@redwoodjs/core": "2.2.0",
