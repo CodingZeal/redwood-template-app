@@ -2,6 +2,14 @@
 
 This is a template application using RedwoodJS. It establishes common patterns for creating an app quickly.
 
+## 🧑‍💻 Additional Core Components
+
+The following is a list of frameworks, utilities, libraries, components, etc... that have been added to the template to streamline the development experience.
+
+- 🗃️ [PostgreSQL](https://www.postgresql.org/)
+- 🚢 [Docker](https://www.docker.com/)
+- 💄 [TailwindCSS](https://tailwindcss.com/)
+
 ## 🧱 Development Setup
 
 > **Prerequisites**
