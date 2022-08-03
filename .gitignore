@@ -19,5 +19,8 @@ api/src/lib/generateGraphiQLHeader.*
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
-.vscode
+.vscode/settings.json
 tmp
+web/test-results/
+web/playwright-report/
+web/playwright/.cache/
