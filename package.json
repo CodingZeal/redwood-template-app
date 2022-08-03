@@ -25,7 +25,7 @@
   },
   "packageManager": "yarn@3.2.1",
   "scripts": {
-    "start": "yarn rw serve",
+    "start": "npx redwood serve",
     "build": "yarn rw build",
     "dev": "yarn db && yarn rw dev",
     "test": "yarn rw test --no-watch",
