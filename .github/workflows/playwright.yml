@@ -1,0 +1,41 @@
+on:
+  push
+
+jobs:
+  playwright:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: github
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/useEnv
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Run Migrations & seeds
+        run: yarn rw prisma migrate dev
+
+      - name: Build app
+        run: yarn rw build
+
+      - name: Install Playwright Browsers
+        run: npx playwright install-deps && npx playwright install
+
+      - name: Run Playwright
+        run: yarn test:e2e
+
+

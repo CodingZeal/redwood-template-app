@@ -3373,6 +3373,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@playwright/test@npm:^1.24.2":
+  version: 1.24.2
+  resolution: "@playwright/test@npm:1.24.2"
+  dependencies:
+    "@types/node": "*"
+    playwright-core: 1.24.2
+  bin:
+    playwright: cli.js
+  checksum: 87e943149510fd7ad1369b7e1c07b67a86f31f09c0a2ddf61c48b0e7f56f8f9542b8541d2aed9e8e08b7c3aa93459329f5af01337e00f8136202ecf93fb3ffd9
+  languageName: node
+  linkType: hard
+
 "@pmmmwh/react-refresh-webpack-plugin@npm:0.5.7, @pmmmwh/react-refresh-webpack-plugin@npm:^0.5.3":
   version: 0.5.7
   resolution: "@pmmmwh/react-refresh-webpack-plugin@npm:0.5.7"
@@ -18838,6 +18850,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"playwright-core@npm:1.24.2":
+  version: 1.24.2
+  resolution: "playwright-core@npm:1.24.2"
+  bin:
+    playwright: cli.js
+  checksum: ecd60ece818f1d57bf34685dd812c56f3b8cf7d8ca8e14074e1743fac56387f16791121901b34cf519d3ef5f9360968656ab661c7b589e55500144eb2cf69448
+  languageName: node
+  linkType: hard
+
 "pluralize@npm:8.0.0":
   version: 8.0.0
   resolution: "pluralize@npm:8.0.0"
@@ -23874,6 +23895,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:web"
   dependencies:
+    "@playwright/test": ^1.24.2
     "@redwoodjs/forms": 2.2.0
     "@redwoodjs/router": 2.2.0
     "@redwoodjs/web": 2.2.0

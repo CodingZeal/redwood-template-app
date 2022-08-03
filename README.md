@@ -40,10 +40,24 @@ yarn db:setup
 ## 🔍 Testing
 
 ```bash
+# unit tests
 yarn test # <api|web>
 yarn test:watch # <api|web>
+
+# end to end
+yarn test:e2e
+
+# run e2e in headed mode
+yarn test:e2e --headed
 ```
 
 ## 📄 Github Templates
 
 To make creating new issues and pull requests easy and consistent, we have templates for the different use cases when creating an issue or pull request. You can find them in the `.github` directory.
+
+### Notes
+
+---
+
+- Helpful for github [workflow development](https://github.com/nektos/act)
+  - ex: `act -j playwright` runs single job
