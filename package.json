@@ -24,6 +24,8 @@
   },
   "packageManager": "yarn@3.2.1",
   "scripts": {
+    "start": "yarn rw serve",
+    "build": "yarn rw build",
     "dev": "yarn db && yarn rw dev",
     "test": "yarn rw test --no-watch",
     "test:watch": "yarn rw test",
