@@ -1,5 +1,8 @@
+name: End to End
+
 on:
-  push
+  pull_request:
+    - main
 
 jobs:
   playwright:
