@@ -2,7 +2,8 @@ name: End to End
 
 on:
   pull_request:
-    - main
+    branches:
+      - main
 
 jobs:
   playwright:
