@@ -26,6 +26,9 @@
   "scripts": {
     "start": "node index.js",
     "build": "yarn rw build",
+    "lint": "yarn eslint && yarn pretty",
+    "eslint": "npx eslint .",
+    "pretty": "npx prettier -c .",
     "dev": "yarn db && yarn rw dev",
     "test": "yarn rw test --no-watch",
     "test:watch": "yarn rw test",

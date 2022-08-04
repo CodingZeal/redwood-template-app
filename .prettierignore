@@ -5,3 +5,4 @@ tmp
 api/types/*
 .github
 .yarn
+./index.js

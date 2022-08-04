@@ -1,5 +1,7 @@
-const pm2 = require('pm2')
+/* eslint-disable */
+
 const fs = require('fs')
+const pm2 = require('pm2')
 
 pm2.start(
   {

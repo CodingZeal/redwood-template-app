@@ -1,5 +1,11 @@
 {
   "scripts": {},
+  "env": {
+    "SESSION_SECRET": {
+      "description": "generated session secret per deploy",
+      "generator": "secret"
+    }
+  },
   "addons": [
     {
       "plan": "heroku-postgresql",
@@ -21,6 +27,11 @@
       "addons": ["heroku-postgresql:hobby-dev"],
       "scripts": {
         "postdeploy": "yarn rw db seed"
+      },
+      "env": {
+        "SESSION_SECRET": "FOOBAR",
+        "ADMIN_EMAIL": "admin@example.com",
+        "ADMIN_PASSWORD": "password"
       }
     }
   }
