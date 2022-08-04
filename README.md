@@ -90,7 +90,9 @@ yarn db:deploy
 - You can't yet. We need to setup backups.
 - Last resort `DATABASE_URL=<CONNECTION-STRING> yarn rw prisma db reset` (you *will* lose all the data)
 
-Important note: The NGINX buildpack notoriously fails to pull with some regularity. Just re-run if this happens.
+---
+
+### **Please note:* The pipelines can take a few min and may not reflect the current state at times*
 
 - Heroku "review apps" can be triggered for any branch in the 'pipeline' section of heroku
   - Review apps' database is ephemeral and will migrate / seed on each trigger
