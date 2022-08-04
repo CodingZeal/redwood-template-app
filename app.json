@@ -1,7 +1,5 @@
 {
-  "scripts": {
-    "postdeploy": "yarn rw db seed"
-  },
+  "scripts": {},
   "addons": [
     {
       "plan": "heroku-postgresql",
@@ -17,5 +15,13 @@
     {
       "url": "heroku/nginx"
     }
-  ]
+  ],
+  "environments": {
+    "review": {
+      "addons": ["heroku-postgresql:hobby-dev"],
+      "scripts": {
+        "postdeploy": "yarn rw db seed"
+      }
+    }
+  }
 }
