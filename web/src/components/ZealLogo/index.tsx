@@ -1,0 +1,1 @@
+export { ZealLogo } from './ZealLogo'

@@ -9,8 +9,7 @@
     ]
   },
   "devDependencies": {
-    "@redwoodjs/core": "2.2.0",
-    "prettier-plugin-tailwindcss": "^0.1.13"
+    "prettier": "^2.7.1"
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config",
@@ -25,6 +24,11 @@
   },
   "packageManager": "yarn@3.2.1",
   "scripts": {
+    "start": "node index.js",
+    "build": "yarn rw build",
+    "lint": "yarn eslint && yarn pretty",
+    "eslint": "npx eslint .",
+    "pretty": "npx prettier -c .",
     "dev": "yarn db && yarn rw dev",
     "test": "yarn rw test --no-watch",
     "test:watch": "yarn rw test",
@@ -36,5 +40,9 @@
     "db:migrate": "yarn rw prisma migrate dev",
     "db:seed": "yarn rw prisma db seed",
     "db:setup": "yarn rw prisma migrate reset"
+  },
+  "dependencies": {
+    "@redwoodjs/core": "^2.2.0",
+    "pm2": "^5.2.0"
   }
 }
