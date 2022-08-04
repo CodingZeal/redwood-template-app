@@ -20136,7 +20136,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.7.1, prettier@npm:^2.6.2":
+"prettier@npm:2.7.1, prettier@npm:^2.6.2, prettier@npm:^2.7.1":
   version: 2.7.1
   resolution: "prettier@npm:2.7.1"
   bin:
@@ -21614,7 +21614,7 @@ __metadata:
   dependencies:
     "@redwoodjs/core": ^2.2.0
     pm2: ^5.2.0
-    prettier-plugin-tailwindcss: ^0.1.13
+    prettier: ^2.7.1
   languageName: unknown
   linkType: soft
 
@@ -24774,6 +24774,7 @@ __metadata:
     autoprefixer: ^10.4.8
     postcss: ^8.4.14
     postcss-loader: ^7.0.1
+    prettier-plugin-tailwindcss: ^0.1.13
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
