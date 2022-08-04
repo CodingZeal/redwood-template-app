@@ -51,7 +51,44 @@ yarn test:e2e
 yarn test:e2e --headed
 ```
 
+## Data and Migrations
+
+```bash
+# Run migrations on a newly changed schema
+yarn db:migrate:dev
+
+# Reset the mistake
+yarn db:reset
+
+# Seed data
+yarn db:seed
+
+# To create data-centric migrations (different than schema migrations)
+# https://redwoodjs.com/docs/data-migrations
+yarn rw generate dataMigration <data_migration>
+
+# Excute data migrations
+yarn db:migrate:data
+
+# Execute deployment migrations
+yarn db:migrate:deploy
+
+# Run both data and deployment migrations
+yarn db:deploy
+
+```
+
 ## 🚀 Deployment on Heroku
+
+## *REVERT DEPLOYMENT!*
+
+- `heroku releases:info --remote staging|prod` or `--app <app_name>`
+- `heroku rollback v<X>`
+
+## *REVERT DATABASE!*
+
+- You can't yet. We need to setup backups.
+- Last resort `DATABASE_URL=<CONNECTION-STRING> yarn rw prisma db reset` (you *will* lose all the data)
 
 Important note: The NGINX buildpack notoriously fails to pull with some regularity. Just re-run if this happens.
 
@@ -62,17 +99,30 @@ Important note: The NGINX buildpack notoriously fails to pull with some regulari
 - Migrations are run automatically for staging and prod. (TODO: document manual migrations)
 - Deployment to staging occurs automatically from the staging branch
 - Deployment to production occurs automatically from the main branch
+- Manual Deployment (see notes below)
 - Heroku configuation exists in `app.json` as well as the `Procfile`
 
-### Helpful heroku notes
+### Heroku Notes
 
-Redwood deployments in heroku need to be managed by a process manager and requests proxied via NGINX. We are using PM2 and the initialization for that can be found in the root `index.js` file.
-NGINX must have its config named and placed in `config/nginx.config.erb`.
-Additionally, `@redwoodjs/api-server` was added to facilitate proxing the requests
+- Redwood deployments in heroku need to be managed by a process manager and requests proxied via NGINX
+- NGINX must have its config named and placed in `config/nginx.config.erb`
+- PM2 is the process manager, initialization can be found in the root `index.js` file.
+- `@redwoodjs/api-server` was added to facilitate proxing the api requests and a `proxyPath` is set in the `redwood.toml` for NGINX to use
 
 ```bash
 # Login to heroku
 heroku login
+
+# Setup remotes for manual deploys
+heroku git:remote -a staging-redwood-template-app
+
+# heroku names new remotes 'heroku by default'
+git remote rename heroku staging
+
+# push and deploy via heroku git
+git push staging main
+
+# NOTE: Use the same methods as above to setup prod
 
 # Show app logs example. replace -a name with your app name
 # i.e. staging-redwood-template-app
@@ -90,3 +140,16 @@ To make creating new issues and pull requests easy and consistent, we have templ
 
 - Helpful for github [workflow development](https://github.com/nektos/act)
   - ex: `act -j playwright` runs single job
+
+Heroku:
+
+```bash
+# Deploying other branches
+git push heroku <branchname>:main
+
+# buildpacks
+heroku buildpacks --remote <staging|prod>
+heroku buildpacks:<add|remove> heroku-community/nginx --remote staging
+
+
+```
