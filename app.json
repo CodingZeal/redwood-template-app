@@ -1,0 +1,21 @@
+{
+  "scripts": {
+    "postdeploy": "yarn rw db seed"
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "14"
+      }
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "heroku/nginx"
+    }
+  ]
+}
