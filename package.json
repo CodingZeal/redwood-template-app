@@ -44,6 +44,7 @@
     "db:migrate:deploy": "yarn db:migrate deploy",
     "db:migrate:data": "yarn rw dataMigrate up",
     "db:seed": "yarn rw prisma db seed",
+    "db:setup": "yarn db:migrate:dev && yarn db:seed && yarn db:migrate:data",
     "db:reset": "yarn rw prisma migrate reset",
     "db:deploy": "yarn db:migrate:deploy && yarn db:migrate:data"
   },
