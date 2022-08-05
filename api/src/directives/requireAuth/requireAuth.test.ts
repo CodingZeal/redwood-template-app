@@ -14,7 +14,7 @@ describe('requireAuth directive', () => {
     const mockExecution = mockRedwoodDirective(requireAuth, {
       context: {
         currentUser: {
-          id: 1,
+          id: 'uuidfoobar',
         },
       },
     })

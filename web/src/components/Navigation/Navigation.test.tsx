@@ -1,9 +1,7 @@
 import { useAuth } from '@redwoodjs/auth'
-import { Route, Router } from '@redwoodjs/router'
-import { render, screen, renderHook, MockProviders } from '@redwoodjs/testing/web'
+import { render, screen, renderHook } from '@redwoodjs/testing/web'
 
 import { Navigation } from './Navigation'
-
 
 jest.mock('@redwoodjs/router', () => ({
   ...jest.requireActual('@redwoodjs/router'),
