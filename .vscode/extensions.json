@@ -11,8 +11,6 @@
     "graphql.vscode-graphql",
     "csstools.postcss",
     "bradlc.vscode-tailwindcss",
-    "csstools.postcss",
-    "bradlc.vscode-tailwindcss"
   ],
   "unwantedRecommendations": []
 }
