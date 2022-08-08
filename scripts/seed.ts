@@ -1,3 +1,4 @@
+import { Prisma } from '@prisma/client'
 import { db } from 'api/src/lib/db'
 import Chance from 'chance'
 import CryptoJS from 'crypto-js'
@@ -25,7 +26,9 @@ function pickRandom(arr: string[]) {
   return arr[Math.floor(Math.random() * arr.length)]
 }
 
-function generateUser(override?: Record<string, unknown>) {
+function generateUser(
+  override?: Prisma.UserCreateInput
+): Prisma.UserCreateInput {
   return {
     name: chance.name(),
     nickname: chance.word(),
@@ -62,6 +65,63 @@ export default async () => {
       }),
       ...Array(5).map(() => generateUser()),
     ]
+
+    const team1 = await db.team.create({
+      data: {
+        name: 'team 1',
+      },
+    })
+
+    const team2 = await db.team.create({
+      data: {
+        name: 'team 2',
+        active: false,
+      },
+    })
+
+    const user1 = await db.user.create({
+      data: {
+        email: chance.email(),
+        hashedPassword: USERS_HASHED_PASSWORD,
+        salt: USERS_SALT,
+      },
+    })
+
+    const user2 = await db.user.create({
+      data: {
+        email: chance.email(),
+        hashedPassword: USERS_HASHED_PASSWORD,
+        salt: USERS_SALT,
+      },
+    })
+
+    const role1 = await db.role.create({
+      data: {
+        name: 'FOO_ROLE',
+      },
+    })
+
+    const membership1 = await db.membership.create({
+      data: {
+        teamId: team1.id,
+        userId: user1.id,
+      },
+    })
+
+    await db.membership.create({
+      data: {
+        teamId: team2.id,
+        userId: user2.id,
+      },
+    })
+
+    await db.membershipRole.create({
+      data: {
+        membershipId: membership1.id,
+        roleId: role1.id,
+      },
+    })
+
     await Promise.all(users.map(_upsertUser))
     return null
   } catch (err) {
