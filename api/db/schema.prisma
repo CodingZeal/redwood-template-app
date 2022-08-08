@@ -9,22 +9,50 @@ generator client {
 }
 
 model User {
-  id             String   @id @default(uuid())
-  email          String   @unique
-  name           String?
-  nickname       String?
-  pronouns       String?
-  active         Boolean  @default(true)
-  admin          Boolean  @default(false)
-  hashedPassword String
-  salt           String
-  updatedAt      DateTime @default(now())
-  createdAt      DateTime @updatedAt
+  id                  String      @id @default(uuid())
+  email               String      @unique
+  name                String?
+  nickname            String?
+  pronouns            String?
+  active              Boolean     @default(true)
+  admin               Boolean     @default(false)
+  hashedPassword      String
+  salt                String
+  resetToken          String?
+  resetTokenExpiresAt DateTime?
+  updatedAt           DateTime    @default(now())
+  createdAt           DateTime    @updatedAt
+  membership          Membership?
 }
 
-model RW_DataMigration {
-  version    String   @id
-  name       String
-  startedAt  DateTime
-  finishedAt DateTime
+model Membership {
+  id              String           @id @default(uuid())
+  user            User             @relation(fields: [userId], references: [id])
+  userId          String           @unique
+  team            Team             @relation(fields: [teamId], references: [id])
+  teamId          String
+  membershipRoles MembershipRole[]
+}
+
+model Team {
+  id          String       @id @default(uuid())
+  name        String
+  active      Boolean      @default(true)
+  updatedAt   DateTime     @updatedAt
+  createdAt   DateTime     @default(now())
+  memberships Membership[]
+}
+
+model MembershipRole {
+  id           String     @id @default(uuid())
+  membership   Membership @relation(fields: [membershipId], references: [id])
+  membershipId String
+  role         Role       @relation(fields: [roleId], references: [id])
+  roleId       String
+}
+
+model Role {
+  id              String           @id @default(uuid())
+  name            String
+  membershipRoles MembershipRole[]
 }
