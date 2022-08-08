@@ -9,17 +9,17 @@ generator client {
 }
 
 model User {
-  id              Int       @id @default(autoincrement())
-  email           String    @unique
-  name            String?
-  nickname        String?
-  pronouns        String?
-  active          Boolean   @default(true)
-  admin           Boolean   @default(false)
-  hashedPassword  String
-  salt            String
-  updatedAt       DateTime  @default(now())
-  createdAt       DateTime  @updatedAt
+  id             String   @id @default(uuid())
+  email          String   @unique
+  name           String?
+  nickname       String?
+  pronouns       String?
+  active         Boolean  @default(true)
+  admin          Boolean  @default(false)
+  hashedPassword String
+  salt           String
+  updatedAt      DateTime @default(now())
+  createdAt      DateTime @updatedAt
 }
 
 model RW_DataMigration {
