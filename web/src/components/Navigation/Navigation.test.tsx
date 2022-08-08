@@ -1,45 +1,57 @@
-import { useAuth } from '@redwoodjs/auth'
-import { render, screen, renderHook } from '@redwoodjs/testing/web'
+import { routes } from '@redwoodjs/router'
+import {
+  render,
+  screen,
+  mockCurrentUser,
+  waitFor,
+} from '@redwoodjs/testing/web'
 
 import { Navigation } from './Navigation'
 
 jest.mock('@redwoodjs/router', () => ({
   ...jest.requireActual('@redwoodjs/router'),
   routes: {
-    logIn: () => '/login',
-    home: jest.fn().mockReturnValue('/'),
+    home: jest.fn(),
+    login: jest.fn(),
   },
 }))
 
 const renderComponent = (props = {}) => render(<Navigation {...props} />)
 
 describe('Navigation', () => {
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('renders navigation component', () => {
     renderComponent()
     expect(screen.getByTestId('nav')).toBeVisible()
   })
+
+  it('Calls the link home when clicked', () => {
+    renderComponent()
+    screen.getByText('Home').click()
+    expect(routes.home).toHaveBeenCalledTimes(1)
+  })
+
   it('shows the login when not authed', () => {
     renderComponent()
     expect(screen.getAllByTestId('nav__link-item').length).toBe(2)
-    expect(screen.getByRole('link', { name: 'Login' })).toBeVisible()
+    expect(screen.getByText('Login')).toBeVisible()
   })
 
-  it('shows logout when authed', async () => {
+  it('calls login when clicked', async () => {
     renderComponent()
-    const { result } = renderHook(() => useAuth())
-    result.current.isAuthenticated = true
-    expect(screen.getByRole('link', { name: 'Logout' })).toBeVisible()
+    screen.getByText('Login').click()
+    expect(routes.login).toHaveBeenCalledTimes(1)
   })
-  it.only('calls login when clicked', async () => {
+
+  it('calls logout when clicked', async () => {
+    mockCurrentUser({ id: 'foobar' })
     renderComponent()
-    screen.getByRole('link', { name: 'Login' }).click()
-    // expect(mockRoutes.login).toHaveBeenCalledTimes(1)
+    await waitFor(() => {
+      const logoutElem = screen.getByText('Logout')
+      expect(logoutElem).toBeInTheDocument()
+    })
   })
-  // it('calls logout when clicked', async () => {
-  //   mockUseAuth.mockReturnValueOnce({
-  //     isAuthenticated: true,
-  //   })
-  //   renderComponent()
-  //   expect(screen.getByRole('link', { name: 'Logout' })).toBeVisible()
-  // })
 })
