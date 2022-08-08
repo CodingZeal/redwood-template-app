@@ -19,7 +19,7 @@
       "url": "heroku/nodejs"
     },
     {
-      "url": "heroku-community/nginx"
+      "url": "https://github.com/heroku/heroku-buildpack-nginx"
     }
   ],
   "environments": {
@@ -30,11 +30,9 @@
       },
       "env": {
         "SESSION_SECRET": {
-          "description": "the secretest secret",
+          "description": "generated session secret per deploy",
           "generator": "secret"
-        },
-        "ADMIN_EMAIL": "admin@example.com",
-        "ADMIN_PASSWORD": "password"
+        }
       }
     }
   }
