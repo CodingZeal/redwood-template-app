@@ -1,5 +1,12 @@
-function MainLayout({ children }) {
-  return <div className="container">{children}</div>
+import { Navigation } from '../components/Navigation'
+
+const MainLayout = ({ children }) => {
+  return (
+    <div className="m-4">
+      <Navigation />
+      {children}
+    </div>
+  )
 }
 
 export { MainLayout }
