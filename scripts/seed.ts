@@ -63,7 +63,7 @@ export default async () => {
         hashedPassword: ADMIN_HASHED_PASSWORD,
         salt: ADMIN_SALT,
       }),
-      ...Array(5).map(() => generateUser()),
+      ...Array(5).fill({}).map(generateUser),
     ]
 
     const team1 = await db.team.create({
@@ -79,20 +79,16 @@ export default async () => {
       },
     })
 
-    const user1 = await db.user.create({
-      data: {
-        email: chance.email(),
-        hashedPassword: USERS_HASHED_PASSWORD,
-        salt: USERS_SALT,
-      },
+    const user1 = await _upsertUser({
+      email: chance.email(),
+      hashedPassword: USERS_HASHED_PASSWORD,
+      salt: USERS_SALT,
     })
 
-    const user2 = await db.user.create({
-      data: {
-        email: chance.email(),
-        hashedPassword: USERS_HASHED_PASSWORD,
-        salt: USERS_SALT,
-      },
+    const user2 = await _upsertUser({
+      email: chance.email(),
+      hashedPassword: USERS_HASHED_PASSWORD,
+      salt: USERS_SALT,
     })
 
     const role1 = await db.role.create({
@@ -101,17 +97,29 @@ export default async () => {
       },
     })
 
-    const membership1 = await db.membership.create({
-      data: {
+    const membership1 = await db.membership.upsert({
+      where: {
+        userId: user1.id,
+      },
+      create: {
         teamId: team1.id,
         userId: user1.id,
       },
+      update: {
+        teamId: team1.id,
+      },
     })
 
-    await db.membership.create({
-      data: {
+    await db.membership.upsert({
+      where: {
+        userId: user2.id,
+      },
+      create: {
         teamId: team2.id,
         userId: user2.id,
+      },
+      update: {
+        teamId: team2.id,
       },
     })
 
@@ -126,6 +134,6 @@ export default async () => {
     return null
   } catch (err) {
     console.error(err.message)
-    return null
+    return process.exit(1)
   }
 }
