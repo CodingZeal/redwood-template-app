@@ -85,6 +85,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@auth0/auth0-spa-js@npm:^1.22.2":
+  version: 1.22.2
+  resolution: "@auth0/auth0-spa-js@npm:1.22.2"
+  dependencies:
+    abortcontroller-polyfill: ^1.7.3
+    browser-tabs-lock: ^1.2.15
+    core-js: ^3.23.2
+    es-cookie: ^1.3.2
+    fast-text-encoding: ^1.0.4
+    promise-polyfill: ^8.2.3
+    unfetch: ^4.2.0
+  checksum: 237b34063fb177bfdfe7399c00710cfffab12db06da97df7513db83f39a23222846301fb51b19db182e69130a31233e28efe87fb60e8da8e7bb2455a8942c2a4
+  languageName: node
+  linkType: hard
+
 "@babel/cli@npm:7.16.7":
   version: 7.16.7
   resolution: "@babel/cli@npm:7.16.7"
@@ -6895,6 +6910,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"abortcontroller-polyfill@npm:^1.7.3":
+  version: 1.7.3
+  resolution: "abortcontroller-polyfill@npm:1.7.3"
+  checksum: 590b87668c95e060124fd0375ba1a6ed32b7a13baf4febca07374547297898d2de2b64c2b89af4785a3c42f16ca62ab70c2e138d2bbaecc8e4741611574eb10a
+  languageName: node
+  linkType: hard
+
 "abstract-logging@npm:^2.0.0":
   version: 2.0.1
   resolution: "abstract-logging@npm:2.0.1"
@@ -8436,6 +8458,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"browser-tabs-lock@npm:^1.2.15":
+  version: 1.2.15
+  resolution: "browser-tabs-lock@npm:1.2.15"
+  dependencies:
+    lodash: ">=4.17.21"
+  checksum: 6d9243d6ec7da4d48e39d89db53945979433e390c4c9e4342b7f28060d3a40c01220a6cf53bfdd8f49857fb0031865f5b5b843254f40a57762f40e90c75cc68d
+  languageName: node
+  linkType: hard
+
 "browserify-aes@npm:^1.0.0, browserify-aes@npm:^1.0.4":
   version: 1.2.0
   resolution: "browserify-aes@npm:1.2.0"
@@ -9747,6 +9778,13 @@ __metadata:
   version: 3.24.0
   resolution: "core-js@npm:3.24.0"
   checksum: f10ed95215a0761608caa794f41fe7a599c00fd8cfe3197b6cc472bb5001b6c94c98699c03623551c38f7e44171cf95934d495cc293ef5ca8bc655db6fcd53f9
+  languageName: node
+  linkType: hard
+
+"core-js@npm:^3.23.2":
+  version: 3.24.1
+  resolution: "core-js@npm:3.24.1"
+  checksum: 92b435dbb6dd936fc624a83f93c3e4abd61b5617f8e3c259608452cbd70e1e4be3c56c389292cb58a37554c41c6dc49f1c6401467c35a2b22a3a903798fa5246
   languageName: node
   linkType: hard
 
@@ -11290,6 +11328,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"es-cookie@npm:^1.3.2":
+  version: 1.3.2
+  resolution: "es-cookie@npm:1.3.2"
+  checksum: 26eb6e06b25b5569d8763fcb23b5335a5098e354b0a9a7bc5122e8c8705003307187a165ddaeda5cff08fa4cc8e1675dbddd5709279fb27cfa8875514dc3eccb
+  languageName: node
+  linkType: hard
+
 "es-get-iterator@npm:^1.0.2":
   version: 1.1.2
   resolution: "es-get-iterator@npm:1.1.2"
@@ -12278,6 +12323,13 @@ __metadata:
   version: 2.1.1
   resolution: "fast-safe-stringify@npm:2.1.1"
   checksum: d90ec1c963394919828872f21edaa3ad6f1dddd288d2bd4e977027afff09f5db40f94e39536d4646f7e01761d704d72d51dce5af1b93717f3489ef808f5f4e4d
+  languageName: node
+  linkType: hard
+
+"fast-text-encoding@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "fast-text-encoding@npm:1.0.4"
+  checksum: 7358726685a2378562c929e4be5acba4597e3677d1f2d30be5804da5863ae0926e1725b1af6270698752aad3c3647f5b97278c2f9e73751f3d3184cd4f931d9c
   languageName: node
   linkType: hard
 
@@ -16590,7 +16642,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:4.17.21, lodash@npm:^4.0.0, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.7.0, lodash@npm:~4.17.0":
+"lodash@npm:4.17.21, lodash@npm:>=4.17.21, lodash@npm:^4.0.0, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.7.0, lodash@npm:~4.17.0":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c
@@ -19606,6 +19658,13 @@ __metadata:
   version: 1.0.1
   resolution: "promise-inflight@npm:1.0.1"
   checksum: d179d148d98fbff3d815752fa9a08a87d3190551d1420f17c4467f628214db12235ae068d98cd001f024453676d8985af8f28f002345646c4ece4600a79620bc
+  languageName: node
+  linkType: hard
+
+"promise-polyfill@npm:^8.2.3":
+  version: 8.2.3
+  resolution: "promise-polyfill@npm:8.2.3"
+  checksum: 8d0418ef94d92ff53b3d8a42f47596bd354f4dfadcf21a5d52682f3addba05b05c02d88d4674e4909c069c8e14128a6d0d5e646392fb088b5300f99982a11a6c
   languageName: node
   linkType: hard
 
@@ -23895,6 +23954,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:web"
   dependencies:
+    "@auth0/auth0-spa-js": ^1.22.2
     "@playwright/test": ^1.24.2
     "@redwoodjs/auth": 2.2.0
     "@redwoodjs/forms": 2.2.0
