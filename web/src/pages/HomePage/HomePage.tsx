@@ -1,13 +1,19 @@
 import { MetaTags } from '@redwoodjs/web'
 
-import { MainLayout } from 'src/layouts'
+import { ZealLogo } from '../../components/ZealLogo'
+import { MainLayout } from '../../layouts/MainLayout'
 
-const HomePage = () => {
+function HomePage() {
   return (
     <MainLayout>
       <MetaTags title="Home" description="Home page" />
-      <h1>Redwood template home page</h1>
-      <h3>I like toast. It&apos;s a great place for jelly to lie.</h3>
+      <div
+        data-testid="home-page"
+        className="m-10 flex flex-col items-center justify-center"
+      >
+        <h1 className="text-3xl">Redwood Template</h1>
+        <ZealLogo />
+      </div>
     </MainLayout>
   )
 }

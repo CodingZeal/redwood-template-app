@@ -60,3 +60,8 @@ Add any related pull requests
 🔥 - `:fire:` Non-blocking proposed removal
 ❓ - `:question:` Non-blocking question
 ⚠️ - `:warning:` Blocking comment that must be addressed before PR
+
+
+## Gifs for life (required)
+
+![mandatory](https://media.giphy.com/media/3otPoUygHpFbzM350A/giphy.gif)
