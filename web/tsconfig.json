@@ -33,5 +33,6 @@
     "../.redwood/types/includes/web-*",
     "../types",
     "./types"
-  ]
+  ],
+  "exclude": ["tmp"]
 }

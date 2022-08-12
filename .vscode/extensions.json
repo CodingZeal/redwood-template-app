@@ -10,7 +10,7 @@
     "prisma.prisma",
     "graphql.vscode-graphql",
     "csstools.postcss",
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
   ],
   "unwantedRecommendations": []
 }
