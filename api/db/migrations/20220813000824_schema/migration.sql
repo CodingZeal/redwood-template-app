@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "User" (
-    "id" TEXT NOT NULL,
+    "id" UUID NOT NULL DEFAULT gen_random_uuid(),
     "email" TEXT NOT NULL,
     "name" TEXT,
     "nickname" TEXT,
@@ -19,16 +19,16 @@ CREATE TABLE "User" (
 
 -- CreateTable
 CREATE TABLE "Membership" (
-    "id" TEXT NOT NULL,
-    "userId" TEXT NOT NULL,
-    "teamId" TEXT NOT NULL,
+    "id" UUID NOT NULL DEFAULT gen_random_uuid(),
+    "userId" UUID NOT NULL,
+    "teamId" UUID NOT NULL,
 
     CONSTRAINT "Membership_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Team" (
-    "id" TEXT NOT NULL,
+    "id" UUID NOT NULL DEFAULT gen_random_uuid(),
     "name" TEXT NOT NULL,
     "active" BOOLEAN NOT NULL DEFAULT true,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -39,16 +39,16 @@ CREATE TABLE "Team" (
 
 -- CreateTable
 CREATE TABLE "MembershipRole" (
-    "id" TEXT NOT NULL,
-    "membershipId" TEXT NOT NULL,
-    "roleId" TEXT NOT NULL,
+    "id" UUID NOT NULL DEFAULT gen_random_uuid(),
+    "membershipId" UUID NOT NULL,
+    "roleId" UUID NOT NULL,
 
     CONSTRAINT "MembershipRole_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Role" (
-    "id" TEXT NOT NULL,
+    "id" UUID NOT NULL DEFAULT gen_random_uuid(),
     "name" TEXT NOT NULL,
 
     CONSTRAINT "Role_pkey" PRIMARY KEY ("id")
