@@ -1,5 +1,3 @@
-import humanize from 'humanize-string'
-
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
@@ -11,25 +9,6 @@ const DELETE_TEAM_MUTATION = gql`
     }
   }
 `
-
-const formatEnum = (values: string | string[] | null | undefined) => {
-  if (values) {
-    if (Array.isArray(values)) {
-      const humanizedValues = values.map((value) => humanize(value))
-      return humanizedValues.join(', ')
-    } else {
-      return humanize(values as string)
-    }
-  }
-}
-
-const jsonDisplay = (obj) => {
-  return (
-    <pre>
-      <code>{JSON.stringify(obj, null, 2)}</code>
-    </pre>
-  )
-}
 
 const timeTag = (datetime) => {
   return (
@@ -66,23 +45,29 @@ const Team = ({ team }) => {
     <>
       <div className="rw-segment">
         <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">Team {team.id} Detail</h2>
+          <h2 className="rw-heading rw-heading-secondary">
+            Team {team.id} Detail
+          </h2>
         </header>
         <table className="rw-table">
           <tbody>
             <tr>
               <th>Id</th>
               <td>{team.id}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>Name</th>
               <td>{team.name}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>Active</th>
               <td>{checkboxInputTag(team.active)}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>Updated at</th>
               <td>{timeTag(team.updatedAt)}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>Created at</th>
               <td>{timeTag(team.createdAt)}</td>
             </tr>
