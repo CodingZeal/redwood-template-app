@@ -13,8 +13,8 @@ export const schema = gql`
   }
 
   type Query {
-    users: [User!]! @requireAuth
-    user(id: String!): User @requireAuth
+    users: [User!]! @requireAuth(roles: ["super admin"])
+    user(id: String!): User @requireAuth(roles: ["super admin"])
   }
 
   input CreateUserInput {
@@ -36,8 +36,10 @@ export const schema = gql`
   }
 
   type Mutation {
-    createUser(input: CreateUserInput!): User! @requireAuth
-    updateUser(id: String!, input: UpdateUserInput!): User! @requireAuth
-    deleteUser(id: String!): User! @requireAuth
+    createUser(input: CreateUserInput!): User!
+      @requireAuth(roles: ["super admin"])
+    updateUser(id: String!, input: UpdateUserInput!): User!
+      @requireAuth(roles: ["super admin"])
+    deleteUser(id: String!): User! @requireAuth(roles: ["super admin"])
   }
 `

@@ -9,8 +9,8 @@ export const schema = gql`
   }
 
   type Query {
-    memberships: [Membership!]! @requireAuth
-    membership(id: String!): Membership @requireAuth
+    memberships: [Membership!]! @requireAuth(roles: ["super admin"])
+    membership(id: String!): Membership @requireAuth(roles: ["super admin"])
   }
 
   input CreateMembershipInput {
@@ -24,9 +24,11 @@ export const schema = gql`
   }
 
   type Mutation {
-    createMembership(input: CreateMembershipInput!): Membership! @requireAuth
+    createMembership(input: CreateMembershipInput!): Membership!
+      @requireAuth(roles: ["super admin"])
     updateMembership(id: String!, input: UpdateMembershipInput!): Membership!
-      @requireAuth
-    deleteMembership(id: String!): Membership! @requireAuth
+      @requireAuth(roles: ["super admin"])
+    deleteMembership(id: String!): Membership!
+      @requireAuth(roles: ["super admin"])
   }
 `

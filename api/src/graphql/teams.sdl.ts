@@ -9,8 +9,8 @@ export const schema = gql`
   }
 
   type Query {
-    teams: [Team!]! @requireAuth
-    team(id: String!): Team @requireAuth
+    teams: [Team!]! @requireAuth(roles: ["super admin"])
+    team(id: String!): Team @requireAuth(roles: ["super admin"])
   }
 
   input CreateTeamInput {
@@ -24,8 +24,10 @@ export const schema = gql`
   }
 
   type Mutation {
-    createTeam(input: CreateTeamInput!): Team! @requireAuth
-    updateTeam(id: String!, input: UpdateTeamInput!): Team! @requireAuth
-    deleteTeam(id: String!): Team! @requireAuth
+    createTeam(input: CreateTeamInput!): Team!
+      @requireAuth(roles: ["super admin"])
+    updateTeam(id: String!, input: UpdateTeamInput!): Team!
+      @requireAuth(roles: ["super admin"])
+    deleteTeam(id: String!): Team! @requireAuth(roles: ["super admin"])
   }
 `

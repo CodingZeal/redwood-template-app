@@ -8,8 +8,9 @@ export const schema = gql`
   }
 
   type Query {
-    membershipRoles: [MembershipRole!]! @requireAuth
-    membershipRole(id: String!): MembershipRole @requireAuth
+    membershipRoles: [MembershipRole!]! @requireAuth(roles: ["super admin"])
+    membershipRole(id: String!): MembershipRole
+      @requireAuth(roles: ["super admin"])
   }
 
   input CreateMembershipRoleInput {
@@ -24,11 +25,12 @@ export const schema = gql`
 
   type Mutation {
     createMembershipRole(input: CreateMembershipRoleInput!): MembershipRole!
-      @requireAuth
+      @requireAuth(roles: ["super admin"])
     updateMembershipRole(
       id: String!
       input: UpdateMembershipRoleInput!
-    ): MembershipRole! @requireAuth
-    deleteMembershipRole(id: String!): MembershipRole! @requireAuth
+    ): MembershipRole! @requireAuth(roles: ["super admin"])
+    deleteMembershipRole(id: String!): MembershipRole!
+      @requireAuth(roles: ["super admin"])
   }
 `
