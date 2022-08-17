@@ -1,5 +1,3 @@
-import humanize from 'humanize-string'
-
 import { Link, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
@@ -16,27 +14,12 @@ const DELETE_USER_MUTATION = gql`
 
 const MAX_STRING_LENGTH = 150
 
-const formatEnum = (values: string | string[] | null | undefined) => {
-  if (values) {
-    if (Array.isArray(values)) {
-      const humanizedValues = values.map((value) => humanize(value))
-      return humanizedValues.join(', ')
-    } else {
-      return humanize(values as string)
-    }
-  }
-}
-
 const truncate = (text) => {
   let output = text
   if (text && text.length > MAX_STRING_LENGTH) {
     output = output.substring(0, MAX_STRING_LENGTH) + '...'
   }
   return output
-}
-
-const jsonTruncate = (obj) => {
-  return truncate(JSON.stringify(obj, null, 2))
 }
 
 const timeTag = (datetime) => {
@@ -86,10 +69,6 @@ const UsersList = ({ users }) => {
             <th>Pronouns</th>
             <th>Active</th>
             <th>Admin</th>
-            <th>Hashed password</th>
-            <th>Salt</th>
-            <th>Reset token</th>
-            <th>Reset token expires at</th>
             <th>Updated at</th>
             <th>Created at</th>
             <th>&nbsp;</th>
@@ -105,10 +84,6 @@ const UsersList = ({ users }) => {
               <td>{truncate(user.pronouns)}</td>
               <td>{checkboxInputTag(user.active)}</td>
               <td>{checkboxInputTag(user.admin)}</td>
-              <td>{truncate(user.hashedPassword)}</td>
-              <td>{truncate(user.salt)}</td>
-              <td>{truncate(user.resetToken)}</td>
-              <td>{timeTag(user.resetTokenExpiresAt)}</td>
               <td>{timeTag(user.updatedAt)}</td>
               <td>{timeTag(user.createdAt)}</td>
               <td>

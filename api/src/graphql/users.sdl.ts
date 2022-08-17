@@ -7,10 +7,6 @@ export const schema = gql`
     pronouns: String
     active: Boolean!
     admin: Boolean!
-    hashedPassword: String!
-    salt: String!
-    resetToken: String
-    resetTokenExpiresAt: DateTime
     updatedAt: DateTime!
     createdAt: DateTime!
     membership: Membership
@@ -28,10 +24,6 @@ export const schema = gql`
     pronouns: String
     active: Boolean!
     admin: Boolean!
-    hashedPassword: String!
-    salt: String!
-    resetToken: String
-    resetTokenExpiresAt: DateTime
   }
 
   input UpdateUserInput {
@@ -41,10 +33,6 @@ export const schema = gql`
     pronouns: String
     active: Boolean
     admin: Boolean
-    hashedPassword: String
-    salt: String
-    resetToken: String
-    resetTokenExpiresAt: DateTime
   }
 
   type Mutation {

@@ -15,10 +15,6 @@ export const QUERY = gql`
       pronouns
       active
       admin
-      hashedPassword
-      salt
-      resetToken
-      resetTokenExpiresAt
       updatedAt
       createdAt
     }
@@ -31,10 +27,7 @@ export const Empty = () => {
   return (
     <div className="rw-text-center">
       {'No users yet. '}
-      <Link
-        to={routes.adminNewUser()}
-        className="rw-link"
-      >
+      <Link to={routes.adminNewUser()} className="rw-link">
         {'Create one?'}
       </Link>
     </div>
