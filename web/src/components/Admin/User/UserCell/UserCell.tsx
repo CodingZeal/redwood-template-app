@@ -14,10 +14,6 @@ export const QUERY = gql`
       pronouns
       active
       admin
-      hashedPassword
-      salt
-      resetToken
-      resetTokenExpiresAt
       updatedAt
       createdAt
     }

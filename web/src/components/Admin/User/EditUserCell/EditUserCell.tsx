@@ -17,12 +17,6 @@ export const QUERY = gql`
       pronouns
       active
       admin
-      hashedPassword
-      salt
-      resetToken
-      resetTokenExpiresAt
-      updatedAt
-      createdAt
     }
   }
 `
@@ -36,12 +30,6 @@ const UPDATE_USER_MUTATION = gql`
       pronouns
       active
       admin
-      hashedPassword
-      salt
-      resetToken
-      resetTokenExpiresAt
-      updatedAt
-      createdAt
     }
   }
 `
