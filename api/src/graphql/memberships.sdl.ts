@@ -1,0 +1,32 @@
+export const schema = gql`
+  type Membership {
+    id: String!
+    user: User!
+    userId: String!
+    team: Team!
+    teamId: String!
+    membershipRoles: [MembershipRole]!
+  }
+
+  type Query {
+    memberships: [Membership!]! @requireAuth
+    membership(id: String!): Membership @requireAuth
+  }
+
+  input CreateMembershipInput {
+    userId: String!
+    teamId: String!
+  }
+
+  input UpdateMembershipInput {
+    userId: String
+    teamId: String
+  }
+
+  type Mutation {
+    createMembership(input: CreateMembershipInput!): Membership! @requireAuth
+    updateMembership(id: String!, input: UpdateMembershipInput!): Membership!
+      @requireAuth
+    deleteMembership(id: String!): Membership! @requireAuth
+  }
+`
