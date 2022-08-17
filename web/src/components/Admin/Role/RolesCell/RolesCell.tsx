@@ -20,10 +20,7 @@ export const Empty = () => {
   return (
     <div className="rw-text-center">
       {'No roles yet. '}
-      <Link
-        to={routes.adminNewRole()}
-        className="rw-link"
-      >
+      <Link to={routes.adminNewRole()} className="rw-link">
         {'Create one?'}
       </Link>
     </div>
