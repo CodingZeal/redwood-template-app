@@ -13,8 +13,6 @@ export const QUERY = gql`
       id
       name
       active
-      updatedAt
-      createdAt
     }
   }
 `
@@ -24,8 +22,6 @@ const UPDATE_TEAM_MUTATION = gql`
       id
       name
       active
-      updatedAt
-      createdAt
     }
   }
 `
