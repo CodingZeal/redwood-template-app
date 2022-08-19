@@ -24,4 +24,4 @@ const RolesLayout = ({ children }: RoleLayoutProps) => {
   )
 }
 
-export default RolesLayout
+export { RolesLayout }

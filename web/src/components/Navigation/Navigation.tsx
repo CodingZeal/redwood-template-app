@@ -8,7 +8,7 @@ const LinkItem = (props) => (
 )
 
 const Navigation = () => {
-  const { logOut, isAuthenticated } = useAuth()
+  const { hasRole, logOut, isAuthenticated } = useAuth()
 
   return (
     <ul data-testid="nav" className="my-3 flex flex-row items-start">
@@ -18,6 +18,7 @@ const Navigation = () => {
       ) : (
         <LinkItem to={routes.login()}>Login</LinkItem>
       )}
+      {hasRole('super admin') && <LinkItem to={routes.admin()}>Admin</LinkItem>}
     </ul>
   )
 }

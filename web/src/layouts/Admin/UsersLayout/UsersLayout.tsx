@@ -24,4 +24,4 @@ const UsersLayout = ({ children }: UserLayoutProps) => {
   )
 }
 
-export default UsersLayout
+export { UsersLayout }

@@ -24,4 +24,4 @@ const TeamsLayout = ({ children }: TeamLayoutProps) => {
   )
 }
 
-export default TeamsLayout
+export { TeamsLayout }
