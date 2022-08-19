@@ -1,3 +1,4 @@
+import * as CryptoJS from 'crypto-js'
 import type {
   QueryResolvers,
   MutationResolvers,
@@ -17,8 +18,15 @@ export const user: QueryResolvers['user'] = ({ id }) => {
 }
 
 export const createUser: MutationResolvers['createUser'] = ({ input }) => {
+  // create new users with random password
+  const password = CryptoJS.lib.WordArray.random(20).toString()
+  const salt = CryptoJS.lib.WordArray.random(128 / 8).toString()
+  const hashedPassword = CryptoJS.PBKDF2(password, salt, {
+    keySize: 256 / 32,
+  }).toString()
+
   return db.user.create({
-    data: input,
+    data: { ...input, salt, hashedPassword },
   })
 }
 
