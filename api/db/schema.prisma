@@ -20,15 +20,15 @@ model User {
   salt                String
   resetToken          String?
   resetTokenExpiresAt DateTime?
-  updatedAt           DateTime    @default(now())
-  createdAt           DateTime    @updatedAt
+  createdAt           DateTime    @default(now())
+  updatedAt           DateTime    @updatedAt
   membership          Membership?
 }
 
 model Membership {
   id              String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   user            User             @relation(fields: [userId], references: [id])
-  userId          String           @db.Uuid @unique
+  userId          String           @unique @db.Uuid
   team            Team             @relation(fields: [teamId], references: [id])
   teamId          String           @db.Uuid
   membershipRoles MembershipRole[]
@@ -52,7 +52,7 @@ model MembershipRole {
 }
 
 model Role {
-  id              String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id              String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name            String
   membershipRoles MembershipRole[]
 }
