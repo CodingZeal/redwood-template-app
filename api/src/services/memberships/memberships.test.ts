@@ -32,12 +32,12 @@ describe('memberships', () => {
   scenario('creates a membership', async (scenario: StandardScenario) => {
     const result = await createMembership({
       input: {
-        userId: scenario.membership.two.userId,
+        userId: scenario.membership.one.userId,
         teamId: scenario.membership.two.teamId,
       },
     })
 
-    expect(result.userId).toEqual(scenario.membership.two.userId)
+    expect(result.userId).toEqual(scenario.membership.one.userId)
     expect(result.teamId).toEqual(scenario.membership.two.teamId)
   })
 

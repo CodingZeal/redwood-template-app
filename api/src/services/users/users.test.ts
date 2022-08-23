@@ -24,10 +24,14 @@ describe('users', () => {
     const before = new Date()
     const result = await createUser({
       input: {
+        active: true,
+        admin: false,
         email: 'String4652567',
       },
     })
 
+    expect(result.active).toEqual(true)
+    expect(result.admin).toEqual(false)
     expect(result.email).toEqual('String4652567')
     expect(result.hashedPassword).toBeTruthy()
     expect(result.salt).toBeTruthy()
@@ -44,6 +48,7 @@ describe('users', () => {
     })
 
     expect(result.email).toEqual('String61961682')
+    expect(result.createdAt.getTime()).toBeLessThan(before.getTime())
     expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
   })
 

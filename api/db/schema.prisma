@@ -28,10 +28,12 @@ model User {
 model Membership {
   id              String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   user            User             @relation(fields: [userId], references: [id])
-  userId          String           @unique @db.Uuid
+  userId          String           @db.Uuid
   team            Team             @relation(fields: [teamId], references: [id])
   teamId          String           @db.Uuid
   membershipRoles MembershipRole[]
+
+  @@unique([userId, teamId], name: "userTeamConstraint")
 }
 
 model Team {

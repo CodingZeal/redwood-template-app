@@ -8,14 +8,6 @@ import {
 
 import { Navigation } from './Navigation'
 
-jest.mock('@redwoodjs/router', () => ({
-  ...jest.requireActual('@redwoodjs/router'),
-  routes: {
-    home: jest.fn(),
-    login: jest.fn(),
-  },
-}))
-
 const renderComponent = (props = {}) => render(<Navigation {...props} />)
 
 describe('Navigation', () => {
@@ -28,30 +20,25 @@ describe('Navigation', () => {
     expect(screen.getByTestId('nav')).toBeVisible()
   })
 
-  it('Calls the link home when clicked', () => {
+  it('Has link to home', () => {
     renderComponent()
-    screen.getByText('Home').click()
-    expect(routes.home).toHaveBeenCalledTimes(1)
+    expect(screen.getByText('Home')).toHaveAttribute('href', routes.home())
   })
 
-  it('shows the login when not authed', () => {
+  it('shows the login when not authenticated', () => {
     renderComponent()
+    const element = screen.getByText('Login')
+
     expect(screen.getAllByTestId('nav__link-item').length).toBe(2)
-    expect(screen.getByText('Login')).toBeVisible()
+    expect(element).toBeVisible()
+    expect(element).toHaveAttribute('href', routes.login())
   })
 
-  it('calls login when clicked', async () => {
-    renderComponent()
-    screen.getByText('Login').click()
-    expect(routes.login).toHaveBeenCalledTimes(1)
-  })
-
-  it('calls logout when clicked', async () => {
+  it('shows logout when authenticated', async () => {
     mockCurrentUser({ id: 'foobar' })
     renderComponent()
     await waitFor(() => {
-      const logoutElem = screen.getByText('Logout')
-      expect(logoutElem).toBeInTheDocument()
+      expect(screen.getByText('Logout')).toBeInTheDocument()
     })
   })
 })
