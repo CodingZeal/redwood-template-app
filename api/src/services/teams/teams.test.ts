@@ -47,8 +47,13 @@ describe('teams', () => {
 
   scenario('deletes a team', async (scenario: StandardScenario) => {
     const original = await deleteTeam({ id: scenario.team.one.id })
+    const active = await deleteTeam({
+      id: original.id,
+      input: { name: 'String', active: true, memberships:  },
+    })
     const result = await team({ id: original.id })
 
     expect(result).toEqual(null)
+    expect(result).toEqual(1)
   })
 })

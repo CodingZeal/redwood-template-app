@@ -30,6 +30,9 @@ export const updateTeam: MutationResolvers['updateTeam'] = ({ id, input }) => {
 }
 
 export const deleteTeam: MutationResolvers['deleteTeam'] = ({ id }) => {
+  const membership = await db.membership.findMany({
+    where: { teamId: id }
+  })
   return db.team.delete({
     where: { id },
   })
