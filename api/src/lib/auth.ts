@@ -20,10 +20,26 @@ import { db } from './db'
  * seen if someone were to open the Web Inspector in their browser.
  */
 export const getCurrentUser = async (session) => {
-  return await db.user.findUnique({
+  const user = await db.user.findUnique({
     where: { id: session.id },
-    select: { id: true },
+    select: { id: true, admin: true, memberships: true },
   })
+
+  const membershipRoles = await db.membershipRole.findMany({
+    where: {
+      membershipId: { in: user.memberships.map((membership) => membership.id) },
+    },
+    select: { role: true },
+  })
+
+  const roles = membershipRoles.map(
+    (membershipRole) => membershipRole.role.name
+  )
+
+  return {
+    id: user.id,
+    roles: [...roles, ...(user.admin ? ['super admin'] : [])],
+  }
 }
 
 /**
@@ -71,11 +87,6 @@ export const hasRole = (roles: AllowedRoles): boolean => {
       // roles to check is an array, currentUser.roles is an array
       return currentUserRoles?.some((allowedRole) =>
         roles.includes(allowedRole)
-      )
-    } else if (typeof context.currentUser.roles === 'string') {
-      // roles to check is an array, currentUser.roles is a string
-      return roles.some(
-        (allowedRole) => context.currentUser?.roles === allowedRole
       )
     }
   }

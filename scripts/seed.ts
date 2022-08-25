@@ -99,7 +99,10 @@ export default async () => {
 
     const membership1 = await db.membership.upsert({
       where: {
-        userId: user1.id,
+        userTeamConstraint: {
+          userId: user1.id,
+          teamId: team1.id,
+        },
       },
       create: {
         teamId: team1.id,
@@ -112,7 +115,10 @@ export default async () => {
 
     await db.membership.upsert({
       where: {
-        userId: user2.id,
+        userTeamConstraint: {
+          userId: user2.id,
+          teamId: team2.id,
+        },
       },
       create: {
         teamId: team2.id,

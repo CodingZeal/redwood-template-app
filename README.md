@@ -18,6 +18,16 @@ The following is a list of frameworks, utilities, libraries, components, etc... 
 
 &nbsp;
 
+## ✨ $~$ Features
+
+The following is a list of features this template has
+
+- `/admin` section that holds all crud operations for the application
+
+---
+
+&nbsp;
+
 ## 🧱 $~$ Development Setup
 
 > **Prerequisites**
