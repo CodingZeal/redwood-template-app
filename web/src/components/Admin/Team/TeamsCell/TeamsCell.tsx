@@ -13,6 +13,9 @@ export const QUERY = gql`
       active
       updatedAt
       createdAt
+      memberships {
+        id
+      }
     }
   }
 `

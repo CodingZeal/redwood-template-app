@@ -65,47 +65,55 @@ const TeamsList = ({ teams }) => {
             <th>Id</th>
             <th>Name</th>
             <th>Active</th>
+            <th>User Count</th>
             <th>Updated at</th>
             <th>Created at</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>
-          {teams.map((team) => (
-            <tr key={team.id}>
-              <td>{truncate(team.id)}</td>
-              <td>{truncate(team.name)}</td>
-              <td>{checkboxInputTag(team.active)}</td>
-              <td>{timeTag(team.updatedAt)}</td>
-              <td>{timeTag(team.createdAt)}</td>
-              <td>
-                <nav className="rw-table-actions">
-                  <Link
-                    to={routes.adminTeam({ id: team.id })}
-                    title={'Show team ' + team.id + ' detail'}
-                    className="rw-button rw-button-small"
-                  >
-                    Show
-                  </Link>
-                  <Link
-                    to={routes.adminEditTeam({ id: team.id })}
-                    title={'Edit team ' + team.id}
-                    className="rw-button rw-button-small rw-button-blue"
-                  >
-                    Edit
-                  </Link>
-                  <button
-                    type="button"
-                    title={'Delete team ' + team.id}
-                    className="rw-button rw-button-small rw-button-red"
-                    onClick={() => onDeleteClick(team.id)}
-                  >
-                    Delete
-                  </button>
-                </nav>
-              </td>
-            </tr>
-          ))}
+          {teams.map((team) => {
+            const userCount = team.memberships.length
+            return (
+              <tr key={team.id}>
+                <td>{truncate(team.id)}</td>
+                <td>{truncate(team.name)}</td>
+                <td>{checkboxInputTag(team.active)}</td>
+                <td>{userCount}</td>
+                <td>{timeTag(team.updatedAt)}</td>
+                <td>{timeTag(team.createdAt)}</td>
+                <td>
+                  <nav className="rw-table-actions">
+                    <Link
+                      to={routes.adminTeam({ id: team.id })}
+                      title={'Show team ' + team.id + ' detail'}
+                      className="rw-button rw-button-small"
+                    >
+                      Show
+                    </Link>
+                    <Link
+                      to={routes.adminEditTeam({ id: team.id })}
+                      title={'Edit team ' + team.id}
+                      className="rw-button rw-button-small rw-button-blue"
+                    >
+                      Edit
+                    </Link>
+                    <button
+                      type="button"
+                      title={'Delete team ' + team.id}
+                      className={`rw-button rw-button-small ${
+                        userCount == 0 && 'rw-button-red'
+                      }`}
+                      onClick={() => onDeleteClick(team.id)}
+                      disabled={userCount > 0}
+                    >
+                      Delete
+                    </button>
+                  </nav>
+                </td>
+              </tr>
+            )
+          })}
         </tbody>
       </table>
     </div>
