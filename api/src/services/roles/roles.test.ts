@@ -1,11 +1,5 @@
 import { roles, role, createRole, updateRole, deleteRole } from './roles'
-import type { StandardScenario } from './roles.scenarios'
-
-// Generated boilerplate tests do not account for all circumstances
-// and can fail without adjustments, e.g. Float and DateTime types.
-//           Please refer to the RedwoodJS Testing Docs:
-//       https://redwoodjs.com/docs/testing#testing-services
-// https://redwoodjs.com/docs/testing#jest-expect-type-considerations
+import type { InUseScenario, StandardScenario } from './roles.scenarios'
 
 describe('roles', () => {
   scenario('returns all roles', async (scenario: StandardScenario) => {
@@ -22,26 +16,37 @@ describe('roles', () => {
 
   scenario('creates a role', async () => {
     const result = await createRole({
-      input: { name: 'String' },
+      input: { name: 'NEW-role' },
     })
 
-    expect(result.name).toEqual('String')
+    expect(result.name).toEqual('NEW-role')
   })
 
   scenario('updates a role', async (scenario: StandardScenario) => {
     const original = await role({ id: scenario.role.one.id })
     const result = await updateRole({
       id: original.id,
-      input: { name: 'String2' },
+      input: { name: 'UPDATED' },
     })
 
-    expect(result.name).toEqual('String2')
+    expect(result.name).toEqual('UPDATED')
   })
 
-  scenario('deletes a role', async (scenario: StandardScenario) => {
-    const original = await deleteRole({ id: scenario.role.one.id })
-    const result = await role({ id: original.id })
+  describe('deletes', () => {
+    scenario('inUse', 'unused role', async (scenario: InUseScenario) => {
+      const original = await deleteRole({ id: scenario.role.notInUseRole.id })
+      const result = await role({ id: original.id })
 
-    expect(result).toEqual(null)
+      expect(result).toEqual(null)
+    })
+
+    scenario('inUse', 'role in use', async (scenario: InUseScenario) => {
+      expect(deleteRole({ id: scenario.role.inUseRole.id })).rejects.toThrow(
+        Error('Role is in use, please remove memberships before deletion')
+      )
+
+      const result = await role({ id: scenario.role.inUseRole.id })
+      expect(result).toEqual(scenario.role.inUseRole)
+    })
   })
 })

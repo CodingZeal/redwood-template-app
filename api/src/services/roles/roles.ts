@@ -4,6 +4,8 @@ import type {
   RoleResolvers,
 } from 'types/graphql'
 
+import { RedwoodError } from '@redwoodjs/api'
+
 import { db } from 'src/lib/db'
 
 export const roles: QueryResolvers['roles'] = () => {
@@ -29,7 +31,17 @@ export const updateRole: MutationResolvers['updateRole'] = ({ id, input }) => {
   })
 }
 
-export const deleteRole: MutationResolvers['deleteRole'] = ({ id }) => {
+export const deleteRole: MutationResolvers['deleteRole'] = async ({ id }) => {
+  const countOfMemberships = await db.membershipRole.count({
+    where: { roleId: id },
+  })
+
+  if (countOfMemberships !== 0) {
+    throw new RedwoodError(
+      'Role is in use, please remove memberships before deletion'
+    )
+  }
+
   return db.role.delete({
     where: { id },
   })
