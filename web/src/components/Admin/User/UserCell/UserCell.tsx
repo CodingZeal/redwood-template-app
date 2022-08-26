@@ -16,6 +16,11 @@ export const QUERY = gql`
       admin
       updatedAt
       createdAt
+      memberships {
+        team {
+          name
+        }
+      }
     }
   }
 `
