@@ -1,3 +1,6 @@
+import { createMembership } from '../memberships/memberships'
+import { createUser } from '../users/users'
+
 import { teams, team, createTeam, updateTeam, deleteTeam } from './teams'
 import type { StandardScenario } from './teams.scenarios'
 
@@ -28,7 +31,7 @@ describe('teams', () => {
 
     expect(result.name).toEqual('String')
     expect(result.active).toEqual(true)
-    expect(result.createdAt.getTime()).toBeGreaterThan(before.getTime())
+    expect(result.createdAt.getTime()).toBeGreaterThanOrEqual(before.getTime())
     expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
   })
 
@@ -45,15 +48,35 @@ describe('teams', () => {
     expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
   })
 
-  scenario('deletes a team', async (scenario: StandardScenario) => {
-    const original = await deleteTeam({ id: scenario.team.one.id })
-    const active = await deleteTeam({
-      id: original.id,
-      input: { name: 'String', active: true, memberships:  },
-    })
-    const result = await team({ id: original.id })
+  describe('deletes', () => {
+    scenario('unused', async (scenario: StandardScenario) => {
+      const original = await deleteTeam({ id: scenario.team.one.id })
+      const result = await team({ id: original.id })
 
-    expect(result).toEqual(null)
-    expect(result).toEqual(1)
+      expect(result).toEqual(null)
+    })
+
+    scenario('used', async (scenario: StandardScenario) => {
+      const user = await createUser({
+        input: {
+          active: true,
+          admin: false,
+          email: 'monkey@banana.com',
+        },
+      })
+      await createMembership({
+        input: {
+          teamId: scenario.team.one.id,
+          userId: user.id,
+        },
+      })
+      expect(deleteTeam({ id: scenario.team.one.id })).rejects.toThrow(
+        Error('Team is in use, please remove users before deletion')
+      )
+
+      const result = await team({ id: scenario.team.one.id })
+
+      expect(result).not.toEqual(null)
+    })
   })
 })

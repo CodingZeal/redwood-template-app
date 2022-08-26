@@ -29,10 +29,14 @@ export const updateTeam: MutationResolvers['updateTeam'] = ({ id, input }) => {
   })
 }
 
-export const deleteTeam: MutationResolvers['deleteTeam'] = ({ id }) => {
+export const deleteTeam: MutationResolvers['deleteTeam'] = async ({ id }) => {
   const membership = await db.membership.findMany({
-    where: { teamId: id }
+    where: { teamId: id },
   })
+  if (membership.length > 0) {
+    throw new Error('Team is in use, please remove users before deletion')
+  }
+
   return db.team.delete({
     where: { id },
   })
