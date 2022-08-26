@@ -9,7 +9,7 @@ export const schema = gql`
     admin: Boolean!
     updatedAt: DateTime!
     createdAt: DateTime!
-    membership: Membership
+    memberships: [Membership]
   }
 
   type Query {

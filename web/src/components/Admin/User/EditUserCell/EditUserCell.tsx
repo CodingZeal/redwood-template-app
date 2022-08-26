@@ -5,7 +5,7 @@ import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import UserForm from 'src/components/Admin/User/UserForm'
+import UserFormCell from 'src/components/Admin/User/UserFormCell'
 
 export const QUERY = gql`
   query EditUserById($id: String!) {
@@ -17,6 +17,9 @@ export const QUERY = gql`
       pronouns
       active
       admin
+      memberships {
+        teamId
+      }
     }
   }
 `
@@ -61,7 +64,12 @@ export const Success = ({ user }: CellSuccessProps<EditUserById>) => {
         <h2 className="rw-heading rw-heading-secondary">Edit User {user.id}</h2>
       </header>
       <div className="rw-segment-main">
-        <UserForm user={user} onSave={onSave} error={error} loading={loading} />
+        <UserFormCell
+          user={user}
+          onSave={onSave}
+          error={error}
+          loading={loading}
+        />
       </div>
     </div>
   )
