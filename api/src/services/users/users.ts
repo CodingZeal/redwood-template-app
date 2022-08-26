@@ -31,7 +31,7 @@ export const createUser: MutationResolvers['createUser'] = async ({
   const user = await db.user.create({
     data: { ...userInput, salt, hashedPassword },
   })
-  teamIds.forEach(async (teamId) => {
+  teamIds?.forEach(async (teamId) => {
     await db.membership.create({
       data: { teamId, userId: user.id },
     })
@@ -48,7 +48,7 @@ export const updateUser: MutationResolvers['updateUser'] = async ({
     data: { ...userInput },
     where: { id },
   })
-  teamIds.forEach(async (teamId) => {
+  teamIds?.forEach(async (teamId) => {
     await db.membership.upsert({
       where: {
         userTeamConstraint: {
