@@ -17,7 +17,9 @@ export const user: QueryResolvers['user'] = ({ id }) => {
   })
 }
 
-export const createUser: MutationResolvers['createUser'] = ({ input }) => {
+export const createUser: MutationResolvers['createUser'] = async ({
+  input,
+}) => {
   // create new users with random password
   const password = CryptoJS.lib.WordArray.random(20).toString()
   const salt = CryptoJS.lib.WordArray.random(128 / 8).toString()
@@ -25,16 +27,46 @@ export const createUser: MutationResolvers['createUser'] = ({ input }) => {
     keySize: 256 / 32,
   }).toString()
 
-  return db.user.create({
-    data: { ...input, salt, hashedPassword },
+  const { teamIds, ...userInput } = input
+  const user = await db.user.create({
+    data: { ...userInput, salt, hashedPassword },
   })
+  teamIds.forEach(async (teamId) => {
+    await db.membership.create({
+      data: { teamId, userId: user.id },
+    })
+  })
+  return user
 }
 
-export const updateUser: MutationResolvers['updateUser'] = ({ id, input }) => {
-  return db.user.update({
-    data: input,
+export const updateUser: MutationResolvers['updateUser'] = async ({
+  id,
+  input,
+}) => {
+  const { teamIds, ...userInput } = input
+  const user = await db.user.update({
+    data: { ...userInput },
     where: { id },
   })
+  teamIds.forEach(async (teamId) => {
+    await db.membership.upsert({
+      where: {
+        userTeamConstraint: {
+          teamId,
+          userId: user.id,
+        },
+      },
+      create: {
+        teamId,
+        userId: user.id,
+      },
+      update: {},
+    })
+  })
+  await db.membership.deleteMany({
+    where: { userId: user.id, NOT: { teamId: { in: teamIds } } },
+  })
+  return user
 }
 
 export const deleteUser: MutationResolvers['deleteUser'] = ({ id }) => {

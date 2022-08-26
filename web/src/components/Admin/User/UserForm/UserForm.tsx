@@ -128,7 +128,7 @@ const UserForm = (props) => {
         <FieldError name="admin" className="rw-field-error" />
 
         <Label
-          name="team"
+          name="teamIds"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
@@ -136,7 +136,7 @@ const UserForm = (props) => {
         </Label>
 
         <SelectField
-          name="team"
+          name="teamIds"
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           multiple={true}
@@ -154,7 +154,7 @@ const UserForm = (props) => {
           ))}
         </SelectField>
 
-        <FieldError name="team" className="rw-field-error" />
+        <FieldError name="teamIds" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">
