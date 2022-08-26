@@ -23,6 +23,8 @@ The following is a list of frameworks, utilities, libraries, components, etc... 
 The following is a list of features this template has
 
 - `/admin` section that holds all crud operations for the application
+  - `/admin/users` CRUD operations for users
+  - `/admin/teams` CRUD operations for teams
 
 ---
 
