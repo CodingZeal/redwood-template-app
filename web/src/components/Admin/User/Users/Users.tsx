@@ -11,7 +11,13 @@ const DELETE_USER_MUTATION = gql`
     }
   }
 `
-
+const ARCHIVE_USER_MUTATION = gql`
+  mutation ArchiveUserMutation($id: String!, $input: UpdateUserInput!) {
+    archiveUser(id: $id, input: $input) {
+      id
+    }
+  }
+`
 const MAX_STRING_LENGTH = 150
 
 const truncate = (text) => {
@@ -50,10 +56,30 @@ const UsersList = ({ users }) => {
     refetchQueries: [{ query: QUERY }],
     awaitRefetchQueries: true,
   })
+  const [archiveUser] = useMutation(ARCHIVE_USER_MUTATION, {
+    onCompleted: () => {
+      toast.success('User archived')
+    },
+    refetchQueries: [{ query: QUERY }],
+    awaitRefetchQueries: true,
+    onError: (error) => {
+      toast.error(error.message)
+    },
+  })
 
   const onDeleteClick = (id) => {
     if (confirm('Are you sure you want to delete user ' + id + '?')) {
       deleteUser({ variables: { id } })
+    }
+  }
+  const onArchiveClick = (id) => {
+    if (confirm('Are you sure you want to archive user ' + id + '?')) {
+      archiveUser({
+        variables: {
+          id: users.id,
+          input: { active: !users.active },
+        },
+      })
     }
   }
 
@@ -109,6 +135,19 @@ const UsersList = ({ users }) => {
                     onClick={() => onDeleteClick(user.id)}
                   >
                     Delete
+                  </button>
+
+                  <button
+                    type="button"
+                    title={'Archive user ' + user.id}
+                    className={
+                      user.active
+                        ? 'rw-button rw-button-small rw-button-red'
+                        : 'rw-button rw-button-small'
+                    }
+                    onClick={() => onArchiveClick(user.id)}
+                  >
+                    {user.active ? 'Archive' : 'Reactivate'}
                   </button>
                 </nav>
               </td>
