@@ -2,6 +2,8 @@ export const schema = gql`
   type Role {
     id: String!
     name: String!
+    createdAt: DateTime!
+    updatedAt: DateTime!
     membershipRoles: [MembershipRole]!
   }
 

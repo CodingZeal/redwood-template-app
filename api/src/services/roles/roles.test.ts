@@ -15,21 +15,27 @@ describe('roles', () => {
   })
 
   scenario('creates a role', async () => {
+    const before = new Date()
     const result = await createRole({
       input: { name: 'NEW-role' },
     })
 
     expect(result.name).toEqual('NEW-role')
+    expect(result.createdAt.getTime()).toBeGreaterThan(before.getTime())
+    expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
   })
 
   scenario('updates a role', async (scenario: StandardScenario) => {
     const original = await role({ id: scenario.role.one.id })
+    const before = new Date()
     const result = await updateRole({
       id: original.id,
       input: { name: 'UPDATED' },
     })
 
     expect(result.name).toEqual('UPDATED')
+    expect(result.createdAt.getTime()).toBeLessThan(before.getTime())
+    expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
   })
 
   describe('deletes', () => {
