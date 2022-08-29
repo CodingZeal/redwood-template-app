@@ -1,3 +1,5 @@
+import { ValidationError } from '@redwoodjs/graphql-server'
+
 import { createMembership } from '../memberships/memberships'
 import { createUser } from '../users/users'
 
@@ -71,7 +73,7 @@ describe('teams', () => {
         },
       })
       expect(deleteTeam({ id: scenario.team.one.id })).rejects.toThrow(
-        Error('Team is in use, please remove users before deletion')
+        new ValidationError('Please remove users before deleting team')
       )
 
       const result = await team({ id: scenario.team.one.id })
