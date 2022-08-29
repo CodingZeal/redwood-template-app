@@ -1,16 +1,7 @@
 import { ValidationError } from '@redwoodjs/graphql-server'
 
-import { createMembership } from '../memberships/memberships'
-import { createUser } from '../users/users'
-
 import { teams, team, createTeam, updateTeam, deleteTeam } from './teams'
-import type { StandardScenario } from './teams.scenarios'
-
-// Generated boilerplate tests do not account for all circumstances
-// and can fail without adjustments, e.g. Float and DateTime types.
-//           Please refer to the RedwoodJS Testing Docs:
-//       https://redwoodjs.com/docs/testing#testing-services
-// https://redwoodjs.com/docs/testing#jest-expect-type-considerations
+import type { InUseScenario, StandardScenario } from './teams.scenarios'
 
 describe('teams', () => {
   scenario('returns all teams', async (scenario: StandardScenario) => {
@@ -58,25 +49,12 @@ describe('teams', () => {
       expect(result).toEqual(null)
     })
 
-    scenario('used', async (scenario: StandardScenario) => {
-      const user = await createUser({
-        input: {
-          active: true,
-          admin: false,
-          email: 'monkey@banana.com',
-        },
-      })
-      await createMembership({
-        input: {
-          teamId: scenario.team.one.id,
-          userId: user.id,
-        },
-      })
-      expect(deleteTeam({ id: scenario.team.one.id })).rejects.toThrow(
+    scenario('inUse', 'used', async (scenario: InUseScenario) => {
+      expect(deleteTeam({ id: scenario.team.inUseTeam.id })).rejects.toThrow(
         new ValidationError('Please remove users before deleting team')
       )
 
-      const result = await team({ id: scenario.team.one.id })
+      const result = await team({ id: scenario.team.inUseTeam.id })
 
       expect(result).not.toEqual(null)
     })

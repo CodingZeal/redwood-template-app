@@ -1,15 +1,7 @@
 import { db } from 'src/lib/db'
 
-import { createTeam } from '../teams/teams'
-
 import { users, user, createUser, updateUser, deleteUser } from './users'
-import type { StandardScenario } from './users.scenarios'
-
-// Generated boilerplate tests do not account for all circumstances
-// and can fail without adjustments, e.g. Float and DateTime types.
-//           Please refer to the RedwoodJS Testing Docs:
-//       https://redwoodjs.com/docs/testing#testing-services
-// https://redwoodjs.com/docs/testing#jest-expect-type-considerations
+import type { InUseScenario, StandardScenario } from './users.scenarios'
 
 describe('users', () => {
   scenario('returns all users', async (scenario: StandardScenario) => {
@@ -44,27 +36,20 @@ describe('users', () => {
       expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
     })
 
-    scenario('when adding teams', async () => {
-      const team = await createTeam({
-        input: {
-          active: true,
-          name: 'The Monkeys',
-        },
-      })
-
+    scenario('inUse', 'when adding teams', async (scenario: InUseScenario) => {
       const result = await createUser({
         input: {
           active: true,
           admin: false,
           email: 'String4652567',
-          teamIds: [team.id],
+          teamIds: [scenario.team.team1.id],
         },
       })
 
       const membership = await db.membership.findUnique({
         where: {
           userTeamConstraint: {
-            teamId: team.id,
+            teamId: scenario.team.team1.id,
             userId: result.id,
           },
         },
@@ -75,8 +60,8 @@ describe('users', () => {
   })
 
   describe('updates', () => {
-    scenario('when no teams', async (scenario: StandardScenario) => {
-      const original = await user({ id: scenario.user.one.id })
+    scenario('inUse', 'when no teams', async (scenario: InUseScenario) => {
+      const original = await user({ id: scenario.user.notInUseUser.id })
       const before = new Date()
       const result = await updateUser({
         id: original.id,
@@ -88,25 +73,18 @@ describe('users', () => {
       expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
     })
 
-    scenario('when adding teams', async (scenario: StandardScenario) => {
-      const team = await createTeam({
-        input: {
-          active: true,
-          name: 'The Monkeys',
-        },
-      })
-
-      const original = await user({ id: scenario.user.one.id })
+    scenario('inUse', 'when adding teams', async (scenario: InUseScenario) => {
+      const original = await user({ id: scenario.user.notInUseUser.id })
 
       const result = await updateUser({
         id: original.id,
-        input: { teamIds: [team.id] },
+        input: { teamIds: [scenario.team.team1.id] },
       })
 
       const membership = await db.membership.findUnique({
         where: {
           userTeamConstraint: {
-            teamId: team.id,
+            teamId: scenario.team.team1.id,
             userId: result.id,
           },
         },
@@ -115,22 +93,8 @@ describe('users', () => {
       expect(membership).not.toEqual(null)
     })
 
-    scenario('when removing teams', async (scenario: StandardScenario) => {
-      const team = await createTeam({
-        input: {
-          active: true,
-          name: 'The Monkeys',
-        },
-      })
-
-      const original = await user({ id: scenario.user.one.id })
-
-      await db.membership.create({
-        data: {
-          teamId: team.id,
-          userId: original.id,
-        },
-      })
+    scenario('inUse', 'when remove a team', async (scenario: InUseScenario) => {
+      const original = await user({ id: scenario.user.inUseUser.id })
 
       const result = await updateUser({
         id: original.id,
@@ -140,7 +104,7 @@ describe('users', () => {
       const membership = await db.membership.findUnique({
         where: {
           userTeamConstraint: {
-            teamId: team.id,
+            teamId: scenario.team.team1.id,
             userId: result.id,
           },
         },
