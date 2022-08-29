@@ -48,7 +48,7 @@ export const updateUser: MutationResolvers['updateUser'] = async ({
     data: { ...userInput },
     where: { id },
   })
-  teamIds?.forEach(async (teamId) => {
+  for (const teamId of teamIds || []) {
     await db.membership.upsert({
       where: {
         userTeamConstraint: {
@@ -62,7 +62,7 @@ export const updateUser: MutationResolvers['updateUser'] = async ({
       },
       update: {},
     })
-  })
+  }
   await db.membership.deleteMany({
     where: { userId: user.id, NOT: { teamId: { in: teamIds } } },
   })
