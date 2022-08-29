@@ -1,4 +1,5 @@
 api/types/*
+web/types/*
 ./index.js
 .vscode
 tmp
