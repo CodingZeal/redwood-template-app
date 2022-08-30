@@ -27,6 +27,8 @@ const Role = ({ role }) => {
     }
   }
 
+  const membershipRoleCount = role.membershipRoles.length
+
   return (
     <>
       <div className="rw-segment">
@@ -55,13 +57,15 @@ const Role = ({ role }) => {
         >
           Edit
         </Link>
-        <button
-          type="button"
-          className="rw-button rw-button-red"
-          onClick={() => onDeleteClick(role.id)}
-        >
-          Delete
-        </button>
+        {membershipRoleCount === 0 && (
+          <button
+            type="button"
+            className="rw-button rw-button-red"
+            onClick={() => onDeleteClick(role.id)}
+          >
+            Delete
+          </button>
+        )}
       </nav>
     </>
   )

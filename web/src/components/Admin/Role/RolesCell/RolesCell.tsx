@@ -10,6 +10,9 @@ export const QUERY = gql`
     roles {
       id
       name
+      membershipRoles {
+        id
+      }
     }
   }
 `
