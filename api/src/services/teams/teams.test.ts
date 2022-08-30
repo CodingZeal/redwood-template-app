@@ -1,11 +1,7 @@
-import { teams, team, createTeam, updateTeam, deleteTeam } from './teams'
-import type { StandardScenario } from './teams.scenarios'
+import { ValidationError } from '@redwoodjs/graphql-server'
 
-// Generated boilerplate tests do not account for all circumstances
-// and can fail without adjustments, e.g. Float and DateTime types.
-//           Please refer to the RedwoodJS Testing Docs:
-//       https://redwoodjs.com/docs/testing#testing-services
-// https://redwoodjs.com/docs/testing#jest-expect-type-considerations
+import { teams, team, createTeam, updateTeam, deleteTeam } from './teams'
+import type { InUseScenario, StandardScenario } from './teams.scenarios'
 
 describe('teams', () => {
   scenario('returns all teams', async (scenario: StandardScenario) => {
@@ -28,7 +24,7 @@ describe('teams', () => {
 
     expect(result.name).toEqual('String')
     expect(result.active).toEqual(true)
-    expect(result.createdAt.getTime()).toBeGreaterThan(before.getTime())
+    expect(result.createdAt.getTime()).toBeGreaterThanOrEqual(before.getTime())
     expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
   })
 
@@ -45,10 +41,22 @@ describe('teams', () => {
     expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
   })
 
-  scenario('deletes a team', async (scenario: StandardScenario) => {
-    const original = await deleteTeam({ id: scenario.team.one.id })
-    const result = await team({ id: original.id })
+  describe('deletes', () => {
+    scenario('unused', async (scenario: StandardScenario) => {
+      const original = await deleteTeam({ id: scenario.team.one.id })
+      const result = await team({ id: original.id })
 
-    expect(result).toEqual(null)
+      expect(result).toEqual(null)
+    })
+
+    scenario('inUse', 'used', async (scenario: InUseScenario) => {
+      expect(deleteTeam({ id: scenario.team.inUseTeam.id })).rejects.toThrow(
+        new ValidationError('Please remove users before deleting team')
+      )
+
+      const result = await team({ id: scenario.team.inUseTeam.id })
+
+      expect(result).not.toEqual(null)
+    })
   })
 })

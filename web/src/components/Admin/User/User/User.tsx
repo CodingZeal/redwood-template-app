@@ -80,6 +80,14 @@ const User = ({ user }) => {
               <td>{checkboxInputTag(user.admin)}</td>
             </tr>
             <tr>
+              <th>Teams</th>
+              <td>
+                {user.memberships
+                  ?.map((membership) => membership.team.name)
+                  .join(', ')}
+              </td>
+            </tr>
+            <tr>
               <th>Updated at</th>
               <td>{timeTag(user.updatedAt)}</td>
             </tr>

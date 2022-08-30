@@ -4,6 +4,8 @@ import type {
   TeamResolvers,
 } from 'types/graphql'
 
+import { ValidationError } from '@redwoodjs/graphql-server'
+
 import { db } from 'src/lib/db'
 
 export const teams: QueryResolvers['teams'] = () => {
@@ -29,7 +31,14 @@ export const updateTeam: MutationResolvers['updateTeam'] = ({ id, input }) => {
   })
 }
 
-export const deleteTeam: MutationResolvers['deleteTeam'] = ({ id }) => {
+export const deleteTeam: MutationResolvers['deleteTeam'] = async ({ id }) => {
+  const membership = await db.membership.findMany({
+    where: { teamId: id },
+  })
+  if (membership.length > 0) {
+    throw new ValidationError('Please remove users before deleting team')
+  }
+
   return db.team.delete({
     where: { id },
   })

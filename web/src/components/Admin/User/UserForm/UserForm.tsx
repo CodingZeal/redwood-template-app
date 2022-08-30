@@ -6,6 +6,7 @@ import {
   TextField,
   CheckboxField,
   Submit,
+  SelectField,
 } from '@redwoodjs/forms'
 
 const UserForm = (props) => {
@@ -125,6 +126,35 @@ const UserForm = (props) => {
         />
 
         <FieldError name="admin" className="rw-field-error" />
+
+        <Label
+          name="teamIds"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Team
+        </Label>
+
+        <SelectField
+          name="teamIds"
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          multiple={true}
+        >
+          {props.teams?.map((team) => (
+            <option
+              key={team.id}
+              value={team.id}
+              selected={props.user?.memberships?.some(
+                (membership) => membership.teamId == team.id
+              )}
+            >
+              {team.name}
+            </option>
+          ))}
+        </SelectField>
+
+        <FieldError name="teamIds" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">
