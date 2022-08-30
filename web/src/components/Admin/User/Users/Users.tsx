@@ -13,7 +13,7 @@ const DELETE_USER_MUTATION = gql`
 `
 const ARCHIVE_USER_MUTATION = gql`
   mutation ArchiveUserMutation($id: String!, $input: UpdateUserInput!) {
-    archiveUser(id: $id, input: $input) {
+    updateUser(id: $id, input: $input) {
       id
     }
   }
@@ -58,13 +58,13 @@ const UsersList = ({ users }) => {
   })
   const [archiveUser] = useMutation(ARCHIVE_USER_MUTATION, {
     onCompleted: () => {
-      toast.success('User archived')
+      toast.success('User updated')
     },
-    refetchQueries: [{ query: QUERY }],
-    awaitRefetchQueries: true,
     onError: (error) => {
       toast.error(error.message)
     },
+    refetchQueries: [{ query: QUERY }],
+    awaitRefetchQueries: true,
   })
 
   const onDeleteClick = (id) => {
@@ -72,12 +72,12 @@ const UsersList = ({ users }) => {
       deleteUser({ variables: { id } })
     }
   }
-  const onArchiveClick = (id) => {
+  const onArchiveClick = (id, active) => {
     if (confirm('Are you sure you want to archive user ' + id + '?')) {
       archiveUser({
         variables: {
-          id: users.id,
-          input: { active: !users.active },
+          id: id,
+          input: { active: !active },
         },
       })
     }
@@ -139,13 +139,15 @@ const UsersList = ({ users }) => {
 
                   <button
                     type="button"
-                    title={'Archive user ' + user.id}
+                    title={`${user.active ? 'Archive' : 'Reactivate'} user ${
+                      user.name
+                    }`}
                     className={
                       user.active
                         ? 'rw-button rw-button-small rw-button-red'
                         : 'rw-button rw-button-small'
                     }
-                    onClick={() => onArchiveClick(user.id)}
+                    onClick={() => onArchiveClick(user.id, user.active)}
                   >
                     {user.active ? 'Archive' : 'Reactivate'}
                   </button>

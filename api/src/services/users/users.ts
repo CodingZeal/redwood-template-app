@@ -75,13 +75,6 @@ export const deleteUser: MutationResolvers['deleteUser'] = ({ id }) => {
   })
 }
 
-export const archiveUser: MutationResolvers['updateUser'] = ({ id, input }) => {
-  return db.user.update({
-    data: input,
-    where: { id },
-  })
-}
-
 export const User: UserResolvers = {
   memberships: (_obj, { root }) =>
     db.membership.findMany({ where: { userId: root.id } }),

@@ -17,6 +17,9 @@ export const handler = async (event, context) => {
     // address in a toast message so the user will know it worked and where
     // to look for the email.
     handler: (user) => {
+      if (!user.active) {
+        throw new Error('User not Active')
+      }
       return user
     },
 
@@ -46,6 +49,9 @@ export const handler = async (event, context) => {
     // by the `logIn()` function from `useAuth()` in the form of:
     // `{ message: 'Error message' }`
     handler: (user) => {
+      if (!user.active) {
+        throw new Error('User not Active')
+      }
       return user
     },
 
@@ -68,6 +74,9 @@ export const handler = async (event, context) => {
     // in. Return `false` otherwise, and in the Reset Password page redirect the
     // user to the login page.
     handler: (user) => {
+      if (!user.active) {
+        throw new Error('User not Active')
+      }
       return user
     },
 
