@@ -63,9 +63,11 @@ export const updateUser: MutationResolvers['updateUser'] = async ({
       update: {},
     })
   }
-  await db.membership.deleteMany({
-    where: { userId: user.id, NOT: { teamId: { in: teamIds } } },
-  })
+  if (teamIds) {
+    await db.membership.deleteMany({
+      where: { userId: user.id, NOT: { teamId: { in: teamIds } } },
+    })
+  }
   return user
 }
 
