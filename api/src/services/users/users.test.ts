@@ -112,6 +112,25 @@ describe('users', () => {
 
       expect(membership).toEqual(null)
     })
+    scenario('inUse', 'when user archived', async (scenario: InUseScenario) => {
+      const original = await user({ id: scenario.user.inUseUser.id })
+
+      const result = await updateUser({
+        id: original.id,
+        input: {},
+      })
+
+      const membership = await db.membership.findUnique({
+        where: {
+          userTeamConstraint: {
+            teamId: scenario.team.team1.id,
+            userId: result.id,
+          },
+        },
+      })
+
+      expect(membership).not.toEqual(null)
+    })
   })
 
   scenario('deletes a user', async (scenario: StandardScenario) => {
