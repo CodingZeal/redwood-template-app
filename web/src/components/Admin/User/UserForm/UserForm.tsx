@@ -9,7 +9,7 @@ import {
   useForm,
 } from '@redwoodjs/forms'
 
-import { UserTeams } from './UserTeams'
+import UserFormTeamsCell from '../UserFormTeamsCell'
 
 const UserForm = (props) => {
   const formMethods = useForm()
@@ -18,6 +18,8 @@ const UserForm = (props) => {
   const onSubmit = (data) => {
     props.onSave(data, props.user?.id)
   }
+
+  const roleName = (teamId, roleId) => `${teamId}-${roleId}`
 
   return (
     <div className="rw-form-wrapper">
@@ -132,12 +134,19 @@ const UserForm = (props) => {
 
         <FieldError name="admin" className="rw-field-error" />
 
-        <UserTeams
-          originalTeamIds={(props.user?.memberships || []).map(
+        <UserFormTeamsCell
+          roleIds={(props.user?.memberships || [])
+            .map((membership) =>
+              (membership?.membershipRoles || []).map((membershipRole) =>
+                roleName(membership.teamId, membershipRole.roleId)
+              )
+            )
+            .flat()}
+          roleName={roleName}
+          setValue={setValue}
+          teamIds={(props.user?.memberships || []).map(
             (membership) => membership.teamId
           )}
-          setValue={setValue}
-          teams={props.teams}
         />
 
         <div className="rw-button-group">
