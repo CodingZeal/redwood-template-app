@@ -4,9 +4,9 @@ import { toast } from '@redwoodjs/web/toast'
 
 import { QUERY } from 'src/components/Admin/User/UsersCell'
 
-const DELETE_USER_MUTATION = gql`
-  mutation DeleteUserMutation($id: String!) {
-    deleteUser(id: $id) {
+const REMOVE_USER_MUTATION = gql`
+  mutation RemoveUserMutation($id: String!) {
+    removeUser(id: $id) {
       id
     }
   }
@@ -43,9 +43,9 @@ const checkboxInputTag = (checked) => {
 }
 
 const UsersList = ({ users }) => {
-  const [deleteUser] = useMutation(DELETE_USER_MUTATION, {
+  const [removeUser] = useMutation(REMOVE_USER_MUTATION, {
     onCompleted: () => {
-      toast.success('User deleted')
+      toast.success('User removed')
     },
     onError: (error) => {
       toast.error(error.message)
@@ -67,9 +67,9 @@ const UsersList = ({ users }) => {
     awaitRefetchQueries: true,
   })
 
-  const onDeleteClick = (id) => {
-    if (confirm('Are you sure you want to delete user ' + id + '?')) {
-      deleteUser({ variables: { id } })
+  const onRemoveClick = (id) => {
+    if (confirm('Are you sure you want to remove user ' + id + '?')) {
+      removeUser({ variables: { id } })
     }
   }
   const onArchiveClick = (id, active) => {
@@ -130,11 +130,11 @@ const UsersList = ({ users }) => {
                   </Link>
                   <button
                     type="button"
-                    title={'Delete user ' + user.id}
+                    title={'Remove user ' + user.id}
                     className="rw-button rw-button-small rw-button-red"
-                    onClick={() => onDeleteClick(user.id)}
+                    onClick={() => onRemoveClick(user.id)}
                   >
-                    Delete
+                    Remove
                   </button>
 
                   <button
