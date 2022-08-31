@@ -6,17 +6,22 @@ import {
   TextField,
   CheckboxField,
   Submit,
-  SelectField,
+  useForm,
 } from '@redwoodjs/forms'
 
+import { UserTeams } from './UserTeams'
+
 const UserForm = (props) => {
+  const formMethods = useForm()
+  const { setValue } = formMethods
+
   const onSubmit = (data) => {
-    props.onSave(data, props?.user?.id)
+    props.onSave(data, props.user?.id)
   }
 
   return (
     <div className="rw-form-wrapper">
-      <Form onSubmit={onSubmit} error={props.error}>
+      <Form formMethods={formMethods} onSubmit={onSubmit} error={props.error}>
         <FormError
           error={props.error}
           wrapperClassName="rw-form-error-wrapper"
@@ -127,34 +132,13 @@ const UserForm = (props) => {
 
         <FieldError name="admin" className="rw-field-error" />
 
-        <Label
-          name="teamIds"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Team
-        </Label>
-
-        <SelectField
-          name="teamIds"
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          multiple={true}
-        >
-          {props.teams?.map((team) => (
-            <option
-              key={team.id}
-              value={team.id}
-              selected={props.user?.memberships?.some(
-                (membership) => membership.teamId == team.id
-              )}
-            >
-              {team.name}
-            </option>
-          ))}
-        </SelectField>
-
-        <FieldError name="teamIds" className="rw-field-error" />
+        <UserTeams
+          originalTeamIds={(props.user?.memberships || []).map(
+            (membership) => membership.teamId
+          )}
+          setValue={setValue}
+          teams={props.teams}
+        />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">

@@ -52,6 +52,8 @@ export const Success = ({ user }: CellSuccessProps<EditUserById>) => {
     onError: (error) => {
       toast.error(error.message)
     },
+    refetchQueries: [{ query: QUERY, variables: { id: user.id } }],
+    awaitRefetchQueries: true,
   })
 
   const onSave = (input, id) => {
