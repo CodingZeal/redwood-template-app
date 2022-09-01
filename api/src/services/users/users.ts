@@ -89,10 +89,19 @@ export const updateUser: MutationResolvers['updateUser'] = async ({
   return user
 }
 
-export const removeUser: MutationResolvers['removeUser'] = ({ id }) => {
-  return db.user.delete({
+export const removeUser: MutationResolvers['removeUser'] = async ({ id }) => {
+  const user = await db.user.update({
     where: { id },
+    data: {
+      email: 'removed@remove.com',
+      name: 'Removed User',
+      nickname: null,
+      pronouns: null,
+      active: false,
+      admin: false,
+    },
   })
+  return user
 }
 
 export const User: UserResolvers = {

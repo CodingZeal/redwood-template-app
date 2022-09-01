@@ -1,6 +1,6 @@
 import { db } from 'src/lib/db'
 
-import { users, user, createUser, updateUser, deleteUser } from './users'
+import { users, user, createUser, updateUser, removeUser } from './users'
 import type { AssociationsScenario, StandardScenario } from './users.scenarios'
 
 describe('users', () => {
@@ -32,8 +32,12 @@ describe('users', () => {
       expect(result.email).toEqual('String4652567')
       expect(result.hashedPassword).toBeTruthy()
       expect(result.salt).toBeTruthy()
-      expect(result.createdAt.getTime()).toBeGreaterThan(before.getTime())
-      expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
+      expect(result.createdAt.getTime()).toBeGreaterThanOrEqual(
+        before.getTime()
+      )
+      expect(result.updatedAt.getTime()).toBeGreaterThanOrEqual(
+        before.getTime()
+      )
     })
 
     scenario(
@@ -171,10 +175,16 @@ describe('users', () => {
     )
   })
 
-  scenario('deletes a user', async (scenario: StandardScenario) => {
-    const original = await deleteUser({ id: scenario.user.one.id })
-    const result = await user({ id: original.id })
-
-    expect(result).toEqual(null)
+  scenario('removes a user', async (scenario: StandardScenario) => {
+    const original = await removeUser({ id: scenario.user.one.id })
+    const result = await user({
+      id: original.id,
+    })
+    expect(result.email).toEqual('removed@remove.com')
+    expect(result.name).toEqual('Removed User')
+    expect(result.nickname).toEqual(null)
+    expect(result.pronouns).toEqual(null)
+    expect(result.active).toEqual(false)
+    expect(result.admin).toEqual(false)
   })
 })
