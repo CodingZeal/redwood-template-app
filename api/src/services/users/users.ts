@@ -7,6 +7,13 @@ import type {
 
 import { db } from 'src/lib/db'
 
+const parseRoles = (roleIds) =>
+  roleIds?.reduce((acc, id) => {
+    const [teamId, roleId] = id.split(',')
+    acc[teamId] = [...(acc[teamId] || []), roleId]
+    return acc
+  }, {})
+
 export const users: QueryResolvers['users'] = () => {
   return db.user.findMany()
 }
@@ -27,15 +34,22 @@ export const createUser: MutationResolvers['createUser'] = async ({
     keySize: 256 / 32,
   }).toString()
 
-  const { teamIds, ...userInput } = input
+  const { roleIds, teamIds, ...userInput } = input
   const user = await db.user.create({
     data: { ...userInput, salt, hashedPassword },
   })
-  teamIds?.forEach(async (teamId) => {
-    await db.membership.create({
+
+  for (const teamId of teamIds || []) {
+    const membership = await db.membership.create({
       data: { teamId, userId: user.id },
     })
-  })
+    for (const roleId of parseRoles(roleIds)[teamId] || []) {
+      await db.membershipRole.create({
+        data: { membershipId: membership.id, roleId },
+      })
+    }
+  }
+
   return user
 }
 
@@ -43,25 +57,29 @@ export const updateUser: MutationResolvers['updateUser'] = async ({
   id,
   input,
 }) => {
-  const { teamIds, ...userInput } = input
+  const { roleIds, teamIds, ...userInput } = input
   const user = await db.user.update({
     data: { ...userInput },
     where: { id },
   })
   for (const teamId of teamIds || []) {
-    await db.membership.upsert({
+    const membership = await db.membership.upsert({
       where: {
-        userTeamConstraint: {
-          teamId,
-          userId: user.id,
-        },
+        userTeamConstraint: { teamId, userId: user.id },
       },
-      create: {
-        teamId,
-        userId: user.id,
-      },
+      create: { teamId, userId: user.id },
       update: {},
     })
+
+    for (const roleId of parseRoles(roleIds)[teamId] || []) {
+      await db.membershipRole.upsert({
+        where: {
+          membershipRoleConstraint: { membershipId: membership.id, roleId },
+        },
+        create: { membershipId: membership.id, roleId },
+        update: {},
+      })
+    }
   }
   if (teamIds) {
     await db.membership.deleteMany({

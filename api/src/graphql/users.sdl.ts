@@ -25,6 +25,7 @@ export const schema = gql`
     active: Boolean!
     admin: Boolean!
     teamIds: [String]
+    roleIds: [String]
   }
 
   input UpdateUserInput {
@@ -35,6 +36,7 @@ export const schema = gql`
     active: Boolean
     admin: Boolean
     teamIds: [String]
+    roleIds: [String]
   }
 
   type Mutation {

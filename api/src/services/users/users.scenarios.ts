@@ -1,25 +1,35 @@
-import type { Prisma } from '@prisma/client'
+import { Prisma } from '@prisma/client'
+
+const DEFAULT_FIELDS = {
+  hashedPassword: 'xxxx',
+  salt: 'pepper',
+}
 
 export const standard = defineScenario<Prisma.UserCreateArgs>({
   user: {
     one: {
       data: {
         email: 'String4589593',
-        hashedPassword: 'String',
-        salt: 'String',
+        ...DEFAULT_FIELDS,
       },
     },
     two: {
       data: {
         email: 'String1300967',
-        hashedPassword: 'String',
-        salt: 'String',
+        ...DEFAULT_FIELDS,
       },
     },
   },
 })
 
-export const inUse = {
+export const associations = {
+  role: {
+    role1: (): Prisma.RoleCreateArgs => ({
+      data: {
+        name: 'Role1',
+      },
+    }),
+  },
   team: {
     team1: (): Prisma.TeamCreateArgs => ({
       data: {
@@ -28,16 +38,15 @@ export const inUse = {
     }),
   },
   user: {
-    inUseUser: (): Prisma.UserCreateArgs => ({
+    teamUser: (): Prisma.UserCreateArgs => ({
       data: {
-        email: 'inUseUser@example.com',
-        hashedPassword: 'xxxx',
-        salt: 'pepper',
+        email: 'teamUser@example.com',
+        ...DEFAULT_FIELDS,
       },
     }),
-    notInUseUser: (): Prisma.UserCreateArgs => ({
+    noTeamUser: (): Prisma.UserCreateArgs => ({
       data: {
-        email: 'notInUseUser@example.com',
+        email: 'noTeamUser@example.com',
         hashedPassword: 'xxxx',
         salt: 'pepper',
       },
@@ -47,14 +56,23 @@ export const inUse = {
     membership1: (scenario): Prisma.MembershipCreateArgs => ({
       data: {
         teamId: scenario.team.team1.id,
-        userId: scenario.user.inUseUser.id,
+        userId: scenario.user.teamUser.id,
+      },
+    }),
+  },
+  membershipRole: {
+    membershipRole1: (scenario): Prisma.MembershipRoleCreateArgs => ({
+      data: {
+        membershipId: scenario.membership.membership1.id,
+        roleId: scenario.role.role1.id,
       },
     }),
   },
 }
 
 export type StandardScenario = typeof standard
-export type InUseScenario = {
-  user: Record<string, Prisma.UserCreateArgs['data']>
+export type AssociationsScenario = {
+  role: Record<string, Prisma.RoleCreateArgs['data']>
   team: Record<string, Prisma.TeamCreateArgs['data']>
+  user: Record<string, Prisma.UserCreateArgs['data']>
 }

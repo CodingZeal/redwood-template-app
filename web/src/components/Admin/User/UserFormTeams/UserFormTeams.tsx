@@ -106,9 +106,10 @@ const UserFormTeams = ({
                   return (
                     <label key={role.id} htmlFor={name} className="rw-label">
                       <CheckboxField
-                        name={name}
+                        name="roleIds"
                         className="rw-input"
-                        checked={roleIds.includes(name)}
+                        defaultChecked={roleIds.includes(name)}
+                        value={name}
                       />
                       {role.name}
                     </label>

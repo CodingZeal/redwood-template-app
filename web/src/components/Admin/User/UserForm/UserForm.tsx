@@ -19,7 +19,7 @@ const UserForm = (props) => {
     props.onSave(data, props.user?.id)
   }
 
-  const roleName = (teamId, roleId) => `${teamId}-${roleId}`
+  const roleName = (teamId, roleId) => `${teamId},${roleId}`
 
   return (
     <div className="rw-form-wrapper">

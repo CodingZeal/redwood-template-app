@@ -1,7 +1,7 @@
 import { db } from 'src/lib/db'
 
 import { users, user, createUser, updateUser, deleteUser } from './users'
-import type { InUseScenario, StandardScenario } from './users.scenarios'
+import type { AssociationsScenario, StandardScenario } from './users.scenarios'
 
 describe('users', () => {
   scenario('returns all users', async (scenario: StandardScenario) => {
@@ -36,101 +36,139 @@ describe('users', () => {
       expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
     })
 
-    scenario('inUse', 'when adding teams', async (scenario: InUseScenario) => {
-      const result = await createUser({
-        input: {
-          active: true,
-          admin: false,
-          email: 'String4652567',
-          teamIds: [scenario.team.team1.id],
-        },
-      })
-
-      const membership = await db.membership.findUnique({
-        where: {
-          userTeamConstraint: {
-            teamId: scenario.team.team1.id,
-            userId: result.id,
+    scenario(
+      'associations',
+      'when adding teams and roles',
+      async (scenario: AssociationsScenario) => {
+        const teamId = scenario.team.team1.id
+        const roleId = scenario.role.role1.id
+        const result = await createUser({
+          input: {
+            active: true,
+            admin: false,
+            email: 'String4652567',
+            teamIds: [teamId],
+            roleIds: [`${teamId},${roleId}`],
           },
-        },
-      })
+        })
 
-      expect(membership).not.toEqual(null)
-    })
+        const membership = await db.membership.findUnique({
+          where: {
+            userTeamConstraint: {
+              teamId: scenario.team.team1.id,
+              userId: result.id,
+            },
+          },
+        })
+        expect(membership).not.toEqual(null)
+
+        const membershipRoles = await db.membershipRole.findMany({
+          where: { membershipId: membership.id, roleId: roleId },
+        })
+        expect(membershipRoles.length).toEqual(1)
+      }
+    )
   })
 
   describe('updates', () => {
-    scenario('inUse', 'when no teams', async (scenario: InUseScenario) => {
-      const original = await user({ id: scenario.user.notInUseUser.id })
-      const before = new Date()
-      const result = await updateUser({
-        id: original.id,
-        input: { email: 'String61961682' },
-      })
+    scenario(
+      'associations',
+      'when no teams',
+      async (scenario: AssociationsScenario) => {
+        const original = await user({ id: scenario.user.noTeamUser.id })
+        const before = new Date()
+        const result = await updateUser({
+          id: original.id,
+          input: { email: 'String61961682' },
+        })
 
-      expect(result.email).toEqual('String61961682')
-      expect(result.createdAt.getTime()).toBeLessThan(before.getTime())
-      expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
-    })
+        expect(result.email).toEqual('String61961682')
+        expect(result.createdAt.getTime()).toBeLessThan(before.getTime())
+        expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
+      }
+    )
 
-    scenario('inUse', 'when adding teams', async (scenario: InUseScenario) => {
-      const original = await user({ id: scenario.user.notInUseUser.id })
+    scenario(
+      'associations',
+      'when adding teams and roles',
+      async (scenario: AssociationsScenario) => {
+        const id = scenario.user.noTeamUser.id
+        const teamId = scenario.team.team1.id
+        const teamIds = [scenario.team.team1.id]
+        const roleId = scenario.role.role1.id
+        const roleIds = [`${teamId},${roleId}`]
 
-      const result = await updateUser({
-        id: original.id,
-        input: { teamIds: [scenario.team.team1.id] },
-      })
-
-      const membership = await db.membership.findUnique({
-        where: {
-          userTeamConstraint: {
-            teamId: scenario.team.team1.id,
-            userId: result.id,
+        const result = await updateUser({
+          id,
+          input: {
+            roleIds,
+            teamIds,
           },
-        },
-      })
+        })
 
-      expect(membership).not.toEqual(null)
-    })
-
-    scenario('inUse', 'when remove a team', async (scenario: InUseScenario) => {
-      const original = await user({ id: scenario.user.inUseUser.id })
-
-      const result = await updateUser({
-        id: original.id,
-        input: { teamIds: [] },
-      })
-
-      const membership = await db.membership.findUnique({
-        where: {
-          userTeamConstraint: {
-            teamId: scenario.team.team1.id,
-            userId: result.id,
+        const membership = await db.membership.findUnique({
+          where: {
+            userTeamConstraint: {
+              teamId,
+              userId: result.id,
+            },
           },
-        },
-      })
+        })
+        expect(membership).not.toEqual(null)
 
-      expect(membership).toEqual(null)
-    })
-    scenario('inUse', 'when user archived', async (scenario: InUseScenario) => {
-      const original = await user({ id: scenario.user.inUseUser.id })
+        const membershipRoles = await db.membershipRole.findMany({
+          where: { membershipId: membership.id, roleId },
+        })
+        expect(membershipRoles.length).toEqual(1)
+      }
+    )
 
-      const result = await updateUser({
-        id: original.id,
-        input: {},
-      })
+    scenario(
+      'associations',
+      'when remove a team with roles',
+      async (scenario: AssociationsScenario) => {
+        const original = await user({ id: scenario.user.teamUser.id })
 
-      const membership = await db.membership.findUnique({
-        where: {
-          userTeamConstraint: {
-            teamId: scenario.team.team1.id,
-            userId: result.id,
+        const result = await updateUser({
+          id: original.id,
+          input: { teamIds: [] },
+        })
+
+        const membership = await db.membership.findUnique({
+          where: {
+            userTeamConstraint: {
+              teamId: scenario.team.team1.id,
+              userId: result.id,
+            },
           },
-        },
-      })
+        })
 
-      expect(membership).not.toEqual(null)
-    })
+        expect(membership).toEqual(null)
+      }
+    )
+    scenario(
+      'associations',
+      'when user has teams but teams not passed',
+      async (scenario: AssociationsScenario) => {
+        const original = await user({ id: scenario.user.teamUser.id })
+
+        const result = await updateUser({
+          id: original.id,
+          input: {},
+        })
+
+        const membership = await db.membership.findUnique({
+          where: {
+            userTeamConstraint: {
+              teamId: scenario.team.team1.id,
+              userId: result.id,
+            },
+          },
+        })
+
+        expect(membership).not.toEqual(null)
+      }
+    )
   })
 
   scenario('deletes a user', async (scenario: StandardScenario) => {
