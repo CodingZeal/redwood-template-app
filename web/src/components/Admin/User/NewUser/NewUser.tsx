@@ -2,7 +2,7 @@ import { navigate, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import UserFormCell from 'src/components/Admin/User/UserFormCell'
+import UserForm from '../UserForm'
 
 const CREATE_USER_MUTATION = gql`
   mutation CreateUserMutation($input: CreateUserInput!) {
@@ -33,7 +33,7 @@ const NewUser = () => {
         <h2 className="rw-heading rw-heading-secondary">New User</h2>
       </header>
       <div className="rw-segment-main">
-        <UserFormCell onSave={onSave} loading={loading} error={error} />
+        <UserForm onSave={onSave} loading={loading} error={error} />
       </div>
     </div>
   )

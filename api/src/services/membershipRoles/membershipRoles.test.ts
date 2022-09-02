@@ -37,13 +37,13 @@ describe('membershipRoles', () => {
   scenario('creates a membershipRole', async (scenario: StandardScenario) => {
     const result = await createMembershipRole({
       input: {
-        membershipId: scenario.membershipRole.two.membershipId,
+        membershipId: scenario.membershipRole.one.membershipId,
         roleId: scenario.membershipRole.two.roleId,
       },
     })
 
     expect(result.membershipId).toEqual(
-      scenario.membershipRole.two.membershipId
+      scenario.membershipRole.one.membershipId
     )
     expect(result.roleId).toEqual(scenario.membershipRole.two.roleId)
   })
