@@ -93,7 +93,7 @@ export const removeUser: MutationResolvers['removeUser'] = async ({ id }) => {
   const user = await db.user.update({
     where: { id },
     data: {
-      email: 'removed@remove.com',
+      email: id,
       name: 'Removed User',
       nickname: null,
       pronouns: null,

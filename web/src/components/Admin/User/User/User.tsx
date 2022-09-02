@@ -36,7 +36,13 @@ const User = ({ user }) => {
   })
 
   const onRemoveClick = (id) => {
-    if (confirm('Are you sure you want to remove user ' + id + '?')) {
+    if (
+      confirm(
+        'Removing the user will remove all their personal data. Are you sure you want to remove user ' +
+          id +
+          '?'
+      )
+    ) {
       removeUser({ variables: { id } })
     }
   }
