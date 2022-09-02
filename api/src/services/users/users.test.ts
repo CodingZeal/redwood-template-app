@@ -180,7 +180,7 @@ describe('users', () => {
     const result = await user({
       id: original.id,
     })
-    expect(result.email).toEqual('removed@remove.com')
+    expect(result.email).toEqual(result.id)
     expect(result.name).toEqual('Removed User')
     expect(result.nickname).toEqual(null)
     expect(result.pronouns).toEqual(null)
