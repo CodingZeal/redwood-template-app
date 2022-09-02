@@ -47,8 +47,7 @@ export const associations = {
     noTeamUser: (): Prisma.UserCreateArgs => ({
       data: {
         email: 'noTeamUser@example.com',
-        hashedPassword: 'xxxx',
-        salt: 'pepper',
+        ...DEFAULT_FIELDS,
       },
     }),
   },

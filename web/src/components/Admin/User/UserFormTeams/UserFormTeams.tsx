@@ -1,75 +1,22 @@
-import { useEffect, useReducer, useState } from 'react'
-
 import { CheckboxField, HiddenField } from '@redwoodjs/forms'
 
-const partition = (teams, selectedTeamIds) =>
-  teams.reduce(
-    (partitioned, team) =>
-      selectedTeamIds.includes(team.id)
-        ? {
-            ...partitioned,
-            selectedTeams: [...partitioned.selectedTeams, team],
-          }
-        : {
-            ...partitioned,
-            unselectedTeams: [...partitioned.unselectedTeams, team],
-          },
-    { selectedTeams: [], unselectedTeams: [] }
-  )
+import { useTeamState } from './useTeamState'
 
-const UserFormTeams = ({
-  roleIds,
-  roleName,
-  roles,
-  setValue,
-  teamIds,
-  teams,
-}) => {
-  const [teamToAdd, setTeamToAdd] = useState(null)
-  const [state, dispatch] = useReducer(
-    (state, action) => {
-      const newTeamIds = (() => {
-        switch (action.type) {
-          case 'select':
-            return [...state.teamIds, action.id]
-          case 'unselect':
-            return state.teamIds.filter((teamId) => teamId !== action.id)
-          default:
-            return state.teamIds
-        }
-      })()
-
-      return {
-        ...partition(teams, newTeamIds),
-        teamIds: newTeamIds,
-      }
-    },
-    {
-      ...partition(teams, teamIds),
-      teamIds,
-    }
-  )
-
-  useEffect(() => {
-    setValue('teamIds', state.teamIds)
-  }, [setValue, state])
-
-  const addTeam = (e) => {
-    dispatch({ type: 'select', id: teamToAdd })
-    e.preventDefault()
-  }
-
-  const removeTeam = (e) => {
-    dispatch({ type: 'unselect', id: e.target.value })
-    e.preventDefault()
-  }
+const UserFormTeams = ({ roleIds, roleValue, roles, teamIds, teams }) => {
+  const { addTeam, dispatch, removeTeam, state } = useTeamState({
+    initialTeamIds: teamIds,
+    teams,
+  })
 
   return (
     <>
       <div className="rw-label">Teams</div>
       <HiddenField name="teamIds" />
       <div className="flex">
-        <select name="addTeam" onChange={(e) => setTeamToAdd(e.target.value)}>
+        <select
+          name="addTeam"
+          onChange={(e) => dispatch({ type: 'ADD_TEAM', id: e.target.value })}
+        >
           <option>Select a Team to Add</option>
           {(state.unselectedTeams || []).map((team) => (
             <option key={team.id} value={team.id}>
@@ -79,11 +26,11 @@ const UserFormTeams = ({
         </select>
         <button
           className={`rw-button rw-button-small ${
-            !!teamToAdd && 'rw-button-green'
+            !!state.teamToAdd && 'rw-button-green'
           }`}
           onClick={addTeam}
           title={'Add Team'}
-          disabled={!teamToAdd}
+          disabled={!state.teamToAdd}
         >
           Add Team
         </button>
@@ -102,7 +49,7 @@ const UserFormTeams = ({
               <td>{team.name}</td>
               <td>
                 {(roles || []).map((role) => {
-                  const name = roleName(team.id, role.id)
+                  const name = roleValue(team.id, role.id)
                   return (
                     <label key={role.id} htmlFor={name} className="rw-label">
                       <CheckboxField
