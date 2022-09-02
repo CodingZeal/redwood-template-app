@@ -44,6 +44,6 @@ export const schema = gql`
       @requireAuth(roles: ["super admin"])
     updateUser(id: String!, input: UpdateUserInput!): User!
       @requireAuth(roles: ["super admin"])
-    deleteUser(id: String!): User! @requireAuth(roles: ["super admin"])
+    removeUser(id: String!): User! @requireAuth(roles: ["super admin"])
   }
 `

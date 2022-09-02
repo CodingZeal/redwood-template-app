@@ -2,9 +2,9 @@ import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-const DELETE_USER_MUTATION = gql`
-  mutation DeleteUserMutation($id: String!) {
-    deleteUser(id: $id) {
+const REMOVE_USER_MUTATION = gql`
+  mutation RemoveUserMutation($id: String!) {
+    removeUser(id: $id) {
       id
     }
   }
@@ -25,9 +25,9 @@ const checkboxInputTag = (checked) => {
 }
 
 const User = ({ user }) => {
-  const [deleteUser] = useMutation(DELETE_USER_MUTATION, {
+  const [removeUser] = useMutation(REMOVE_USER_MUTATION, {
     onCompleted: () => {
-      toast.success('User deleted')
+      toast.success('User removed')
       navigate(routes.adminUsers())
     },
     onError: (error) => {
@@ -35,9 +35,15 @@ const User = ({ user }) => {
     },
   })
 
-  const onDeleteClick = (id) => {
-    if (confirm('Are you sure you want to delete user ' + id + '?')) {
-      deleteUser({ variables: { id } })
+  const onRemoveClick = (id) => {
+    if (
+      confirm(
+        'Removing the user will remove all their personal data. Are you sure you want to remove user ' +
+          id +
+          '?'
+      )
+    ) {
+      removeUser({ variables: { id } })
     }
   }
 
@@ -108,9 +114,9 @@ const User = ({ user }) => {
         <button
           type="button"
           className="rw-button rw-button-red"
-          onClick={() => onDeleteClick(user.id)}
+          onClick={() => onRemoveClick(user.id)}
         >
-          Delete
+          Remove
         </button>
       </nav>
     </>

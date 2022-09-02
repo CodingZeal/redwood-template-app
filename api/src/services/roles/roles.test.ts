@@ -21,8 +21,8 @@ describe('roles', () => {
     })
 
     expect(result.name).toEqual('NEW-role')
-    expect(result.createdAt.getTime()).toBeGreaterThan(before.getTime())
-    expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
+    expect(result.createdAt.getTime()).toBeGreaterThanOrEqual(before.getTime())
+    expect(result.updatedAt.getTime()).toBeGreaterThanOrEqual(before.getTime())
   })
 
   scenario('updates a role', async (scenario: StandardScenario) => {

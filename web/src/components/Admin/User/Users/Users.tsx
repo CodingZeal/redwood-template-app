@@ -4,13 +4,6 @@ import { toast } from '@redwoodjs/web/toast'
 
 import { QUERY } from 'src/components/Admin/User/UsersCell'
 
-const DELETE_USER_MUTATION = gql`
-  mutation DeleteUserMutation($id: String!) {
-    deleteUser(id: $id) {
-      id
-    }
-  }
-`
 const ARCHIVE_USER_MUTATION = gql`
   mutation ArchiveUserMutation($id: String!, $input: UpdateUserInput!) {
     updateUser(id: $id, input: $input) {
@@ -43,19 +36,6 @@ const checkboxInputTag = (checked) => {
 }
 
 const UsersList = ({ users }) => {
-  const [deleteUser] = useMutation(DELETE_USER_MUTATION, {
-    onCompleted: () => {
-      toast.success('User deleted')
-    },
-    onError: (error) => {
-      toast.error(error.message)
-    },
-    // This refetches the query on the list page. Read more about other ways to
-    // update the cache over here:
-    // https://www.apollographql.com/docs/react/data/mutations/#making-all-other-cache-updates
-    refetchQueries: [{ query: QUERY }],
-    awaitRefetchQueries: true,
-  })
   const [archiveUser] = useMutation(ARCHIVE_USER_MUTATION, {
     onCompleted: () => {
       toast.success('User updated')
@@ -67,11 +47,6 @@ const UsersList = ({ users }) => {
     awaitRefetchQueries: true,
   })
 
-  const onDeleteClick = (id) => {
-    if (confirm('Are you sure you want to delete user ' + id + '?')) {
-      deleteUser({ variables: { id } })
-    }
-  }
   const onArchiveClick = (id, active) => {
     if (confirm('Are you sure you want to archive user ' + id + '?')) {
       archiveUser({
@@ -128,14 +103,6 @@ const UsersList = ({ users }) => {
                   >
                     Edit
                   </Link>
-                  <button
-                    type="button"
-                    title={'Delete user ' + user.id}
-                    className="rw-button rw-button-small rw-button-red"
-                    onClick={() => onDeleteClick(user.id)}
-                  >
-                    Delete
-                  </button>
 
                   <button
                     type="button"
