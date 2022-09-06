@@ -23,20 +23,20 @@ export const createMembershipRole: MutationResolvers['createMembershipRole'] =
     })
   }
 
-export const updateMembershipRole: MutationResolvers['updateMembershipRole'] =
-  ({ id, input }) => {
-    return db.membershipRole.update({
-      data: input,
-      where: { id },
-    })
-  }
+// export const updateMembershipRole: MutationResolvers['updateMembershipRole'] =
+//   ({ id, input }) => {
+//     return db.membershipRole.update({
+//       data: input,
+//       where: { id },
+//     })
+//   }
 
-export const deleteMembershipRole: MutationResolvers['deleteMembershipRole'] =
-  ({ id }) => {
-    return db.membershipRole.delete({
-      where: { id },
-    })
-  }
+// export const deleteMembershipRole: MutationResolvers['deleteMembershipRole'] =
+//   ({ id }) => {
+//     return db.membershipRole.delete({
+//       where: { id },
+//     })
+//   }
 
 export const MembershipRole: MembershipRoleResolvers = {
   membership: (_obj, { root }) =>
