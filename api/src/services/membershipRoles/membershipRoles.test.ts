@@ -1,10 +1,4 @@
-import {
-  membershipRoles,
-  membershipRole,
-  createMembershipRole,
-  updateMembershipRole,
-  deleteMembershipRole,
-} from './membershipRoles'
+import { membershipRoles, membershipRole } from './membershipRoles'
 import type { StandardScenario } from './membershipRoles.scenarios'
 
 // Generated boilerplate tests do not account for all circumstances
@@ -33,41 +27,4 @@ describe('membershipRoles', () => {
       expect(result).toEqual(scenario.membershipRole.one)
     }
   )
-
-  scenario('creates a membershipRole', async (scenario: StandardScenario) => {
-    const result = await createMembershipRole({
-      input: {
-        membershipId: scenario.membershipRole.one.membershipId,
-        roleId: scenario.membershipRole.two.roleId,
-      },
-    })
-
-    expect(result.membershipId).toEqual(
-      scenario.membershipRole.one.membershipId
-    )
-    expect(result.roleId).toEqual(scenario.membershipRole.two.roleId)
-  })
-
-  scenario('updates a membershipRole', async (scenario: StandardScenario) => {
-    const original = await membershipRole({
-      id: scenario.membershipRole.one.id,
-    })
-    const result = await updateMembershipRole({
-      id: original.id,
-      input: { membershipId: scenario.membershipRole.two.membershipId },
-    })
-
-    expect(result.membershipId).toEqual(
-      scenario.membershipRole.two.membershipId
-    )
-  })
-
-  scenario('deletes a membershipRole', async (scenario: StandardScenario) => {
-    const original = await deleteMembershipRole({
-      id: scenario.membershipRole.one.id,
-    })
-    const result = await membershipRole({ id: original.id })
-
-    expect(result).toEqual(null)
-  })
 })

@@ -1,8 +1,4 @@
-import type {
-  QueryResolvers,
-  MutationResolvers,
-  MembershipResolvers,
-} from 'types/graphql'
+import type { QueryResolvers, MembershipResolvers } from 'types/graphql'
 
 import { db } from 'src/lib/db'
 
@@ -12,32 +8,6 @@ export const memberships: QueryResolvers['memberships'] = () => {
 
 export const membership: QueryResolvers['membership'] = ({ id }) => {
   return db.membership.findUnique({
-    where: { id },
-  })
-}
-
-export const createMembership: MutationResolvers['createMembership'] = ({
-  input,
-}) => {
-  return db.membership.create({
-    data: input,
-  })
-}
-
-export const updateMembership: MutationResolvers['updateMembership'] = ({
-  id,
-  input,
-}) => {
-  return db.membership.update({
-    data: input,
-    where: { id },
-  })
-}
-
-export const deleteMembership: MutationResolvers['deleteMembership'] = ({
-  id,
-}) => {
-  return db.membership.delete({
     where: { id },
   })
 }
