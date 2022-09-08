@@ -7,7 +7,7 @@ export const standard = defineScenario<Prisma.RoleCreateArgs>({
   },
 })
 
-export const inUse = {
+export const associations = {
   team: {
     team1: (): Prisma.TeamCreateArgs => ({
       data: {
@@ -49,6 +49,6 @@ export const inUse = {
 }
 
 export type StandardScenario = typeof standard
-export type InUseScenario = {
+export type AssociationsScenario = {
   role: Record<string, Prisma.RoleCreateArgs['data']>
 }
