@@ -1,5 +1,8 @@
+import { MetaTags } from '@redwoodjs/web'
+
 export default () => (
   <main>
+    <MetaTags title="Error: Forbidden" />
     <style
       dangerouslySetInnerHTML={{
         __html: `

@@ -1,6 +1,6 @@
 import type { FindTeamById } from 'types/graphql'
 
-import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
+import { CellSuccessProps, CellFailureProps, MetaTags } from '@redwoodjs/web'
 
 import Team from 'src/components/Admin/Team/Team'
 
@@ -25,5 +25,10 @@ export const Failure = ({ error }: CellFailureProps) => (
 )
 
 export const Success = ({ team }: CellSuccessProps<FindTeamById>) => {
-  return <Team team={team} />
+  return (
+    <>
+      <MetaTags title={team.name} />
+      <Team team={team} />
+    </>
+  )
 }
