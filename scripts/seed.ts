@@ -97,6 +97,12 @@ export default async () => {
       },
     })
 
+    const role2 = await db.role.create({
+      data: {
+        name: 'ADMIN',
+      },
+    })
+
     const membership1 = await db.membership.upsert({
       where: {
         userTeamConstraint: {
@@ -129,10 +135,17 @@ export default async () => {
       },
     })
 
-    await db.membershipRole.create({
-      data: {
+    await db.membershipRole.upsert({
+      where: {
         membershipId: membership1.id,
         roleId: role1.id,
+      },
+      create: {
+        membershipId: membership1.id,
+        roleId: role1.id,
+      },
+      update: {
+        roleId: role2.id,
       },
     })
 
