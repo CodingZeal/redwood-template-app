@@ -79,7 +79,7 @@ describe('users', () => {
       'associations',
       'when no teams',
       async (scenario: AssociationsScenario) => {
-        const original = await user({ id: scenario.user.noTeamUser.id })
+        const original = await user({ id: scenario.user.withoutTeam.id })
         const before = new Date()
         const result = await updateUser({
           id: original.id,
@@ -96,7 +96,7 @@ describe('users', () => {
       'associations',
       'when adding teams and roles',
       async (scenario: AssociationsScenario) => {
-        const id = scenario.user.noTeamUser.id
+        const id = scenario.user.withoutTeam.id
         const teamId = scenario.team.team1.id
         const teamIds = [scenario.team.team1.id]
         const roleId = scenario.role.role1.id
@@ -131,7 +131,7 @@ describe('users', () => {
       'associations',
       'when remove a team with roles',
       async (scenario: AssociationsScenario) => {
-        const original = await user({ id: scenario.user.teamUser.id })
+        const original = await user({ id: scenario.user.withTeam.id })
 
         const result = await updateUser({
           id: original.id,
@@ -154,7 +154,7 @@ describe('users', () => {
       'associations',
       'when user has teams but teams not passed',
       async (scenario: AssociationsScenario) => {
-        const original = await user({ id: scenario.user.teamUser.id })
+        const original = await user({ id: scenario.user.withTeam.id })
 
         const result = await updateUser({
           id: original.id,

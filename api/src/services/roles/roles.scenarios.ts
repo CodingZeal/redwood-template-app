@@ -7,7 +7,7 @@ export const standard = defineScenario<Prisma.RoleCreateArgs>({
   },
 })
 
-export const inUse = {
+export const associations = {
   team: {
     team1: (): Prisma.TeamCreateArgs => ({
       data: {
@@ -25,14 +25,14 @@ export const inUse = {
     }),
   },
   role: {
-    notInUseRole: (): Prisma.RoleCreateArgs => ({
+    withoutUser: (): Prisma.RoleCreateArgs => ({
       data: {
-        name: 'NOT-IN-USE',
+        name: 'No-User-Role',
       },
     }),
-    inUseRole: (scenario): Prisma.RoleCreateArgs => ({
+    withUser: (scenario): Prisma.RoleCreateArgs => ({
       data: {
-        name: 'IN-USE',
+        name: 'User-Role',
         membershipRoles: {
           create: {
             membership: {
@@ -49,6 +49,6 @@ export const inUse = {
 }
 
 export type StandardScenario = typeof standard
-export type InUseScenario = {
+export type AssociationsScenario = {
   role: Record<string, Prisma.RoleCreateArgs['data']>
 }

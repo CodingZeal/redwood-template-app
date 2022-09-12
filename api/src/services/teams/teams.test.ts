@@ -1,7 +1,7 @@
 import { ValidationError } from '@redwoodjs/graphql-server'
 
 import { teams, team, createTeam, updateTeam, deleteTeam } from './teams'
-import type { InUseScenario, StandardScenario } from './teams.scenarios'
+import type { AssociationsScenario, StandardScenario } from './teams.scenarios'
 
 describe('teams', () => {
   scenario('returns all teams', async (scenario: StandardScenario) => {
@@ -49,14 +49,18 @@ describe('teams', () => {
       expect(result).toEqual(null)
     })
 
-    scenario('inUse', 'used', async (scenario: InUseScenario) => {
-      expect(deleteTeam({ id: scenario.team.inUseTeam.id })).rejects.toThrow(
-        new ValidationError('Please remove users before deleting team')
-      )
+    scenario(
+      'associations',
+      'when has users',
+      async (scenario: AssociationsScenario) => {
+        expect(deleteTeam({ id: scenario.team.withUser.id })).rejects.toThrow(
+          new ValidationError('Please remove users before deleting team')
+        )
 
-      const result = await team({ id: scenario.team.inUseTeam.id })
+        const result = await team({ id: scenario.team.withUser.id })
 
-      expect(result).not.toEqual(null)
-    })
+        expect(result).not.toEqual(null)
+      }
+    )
   })
 })

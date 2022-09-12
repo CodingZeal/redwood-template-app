@@ -1,5 +1,5 @@
 import { roles, role, createRole, updateRole, deleteRole } from './roles'
-import type { InUseScenario, StandardScenario } from './roles.scenarios'
+import type { AssociationsScenario, StandardScenario } from './roles.scenarios'
 
 describe('roles', () => {
   scenario('returns all roles', async (scenario: StandardScenario) => {
@@ -39,20 +39,28 @@ describe('roles', () => {
   })
 
   describe('deletes', () => {
-    scenario('inUse', 'unused role', async (scenario: InUseScenario) => {
-      const original = await deleteRole({ id: scenario.role.notInUseRole.id })
-      const result = await role({ id: original.id })
+    scenario(
+      'associations',
+      'when no users',
+      async (scenario: AssociationsScenario) => {
+        const original = await deleteRole({ id: scenario.role.withoutUser.id })
+        const result = await role({ id: original.id })
 
-      expect(result).toEqual(null)
-    })
+        expect(result).toEqual(null)
+      }
+    )
 
-    scenario('inUse', 'role in use', async (scenario: InUseScenario) => {
-      expect(deleteRole({ id: scenario.role.inUseRole.id })).rejects.toThrow(
-        Error('Role is in use, please remove memberships before deletion')
-      )
+    scenario(
+      'associations',
+      'when has users',
+      async (scenario: AssociationsScenario) => {
+        expect(deleteRole({ id: scenario.role.withUser.id })).rejects.toThrow(
+          Error('Role is in use, please remove memberships before deletion')
+        )
 
-      const result = await role({ id: scenario.role.inUseRole.id })
-      expect(result).toEqual(scenario.role.inUseRole)
-    })
+        const result = await role({ id: scenario.role.withUser.id })
+        expect(result).toEqual(scenario.role.withUser)
+      }
+    )
   })
 })
