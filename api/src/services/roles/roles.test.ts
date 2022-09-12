@@ -41,7 +41,7 @@ describe('roles', () => {
   describe('deletes', () => {
     scenario(
       'associations',
-      'unused role',
+      'when no users',
       async (scenario: AssociationsScenario) => {
         const original = await deleteRole({ id: scenario.role.noUserRole.id })
         const result = await role({ id: original.id })
@@ -52,7 +52,7 @@ describe('roles', () => {
 
     scenario(
       'associations',
-      'role in use',
+      'when has users',
       async (scenario: AssociationsScenario) => {
         expect(deleteRole({ id: scenario.role.userRole.id })).rejects.toThrow(
           Error('Role is in use, please remove memberships before deletion')

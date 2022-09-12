@@ -49,14 +49,18 @@ describe('teams', () => {
       expect(result).toEqual(null)
     })
 
-    scenario('associations', 'used', async (scenario: AssociationsScenario) => {
-      expect(deleteTeam({ id: scenario.team.team1.id })).rejects.toThrow(
-        new ValidationError('Please remove users before deleting team')
-      )
+    scenario(
+      'associations',
+      'when has users',
+      async (scenario: AssociationsScenario) => {
+        expect(deleteTeam({ id: scenario.team.hasUser.id })).rejects.toThrow(
+          new ValidationError('Please remove users before deleting team')
+        )
 
-      const result = await team({ id: scenario.team.team1.id })
+        const result = await team({ id: scenario.team.hasUser.id })
 
-      expect(result).not.toEqual(null)
-    })
+        expect(result).not.toEqual(null)
+      }
+    )
   })
 })
