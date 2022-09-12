@@ -25,12 +25,12 @@ export const associations = {
     }),
   },
   role: {
-    noUserRole: (): Prisma.RoleCreateArgs => ({
+    withoutUser: (): Prisma.RoleCreateArgs => ({
       data: {
         name: 'No-User-Role',
       },
     }),
-    userRole: (scenario): Prisma.RoleCreateArgs => ({
+    withUser: (scenario): Prisma.RoleCreateArgs => ({
       data: {
         name: 'User-Role',
         membershipRoles: {

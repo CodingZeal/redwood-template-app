@@ -43,7 +43,7 @@ describe('roles', () => {
       'associations',
       'when no users',
       async (scenario: AssociationsScenario) => {
-        const original = await deleteRole({ id: scenario.role.noUserRole.id })
+        const original = await deleteRole({ id: scenario.role.withoutUser.id })
         const result = await role({ id: original.id })
 
         expect(result).toEqual(null)
@@ -54,12 +54,12 @@ describe('roles', () => {
       'associations',
       'when has users',
       async (scenario: AssociationsScenario) => {
-        expect(deleteRole({ id: scenario.role.userRole.id })).rejects.toThrow(
+        expect(deleteRole({ id: scenario.role.withUser.id })).rejects.toThrow(
           Error('Role is in use, please remove memberships before deletion')
         )
 
-        const result = await role({ id: scenario.role.userRole.id })
-        expect(result).toEqual(scenario.role.userRole)
+        const result = await role({ id: scenario.role.withUser.id })
+        expect(result).toEqual(scenario.role.withUser)
       }
     )
   })

@@ -38,13 +38,13 @@ export const associations = {
     }),
   },
   user: {
-    teamUser: (): Prisma.UserCreateArgs => ({
+    withTeam: (): Prisma.UserCreateArgs => ({
       data: {
         email: 'teamUser@example.com',
         ...DEFAULT_FIELDS,
       },
     }),
-    noTeamUser: (): Prisma.UserCreateArgs => ({
+    withoutTeam: (): Prisma.UserCreateArgs => ({
       data: {
         email: 'noTeamUser@example.com',
         ...DEFAULT_FIELDS,
@@ -55,7 +55,7 @@ export const associations = {
     membership1: (scenario): Prisma.MembershipCreateArgs => ({
       data: {
         teamId: scenario.team.team1.id,
-        userId: scenario.user.teamUser.id,
+        userId: scenario.user.withTeam.id,
       },
     }),
   },

@@ -9,7 +9,7 @@ export const standard = defineScenario<Prisma.TeamCreateArgs>({
 
 export const associations = {
   team: {
-    hasUser: (): Prisma.TeamCreateArgs => ({
+    withUser: (): Prisma.TeamCreateArgs => ({
       data: {
         name: 'User-Team',
       },
@@ -27,7 +27,7 @@ export const associations = {
   membership: {
     membership1: (scenario): Prisma.MembershipCreateArgs => ({
       data: {
-        teamId: scenario.team.hasUser.id,
+        teamId: scenario.team.withUser.id,
         userId: scenario.user.user1.id,
       },
     }),
