@@ -142,6 +142,23 @@ const UserForm = (props) => {
 
         <FieldError name="admin" className="rw-field-error" />
 
+        <Label
+          name="verified"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Verified
+        </Label>
+
+        <CheckboxField
+          name="verified"
+          defaultChecked={props.user?.verified}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
+
+        <FieldError name="verified" className="rw-field-error" />
+
         <UserFormTeamsCell
           roleIds={roleIds}
           roleValue={roleValue}

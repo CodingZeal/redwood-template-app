@@ -10,6 +10,7 @@ export const schema = gql`
     updatedAt: DateTime!
     createdAt: DateTime!
     memberships: [Membership]
+    verified: Boolean!
   }
 
   type Query {
@@ -26,6 +27,7 @@ export const schema = gql`
     admin: Boolean!
     teamIds: [String]
     roleIds: [String]
+    verified: Boolean!
   }
 
   input UpdateUserInput {
@@ -37,6 +39,7 @@ export const schema = gql`
     admin: Boolean
     teamIds: [String]
     roleIds: [String]
+    verified: Boolean!
   }
 
   type Mutation {

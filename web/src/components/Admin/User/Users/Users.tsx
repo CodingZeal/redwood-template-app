@@ -70,6 +70,7 @@ const Users = ({ users }) => {
             <th scope="col">Pronouns</th>
             <th scope="col">Active</th>
             <th scope="col">Admin</th>
+            <th scope="col">Verified</th>
             <th scope="col">Updated at</th>
             <th scope="col">Created at</th>
             <th scope="col">Actions</th>
@@ -85,6 +86,7 @@ const Users = ({ users }) => {
               <td>{truncate(user.pronouns)}</td>
               <td>{checkboxInputTag('active', user.active)}</td>
               <td>{checkboxInputTag('admin', user.admin)}</td>
+              <td>{checkboxInputTag('verified', user.verified)}</td>
               <td>{timeTag(user.updatedAt)}</td>
               <td>{timeTag(user.createdAt)}</td>
               <td>
