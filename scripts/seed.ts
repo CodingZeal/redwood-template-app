@@ -40,6 +40,15 @@ function generateUser(
   }
 }
 
+function generateTeam(
+  override?: Prisma.UserCreateInput
+): Prisma.UserCreateInput {
+  return {
+    name: chance.company(),
+    ...override,
+  }
+}
+
 async function _upsertUser(user) {
   return db.user.upsert({
     where: {
@@ -54,89 +63,68 @@ async function _upsertUser(user) {
   })
 }
 
+async function _createTeam(team) {
+  return db.team.create({
+    data: {
+      ...team,
+    },
+  })
+}
+
+async function _createRole(role) {
+  return db.role.create({
+    data: {
+      name: role,
+    },
+  })
+}
+
 export default async () => {
   try {
-    const users = [
-      generateUser({
+    const usersData = [...Array(9).fill({}).map(generateUser)]
+    const users = await Promise.all(usersData.map(_upsertUser))
+
+    const teamsData = [...Array(5).fill({}).map(generateTeam)]
+    const teams = await Promise.all(teamsData.map(_createTeam))
+
+    await db.user.create({
+      data: {
         admin: true,
         email: ADMIN_EMAIL,
         hashedPassword: ADMIN_HASHED_PASSWORD,
         salt: ADMIN_SALT,
-      }),
-      ...Array(5).fill({}).map(generateUser),
-    ]
-
-    const team1 = await db.team.create({
-      data: {
-        name: 'team 1',
       },
     })
 
-    const team2 = await db.team.create({
-      data: {
-        name: 'team 2',
-        active: false,
-      },
-    })
+    const rolesData = ['Admin', 'Editor', 'Viewer']
+    const roles = await Promise.all(rolesData.map(_createRole))
 
-    const user1 = await _upsertUser({
-      email: chance.email(),
-      hashedPassword: USERS_HASHED_PASSWORD,
-      salt: USERS_SALT,
-    })
-
-    const user2 = await _upsertUser({
-      email: chance.email(),
-      hashedPassword: USERS_HASHED_PASSWORD,
-      salt: USERS_SALT,
-    })
-
-    const role1 = await db.role.create({
-      data: {
-        name: 'FOO_ROLE',
-      },
-    })
-
-    const membership1 = await db.membership.upsert({
-      where: {
-        userTeamConstraint: {
-          userId: user1.id,
-          teamId: team1.id,
+    for (const user of users) {
+      const team = teams[(teams.length * Math.random()) | 0]
+      const membership = await db.membership.upsert({
+        where: {
+          userTeamConstraint: {
+            userId: user.id,
+            teamId: team.id,
+          },
         },
-      },
-      create: {
-        teamId: team1.id,
-        userId: user1.id,
-      },
-      update: {
-        teamId: team1.id,
-      },
-    })
-
-    await db.membership.upsert({
-      where: {
-        userTeamConstraint: {
-          userId: user2.id,
-          teamId: team2.id,
+        create: {
+          teamId: team.id,
+          userId: user.id,
         },
-      },
-      create: {
-        teamId: team2.id,
-        userId: user2.id,
-      },
-      update: {
-        teamId: team2.id,
-      },
-    })
+        update: {
+          teamId: team.id,
+        },
+      })
+      const role = roles[(roles.length * Math.random()) | 0]
+      await db.membershipRole.create({
+        data: {
+          membershipId: membership.id,
+          roleId: role.id,
+        },
+      })
+    }
 
-    await db.membershipRole.create({
-      data: {
-        membershipId: membership1.id,
-        roleId: role1.id,
-      },
-    })
-
-    await Promise.all(users.map(_upsertUser))
     return null
   } catch (err) {
     console.error(err.message)
