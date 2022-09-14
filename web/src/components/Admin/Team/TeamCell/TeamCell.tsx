@@ -27,7 +27,7 @@ export const Failure = ({ error }: CellFailureProps) => (
 export const Success = ({ team }: CellSuccessProps<FindTeamById>) => {
   return (
     <>
-      <MetaTags title={team.name} />
+      <MetaTags title={`${team.name} | Team`} />
       <Team team={team} />
     </>
   )

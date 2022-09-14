@@ -36,7 +36,7 @@ export const Failure = ({ error }: CellFailureProps) => (
 export const Success = ({ user }: CellSuccessProps<FindUserById>) => {
   return (
     <>
-      <MetaTags title={user.name || user.email} />
+      <MetaTags title={`${user.name || user.email} | User`} />
       <User user={user} />
     </>
   )

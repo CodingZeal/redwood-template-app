@@ -1,7 +1,7 @@
 import type { EditTeamById } from 'types/graphql'
 
 import { navigate, routes } from '@redwoodjs/router'
-import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
+import { CellSuccessProps, CellFailureProps, MetaTags } from '@redwoodjs/web'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
@@ -48,13 +48,23 @@ export const Success = ({ team }: CellSuccessProps<EditTeamById>) => {
   }
 
   return (
-    <div className="rw-segment">
-      <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">Edit Team {team.id}</h2>
-      </header>
-      <div className="rw-segment-main">
-        <TeamForm team={team} onSave={onSave} error={error} loading={loading} />
+    <>
+      <MetaTags title={`${team.name} | Edit Team`} />
+      <div className="rw-segment">
+        <header className="rw-segment-header">
+          <h2 className="rw-heading rw-heading-secondary">
+            Edit Team {team.id}
+          </h2>
+        </header>
+        <div className="rw-segment-main">
+          <TeamForm
+            team={team}
+            onSave={onSave}
+            error={error}
+            loading={loading}
+          />
+        </div>
       </div>
-    </div>
+    </>
   )
 }

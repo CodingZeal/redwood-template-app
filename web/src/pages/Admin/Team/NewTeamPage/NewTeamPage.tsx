@@ -5,7 +5,7 @@ import NewTeam from 'src/components/Admin/Team/NewTeam'
 const NewTeamPage = () => {
   return (
     <>
-      <MetaTags title="Edit Team" />
+      <MetaTags title="New Team" />
       <NewTeam />
     </>
   )

@@ -27,7 +27,7 @@ export const Failure = ({ error }: CellFailureProps) => (
 export const Success = ({ role }: CellSuccessProps<FindRoleById>) => {
   return (
     <>
-      <MetaTags title={role.name} />
+      <MetaTags title={`${role.name} | Role`} />
       <Role role={role} />
     </>
   )
