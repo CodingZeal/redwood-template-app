@@ -70,6 +70,7 @@ const UsersList = ({ users }) => {
             <th>Pronouns</th>
             <th>Active</th>
             <th>Admin</th>
+            <th>Verified</th>
             <th>Updated at</th>
             <th>Created at</th>
             <th>&nbsp;</th>
@@ -85,6 +86,7 @@ const UsersList = ({ users }) => {
               <td>{truncate(user.pronouns)}</td>
               <td>{checkboxInputTag(user.active)}</td>
               <td>{checkboxInputTag(user.admin)}</td>
+              <td>{checkboxInputTag(user.verified)}</td>
               <td>{timeTag(user.updatedAt)}</td>
               <td>{timeTag(user.createdAt)}</td>
               <td>
