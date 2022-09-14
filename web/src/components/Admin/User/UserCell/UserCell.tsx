@@ -1,6 +1,6 @@
 import type { FindUserById } from 'types/graphql'
 
-import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
+import { CellSuccessProps, CellFailureProps, MetaTags } from '@redwoodjs/web'
 
 import User from 'src/components/Admin/User/User'
 
@@ -34,5 +34,10 @@ export const Failure = ({ error }: CellFailureProps) => (
 )
 
 export const Success = ({ user }: CellSuccessProps<FindUserById>) => {
-  return <User user={user} />
+  return (
+    <>
+      <MetaTags title={`${user.name || user.email} | User`} />
+      <User user={user} />
+    </>
+  )
 }

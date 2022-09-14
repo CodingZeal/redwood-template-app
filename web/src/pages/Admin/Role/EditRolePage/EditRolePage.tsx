@@ -1,3 +1,5 @@
+import { MetaTags } from '@redwoodjs/web'
+
 import EditRoleCell from 'src/components/Admin/Role/EditRoleCell'
 
 type RolePageProps = {
@@ -5,7 +7,12 @@ type RolePageProps = {
 }
 
 const EditRolePage = ({ id }: RolePageProps) => {
-  return <EditRoleCell id={id} />
+  return (
+    <>
+      <MetaTags title="Edit Role" />
+      <EditRoleCell id={id} />
+    </>
+  )
 }
 
 export default EditRolePage

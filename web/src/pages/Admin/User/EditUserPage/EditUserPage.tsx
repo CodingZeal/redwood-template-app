@@ -1,3 +1,5 @@
+import { MetaTags } from '@redwoodjs/web'
+
 import EditUserCell from 'src/components/Admin/User/EditUserCell'
 
 type UserPageProps = {
@@ -5,7 +7,12 @@ type UserPageProps = {
 }
 
 const EditUserPage = ({ id }: UserPageProps) => {
-  return <EditUserCell id={id} />
+  return (
+    <>
+      <MetaTags title="Edit User" />
+      <EditUserCell id={id} />
+    </>
+  )
 }
 
 export default EditUserPage

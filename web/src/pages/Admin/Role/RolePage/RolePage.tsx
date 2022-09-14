@@ -1,3 +1,5 @@
+import { MetaTags } from '@redwoodjs/web'
+
 import RoleCell from 'src/components/Admin/Role/RoleCell'
 
 type RolePageProps = {
@@ -5,7 +7,12 @@ type RolePageProps = {
 }
 
 const RolePage = ({ id }: RolePageProps) => {
-  return <RoleCell id={id} />
+  return (
+    <>
+      <MetaTags title="Role Detail" />
+      <RoleCell id={id} />
+    </>
+  )
 }
 
 export default RolePage

@@ -1,6 +1,6 @@
 import type { FindRoleById } from 'types/graphql'
 
-import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
+import { CellSuccessProps, CellFailureProps, MetaTags } from '@redwoodjs/web'
 
 import Role from 'src/components/Admin/Role/Role'
 
@@ -25,5 +25,10 @@ export const Failure = ({ error }: CellFailureProps) => (
 )
 
 export const Success = ({ role }: CellSuccessProps<FindRoleById>) => {
-  return <Role role={role} />
+  return (
+    <>
+      <MetaTags title={`${role.name} | Role`} />
+      <Role role={role} />
+    </>
+  )
 }

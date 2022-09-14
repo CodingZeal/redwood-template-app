@@ -7,6 +7,8 @@
 // still render a generic error page, but your users will prefer something a bit more
 // thoughtful. =)
 
+import { MetaTags } from '@redwoodjs/web'
+
 // Ensures that production builds do not include the error page
 let RedwoodDevFatalErrorPage = undefined
 if (process.env.NODE_ENV === 'development') {
@@ -17,6 +19,7 @@ if (process.env.NODE_ENV === 'development') {
 export default RedwoodDevFatalErrorPage ||
   (() => (
     <main>
+      <MetaTags title="Error: Something went wrong" />
       <style
         dangerouslySetInnerHTML={{
           __html: `

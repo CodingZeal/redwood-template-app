@@ -1,3 +1,5 @@
+import { MetaTags } from '@redwoodjs/web'
+
 import TeamCell from 'src/components/Admin/Team/TeamCell'
 
 type TeamPageProps = {
@@ -5,7 +7,12 @@ type TeamPageProps = {
 }
 
 const TeamPage = ({ id }: TeamPageProps) => {
-  return <TeamCell id={id} />
+  return (
+    <>
+      <MetaTags title="Team Detail" />
+      <TeamCell id={id} />
+    </>
+  )
 }
 
 export default TeamPage

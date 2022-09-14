@@ -1,3 +1,5 @@
+import { MetaTags } from '@redwoodjs/web'
+
 import UserCell from 'src/components/Admin/User/UserCell'
 
 type UserPageProps = {
@@ -5,7 +7,12 @@ type UserPageProps = {
 }
 
 const UserPage = ({ id }: UserPageProps) => {
-  return <UserCell id={id} />
+  return (
+    <>
+      <MetaTags title="User Detail" />
+      <UserCell id={id} />
+    </>
+  )
 }
 
 export default UserPage
