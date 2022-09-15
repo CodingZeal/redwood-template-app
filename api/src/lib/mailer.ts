@@ -5,8 +5,8 @@ import { logger } from 'src/lib/logger'
 interface Options {
   to: string | string[]
   subject: string
-  text: string
-  html: string
+  text?: string
+  html?: string
 }
 
 export async function sendEmail({ to, subject, text, html }: Options) {

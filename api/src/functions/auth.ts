@@ -1,6 +1,8 @@
 import { DbAuthHandler } from '@redwoodjs/api'
 
 import { db } from 'src/lib/db'
+import { logger } from 'src/lib/logger'
+import { sendEmail } from 'src/lib/mailer'
 
 export const handler = async (event, context) => {
   const forgotPasswordOptions = {
@@ -112,15 +114,33 @@ export const handler = async (event, context) => {
     // If this returns anything else, it will be returned by the
     // `signUp()` function in the form of: `{ message: 'String here' }`.
     // eslint-disable-next-line
-    handler: ({ username, hashedPassword, salt, userAttributes }) => {
-      return db.user.create({
+    handler: async ({ username, hashedPassword, salt, userAttributes }) => {
+      const user = await db.user.create({
         data: {
           email: username,
           hashedPassword: hashedPassword,
           salt: salt,
-          // name: userAttributes.name
+          verifyToken: crypto.randomUUID(),
         },
       })
+      const buildVerifyEmailHtml = (user) => {
+        const link = `${process.env.DOMAIN}/verification?verifyToken=${user.verifyToken}`
+
+        logger.debug(link)
+
+        return `
+          <div> Hi ${user.fullName}, </div>
+            <p>Please find below a link to verify your email for the ${process.env.APP_NAME}:</p>
+            <a href="${link}">${link}</a>
+            <p>If you did not request an account, please ignore this email.</p>
+        `
+      }
+      sendEmail({
+        to: user.email,
+        subject: 'Verify Email',
+        text: buildVerifyEmailHtml(user),
+      })
+      return user
     },
 
     errors: {

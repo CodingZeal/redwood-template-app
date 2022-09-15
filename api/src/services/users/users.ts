@@ -79,6 +79,24 @@ export const removeUser: MutationResolvers['removeUser'] = async ({ id }) => {
   return user
 }
 
+export const verifyUser: MutationResolvers['verifyUser'] = async ({
+  token,
+}) => {
+  if (token === null) return true
+  const user = await db.user.findUnique({
+    where: { id: context.currentUser.id },
+  })
+  if (token === user.verifyToken) {
+    await db.user.update({
+      where: { id: user.id },
+      data: { verifyToken: null },
+    })
+    return true
+  } else {
+    return false
+  }
+}
+
 export const User: UserResolvers = {
   memberships: (_obj, { root }) =>
     db.membership.findMany({ where: { userId: root.id } }),
