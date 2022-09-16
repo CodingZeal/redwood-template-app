@@ -11,15 +11,23 @@ const Navigation = () => {
   const { hasRole, logOut, isAuthenticated } = useAuth()
 
   return (
-    <ul data-testid="nav" className="my-3 flex flex-row items-start">
-      <LinkItem to={routes.home()}>Home</LinkItem>
-      {isAuthenticated ? (
-        <LinkItem onClick={logOut}>Logout</LinkItem>
-      ) : (
-        <LinkItem to={routes.login()}>Login</LinkItem>
-      )}
-      {hasRole('super admin') && <LinkItem to={routes.admin()}>Admin</LinkItem>}
-    </ul>
+    <div>
+      <ul data-testid="nav" className="my-3 flex flex-row items-start">
+        <LinkItem to={routes.home()}>Home</LinkItem>
+        {isAuthenticated ? (
+          <LinkItem onClick={logOut}>Logout</LinkItem>
+        ) : (
+          <LinkItem to={routes.login()}>Login</LinkItem>
+        )}
+        {hasRole('super admin') && (
+          <LinkItem to={routes.admin()}>Admin</LinkItem>
+        )}
+      </ul>
+
+      <ul className="my-3 flex flex-row items-end justify-end">
+        <LinkItem to={routes.profile()}>Nickname</LinkItem>
+      </ul>
+    </div>
   )
 }
 
