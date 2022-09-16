@@ -7,16 +7,16 @@ import {
   Submit,
 } from '@redwoodjs/forms'
 
-const Profile = ({ props }) => {
+const Profile = ({ user, onSave, error, loading }) => {
   const onSubmit = (data) => {
-    props.onSave(data, props.user?.id)
+    onSave(data, user?.id)
   }
 
   return (
     <div className="rw-form-wrapper">
-      <Form onSubmit={onSubmit} error={props.error}>
+      <Form onSubmit={onSubmit} error={error}>
         <FormError
-          error={props.error}
+          error={error}
           wrapperClassName="rw-form-error-wrapper"
           titleClassName="rw-form-error-title"
           listClassName="rw-form-error-list"
@@ -32,7 +32,7 @@ const Profile = ({ props }) => {
 
         <TextField
           name="name"
-          defaultValue={props.user?.name}
+          defaultValue={user?.name}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
@@ -49,7 +49,7 @@ const Profile = ({ props }) => {
 
         <TextField
           name="nickname"
-          defaultValue={props.user?.nickname}
+          defaultValue={user?.nickname}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
@@ -66,7 +66,7 @@ const Profile = ({ props }) => {
 
         <TextField
           name="pronouns"
-          defaultValue={props.user?.pronouns}
+          defaultValue={user?.pronouns}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
@@ -83,7 +83,7 @@ const Profile = ({ props }) => {
 
         <TextField
           name="email"
-          defaultValue={props.user?.email}
+          defaultValue={user?.email}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
@@ -108,7 +108,7 @@ const Profile = ({ props }) => {
         <FieldError name="password" className="rw-field-error" /> */}
 
         <div className="rw-button-group">
-          <Submit disabled={props.loading} className="rw-button rw-button-blue">
+          <Submit disabled={loading} className="rw-button rw-button-blue">
             Save
           </Submit>
         </div>

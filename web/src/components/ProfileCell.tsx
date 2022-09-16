@@ -1,7 +1,7 @@
-import type { EditUserById } from 'types/graphql'
+import { EditUserById } from 'types/graphql'
 
 import { navigate, routes } from '@redwoodjs/router'
-import { CellSuccessProps, CellFailureProps, MetaTags } from '@redwoodjs/web'
+import { CellFailureProps, CellSuccessProps, MetaTags } from '@redwoodjs/web'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
