@@ -1,3 +1,4 @@
+import type { User as UserType } from '@prisma/client'
 import * as CryptoJS from 'crypto-js'
 import type {
   QueryResolvers,
@@ -38,17 +39,7 @@ export const createUser: MutationResolvers['createUser'] = async ({
   const user = await db.user.create({
     data: { ...userInput, salt, hashedPassword },
   })
-
-  for (const teamId of teamIds || []) {
-    const membership = await db.membership.create({
-      data: { teamId, userId: user.id },
-    })
-    for (const roleId of parseRoles(roleIds)[teamId] || []) {
-      await db.membershipRole.create({
-        data: { membershipId: membership.id, roleId },
-      })
-    }
-  }
+  await createMembershipAndRolesIfNotExists(user, teamIds, roleIds)
 
   return user
 }
@@ -62,30 +53,14 @@ export const updateUser: MutationResolvers['updateUser'] = async ({
     data: { ...userInput },
     where: { id },
   })
-  for (const teamId of teamIds || []) {
-    const membership = await db.membership.upsert({
-      where: {
-        userTeamConstraint: { teamId, userId: user.id },
-      },
-      create: { teamId, userId: user.id },
-      update: {},
-    })
+  await createMembershipAndRolesIfNotExists(user, teamIds, roleIds)
 
-    for (const roleId of parseRoles(roleIds)[teamId] || []) {
-      await db.membershipRole.upsert({
-        where: {
-          membershipRoleConstraint: { membershipId: membership.id, roleId },
-        },
-        create: { membershipId: membership.id, roleId },
-        update: {},
-      })
-    }
-  }
   if (teamIds) {
     await db.membership.deleteMany({
       where: { userId: user.id, NOT: { teamId: { in: teamIds } } },
     })
   }
+
   return user
 }
 
@@ -107,4 +82,30 @@ export const removeUser: MutationResolvers['removeUser'] = async ({ id }) => {
 export const User: UserResolvers = {
   memberships: (_obj, { root }) =>
     db.membership.findMany({ where: { userId: root.id } }),
+}
+
+const createMembershipAndRolesIfNotExists = async (
+  user: UserType,
+  teamIds: string[],
+  roleIds: string[]
+): Promise<void> => {
+  for (const teamId of teamIds || []) {
+    const membership = await db.membership.upsert({
+      where: {
+        userTeamConstraint: { teamId, userId: user.id },
+      },
+      create: { teamId, userId: user.id },
+      update: {},
+    })
+
+    for (const roleId of parseRoles(roleIds)[teamId] || []) {
+      await db.membershipRole.upsert({
+        where: {
+          membershipRoleConstraint: { membershipId: membership.id, roleId },
+        },
+        create: { membershipId: membership.id, roleId },
+        update: {},
+      })
+    }
+  }
 }
