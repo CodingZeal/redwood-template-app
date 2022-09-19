@@ -1,15 +1,13 @@
-import { EditUserById } from 'types/graphql'
-
 import { navigate, routes } from '@redwoodjs/router'
 import { CellFailureProps, CellSuccessProps, MetaTags } from '@redwoodjs/web'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import Profile from './Profile'
+import Profile from '../Profile'
 
 export const QUERY = gql`
-  query EditUserById($id: String!) {
-    user: user(id: $id) {
+  query Profile {
+    profile {
       id
       email
       name
@@ -18,9 +16,9 @@ export const QUERY = gql`
     }
   }
 `
-const UPDATE_USER_MUTATION = gql`
-  mutation UpdateUserMutation($id: String!, $input: UpdateUserInput!) {
-    updateUser(id: $id, input: $input) {
+const UPDATE_PROFILE_MUTATION = gql`
+  mutation UpdateProfileMutation($input: UpdateProfileInput!) {
+    updateProfile(input: $input) {
       id
       email
       name
@@ -36,35 +34,37 @@ export const Failure = ({ error }: CellFailureProps) => (
   <div className="rw-cell-error">{error.message}</div>
 )
 
-export const Success = ({ user }: CellSuccessProps<EditUserById>) => {
-  const [updateUser, { loading, error }] = useMutation(UPDATE_USER_MUTATION, {
-    onCompleted: () => {
-      toast.success('User updated')
-      navigate(routes.profile())
-    },
-    onError: (error) => {
-      toast.error(error.message)
-    },
-    refetchQueries: [{ query: QUERY, variables: { id: user.id } }],
-    awaitRefetchQueries: true,
-  })
-
-  const onSave = (input, id) => {
-    updateUser({ variables: { id, input } })
+export const Success = ({ profile }: CellSuccessProps) => {
+  const [updateProfile, { loading, error }] = useMutation(
+    UPDATE_PROFILE_MUTATION,
+    {
+      onCompleted: () => {
+        toast.success('Profile updated')
+        navigate(routes.home())
+      },
+      onError: (error) => {
+        toast.error(error.message)
+      },
+      refetchQueries: [{ query: QUERY }],
+      awaitRefetchQueries: true,
+    }
+  )
+  const onSave = (input) => {
+    updateProfile({ variables: { input } })
   }
 
   return (
     <>
-      <MetaTags title={`${user.name || user.email} | Edit User`} />
+      <MetaTags title={`${profile.name || profile.email} | Edit Profile`} />
       <div className="rw-segment">
         <header className="rw-segment-header">
           <h2 className="rw-heading rw-heading-secondary">
-            Edit User {user.id}
+            Edit Profile {profile.id}
           </h2>
         </header>
         <div className="rw-segment-main">
           <Profile
-            user={user}
+            profile={profile}
             onSave={onSave}
             error={error}
             loading={loading}

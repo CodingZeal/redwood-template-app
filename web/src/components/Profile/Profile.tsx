@@ -7,16 +7,16 @@ import {
   Submit,
 } from '@redwoodjs/forms'
 
-const Profile = ({ user, onSave, error, loading }) => {
+const Profile = (props) => {
   const onSubmit = (data) => {
-    onSave(data, user?.id)
+    console.log(data)
+    props.onSave(data, props.profile?.id)
   }
-
   return (
     <div className="rw-form-wrapper">
-      <Form onSubmit={onSubmit} error={error}>
+      <Form onSubmit={onSubmit} error={props.error}>
         <FormError
-          error={error}
+          error={props.error}
           wrapperClassName="rw-form-error-wrapper"
           titleClassName="rw-form-error-title"
           listClassName="rw-form-error-list"
@@ -32,7 +32,7 @@ const Profile = ({ user, onSave, error, loading }) => {
 
         <TextField
           name="name"
-          defaultValue={user?.name}
+          defaultValue={props.profile?.name}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
@@ -49,7 +49,7 @@ const Profile = ({ user, onSave, error, loading }) => {
 
         <TextField
           name="nickname"
-          defaultValue={user?.nickname}
+          defaultValue={props.profile?.nickname}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
@@ -66,7 +66,7 @@ const Profile = ({ user, onSave, error, loading }) => {
 
         <TextField
           name="pronouns"
-          defaultValue={user?.pronouns}
+          defaultValue={props.profile?.pronouns}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
@@ -83,12 +83,12 @@ const Profile = ({ user, onSave, error, loading }) => {
 
         <TextField
           name="email"
-          defaultValue={user?.email}
+          defaultValue={props.profile?.email}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
 
-        {/* <FieldError name="password" className="rw-field-error" />
+        <FieldError name="password" className="rw-field-error" />
 
         <Label
           name="password"
@@ -100,15 +100,15 @@ const Profile = ({ user, onSave, error, loading }) => {
 
         <TextField
           name="password"
-          defaultValue={props.user?.password}
+          defaultValue={props.profile?.hashedPassword}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
 
-        <FieldError name="password" className="rw-field-error" /> */}
+        <FieldError name="password" className="rw-field-error" />
 
         <div className="rw-button-group">
-          <Submit disabled={loading} className="rw-button rw-button-blue">
+          <Submit disabled={props.loading} className="rw-button rw-button-blue">
             Save
           </Submit>
         </div>

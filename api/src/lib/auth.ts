@@ -22,7 +22,15 @@ import { db } from './db'
 export const getCurrentUser = async (session) => {
   const user = await db.user.findUnique({
     where: { id: session.id },
-    select: { id: true, admin: true, memberships: true },
+    select: {
+      admin: true,
+      email: true,
+      id: true,
+      memberships: true,
+      name: true,
+      nickname: true,
+      pronouns: true,
+    },
   })
 
   const membershipRoles = await db.membershipRole.findMany({
@@ -37,7 +45,11 @@ export const getCurrentUser = async (session) => {
   )
 
   return {
+    email: user.email,
     id: user.id,
+    name: user.name,
+    nickname: user.nickname,
+    pronouns: user.pronouns,
     roles: [...roles, ...(user.admin ? ['super admin'] : [])],
   }
 }
