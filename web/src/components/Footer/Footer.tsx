@@ -17,7 +17,7 @@ const Footer = () => {
           href="http://codingzeal.com"
           target="_blank"
           className="underline"
-          rel="noreferrer"
+          rel="noopener noreferrer"
         >
           Coding ZEAL
         </a>
