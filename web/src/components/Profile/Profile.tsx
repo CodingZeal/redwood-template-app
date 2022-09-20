@@ -8,13 +8,9 @@ import {
 } from '@redwoodjs/forms'
 
 const Profile = (props) => {
-  const onSubmit = (data) => {
-    console.log(data)
-    props.onSave(data, props.profile?.id)
-  }
   return (
     <div className="rw-form-wrapper">
-      <Form onSubmit={onSubmit} error={props.error}>
+      <Form onSubmit={props.onSave} error={props.error}>
         <FormError
           error={props.error}
           wrapperClassName="rw-form-error-wrapper"
@@ -88,24 +84,7 @@ const Profile = (props) => {
           errorClassName="rw-input rw-input-error"
         />
 
-        <FieldError name="password" className="rw-field-error" />
-
-        <Label
-          name="password"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Password
-        </Label>
-
-        <TextField
-          name="password"
-          defaultValue={props.profile?.hashedPassword}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-
-        <FieldError name="password" className="rw-field-error" />
+        <FieldError name="email" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">
@@ -117,4 +96,4 @@ const Profile = (props) => {
   )
 }
 
-export default Profile
+export { Profile }

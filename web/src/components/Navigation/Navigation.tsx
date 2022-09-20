@@ -24,7 +24,7 @@ const Navigation = () => {
           )}
         </div>
         <div className="flex flex-row-reverse">
-          {isAuthenticated && (
+          {isAuthenticated && currentUser && (
             <LinkItem to={routes.profile()}>
               {currentUser.nickname || currentUser.name || currentUser.email}
             </LinkItem>
