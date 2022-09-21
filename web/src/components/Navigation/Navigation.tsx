@@ -11,8 +11,8 @@ const Navigation = () => {
 
   return (
     <div>
-      <ul data-testid="nav" className="flex">
-        <div className="my-3 flex flex-row items-start">
+      <ul data-testid="nav" className="my-3 flex">
+        <div className="flex flex-row items-start">
           <LinkItem to={routes.home()}>Home</LinkItem>
           {isAuthenticated ? (
             <LinkItem onClick={logOut}>Logout</LinkItem>
@@ -23,7 +23,7 @@ const Navigation = () => {
             <LinkItem to={routes.admin()}>Admin</LinkItem>
           )}
         </div>
-        <div className="my-3 ml-auto">
+        <div className="ml-auto">
           {isAuthenticated && currentUser && (
             <LinkItem to={routes.profile()}>
               {currentUser.nickname || currentUser.name || currentUser.email}

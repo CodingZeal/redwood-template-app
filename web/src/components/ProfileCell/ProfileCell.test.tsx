@@ -39,7 +39,7 @@ describe('ProfileCell', () => {
     render(<Success profile={standard().profile} />)
     const element = screen.getByText('Edit Profile')
 
-    expect(screen.getByText('Edit Profile')).toBeInTheDocument()
+    expect(element).toBeInTheDocument()
     expect(element).toBeVisible()
   })
 })
