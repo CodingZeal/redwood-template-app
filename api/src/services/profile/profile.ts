@@ -10,10 +10,8 @@ export const profile: QueryResolvers['profile'] = () => {
 
 export const updateProfile: MutationResolvers['updateProfile'] = async ({
   input,
-}) => {
-  const user = await db.user.update({
+}) =>
+  await db.user.update({
     data: input,
     where: { id: context.currentUser.id },
   })
-  return user
-}

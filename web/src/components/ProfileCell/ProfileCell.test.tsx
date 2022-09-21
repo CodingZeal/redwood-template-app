@@ -1,4 +1,5 @@
 import { render } from '@redwoodjs/testing/web'
+import { screen } from '@redwoodjs/testing/web'
 
 import { Loading, Failure, Success } from './ProfileCell'
 import { standard } from './ProfileCell.mock'
@@ -32,5 +33,13 @@ describe('ProfileCell', () => {
     expect(() => {
       render(<Success profile={standard().profile} />)
     }).not.toThrow()
+  })
+
+  it('renders h2 successfully', async () => {
+    render(<Success profile={standard().profile} />)
+    const element = screen.getByText('Edit Profile')
+
+    expect(screen.getByText('Edit Profile')).toBeInTheDocument()
+    expect(element).toBeVisible()
   })
 })

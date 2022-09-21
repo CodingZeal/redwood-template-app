@@ -8,7 +8,14 @@ import { Profile } from './Profile'
 describe('Profile', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<Profile />)
+      render(
+        <Profile
+          error={undefined}
+          loading={undefined}
+          profile={{ name: 'harry' }}
+          onSave={undefined}
+        />
+      )
     }).not.toThrow()
   })
 })

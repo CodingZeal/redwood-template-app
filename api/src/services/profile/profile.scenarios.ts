@@ -10,6 +10,9 @@ export const standard = defineScenario<Prisma.UserCreateArgs>({
     profile: {
       data: {
         email: 'String4589593',
+        name: 'Harry',
+        nickname: 'Scar',
+        pronouns: 'he/him',
         ...DEFAULT_FIELDS,
       },
     },

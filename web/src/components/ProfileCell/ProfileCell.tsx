@@ -55,19 +55,21 @@ export const Success = ({ profile }: CellSuccessProps) => {
 
   return (
     <>
-      <MetaTags title={`${profile.name || profile.email} | Edit Profile`} />
+      <MetaTags
+        title={`${
+          profile.nickname || profile.name || profile.email
+        } | Edit Profile`}
+      />
       <div className="rw-segment">
         <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">
-            Edit Profile {profile.id}
-          </h2>
+          <h2 className="rw-heading rw-heading-secondary">Edit Profile</h2>
         </header>
         <div className="rw-segment-main">
           <Profile
-            profile={profile}
-            onSave={onSave}
             error={error}
             loading={loading}
+            onSave={onSave}
+            profile={profile}
           />
         </div>
       </div>

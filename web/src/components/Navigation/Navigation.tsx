@@ -7,11 +7,11 @@ const LinkItem = (props) => (
   </li>
 )
 const Navigation = () => {
-  const { hasRole, logOut, isAuthenticated, currentUser } = useAuth()
+  const { currentUser, hasRole, isAuthenticated, logOut } = useAuth()
 
   return (
     <div>
-      <ul data-testid="nav">
+      <ul data-testid="nav" className="flex">
         <div className="my-3 flex flex-row items-start">
           <LinkItem to={routes.home()}>Home</LinkItem>
           {isAuthenticated ? (
@@ -23,7 +23,7 @@ const Navigation = () => {
             <LinkItem to={routes.admin()}>Admin</LinkItem>
           )}
         </div>
-        <div className="flex flex-row-reverse">
+        <div className="my-3 ml-auto">
           {isAuthenticated && currentUser && (
             <LinkItem to={routes.profile()}>
               {currentUser.nickname || currentUser.name || currentUser.email}
