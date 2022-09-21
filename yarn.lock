@@ -10633,6 +10633,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"date-fns@npm:^2.29.3":
+  version: 2.29.3
+  resolution: "date-fns@npm:2.29.3"
+  checksum: aa9128c876ef69a05988029d6aa3d7e5c47a1e978f18b77b48126683d1a2e6605a16c3f5293ca9f4ca790d0755b5061fcea5b469f097871cd53f6590a5c1adc4
+  languageName: node
+  linkType: hard
+
 "dayjs@npm:~1.8.24, dayjs@npm:~1.8.25":
   version: 1.8.36
   resolution: "dayjs@npm:1.8.36"
@@ -24773,6 +24780,7 @@ __metadata:
     "@redwoodjs/router": 2.2.0
     "@redwoodjs/web": 2.2.0
     autoprefixer: ^10.4.8
+    date-fns: ^2.29.3
     postcss: ^8.4.14
     postcss-loader: ^7.0.1
     prettier-plugin-tailwindcss: ^0.1.13
