@@ -1,9 +1,9 @@
-import { render } from '@redwoodjs/testing/web'
+import { routes } from '@redwoodjs/router'
+import { render, screen } from '@redwoodjs/testing/web'
 
 import { AdminNavigation } from './AdminNavigation'
 
-//   Improve this test with help from the Redwood Testing Doc:
-//    https://redwoodjs.com/docs/testing#testing-components
+const renderComponent = (props = {}) => render(<AdminNavigation {...props} />)
 
 describe('AdminNavigation', () => {
   it('renders successfully', () => {
@@ -12,11 +12,27 @@ describe('AdminNavigation', () => {
     }).not.toThrow()
   })
 
-  // it('shows users when super admin', async () => {
-  //   mockCurrentUser({ role: 'super admin', admin: true })
-  //   renderComponent()
-  //   await waitFor(() => {
-  //     expect(screen.getByText('Users')).toBeInTheDocument()
-  //   })
-  // })
+  it('Has link to admin users', () => {
+    renderComponent()
+    expect(screen.getByText('Users')).toHaveAttribute(
+      'href',
+      routes.adminUsers()
+    )
+  })
+
+  it('Has link to home', () => {
+    renderComponent()
+    expect(screen.getByText('Teams')).toHaveAttribute(
+      'href',
+      routes.adminTeams()
+    )
+  })
+
+  it('Has link to home', () => {
+    renderComponent()
+    expect(screen.getByText('Roles')).toHaveAttribute(
+      'href',
+      routes.adminRoles()
+    )
+  })
 })

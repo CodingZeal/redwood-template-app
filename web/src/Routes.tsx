@@ -3,6 +3,7 @@ import { Set, Router, Route, Private } from '@redwoodjs/router'
 import { RolesLayout } from './layouts/Admin/RolesLayout'
 import { TeamsLayout } from './layouts/Admin/TeamsLayout'
 import { UsersLayout } from './layouts/Admin/UsersLayout'
+import { AdminLayout } from './layouts/AdminLayout'
 import { MainLayout } from './layouts/MainLayout'
 
 const Routes = () => {
@@ -18,24 +19,26 @@ const Routes = () => {
           <Route path="/profile" page={ProfilePage} name="profile" />
         </Private>
         <Private roles="super admin" unauthenticated="forbidden">
-          <Route path="/admin" page={AdminPage} name="admin" />
-          <Set wrap={TeamsLayout}>
-            <Route path="/admin/teams/new" page={AdminTeamNewTeamPage} name="adminNewTeam" />
-            <Route path="/admin/teams/{id}/edit" page={AdminTeamEditTeamPage} name="adminEditTeam" />
-            <Route path="/admin/teams/{id}" page={AdminTeamTeamPage} name="adminTeam" />
-            <Route path="/admin/teams" page={AdminTeamTeamsPage} name="adminTeams" />
-          </Set>
-          <Set wrap={RolesLayout}>
-            <Route path="/admin/roles/new" page={AdminRoleNewRolePage} name="adminNewRole" />
-            <Route path="/admin/roles/{id}/edit" page={AdminRoleEditRolePage} name="adminEditRole" />
-            <Route path="/admin/roles/{id}" page={AdminRoleRolePage} name="adminRole" />
-            <Route path="/admin/roles" page={AdminRoleRolesPage} name="adminRoles" />
-          </Set>
-          <Set wrap={UsersLayout}>
-            <Route path="/admin/users/new" page={AdminUserNewUserPage} name="adminNewUser" />
-            <Route path="/admin/users/{id}/edit" page={AdminUserEditUserPage} name="adminEditUser" />
-            <Route path="/admin/users/{id}" page={AdminUserUserPage} name="adminUser" />
-            <Route path="/admin/users" page={AdminUserUsersPage} name="adminUsers" />
+          <Set wrap={AdminLayout}>
+            <Route path="/admin" page={AdminPage} name="admin" />
+            <Set wrap={TeamsLayout}>
+              <Route path="/admin/teams/new" page={AdminTeamNewTeamPage} name="adminNewTeam" />
+              <Route path="/admin/teams/{id}/edit" page={AdminTeamEditTeamPage} name="adminEditTeam" />
+              <Route path="/admin/teams/{id}" page={AdminTeamTeamPage} name="adminTeam" />
+              <Route path="/admin/teams" page={AdminTeamTeamsPage} name="adminTeams" />
+            </Set>
+            <Set wrap={RolesLayout}>
+              <Route path="/admin/roles/new" page={AdminRoleNewRolePage} name="adminNewRole" />
+              <Route path="/admin/roles/{id}/edit" page={AdminRoleEditRolePage} name="adminEditRole" />
+              <Route path="/admin/roles/{id}" page={AdminRoleRolePage} name="adminRole" />
+              <Route path="/admin/roles" page={AdminRoleRolesPage} name="adminRoles" />
+            </Set>
+            <Set wrap={UsersLayout}>
+              <Route path="/admin/users/new" page={AdminUserNewUserPage} name="adminNewUser" />
+              <Route path="/admin/users/{id}/edit" page={AdminUserEditUserPage} name="adminEditUser" />
+              <Route path="/admin/users/{id}" page={AdminUserUserPage} name="adminUser" />
+              <Route path="/admin/users" page={AdminUserUsersPage} name="adminUsers" />
+            </Set>
           </Set>
         </Private>
         <Route notfound page={NotFoundPage} />
