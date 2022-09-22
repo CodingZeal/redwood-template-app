@@ -14,6 +14,9 @@ const Routes = () => {
       <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
       <Set wrap={MainLayout}>
         <Route path="/" page={HomePage} name="home" />
+        <Private unauthenticated="forbidden">
+          <Route path="/profile" page={ProfilePage} name="profile" />
+        </Private>
         <Private roles="super admin" unauthenticated="forbidden">
           <Route path="/admin" page={AdminPage} name="admin" />
           <Set wrap={TeamsLayout}>

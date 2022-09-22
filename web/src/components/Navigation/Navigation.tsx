@@ -6,20 +6,32 @@ const LinkItem = (props) => (
     <Link {...props}>{props.children}</Link>
   </li>
 )
-
 const Navigation = () => {
-  const { hasRole, logOut, isAuthenticated } = useAuth()
+  const { currentUser, hasRole, isAuthenticated, logOut } = useAuth()
 
   return (
-    <ul data-testid="nav" className="my-3 flex flex-row items-start">
-      <LinkItem to={routes.home()}>Home</LinkItem>
-      {isAuthenticated ? (
-        <LinkItem onClick={logOut}>Logout</LinkItem>
-      ) : (
-        <LinkItem to={routes.login()}>Login</LinkItem>
-      )}
-      {hasRole('super admin') && <LinkItem to={routes.admin()}>Admin</LinkItem>}
-    </ul>
+    <div>
+      <ul data-testid="nav" className="my-3 flex">
+        <div className="flex flex-row items-start">
+          <LinkItem to={routes.home()}>Home</LinkItem>
+          {isAuthenticated ? (
+            <LinkItem onClick={logOut}>Logout</LinkItem>
+          ) : (
+            <LinkItem to={routes.login()}>Login</LinkItem>
+          )}
+          {hasRole('super admin') && (
+            <LinkItem to={routes.admin()}>Admin</LinkItem>
+          )}
+        </div>
+        <div className="ml-auto">
+          {isAuthenticated && currentUser && (
+            <LinkItem to={routes.profile()}>
+              {currentUser.nickname || currentUser.name || currentUser.email}
+            </LinkItem>
+          )}
+        </div>
+      </ul>
+    </div>
   )
 }
 
