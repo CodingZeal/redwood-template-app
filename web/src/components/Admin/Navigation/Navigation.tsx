@@ -8,7 +8,7 @@ const LinkItem = (props) => (
   </li>
 )
 
-const AdminNavigation = () => (
+const Navigation = () => (
   <ul data-testid="admin-nav" className="my-3">
     <LinkItem to={routes.adminUsers()}>Users</LinkItem>
     <LinkItem to={routes.adminTeams()}>Teams</LinkItem>
@@ -16,4 +16,4 @@ const AdminNavigation = () => (
   </ul>
 )
 
-export { AdminNavigation }
+export { Navigation }

@@ -1,9 +1,9 @@
 import { Set, Router, Route, Private } from '@redwoodjs/router'
 
+import { AdminLayout } from './layouts/Admin/Layout'
 import { RolesLayout } from './layouts/Admin/RolesLayout'
 import { TeamsLayout } from './layouts/Admin/TeamsLayout'
 import { UsersLayout } from './layouts/Admin/UsersLayout'
-import { AdminLayout } from './layouts/AdminLayout'
 import { MainLayout } from './layouts/MainLayout'
 
 const Routes = () => {
@@ -20,7 +20,6 @@ const Routes = () => {
         </Private>
         <Private roles="super admin" unauthenticated="forbidden">
           <Set wrap={AdminLayout}>
-            <Route path="/admin" page={AdminPage} name="admin" />
             <Set wrap={TeamsLayout}>
               <Route path="/admin/teams/new" page={AdminTeamNewTeamPage} name="adminNewTeam" />
               <Route path="/admin/teams/{id}/edit" page={AdminTeamEditTeamPage} name="adminEditTeam" />

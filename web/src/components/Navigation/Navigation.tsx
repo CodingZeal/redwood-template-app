@@ -1,9 +1,11 @@
 import { useAuth } from '@redwoodjs/auth'
-import { Link, routes } from '@redwoodjs/router'
+import { NavLink, routes } from '@redwoodjs/router'
 
 const LinkItem = (props) => (
   <li data-testid="nav__link-item" className="mr-3 cursor-pointer">
-    <Link {...props}>{props.children}</Link>
+    <NavLink activeClassName="bg-orange-300" {...props}>
+      {props.children}
+    </NavLink>
   </li>
 )
 const Navigation = () => {
@@ -15,12 +17,14 @@ const Navigation = () => {
         <div className="flex flex-row items-start">
           <LinkItem to={routes.home()}>Home</LinkItem>
           {isAuthenticated ? (
-            <LinkItem onClick={logOut}>Logout</LinkItem>
+            <li data-testid="nav__link-item" className="mr-3 cursor-pointer">
+              <button onClick={logOut}>Logout</button>
+            </li>
           ) : (
             <LinkItem to={routes.login()}>Login</LinkItem>
           )}
           {hasRole('super admin') && (
-            <LinkItem to={routes.admin()}>Admin</LinkItem>
+            <LinkItem to={routes.adminUsers()}>Admin</LinkItem>
           )}
         </div>
         <div className="ml-auto">

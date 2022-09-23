@@ -1,14 +1,14 @@
 import { routes } from '@redwoodjs/router'
 import { render, screen } from '@redwoodjs/testing/web'
 
-import { AdminNavigation } from './AdminNavigation'
+import { Navigation } from './Navigation'
 
-const renderComponent = (props = {}) => render(<AdminNavigation {...props} />)
+const renderComponent = (props = {}) => render(<Navigation {...props} />)
 
-describe('AdminNavigation', () => {
+describe('Navigation', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<AdminNavigation />)
+      render(<Navigation />)
     }).not.toThrow()
   })
 
@@ -20,7 +20,7 @@ describe('AdminNavigation', () => {
     )
   })
 
-  it('Has link to home', () => {
+  it('Has link to admin teams', () => {
     renderComponent()
     expect(screen.getByText('Teams')).toHaveAttribute(
       'href',
@@ -28,7 +28,7 @@ describe('AdminNavigation', () => {
     )
   })
 
-  it('Has link to home', () => {
+  it('Has link to admin roles', () => {
     renderComponent()
     expect(screen.getByText('Roles')).toHaveAttribute(
       'href',
