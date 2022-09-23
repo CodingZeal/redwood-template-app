@@ -1,5 +1,5 @@
-import { Footer } from '../components/Footer/Footer'
-import { Navigation } from '../components/Navigation'
+import { Footer } from 'src/components/Footer/Footer'
+import { Navigation } from 'src/components/Navigation/Navigation'
 
 const MainLayout = ({ children }) => {
   return (
