@@ -1,8 +1,7 @@
-import { standard } from 'web/src/components/Admin/User/EditUserCell/EditUserCell.mock.ts'
-
 import { render } from '@redwoodjs/testing/web'
 
 import { Loading, Empty, Failure, Success } from './UserCell'
+import { standard } from './UserCell.mock'
 
 describe('UserCell', () => {
   it('renders Loading successfully', () => {
@@ -19,13 +18,13 @@ describe('UserCell', () => {
 
   it('renders Failure successfully', async () => {
     expect(() => {
-      render(<Failure error={new Error('Oh no')} />);
+      render(<Failure error={new Error('Oh no')} />)
     }).not.toThrow()
   })
 
   it('renders Success successfully', async () => {
     expect(() => {
-      render(<Success user={standard().user}/>)
+      render(<Success user={standard().user} />)
     }).not.toThrow()
   })
 })
