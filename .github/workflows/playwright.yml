@@ -13,7 +13,7 @@ jobs:
       postgres:
         image: postgres
         ports:
-          - 5432:5432
+          - 5433:5432
         env:
           POSTGRES_PASSWORD: github
         options: >-
@@ -41,6 +41,6 @@ jobs:
         run: npx playwright install-deps && npx playwright install
 
       - name: Run Playwright
-        run: yarn test:e2e
+        run: npx playwright test -c web/playwright.config.ts
 
 

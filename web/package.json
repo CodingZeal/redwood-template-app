@@ -12,6 +12,9 @@
       "not IE_Mob 11"
     ]
   },
+  "scripts": {
+    "web:e2e:dev": "npx playwright codegen localhost:8910"
+  },
   "dependencies": {
     "@redwoodjs/auth": "^3.0.1",
     "@redwoodjs/forms": "^3.0.1",

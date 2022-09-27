@@ -65,18 +65,27 @@ yarn db:setup
 
 &nbsp;
 
-## 🔍 $~$ Testing
+## 🔍 $~$ Testing (unit)
 
 ```bash
 # unit tests
 yarn test # <api|web>
 yarn test:watch # <api|web>
 
-# end to end
+```
+
+## 🔍 $~$ Testing (end to end)
+
+```bash
+# prepare test db
+yarn db:test:prepare testdb
+
+# end to end (headless)
 yarn test:e2e
 
-# run e2e in headed mode
-yarn test:e2e --headed
+# end to end (interactive mode)
+yarn test:e2e:dev
+
 ```
 
 ---
@@ -86,7 +95,10 @@ yarn test:e2e --headed
 ## 🌱 $~$ Data and Migrations
 
 ```bash
-# Run migrations on a newly changed schema
+# Clear and create a new seeded dev database (destructive)
+yarn db:prepare db
+
+# Run migrations on dev database
 yarn db:migrate:dev
 
 # Reset the mistake
