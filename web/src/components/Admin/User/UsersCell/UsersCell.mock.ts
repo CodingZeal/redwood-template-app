@@ -1,28 +1,52 @@
-export const standard = (/* vars, { ctx, req } */) => ({
-  users: {
-    user1: {
-      id: 42,
+export const standard = () => ({
+  users: [
+    {
+      id: '42',
+      name: 'Harry',
       email: 'harry.potter@wizard.com',
-      active: true,
-      admin: false,
-      pronouns: 'he',
       nickname: 'Scar',
-    },
-    user2: {
-      id: 27,
-      email: 'harry@wizard.com',
       active: true,
-      admin: false,
+      admin: true,
       pronouns: 'he',
-      nickname: 'padfoot',
+      updatedAt: '',
+      createdAt: '',
+      Memberships: {
+        Team: {
+          name: 'team1',
+        },
+      },
     },
-    user3: {
-      id: 7,
-      email: 'potter@wizard.com',
+    {
+      id: '7',
+      name: 'Ron',
+      email: 'ron@wizard.com',
+      nickname: 'Red',
       active: true,
-      admin: false,
+      admin: true,
       pronouns: 'he',
-      nickname: 'Bolt',
+      updatedAt: '',
+      createdAt: '',
+      Memberships: {
+        Team: {
+          name: 'team2',
+        },
+      },
     },
-  },
+    {
+      id: '2',
+      name: 'Hermoine',
+      email: 'hermoine@wizard.com',
+      nickname: 'booksmart',
+      active: true,
+      admin: true,
+      pronouns: 'she',
+      updatedAt: '',
+      createdAt: '',
+      Memberships: {
+        Team: {
+          name: 'team1',
+        },
+      },
+    },
+  ],
 })

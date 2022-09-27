@@ -35,4 +35,13 @@ describe('User', () => {
     render(<User user={mockUser} />)
     expect(screen.getByRole('button')).toBeInTheDocument()
   })
+
+  // it('alerts to confirm removed user', () => {
+  //   render(<User user={mockUser} />)
+
+  //   const spy = jest.spyOn(User, onRemoveClick())
+  //   const isPlaying = User.onRemoveClick(mockUser.id)
+  //   expect(spy).toHaveBeenCalled()
+  //   expect(isPlaying).toBe(true)
+  // })
 })

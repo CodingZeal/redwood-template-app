@@ -1,6 +1,7 @@
 import { render } from '@redwoodjs/testing/web'
 
 import { Loading, Empty, Failure, Success } from './UsersCell'
+import { standard } from './UsersCell.mock'
 
 describe('UsersCell', () => {
   it('renders Loading successfully', () => {
@@ -23,7 +24,7 @@ describe('UsersCell', () => {
 
   it('renders Success successfully', async () => {
     expect(() => {
-      render(<Success users={[]} />)
+      render(<Success users={standard().users} />)
     }).not.toThrow()
   })
 })

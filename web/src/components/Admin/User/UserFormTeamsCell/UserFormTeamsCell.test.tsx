@@ -1,6 +1,7 @@
 import { render } from '@redwoodjs/testing/web'
 
 import { Loading, Failure, Success } from './UserFormTeamsCell'
+import { standard } from './UserFormTeamsCell.mocks'
 
 describe('UserFormTeamsCell', () => {
   it('renders Loading successfully', () => {
@@ -17,7 +18,7 @@ describe('UserFormTeamsCell', () => {
 
   it('renders Success successfully', async () => {
     expect(() => {
-      render(<Success />)
+      render(<Success props={standard().userFormTeams} />)
     }).not.toThrow()
   })
 })
