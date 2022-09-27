@@ -30,6 +30,7 @@
     "lint": "yarn eslint && yarn pretty",
     "eslint": "npx eslint .",
     "pretty": "npx prettier -c .",
+    "pretty:fix": "npx prettier -c -w .",
     "dev": "yarn db:daemon && yarn rw dev",
     "test": "yarn rw test --no-watch",
     "test:watch": "yarn rw test",

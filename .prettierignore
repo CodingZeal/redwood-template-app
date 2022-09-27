@@ -7,3 +7,5 @@ api/types/*
 .yarn
 ./index.js
 .vscode
+web/types/*
+web/playwright-report/*
