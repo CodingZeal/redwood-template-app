@@ -12,5 +12,17 @@ export const standard = () => ({
         },
       ],
     },
+    {
+      id: '10',
+      name: 'team2',
+      active: true,
+      updatedAt: '',
+      createdAt: '',
+      memberships: [
+        {
+          id: 'monkey1',
+        },
+      ],
+    },
   ],
 })

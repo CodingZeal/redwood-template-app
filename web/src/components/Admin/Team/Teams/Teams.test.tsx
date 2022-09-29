@@ -21,46 +21,63 @@ describe('TeamsList', () => {
 
   it('renders a team id', () => {
     render(<TeamsList teams={standard().teams} />)
-    const element = screen.getByText(standard().teams[0].id)
+    const [firstTeam, secondTeam] = standard().teams
+    const [firstElement] = screen.getAllByText(firstTeam.id)
+    const [secondElement] = screen.getAllByText(secondTeam.id)
 
-    expect(element).toBeInTheDocument()
-    expect(element).toContainHTML('365')
+    expect(firstElement).toBeInTheDocument()
+    expect(firstElement).toContainHTML('365')
+    expect(secondElement).toBeInTheDocument()
+    expect(secondElement).toContainHTML('10')
   })
 
   it('renders a team name', () => {
     render(<TeamsList teams={standard().teams} />)
-    const element = screen.getByText(standard().teams[0].name)
+    const [firstTeam, secondTeam] = standard().teams
+    const [firstElement] = screen.getAllByText(firstTeam.name)
+    const [secondElement] = screen.getAllByText(secondTeam.name)
 
-    expect(element).toBeInTheDocument()
-    expect(element).toContainHTML('team1')
+    expect(firstElement).toBeInTheDocument()
+    expect(firstElement).toContainHTML('team1')
+    expect(secondElement).toBeInTheDocument()
+    expect(secondElement).toContainHTML('team2')
   })
 
   it('renders link to team show', () => {
     render(<TeamsList teams={standard().teams} />)
-    const element = screen.getByText('Show')
+    const [firstTeam, secondTeam] = standard().teams
+    const [firstElement, secondElement] = screen.getAllByText('Show')
 
-    expect(element).toBeVisible()
-    expect(element).toHaveAttribute(
+    expect(firstElement).toHaveAttribute(
       'href',
-      routes.adminTeam({ id: standard().teams[0].id })
+      routes.adminTeam({ id: firstTeam.id })
+    )
+    expect(secondElement).toHaveAttribute(
+      'href',
+      routes.adminTeam({ id: secondTeam.id })
     )
   })
 
   it('renders link to team edit', () => {
     render(<TeamsList teams={standard().teams} />)
-    const element = screen.getByText('Edit')
+    const [firstTeam, secondTeam] = standard().teams
+    const [firstElement, secondElement] = screen.getAllByText('Edit')
 
-    expect(element).toBeVisible()
-    expect(element).toHaveAttribute(
+    expect(firstElement).toHaveAttribute(
       'href',
-      routes.adminEditTeam({ id: standard().teams[0].id })
+      routes.adminEditTeam({ id: firstTeam.id })
+    )
+    expect(secondElement).toHaveAttribute(
+      'href',
+      routes.adminEditTeam({ id: secondTeam.id })
     )
   })
 
   it('renders delete button', () => {
     render(<TeamsList teams={standard().teams} />)
-    const element = screen.getByText('Delete')
+    const [firstElement, secondElement] = screen.getAllByText('Delete')
 
-    expect(element).toBeInTheDocument()
+    expect(firstElement).toBeInTheDocument()
+    expect(secondElement).toBeInTheDocument()
   })
 })
