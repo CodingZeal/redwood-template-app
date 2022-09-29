@@ -69,8 +69,8 @@ yarn db:setup
 
 ```bash
 # unit tests
-yarn test # <api|web>
-yarn test:watch # <api|web>
+yarn test # <api|web> - tests in watch mode
+yarn test:nowatch # <api|web> disable watch mode
 
 ```
 
