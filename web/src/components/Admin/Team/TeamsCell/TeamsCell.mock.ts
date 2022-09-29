@@ -6,9 +6,11 @@ export const standard = () => ({
       active: true,
       updatedAt: '',
       createdAt: '',
-      memberships: {
-        id: 'monkey1',
-      },
+      memberships: [
+        {
+          id: 'monkey1',
+        },
+      ],
     },
     {
       id: '2',
@@ -16,9 +18,11 @@ export const standard = () => ({
       active: true,
       updatedAt: '',
       createdAt: '',
-      memberships: {
-        id: 'monkey2',
-      },
+      memberships: [
+        {
+          id: 'monkey2',
+        },
+      ],
     },
   ],
 })

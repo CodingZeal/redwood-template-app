@@ -24,7 +24,7 @@ describe('TeamForm', () => {
 
   it('submits then calls onSave', async () => {
     const mockSave = jest.fn()
-    render(<TeamForm onSave={mockSave} team={mockTeam}/>)
+    render(<TeamForm onSave={mockSave} team={mockTeam} />)
 
     expect(mockSave.mock.calls.length).toBe(0)
 

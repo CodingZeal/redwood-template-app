@@ -1,4 +1,4 @@
-import { render, screen } from '@redwoodjs/testing/web'
+import { render } from '@redwoodjs/testing/web'
 
 import { Loading, Empty, Failure, Success } from './TeamsCell'
 import { standard } from './TeamsCell.mock'
@@ -9,11 +9,11 @@ describe('TeamsCell', () => {
       render(<Loading />)
     }).not.toThrow()
   })
-    it('renders Empty successfully', () => {
-      expect(() => {
-        render(<Empty />)
-      }).not.toThrow()
-    })
+  it('renders Empty successfully', () => {
+    expect(() => {
+      render(<Empty />)
+    }).not.toThrow()
+  })
 
   it('renders Failure successfully', async () => {
     expect(() => {

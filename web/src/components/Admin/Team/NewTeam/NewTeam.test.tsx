@@ -1,4 +1,5 @@
-import { render, screen } from '@redwoodjs/testing/web'
+import { render, screen, waitFor } from '@redwoodjs/testing/web'
+
 import NewTeam from './NewTeam'
 
 describe('NewTeam', () => {
@@ -11,6 +12,22 @@ describe('NewTeam', () => {
   it('renders h2 successfully', async () => {
     render(<NewTeam />)
     const element = screen.getByText('New Team')
+
+    expect(element).toBeInTheDocument()
+    expect(element).toBeVisible()
+  })
+
+  it('renders TeamForm successfully', async () => {
+    render(<NewTeam />)
+    const element = screen.getByText('Name')
+
+    expect(element).toBeInTheDocument()
+    expect(element).toBeVisible()
+  })
+
+  it('renders TeamForm successfully', async () => {
+    render(<NewTeam />)
+    const element = screen.getByRole('button')
 
     expect(element).toBeInTheDocument()
     expect(element).toBeVisible()
