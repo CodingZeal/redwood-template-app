@@ -1,3 +1,5 @@
+/* template[api:directive:test] */
+
 import { mockRedwoodDirective, getDirectiveName } from '@redwoodjs/testing/api'
 
 import requireAuth from './requireAuth'
@@ -17,7 +19,7 @@ describe('requireAuth directive', () => {
           id: 'uuidfoobar',
         },
       },
-    })
+    } as unknown)
 
     expect(mockExecution).not.toThrowError()
   })

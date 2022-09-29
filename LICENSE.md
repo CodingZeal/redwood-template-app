@@ -1,3 +1,4 @@
+<!-- template![docs] -->
 # MIT License
 
 ## Copyright (YEAR) (COPYRIGHT HOLDER)

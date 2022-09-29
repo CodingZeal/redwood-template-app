@@ -1,3 +1,4 @@
+/* template[api] */
 import { createLogger } from '@redwoodjs/api/logger'
 
 /**

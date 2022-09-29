@@ -1,3 +1,4 @@
+/* template[api:db:directive] */
 import gql from 'graphql-tag'
 
 import { createValidatorDirective } from '@redwoodjs/graphql-server'

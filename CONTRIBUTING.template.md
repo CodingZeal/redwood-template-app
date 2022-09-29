@@ -1,3 +1,4 @@
+<!-- template[docs] -->
 # Introduction
 
 ## Write something nice here

@@ -1,3 +1,4 @@
+/* template[web:component:test] */
 import { routes } from '@redwoodjs/router'
 import {
   render,

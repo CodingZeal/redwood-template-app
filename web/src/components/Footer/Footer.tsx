@@ -1,3 +1,4 @@
+/* template[web:component] */
 import { getYear } from 'date-fns'
 
 const getCurrentYear = (): string => {

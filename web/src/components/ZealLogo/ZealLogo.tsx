@@ -1,3 +1,4 @@
+/* template[web:require(web/src/components/ZealLogo/zeal-logo.png)] */
 import ZealImage from './zeal-logo.png'
 
 const ZealLogo = () => {

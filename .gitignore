@@ -1,3 +1,4 @@
+# template[config:git]
 .idea
 .DS_Store
 .env

@@ -1,3 +1,4 @@
+<!-- template![default] -->
 # 🌲 $~$ redwood-template-app
 
 *This is a template application using RedwoodJS. It establishes common patterns for creating an app quickly.*

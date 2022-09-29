@@ -1,3 +1,4 @@
+/* template[web:component] */
 import { useAuth } from '@redwoodjs/auth'
 import { NavLink, routes } from '@redwoodjs/router'
 
