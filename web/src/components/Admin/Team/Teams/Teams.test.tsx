@@ -1,6 +1,6 @@
 import { routes } from '@redwoodjs/router'
-
 import { render, screen } from '@redwoodjs/testing/web'
+
 import { standard } from '../TeamsCell/TeamsCell.mock'
 
 import TeamsList from './Teams'
