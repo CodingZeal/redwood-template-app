@@ -2,15 +2,9 @@ import userEvent from '@testing-library/user-event'
 
 import { render, screen, waitFor } from '@redwoodjs/testing/web'
 
-import UserForm from './UserForm'
+import { standard } from '../EditUserCell/EditUserCell.mock'
 
-const mockUser = {
-  name: 'Ron Weasley',
-  email: 'test@test.com',
-  id: 3,
-  active: true,
-  admin: true,
-}
+import UserForm from './UserForm'
 
 describe('UserForm', () => {
   it('renders successfully', () => {
@@ -21,7 +15,7 @@ describe('UserForm', () => {
 
   it('submits then calls onSave', async () => {
     const mockSave = jest.fn()
-    render(<UserForm onSave={mockSave} user={mockUser} />)
+    render(<UserForm onSave={mockSave} user={standard().user} />)
 
     expect(mockSave.mock.calls.length).toBe(0)
 

@@ -3,6 +3,12 @@ import { render } from '@redwoodjs/testing/web'
 import { Loading, Failure, Success } from './UserFormTeamsCell'
 import { standard } from './UserFormTeamsCell.mocks'
 
+jest.mock('../UserFormTeams/UserFormTeams', () => ({
+  UserFormTeams: () => {
+    return 'user form teams mock'
+  },
+}))
+
 describe('UserFormTeamsCell', () => {
   it('renders Loading successfully', () => {
     expect(() => {
