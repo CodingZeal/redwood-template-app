@@ -1,19 +1,9 @@
 import userEvent from '@testing-library/user-event'
 
 import { render, screen, waitFor } from '@redwoodjs/testing/web'
+import { standard } from '../EditTeamCell/EditTeamCell.mock'
 
 import TeamForm from './TeamForm'
-
-const mockTeam = {
-  id: '1',
-  name: 'team1',
-  active: true,
-  updatedAt: '',
-  createdAt: '',
-  Memberships: {
-    id: 'monkey1',
-  },
-}
 
 describe('TeamForm', () => {
   it('renders successfully', () => {
@@ -24,7 +14,7 @@ describe('TeamForm', () => {
 
   it('submits then calls onSave', async () => {
     const mockSave = jest.fn()
-    render(<TeamForm onSave={mockSave} team={mockTeam} />)
+    render(<TeamForm onSave={mockSave} team={standard().team} />)
 
     expect(mockSave.mock.calls.length).toBe(0)
 

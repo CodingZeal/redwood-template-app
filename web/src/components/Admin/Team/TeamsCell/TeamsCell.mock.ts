@@ -1,7 +1,7 @@
 export const standard = () => ({
   teams: [
     {
-      id: '1',
+      id: '365',
       name: 'team1',
       active: true,
       updatedAt: '',
@@ -9,18 +9,6 @@ export const standard = () => ({
       memberships: [
         {
           id: 'monkey1',
-        },
-      ],
-    },
-    {
-      id: '2',
-      name: 'team2',
-      active: true,
-      updatedAt: '',
-      createdAt: '',
-      memberships: [
-        {
-          id: 'monkey2',
         },
       ],
     },
