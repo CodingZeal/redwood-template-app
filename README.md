@@ -76,6 +76,7 @@ yarn test:watch # <api|web>
 
 ## 🔍 $~$ Testing (end to end)
 
+
 ```bash
 # prepare test db
 yarn db:test:prepare testdb
@@ -87,6 +88,9 @@ yarn test:e2e
 yarn test:e2e:dev
 
 ```
+
+More info about playwright can be found here:
+[code gen docs](https://playwright.dev/docs/codegen-introhttps://playwright.dev/docs/codegen-intro)
 
 ---
 

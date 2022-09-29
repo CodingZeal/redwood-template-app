@@ -2,11 +2,7 @@
   "private": true,
   "license": "MIT",
   "workspaces": {
-    "packages": [
-      "api",
-      "web",
-      "packages/*"
-    ]
+    "packages": ["api", "web", "packages/*"]
   },
   "devDependencies": {
     "concurrently": "^7.4.0",
@@ -32,8 +28,8 @@
     "pretty": "npx prettier -c .",
     "pretty:fix": "npx prettier -c -w .",
     "dev": "yarn db:daemon && yarn rw dev",
-    "test": "yarn rw test --no-watch",
-    "test:watch": "yarn rw test",
+    "test": "yarn rw test",
+    "test:nowatch": "yarn rw test --no-watch",
     "test:e2e": "yarn db:test:prepare && npx playwright test -c web/playwright.config.ts",
     "test:e2e:dev": "scripts/e2e-dev.sh",
     "db:test": "yarn db:test:down && docker compose up testdb",
