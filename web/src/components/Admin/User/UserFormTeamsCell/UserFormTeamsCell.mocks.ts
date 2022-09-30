@@ -15,6 +15,10 @@ export const standard = () => ({
         id: '3',
         name: 'foo_role',
       },
+      {
+        id: '3',
+        name: 'admin',
+      },
     ],
   },
 })

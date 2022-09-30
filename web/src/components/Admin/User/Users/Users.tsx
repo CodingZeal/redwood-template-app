@@ -31,8 +31,8 @@ const timeTag = (datetime) => {
   )
 }
 
-const checkboxInputTag = (checked) => {
-  return <input type="checkbox" checked={checked} disabled />
+const checkboxInputTag = (label, checked) => {
+  return <input aria-label={label} type="checkbox" checked={checked} disabled />
 }
 
 const UsersList = ({ users }) => {
@@ -83,8 +83,8 @@ const UsersList = ({ users }) => {
               <td>{truncate(user.name)}</td>
               <td>{truncate(user.nickname)}</td>
               <td>{truncate(user.pronouns)}</td>
-              <td>{checkboxInputTag(user.active)}</td>
-              <td>{checkboxInputTag(user.admin)}</td>
+              <td>{checkboxInputTag('active', user.active)}</td>
+              <td>{checkboxInputTag('admin', user.admin)}</td>
               <td>{timeTag(user.updatedAt)}</td>
               <td>{timeTag(user.createdAt)}</td>
               <td>

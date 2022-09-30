@@ -20,8 +20,8 @@ const timeTag = (datetime) => {
   )
 }
 
-const checkboxInputTag = (checked) => {
-  return <input type="checkbox" checked={checked} disabled />
+const checkboxInputTag = (label, checked) => {
+  return <input aria-label={label} type="checkbox" checked={checked} disabled />
 }
 
 const User = ({ user }) => {
@@ -79,11 +79,11 @@ const User = ({ user }) => {
             </tr>
             <tr>
               <th>Active</th>
-              <td>{checkboxInputTag(user.active)}</td>
+              <td>{checkboxInputTag('active', user.active)}</td>
             </tr>
             <tr>
               <th>Admin</th>
-              <td>{checkboxInputTag(user.admin)}</td>
+              <td>{checkboxInputTag('admin', user.admin)}</td>
             </tr>
             <tr>
               <th>Teams</th>

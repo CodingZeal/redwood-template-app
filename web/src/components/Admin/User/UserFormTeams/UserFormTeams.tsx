@@ -14,6 +14,7 @@ const UserFormTeams = ({ roleIds, roleValue, roles, teamIds, teams }) => {
       <HiddenField name="teamIds" />
       <div className="flex">
         <select
+          aria-label="Select a Team to Add"
           name="addTeam"
           onChange={(e) => dispatch({ type: 'ADD_TEAM', id: e.target.value })}
         >
@@ -30,6 +31,7 @@ const UserFormTeams = ({ roleIds, roleValue, roles, teamIds, teams }) => {
           }`}
           onClick={addTeam}
           title={'Add Team'}
+          type="button"
           disabled={!state.teamToAdd}
         >
           Add Team

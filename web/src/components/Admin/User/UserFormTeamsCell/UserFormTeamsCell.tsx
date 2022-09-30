@@ -21,4 +21,18 @@ export const Failure = ({ error }: CellFailureProps) => (
   <div className="rw-cell-error">{error.message}</div>
 )
 
-export const Success = (props: CellSuccessProps) => <UserFormTeams {...props} />
+export const Success = ({
+  roleIds,
+  roleValue,
+  roles,
+  teamIds,
+  teams,
+}: CellSuccessProps) => (
+  <UserFormTeams
+    roleIds={roleIds}
+    roleValue={roleValue}
+    roles={roles}
+    teamIds={teamIds}
+    teams={teams}
+  />
+)
