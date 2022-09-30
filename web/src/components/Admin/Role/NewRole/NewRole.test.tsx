@@ -14,4 +14,12 @@ describe('NewRole', () => {
 
     expect(screen.getByText('New Role')).toBeInTheDocument()
   })
+
+  it('renders RoleForm successfully', () => {
+    render(<NewRole />)
+    const element = screen.getByText('Name')
+
+    expect(element).toBeInTheDocument()
+    expect(element).toBeVisible()
+  })
 })

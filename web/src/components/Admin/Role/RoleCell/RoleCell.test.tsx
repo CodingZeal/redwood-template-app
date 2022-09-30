@@ -16,13 +16,13 @@ describe('RoleCell', () => {
     }).not.toThrow()
   })
 
-  it('renders Failure successfully', async () => {
+  it('renders Failure successfully', () => {
     expect(() => {
       render(<Failure error={new Error('Oh no')} />)
     }).not.toThrow()
   })
 
-  it('renders Success successfully', async () => {
+  it('renders Success successfully', () => {
     expect(() => {
       render(<Success role={standard().role} />)
     }).not.toThrow()
