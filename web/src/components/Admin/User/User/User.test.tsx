@@ -1,7 +1,7 @@
 import { routes } from '@redwoodjs/router'
 import { render, screen } from '@redwoodjs/testing/web'
 
-import { standard } from '../Usercell/UserCell.mock'
+import { standard } from '../UserCell/UserCell.mock'
 
 import User from './User'
 
