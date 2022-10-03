@@ -7,15 +7,6 @@ import { standard } from '../UserFormTeamsCell/UserFormTeamsCell.mocks'
 
 import { UserFormTeams } from './UserFormTeams'
 
-jest.mock('./useTeamState', () => ({
-  useTeamState: () => ({
-    addTeam: () => {},
-    dispatch: () => {},
-    removeTeam: () => {},
-    state: {},
-  }),
-}))
-
 describe('UserFormTeams', () => {
   it('renders successfully', () => {
     expect(() => {
@@ -33,33 +24,42 @@ describe('UserFormTeams', () => {
     }).not.toThrow()
   })
 
-  // it('renders a team name', () => {
-  //   render(
-  //     <Form>
-  //       <UserFormTeams
-  //         roleIds={[]}
-  //         roleValue={[]}
-  //         roles={standard().userFormTeams.roles}
-  //         teamIds={[]}
-  //         teams={standard().userFormTeams.teams}
-  //       />
-  //     </Form>
-  //   )
-  //   const [firstTeam] = standard().userFormTeams.teams
-  //   // const [firstElement] = screen.getAllByText(firstTeam.name)
-  //   // const [secondElement] = screen.getAllByText(secondTeam.name)
-  //   userEvent.selectOptions(
-  //     screen.getByRole('option', { name: `${firstTeam.name}` }),
-  //     ['team1', 'team2']
-  //   )
-  //   // expect(screen.getByRole('select', { name: 'team1' }).selected).toBe(true)
-  //   expect(
-  //     (screen.getByText('team1') as HTMLOptionElement).selected
-  //   ).toBeTruthy()
-  //   // expect(firstElement).toBeInTheDocument()
-  //   // expect(firstElement).toContainHTML('team1')
+  it('renders team name successfully', () => {
+    const { getByTestId } = render(
+      <Form>
+        <UserFormTeams
+          roleIds={[]}
+          roleValue={[]}
+          roles={standard().userFormTeams.roles}
+          teamIds={[]}
+          teams={standard().userFormTeams.teams}
+        />
+      </Form>
+    )
+    const [firstTeam, secondTeam] = standard().userFormTeams.teams
+    const firstElement = firstTeam.name
+    const secondElement = secondTeam.name
+    userEvent.selectOptions(getByTestId('select team'), `${firstElement}`)
+    userEvent.selectOptions(getByTestId('select team'), `${secondElement}`)
 
-  //   // expect(secondElement).toBeInTheDocument()
-  //   // expect(firstElement).toContainHTML('team2')
-  // })
+    expect(firstElement).toBeTruthy()
+    expect(secondElement).toBeTruthy()
+  })
+
+  it('renders Add Team button', () => {
+    render(
+      <Form>
+        <UserFormTeams
+          roleIds={[]}
+          roleValue={[]}
+          roles={standard().userFormTeams.roles}
+          teamIds={[]}
+          teams={standard().userFormTeams.teams}
+        />
+      </Form>
+    )
+    const element = screen.getByRole('button', { name: 'Add Team' })
+
+    expect(element).toBeInTheDocument()
+  })
 })

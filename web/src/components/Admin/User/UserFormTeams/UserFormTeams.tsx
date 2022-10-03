@@ -17,6 +17,7 @@ const UserFormTeams = ({ roleIds, roleValue, roles, teamIds, teams }) => {
           aria-label="Select a Team to Add"
           name="addTeam"
           onChange={(e) => dispatch({ type: 'ADD_TEAM', id: e.target.value })}
+          data-testid="select team"
         >
           <option>Select a Team to Add</option>
           {(state.unselectedTeams || []).map((team) => (
