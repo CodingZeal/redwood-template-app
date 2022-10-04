@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.26.1",
+    "@testing-library/user-event": "^14.4.3",
     "autoprefixer": "^10.4.12",
     "postcss": "^8.4.17",
     "postcss-loader": "^7.0.1",
