@@ -1,4 +1,5 @@
 {
+  "_template": "template[tags(scripts)]",
   "private": true,
   "license": "MIT",
   "workspaces": {

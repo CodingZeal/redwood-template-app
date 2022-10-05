@@ -1,3 +1,5 @@
+// template[tags(redwood,auth)]
+
 import { mockRedwoodDirective, getDirectiveName } from '@redwoodjs/testing/api'
 
 import requireAuth from './requireAuth'

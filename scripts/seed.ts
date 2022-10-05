@@ -1,3 +1,5 @@
+// template[tags(prisma,db,postgres,scripts)]
+
 import { Prisma } from '@prisma/client'
 import { db } from 'api/src/lib/db'
 import Chance from 'chance'
