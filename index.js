@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* templates[tags(heroku)] */
+/* template[tags(heroku)] */
 const fs = require('fs')
 const pm2 = require('pm2')
 
