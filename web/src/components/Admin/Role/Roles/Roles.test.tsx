@@ -27,9 +27,9 @@ describe('RolesList', () => {
     const [secondElement] = screen.getAllByText(secondTeam.id)
 
     expect(firstElement).toBeInTheDocument()
-    expect(firstElement).toContainHTML('42')
+    expect(firstElement).toBeVisible()
     expect(secondElement).toBeInTheDocument()
-    expect(secondElement).toContainHTML('22')
+    expect(secondElement).toBeVisible()
   })
 
   it('renders name successfully', () => {
@@ -39,9 +39,9 @@ describe('RolesList', () => {
     const [secondElement] = screen.getAllByText(secondTeam.name)
 
     expect(firstElement).toBeInTheDocument()
-    expect(firstElement).toContainHTML('admin')
+    expect(firstElement).toBeVisible()
     expect(secondElement).toBeInTheDocument()
-    expect(secondElement).toContainHTML('super admin')
+    expect(secondElement).toBeVisible()
   })
 
   it('Has link to edit', () => {

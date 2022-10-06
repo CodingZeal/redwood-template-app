@@ -33,7 +33,7 @@ describe('Role', () => {
     const element = screen.getByText(standard().role.id)
 
     expect(element).toBeInTheDocument()
-    expect(element).toContainHTML('42')
+    expect(element).toBeVisible()
   })
 
   it('renders name successfully', () => {
@@ -41,7 +41,7 @@ describe('Role', () => {
     const element = screen.getByText(standard().role.name)
 
     expect(element).toBeInTheDocument()
-    expect(element).toContainHTML('admin')
+    expect(element).toBeVisible()
   })
 
   it('Has link to edit', () => {
