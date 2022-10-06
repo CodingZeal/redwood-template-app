@@ -35,7 +35,7 @@ const checkboxInputTag = (label, checked) => {
   return <input aria-label={label} type="checkbox" checked={checked} disabled />
 }
 
-const UsersList = ({ users }) => {
+const Users = ({ users }) => {
   const [archiveUser] = useMutation(ARCHIVE_USER_MUTATION, {
     onCompleted: () => {
       toast.success('User updated')
@@ -128,4 +128,4 @@ const UsersList = ({ users }) => {
   )
 }
 
-export default UsersList
+export { Users }

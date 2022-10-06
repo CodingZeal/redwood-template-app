@@ -7,7 +7,11 @@ import { standard } from '../UserFormTeamsCell/UserFormTeamsCell.mocks'
 
 import { UserFormTeams } from './UserFormTeams'
 
-describe('UserFormTeams', () => {
+const [firstTeam] = standard().userFormTeams.teams
+const [firstRole, secondRole] = standard().userFormTeams.roles
+const mockFunction = jest.fn()
+
+describe('UserFormTeams when a value is not selected.', () => {
   it('renders successfully', () => {
     expect(() => {
       render(
@@ -46,20 +50,62 @@ describe('UserFormTeams', () => {
     expect(secondElement).toBeTruthy()
   })
 
-  it('renders Add Team button', () => {
-    render(
-      <Form>
-        <UserFormTeams
-          roleIds={[]}
-          roleValue={[]}
-          roles={standard().userFormTeams.roles}
-          teamIds={[]}
-          teams={standard().userFormTeams.teams}
-        />
-      </Form>
-    )
-    const element = screen.getByRole('button', { name: 'Add Team' })
+  describe('UserFormTeams when a value is selected.', () => {
+    it('renders successfully', () => {
+      expect(() => {
+        render(
+          <Form>
+            <UserFormTeams
+              roleIds={[firstRole.id]}
+              roles={standard().userFormTeams.roles}
+              teamIds={[firstTeam.id]}
+              teams={standard().userFormTeams.teams}
+              roleValue={mockFunction}
+            />
+          </Form>
+        )
+      }).not.toThrow()
+    })
 
-    expect(element).toBeInTheDocument()
+    it('renders Add Team button', () => {
+      render(
+        <Form>
+          <UserFormTeams
+            roleIds={[firstRole.id]}
+            roles={standard().userFormTeams.roles}
+            teamIds={[firstTeam.id]}
+            teams={standard().userFormTeams.teams}
+            roleValue={mockFunction}
+          />
+        </Form>
+      )
+      const element = screen.getByRole('button', { name: 'Add Team' })
+
+      expect(element).toBeInTheDocument()
+    })
+
+    it('renders roles within a team', () => {
+      render(
+        <Form>
+          <UserFormTeams
+            roleIds={[firstRole.id]}
+            roles={standard().userFormTeams.roles}
+            teamIds={[firstTeam.id]}
+            teams={standard().userFormTeams.teams}
+            roleValue={mockFunction}
+          />
+        </Form>
+      )
+      const team = screen.getByTestId('teamName')
+      const firstelement = screen.getByLabelText(`${firstRole.name}`)
+      const secondElement = screen.getByLabelText(`${secondRole.name}`)
+
+      const remove = screen.getByTestId('remove-team')
+
+      expect(team).toBeInTheDocument()
+      expect(firstelement).toBeInTheDocument()
+      expect(secondElement).toBeInTheDocument()
+      expect(remove).toBeInTheDocument()
+    })
   })
 })

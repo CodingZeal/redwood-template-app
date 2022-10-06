@@ -49,7 +49,7 @@ const UserFormTeams = ({ roleIds, roleValue, roles, teamIds, teams }) => {
         <tbody>
           {(state.selectedTeams || []).map((team) => (
             <tr key={team.id}>
-              <td>{team.name}</td>
+              <td data-testid="teamName">{team.name}</td>
               <td>
                 {(roles || []).map((role) => {
                   const name = roleValue(team.id, role.id)
@@ -72,6 +72,7 @@ const UserFormTeams = ({ roleIds, roleValue, roles, teamIds, teams }) => {
                   onClick={removeTeam}
                   title={'Remove Team ' + team.name}
                   value={team.id}
+                  data-testid="remove-team"
                 >
                   Remove Team
                 </button>

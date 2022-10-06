@@ -23,7 +23,7 @@ describe('User', () => {
     const element = screen.getByText(standard().user.id)
 
     expect(element).toBeInTheDocument()
-    expect(element).toContainHTML('42')
+    expect(element).toBeVisible()
   })
 
   it('renders email successfully', () => {
@@ -31,7 +31,7 @@ describe('User', () => {
     const element = screen.getByText(standard().user.email)
 
     expect(element).toBeInTheDocument()
-    expect(element).toContainHTML('harry.potter@wizard.com')
+    expect(element).toBeVisible()
   })
 
   it('renders name successfully', () => {
@@ -39,7 +39,7 @@ describe('User', () => {
     const element = screen.getByText(standard().user.name)
 
     expect(element).toBeInTheDocument()
-    expect(element).toContainHTML('Harry')
+    expect(element).toBeVisible()
   })
 
   it('shows edit user', () => {

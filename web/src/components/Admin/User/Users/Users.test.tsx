@@ -3,24 +3,24 @@ import { render, screen } from '@redwoodjs/testing/web'
 
 import { standard } from '../UsersCell/UsersCell.mock'
 
-import UsersList from './Users'
+import { Users } from './Users'
 
-describe('UsersList', () => {
+describe('Users', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<UsersList users={standard().users} />)
+      render(<Users users={standard().users} />)
     }).not.toThrow()
   })
 
   it('renders a table', () => {
-    render(<UsersList users={standard().users} />)
+    render(<Users users={standard().users} />)
     const element = screen.getByRole('table')
 
     expect(element).toBeInTheDocument()
   })
 
   it('shows user', () => {
-    render(<UsersList users={standard().users} />)
+    render(<Users users={standard().users} />)
     const [firstUser, secondUser] = standard().users
     const [firstElement, secondElement] = screen.getAllByText('Show')
 
@@ -35,7 +35,7 @@ describe('UsersList', () => {
   })
 
   it('shows edit', () => {
-    render(<UsersList users={standard().users} />)
+    render(<Users users={standard().users} />)
     const [firstUser, secondUser] = standard().users
     const [firstElement, secondElement] = screen.getAllByText('Edit')
 
@@ -50,14 +50,14 @@ describe('UsersList', () => {
   })
 
   it('shows archive user button', () => {
-    render(<UsersList users={standard().users} />)
+    render(<Users users={standard().users} />)
     const element = screen.getByRole('button', { name: 'Archive' })
 
     expect(element).toBeInTheDocument()
   })
 
   it('shows reactivate user button', () => {
-    render(<UsersList users={standard().users} />)
+    render(<Users users={standard().users} />)
 
     const element = screen.getByRole('button', { name: 'Reactivate' })
     expect(element).toBeInTheDocument()
