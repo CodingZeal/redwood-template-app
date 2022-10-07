@@ -3,7 +3,7 @@ import type { FindUsers } from 'types/graphql'
 import { Link, routes } from '@redwoodjs/router'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
-import Users from 'src/components/Admin/User/Users'
+import { Users } from '../Users'
 
 export const QUERY = gql`
   query FindUsers {
