@@ -36,7 +36,7 @@ describe('profile', () => {
     expect(
       updatePassword({
         input: {
-          oldPassword: defaultProfilePassword,
+          existingPassword: defaultProfilePassword,
           newPassword,
           confirmPassword: newPassword,
         },
@@ -52,7 +52,7 @@ describe('profile', () => {
       expect(
         updatePassword({
           input: {
-            oldPassword: defaultProfilePassword,
+            existingPassword: defaultProfilePassword,
             newPassword: 'NEW',
             confirmPassword: 'not matching',
           },
@@ -69,7 +69,7 @@ describe('profile', () => {
       expect(
         updatePassword({
           input: {
-            oldPassword: 'INVALID',
+            existingPassword: 'INVALID',
             newPassword: 'NEW',
             confirmPassword: 'NEW',
           },
@@ -83,13 +83,13 @@ describe('profile', () => {
     async (scenario: StandardScenario) => {
       mockCurrentUser(defaultCurrentUser(scenario.user.profile))
       const input = {
-        oldPassword: 'x',
+        existingPassword: 'x',
         newPassword: 'y',
         confirmPassword: 'y',
       }
 
       expect(
-        updatePassword({ input: { ...input, oldPassword: '' } })
+        updatePassword({ input: { ...input, existingPassword: '' } })
       ).rejects.toThrowError('must be present')
 
       expect(

@@ -23,9 +23,9 @@ export const updateProfile: MutationResolvers['updateProfile'] = async ({
 export const updatePassword: MutationResolvers['updatePassword'] = async ({
   input,
 }) => {
-  const { oldPassword, newPassword, confirmPassword } = input
+  const { existingPassword, newPassword, confirmPassword } = input
 
-  validate(oldPassword, 'Old Password', {
+  validate(existingPassword, 'Existing Password', {
     presence: { allowEmptyString: false },
   })
   validate(newPassword, 'New Password', {
@@ -44,12 +44,11 @@ export const updatePassword: MutationResolvers['updatePassword'] = async ({
   const user = await db.user.findFirstOrThrow({
     where: { id: context.currentUser.id },
   })
-
-  const oldPasswordHashed = CryptoJS.PBKDF2(oldPassword, user.salt, {
+  const existingPasswordHashed = CryptoJS.PBKDF2(existingPassword, user.salt, {
     keySize: 256 / 32,
   }).toString()
 
-  if (oldPasswordHashed != user.hashedPassword) {
+  if (existingPasswordHashed != user.hashedPassword) {
     throw new ValidationError('Your existing password is not correct')
   }
 
@@ -67,7 +66,7 @@ export const updatePassword: MutationResolvers['updatePassword'] = async ({
   })
 
   return {
-    oldPassword: null,
+    existingPassword: null,
     newPassword: null,
     confirmPassword: null,
   }

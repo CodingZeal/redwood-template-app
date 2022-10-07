@@ -8,7 +8,7 @@ export const schema = gql`
   }
 
   type ProfilePassword {
-    oldPassword: String
+    existingPassword: String
     newPassword: String
     confirmPassword: String
   }
@@ -25,7 +25,7 @@ export const schema = gql`
   }
 
   input UpdatePasswordInput {
-    oldPassword: String!
+    existingPassword: String!
     newPassword: String!
     confirmPassword: String!
   }

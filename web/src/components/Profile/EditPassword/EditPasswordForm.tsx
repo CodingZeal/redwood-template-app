@@ -27,25 +27,25 @@ const EditPasswordForm = ({ error, loading, onSave }) => {
         />
 
         <Label
-          name="oldPassword"
+          name="existingPassword"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
-          Old Password
+          Your Existing Password
         </Label>
         <PasswordField
-          name="oldPassword"
+          name="existingPassword"
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{
             required: {
               value: true,
-              message: 'Old Password is required',
+              message: 'Existing Password is required',
             },
           }}
           autoComplete="current-password"
         />
-        <FieldError name="oldPassword" className="rw-field-error" />
+        <FieldError name="existingPassword" className="rw-field-error" />
 
         <Label
           name="newPassword"
