@@ -1,14 +1,28 @@
 import type { User as UserType } from '@prisma/client'
 import * as CryptoJS from 'crypto-js'
+import { isEmpty, isNil, reject } from 'ramda'
 import type {
-  QueryResolvers,
   MutationResolvers,
+  QueryResolvers,
+  QueryusersArgs,
   UserResolvers,
 } from 'types/graphql'
 
 import { email as verificationEmail } from 'src/emails/user-verification'
 import { db } from 'src/lib/db'
 import { sendEmail } from 'src/lib/mailer'
+
+const removeUndefined = reject(isNil)
+
+const buildWhereClause = (where): { where: QueryusersArgs } => {
+  if (isNil(where)) return
+
+  const filteredWhere = removeUndefined(where)
+
+  if (isEmpty(filteredWhere)) return
+
+  return { where }
+}
 
 const parseRoles = (roleIds) =>
   roleIds?.reduce((acc, id) => {
@@ -17,8 +31,8 @@ const parseRoles = (roleIds) =>
     return acc
   }, {})
 
-export const users: QueryResolvers['users'] = () => {
-  return db.user.findMany()
+export const users: QueryResolvers['users'] = (args: { active: boolean }) => {
+  return db.user.findMany(buildWhereClause(args))
 }
 
 export const user: QueryResolvers['user'] = ({ id }) => {

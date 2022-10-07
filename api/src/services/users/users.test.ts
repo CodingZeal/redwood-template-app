@@ -1,11 +1,11 @@
 import { db } from 'src/lib/db'
 
 import {
-  users,
-  user,
   createUser,
-  updateUser,
   removeUser,
+  updateUser,
+  user,
+  users,
   verifyReset,
   verifyUser,
 } from './users'
@@ -24,6 +24,12 @@ describe('users', () => {
     const result = await users()
 
     expect(result.length).toEqual(Object.keys(scenario.user).length)
+  })
+
+  scenario('only returns active users', async () => {
+    const result = await users({ active: true })
+
+    expect(result.length).toEqual(1)
   })
 
   scenario('returns a single user', async (scenario: StandardScenario) => {

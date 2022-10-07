@@ -31,11 +31,11 @@ const timeTag = (datetime) => {
   )
 }
 
-const checkboxInputTag = (label, checked) => {
+const checkboxInputTag = (label, checked = true) => {
   return <input aria-label={label} type="checkbox" checked={checked} disabled />
 }
 
-const Users = ({ users }) => {
+const Users = ({ users, showInactive, toggleShowInactive }) => {
   const [archiveUser] = useMutation(ARCHIVE_USER_MUTATION, {
     onCompleted: () => {
       toast.success('User updated')
@@ -68,7 +68,17 @@ const Users = ({ users }) => {
             <th scope="col">Name</th>
             <th scope="col">Nickname</th>
             <th scope="col">Pronouns</th>
-            <th scope="col">Active</th>
+            <th scope="col">
+              Active
+              <p>
+                Show inactive:
+                <input
+                  type="checkbox"
+                  checked={showInactive}
+                  onChange={toggleShowInactive}
+                />
+              </p>
+            </th>
             <th scope="col">Admin</th>
             <th scope="col">Verified</th>
             <th scope="col">Updated at</th>
