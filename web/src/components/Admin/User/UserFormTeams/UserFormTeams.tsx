@@ -17,7 +17,6 @@ const UserFormTeams = ({ roleIds, roleValue, roles, teamIds, teams }) => {
           aria-label="Select a Team to Add"
           name="addTeam"
           onChange={(e) => dispatch({ type: 'ADD_TEAM', id: e.target.value })}
-          data-testid="select team"
         >
           <option>Select a Team to Add</option>
           {(state.unselectedTeams || []).map((team) => (
@@ -49,13 +48,14 @@ const UserFormTeams = ({ roleIds, roleValue, roles, teamIds, teams }) => {
         <tbody>
           {(state.selectedTeams || []).map((team) => (
             <tr key={team.id}>
-              <td data-testid="teamName">{team.name}</td>
+              <td>{team.name}</td>
               <td>
                 {(roles || []).map((role) => {
                   const name = roleValue(team.id, role.id)
                   return (
                     <label key={role.id} htmlFor={name} className="rw-label">
                       <CheckboxField
+                        id={name}
                         name="roleIds"
                         className="rw-input"
                         defaultChecked={roleIds.includes(name)}
@@ -72,7 +72,6 @@ const UserFormTeams = ({ roleIds, roleValue, roles, teamIds, teams }) => {
                   onClick={removeTeam}
                   title={'Remove Team ' + team.name}
                   value={team.id}
-                  data-testid="remove-team"
                 >
                   Remove Team
                 </button>
