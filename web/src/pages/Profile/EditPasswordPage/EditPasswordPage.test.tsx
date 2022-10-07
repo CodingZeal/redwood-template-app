@@ -2,11 +2,17 @@ import { render } from '@redwoodjs/testing/web'
 
 import EditPasswordPage from './EditPasswordPage'
 
-//   Improve this test with help from the Redwood Testing Doc:
-//   https://redwoodjs.com/docs/testing#testing-pages-layouts
-
 describe('EditPasswordPage', () => {
   it('renders successfully', () => {
+    mockCurrentUser({
+      id: '1',
+      email: 'mock@example.com',
+      name: '',
+      nickname: '',
+      pronouns: '',
+      roles: [],
+    })
+
     expect(() => {
       render(<EditPasswordPage />)
     }).not.toThrow()

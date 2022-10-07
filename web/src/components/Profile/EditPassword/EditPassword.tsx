@@ -36,7 +36,7 @@ const EditPassword = ({ profile }) => {
     <>
       <MetaTags
         title={`${
-          profile.nickname || profile.name || profile.email
+          profile?.nickname || profile?.name || profile?.email
         } | Edit Password`}
       />
       <div className="rw-segment">
