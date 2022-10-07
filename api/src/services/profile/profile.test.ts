@@ -90,15 +90,15 @@ describe('profile', () => {
 
       expect(
         updatePassword({ input: { ...input, oldPassword: '' } })
-      ).rejects.toThrowError('required')
+      ).rejects.toThrowError('must be present')
 
       expect(
         updatePassword({ input: { ...input, newPassword: '' } })
-      ).rejects.toThrowError('required')
+      ).rejects.toThrowError('must be present')
 
       expect(
         updatePassword({ input: { ...input, confirmPassword: '' } })
-      ).rejects.toThrowError('required')
+      ).rejects.toThrowError('must be present')
     }
   )
 })

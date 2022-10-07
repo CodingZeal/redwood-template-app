@@ -1,6 +1,7 @@
 import * as CryptoJS from 'crypto-js'
 import type { QueryResolvers, MutationResolvers } from 'types/graphql'
 
+import { validate } from '@redwoodjs/api'
 import { ValidationError } from '@redwoodjs/graphql-server'
 
 import { db } from 'src/lib/db'
@@ -22,14 +23,27 @@ export const updateProfile: MutationResolvers['updateProfile'] = async ({
 export const updatePassword: MutationResolvers['updatePassword'] = async ({
   input,
 }) => {
+  const { oldPassword, newPassword, confirmPassword } = input
+
+  validate(oldPassword, 'Old Password', {
+    presence: { allowEmptyString: false },
+  })
+  validate(newPassword, 'New Password', {
+    presence: { allowEmptyString: false },
+  })
+  validate(confirmPassword, 'Confirm Password', {
+    presence: { allowEmptyString: false },
+  })
+
+  if (newPassword != confirmPassword) {
+    throw new ValidationError(
+      'Your new password does not match the confirmation password'
+    )
+  }
+
   const user = await db.user.findFirstOrThrow({
     where: { id: context.currentUser.id },
   })
-  const { oldPassword, newPassword, confirmPassword } = input
-
-  if (!oldPassword || !newPassword || !confirmPassword) {
-    throw new ValidationError('All fields are required')
-  }
 
   const oldPasswordHashed = CryptoJS.PBKDF2(oldPassword, user.salt, {
     keySize: 256 / 32,
@@ -37,11 +51,6 @@ export const updatePassword: MutationResolvers['updatePassword'] = async ({
 
   if (oldPasswordHashed != user.hashedPassword) {
     throw new ValidationError('Your existing password is not correct')
-  }
-  if (newPassword != confirmPassword) {
-    throw new ValidationError(
-      'Your new password does not match the confirmation password'
-    )
   }
 
   const newSalt = CryptoJS.lib.WordArray.random(128 / 8).toString()
