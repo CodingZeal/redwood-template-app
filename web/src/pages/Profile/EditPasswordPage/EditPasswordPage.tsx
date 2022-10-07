@@ -1,20 +1,15 @@
-import { Link, routes } from '@redwoodjs/router'
+import { useAuth } from '@redwoodjs/auth'
 import { MetaTags } from '@redwoodjs/web'
 
+import { EditPassword } from 'src/components/Profile/EditPassword'
+
 const EditPasswordPage = () => {
+  const { currentUser } = useAuth()
+
   return (
     <>
-      <MetaTags title="ChangePassword" description="ChangePassword page" />
-
-      <h1>EditPasswordPage</h1>
-      <p>
-        Find me in{' '}
-        <code>./web/src/pages/EditPasswordPage/EditPasswordPage.tsx</code>
-      </p>
-      <p>
-        My default route is named <code>changePassword</code>, link to me with `
-        <Link to={routes.editPassword()}>ChangePassword</Link>`
-      </p>
+      <MetaTags title="Profile" description="Profile page" />
+      <EditPassword profile={currentUser} />
     </>
   )
 }

@@ -7,6 +7,12 @@ export const schema = gql`
     pronouns: String
   }
 
+  type ProfilePassword {
+    oldPassword: String
+    newPassword: String
+    confirmPassword: String
+  }
+
   type Query {
     profile: Profile @requireAuth
   }
@@ -18,7 +24,14 @@ export const schema = gql`
     pronouns: String
   }
 
+  input UpdatePasswordInput {
+    oldPassword: String!
+    newPassword: String!
+    confirmPassword: String!
+  }
+
   type Mutation {
     updateProfile(input: UpdateProfileInput!): Profile! @requireAuth
+    updatePassword(input: UpdatePasswordInput!): ProfilePassword! @requireAuth
   }
 `
