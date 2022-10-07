@@ -1,8 +1,8 @@
 import { render } from '@redwoodjs/testing/web'
 import { screen } from '@redwoodjs/testing/web'
 
-import { Loading, Failure, Success } from './ProfileCell'
-import { standard } from './ProfileCell.mock'
+import { Loading, Failure, Success } from './EditProfileCell'
+import { standard } from './EditProfileCell.mock'
 
 // Generated boilerplate tests do not account for all circumstances
 // and can fail without adjustments, e.g. Float and DateTime types.
@@ -10,7 +10,7 @@ import { standard } from './ProfileCell.mock'
 //        https://redwoodjs.com/docs/testing#testing-cells
 // https://redwoodjs.com/docs/testing#jest-expect-type-considerations
 
-describe('ProfileCell', () => {
+describe('EditProfileCell', () => {
   it('renders Loading successfully', () => {
     expect(() => {
       render(<Loading />)

@@ -1,12 +1,8 @@
-import { Loading, Empty, Failure, Success } from './ProfileCell'
-import { standard } from './ProfileCell.mock'
+import { Loading, Failure, Success } from './EditProfileCell'
+import { standard } from './EditProfileCell.mock'
 
 export const loading = (args) => {
   return Loading ? <Loading {...args} /> : null
-}
-
-export const empty = (args) => {
-  return Empty ? <Empty {...args} /> : null
 }
 
 export const failure = (args) => {

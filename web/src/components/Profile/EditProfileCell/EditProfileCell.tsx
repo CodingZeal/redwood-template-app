@@ -3,7 +3,7 @@ import { CellFailureProps, CellSuccessProps, MetaTags } from '@redwoodjs/web'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import { Profile } from '../Profile'
+import { EditProfile } from '../EditProfile'
 
 export const QUERY = gql`
   query Profile {
@@ -65,7 +65,7 @@ export const Success = ({ profile }: CellSuccessProps) => {
           <h2 className="rw-heading rw-heading-secondary">Edit Profile</h2>
         </header>
         <div className="rw-segment-main">
-          <Profile
+          <EditProfile
             error={error}
             loading={loading}
             onSave={onSave}

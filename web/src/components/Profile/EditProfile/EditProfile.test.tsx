@@ -2,13 +2,13 @@ import userEvent from '@testing-library/user-event'
 
 import { render, screen, waitFor } from '@redwoodjs/testing/web'
 
-import { Profile } from './Profile'
+import { EditProfile } from './EditProfile'
 
-describe('Profile', () => {
+describe('EditProfile', () => {
   it('renders successfully', () => {
     expect(() => {
       render(
-        <Profile
+        <EditProfile
           error={undefined}
           loading={undefined}
           profile={{ name: 'harry' }}
@@ -21,7 +21,7 @@ describe('Profile', () => {
   it('submits then calls onSave', async () => {
     const mockSave = jest.fn()
     render(
-      <Profile
+      <EditProfile
         error={undefined}
         loading={undefined}
         profile={{ name: 'harry' }}

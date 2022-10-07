@@ -5,6 +5,7 @@ import { RolesLayout } from './layouts/Admin/RolesLayout'
 import { TeamsLayout } from './layouts/Admin/TeamsLayout'
 import { UsersLayout } from './layouts/Admin/UsersLayout'
 import { MainLayout } from './layouts/MainLayout/MainLayout'
+import { ProfileLayout } from './layouts/ProfileLayout'
 
 const Routes = () => {
   return (
@@ -16,7 +17,10 @@ const Routes = () => {
       <Set wrap={MainLayout}>
         <Route path="/" page={HomePage} name="home" />
         <Private unauthenticated="forbidden">
-          <Route path="/profile" page={ProfilePage} name="profile" />
+          <Set wrap={ProfileLayout}>
+            <Route path="/profile" page={ProfileEditProfilePage} name="profile" />
+            <Route path="/profile/edit_password" page={ProfileEditPasswordPage} name="editPassword" />
+          </Set>
         </Private>
         <Private roles="super admin" unauthenticated="forbidden">
           <Set wrap={AdminLayout}>

@@ -7,7 +7,7 @@ import {
   Submit,
 } from '@redwoodjs/forms'
 
-const Profile = ({ error, loading, profile, onSave }) => {
+const EditProfile = ({ error, loading, profile, onSave }) => {
   return (
     <div className="rw-form-wrapper">
       <Form onSubmit={onSave} error={error}>
@@ -96,4 +96,4 @@ const Profile = ({ error, loading, profile, onSave }) => {
   )
 }
 
-export { Profile }
+export { EditProfile }
