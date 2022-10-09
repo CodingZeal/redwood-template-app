@@ -1,4 +1,4 @@
-<!--> template[tags(markdown)] -->
+<!-- template[tags(markdown)] -->
 # Introduction
 
 ## Write something nice here
