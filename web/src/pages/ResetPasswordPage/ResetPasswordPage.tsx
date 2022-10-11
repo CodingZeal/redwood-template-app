@@ -15,6 +15,7 @@ import { toast, Toaster } from '@redwoodjs/web/toast'
 const ResetPasswordPage = ({ resetToken }) => {
   const { isAuthenticated, reauthenticate, validateResetToken, resetPassword } =
     useAuth()
+
   const [enabled, setEnabled] = useState(true)
 
   useEffect(() => {
@@ -26,6 +27,7 @@ const ResetPasswordPage = ({ resetToken }) => {
   useEffect(() => {
     const validateToken = async () => {
       const response = await validateResetToken(resetToken)
+
       if (response.error) {
         setEnabled(false)
         toast.error(response.error)
@@ -46,7 +48,6 @@ const ResetPasswordPage = ({ resetToken }) => {
       resetToken,
       password: data.password,
     })
-
     if (response.error) {
       toast.error(response.error)
     } else {
