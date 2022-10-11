@@ -1,6 +1,6 @@
 import { render, screen } from '@redwoodjs/testing/web'
 
-import { AdminLayout } from './Layout'
+import { AdminLayout } from './AdminLayout'
 
 describe('AdminLayout', () => {
   it('renders successfully', () => {

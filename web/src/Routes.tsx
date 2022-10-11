@@ -1,6 +1,6 @@
 import { Set, Router, Route, Private } from '@redwoodjs/router'
 
-import { AdminLayout } from './layouts/Admin/AdminLayout/Layout'
+import { AdminLayout } from './layouts/Admin/AdminLayout'
 import { RolesLayout } from './layouts/Admin/RolesLayout'
 import { TeamsLayout } from './layouts/Admin/TeamsLayout'
 import { UsersLayout } from './layouts/Admin/UsersLayout'
