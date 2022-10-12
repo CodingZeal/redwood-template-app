@@ -13,8 +13,9 @@ const AdminLayout = ({ children }) => {
           <LinkItem to={routes.adminRoles()}>Roles</LinkItem>
         </SubNavigation>
       </div>
-
-      <div className="flex-1">{children}</div>
+      <div className="rw-scaffold flex-1">
+        <main className="rw-main">{children}</main>
+      </div>
     </div>
   )
 }
