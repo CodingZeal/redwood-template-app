@@ -1,7 +1,7 @@
-import VerificationCell from 'src/components/VerificationCell'
+import { Verification } from 'src/components/Verification'
 
 const VerificationPage = ({ verifyToken }) => (
-  <VerificationCell token={verifyToken} />
+  <Verification token={verifyToken} />
 )
 
 export { VerificationPage }
