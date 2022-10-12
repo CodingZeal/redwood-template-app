@@ -65,9 +65,5 @@ export const updatePassword: MutationResolvers['updatePassword'] = async ({
     where: { id: context.currentUser.id },
   })
 
-  return {
-    existingPassword: null,
-    newPassword: null,
-    confirmPassword: null,
-  }
+  return true
 }

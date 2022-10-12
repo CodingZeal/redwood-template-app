@@ -41,7 +41,7 @@ describe('profile', () => {
           confirmPassword: newPassword,
         },
       })
-    ).resolves.not.toThrowError()
+    ).resolves.toEqual(true)
   })
 
   scenario(

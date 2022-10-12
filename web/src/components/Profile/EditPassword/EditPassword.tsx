@@ -7,11 +7,7 @@ import { EditPasswordForm } from './EditPasswordForm'
 
 const UPDATE_PASSWORD_MUTATION = gql`
   mutation UpdatePasswordMutation($input: UpdatePasswordInput!) {
-    updatePassword(input: $input) {
-      existingPassword
-      newPassword
-      confirmPassword
-    }
+    updatePassword(input: $input)
   }
 `
 

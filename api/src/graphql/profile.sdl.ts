@@ -32,6 +32,6 @@ export const schema = gql`
 
   type Mutation {
     updateProfile(input: UpdateProfileInput!): Profile! @requireAuth
-    updatePassword(input: UpdatePasswordInput!): ProfilePassword! @requireAuth
+    updatePassword(input: UpdatePasswordInput!): Boolean! @requireAuth
   }
 `

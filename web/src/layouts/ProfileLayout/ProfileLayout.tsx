@@ -1,7 +1,7 @@
 import { Link, routes } from '@redwoodjs/router'
-import { Toaster } from '@redwoodjs/web/dist/toast'
 
-import { SubNavigation } from 'src/components/Profile/SubNavigation'
+import { LinkItem } from 'src/components/Navigation/LinkItem/LinkItem'
+import { SubNavigation } from 'src/components/Navigation/SubNavigation'
 
 type ProfileLayoutProps = {
   children?: React.ReactNode
@@ -11,11 +11,13 @@ const ProfileLayout = ({ children }: ProfileLayoutProps) => {
   return (
     <div className="m-4 flex">
       <div className="w-20 sm:w-60">
-        <SubNavigation />
+        <SubNavigation>
+          <LinkItem to={routes.profile()}>Edit Profile</LinkItem>
+          <LinkItem to={routes.editPassword()}>Edit Password</LinkItem>
+        </SubNavigation>
       </div>
       <div className="flex-1">
         <div className="rw-scaffold">
-          <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
           <header className="rw-header">
             <h1 className="rw-heading rw-heading-primary">
               <Link to={routes.profile()} className="rw-link">
