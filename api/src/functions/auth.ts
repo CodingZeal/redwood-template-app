@@ -2,8 +2,8 @@ import { randomUUID } from 'node:crypto'
 
 import { DbAuthHandler } from '@redwoodjs/api'
 
+import { email as verificationEmail } from 'src/emails/user-verification'
 import { db } from 'src/lib/db'
-import { logger } from 'src/lib/logger'
 import { sendEmail } from 'src/lib/mailer'
 
 export const handler = async (event, context) => {
@@ -128,22 +128,11 @@ export const handler = async (event, context) => {
           verifyToken: randomUUID(),
         },
       })
-      const buildVerifyEmailHtml = (user) => {
-        const link = `${process.env.DOMAIN}/verification?verifyToken=${user.verifyToken}`
 
-        logger.debug(link)
-
-        return `
-          <div> Hi ${user.fullName}, </div>
-            <p>Please find below a link to verify your email for the ${process.env.APP_NAME}:</p>
-            <a href="${link}">${link}</a>
-            <p>If you did not request an account, please ignore this email.</p>
-        `
-      }
       sendEmail({
         to: user.email,
-        subject: 'Verify Email',
-        text: buildVerifyEmailHtml(user),
+        subject: verificationEmail.subject(),
+        text: verificationEmail.htmlBody(user),
       })
       return user
     },

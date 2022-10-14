@@ -31,7 +31,7 @@ export async function sendEmail({ to, subject, text, html }: Options) {
     (error) => {
       if (error) {
         logger.error(
-          'Failed to send reset password email, check SMTP configuration'
+          `Failed to send '${subject}' email, check SMTP configuration`
         )
         logger.debug('This error can be ignored in development')
         logger.error(error)
