@@ -6,13 +6,6 @@ export const schema = gql`
     nickname: String
     pronouns: String
   }
-
-  type ProfilePassword {
-    existingPassword: String
-    newPassword: String
-    confirmPassword: String
-  }
-
   type Query {
     profile: Profile @requireAuth
   }
