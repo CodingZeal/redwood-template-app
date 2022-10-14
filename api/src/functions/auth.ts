@@ -56,6 +56,9 @@ export const handler = async (event, context) => {
       if (!user.active) {
         throw new Error('User not Active')
       }
+      if (user.verifyToken) {
+        throw new Error('User not Verified')
+      }
       return user
     },
 

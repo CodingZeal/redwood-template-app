@@ -49,5 +49,6 @@ export const schema = gql`
       @requireAuth(roles: ["super admin"])
     removeUser(id: String!): User! @requireAuth(roles: ["super admin"])
     verifyUser(token: String!): Boolean! @requireAuth(roles: [])
+    verifyReset(email: String!): String! @skipAuth()
   }
 `
