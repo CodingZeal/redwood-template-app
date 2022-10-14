@@ -1,17 +1,17 @@
 import { useAuth } from '@redwoodjs/auth'
 import { MetaTags } from '@redwoodjs/web'
 
-import ProfileCell from 'src/components/ProfileCell'
+import { EditPassword } from 'src/components/Profile/EditPassword'
 
-const ProfilePage = () => {
+const EditPasswordPage = () => {
   const { currentUser } = useAuth()
 
   return (
     <>
       <MetaTags title="Profile" description="Profile page" />
-      <ProfileCell profile={currentUser} />
+      <EditPassword profile={currentUser} />
     </>
   )
 }
 
-export default ProfilePage
+export default EditPasswordPage
