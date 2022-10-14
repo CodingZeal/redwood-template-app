@@ -23,7 +23,7 @@ model User {
   updatedAt           DateTime     @updatedAt
   createdAt           DateTime     @default(now())
   memberships         Membership[]
-  verifyToken         String
+  verifyToken         String?
 }
 
 model Membership {
