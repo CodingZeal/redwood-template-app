@@ -6,9 +6,18 @@ import {
   createUser,
   updateUser,
   removeUser,
+  verifyReset,
   verifyUser,
 } from './users'
 import type { AssociationsScenario, StandardScenario } from './users.scenarios'
+
+const mockSendEmail = jest.fn()
+
+jest.mock('src/lib/mailer', () => {
+  return {
+    sendEmail: () => mockSendEmail(),
+  }
+})
 
 describe('users', () => {
   scenario('returns all users', async (scenario: StandardScenario) => {
@@ -231,5 +240,44 @@ describe('users', () => {
         expect(user.verifyToken).toEqual(scenario.user.one.verifyToken)
       }
     )
+  })
+
+  describe('verify reset', () => {
+    beforeEach(() => {
+      jest.clearAllMocks()
+    })
+
+    scenario(
+      'with existing email with verify token',
+      async (scenario: StandardScenario) => {
+        const email = scenario.user.one.email
+
+        expect(mockSendEmail.mock.calls.length).toBe(0)
+        const result = await verifyReset({ email })
+        expect(result).toEqual(email)
+        expect(mockSendEmail.mock.calls.length).toBe(1)
+      }
+    )
+
+    scenario(
+      'with existing email with no verify token',
+      async (scenario: StandardScenario) => {
+        const email = scenario.user.two.email
+
+        expect(mockSendEmail.mock.calls.length).toBe(0)
+        const result = await verifyReset({ email })
+        expect(result).toEqual(email)
+        expect(mockSendEmail.mock.calls.length).toBe(0)
+      }
+    )
+
+    scenario('with email that does not exist', async () => {
+      const email = 'does@not.exist'
+
+      expect(mockSendEmail.mock.calls.length).toBe(0)
+      const result = await verifyReset({ email })
+      expect(result).toEqual(email)
+      expect(mockSendEmail.mock.calls.length).toBe(0)
+    })
   })
 })

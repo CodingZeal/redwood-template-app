@@ -7,6 +7,7 @@ import type {
 } from 'types/graphql'
 
 import { db } from 'src/lib/db'
+import { sendEmail } from 'src/lib/mailer'
 
 const parseRoles = (roleIds) =>
   roleIds?.reduce((acc, id) => {
@@ -77,6 +78,32 @@ export const removeUser: MutationResolvers['removeUser'] = async ({ id }) => {
     },
   })
   return user
+}
+
+export const verifyReset: MutationResolvers['verifyReset'] = async ({
+  email,
+}) => {
+  const user = await db.user.findUnique({
+    where: { email },
+  })
+  if (user && user.verifyToken) {
+    const buildVerifyEmailHtml = (user) => {
+      const link = `${process.env.DOMAIN}/verification?verifyToken=${user.verifyToken}`
+
+      return `
+        <div> Hi ${user.fullName}, </div>
+          <p>Please find below a link to verify your email for the ${process.env.APP_NAME}:</p>
+          <a href="${link}">${link}</a>
+          <p>If you did not request an account, please ignore this email.</p>
+      `
+    }
+    sendEmail({
+      to: user.email,
+      subject: 'Verify Email',
+      text: buildVerifyEmailHtml(user),
+    })
+  }
+  return email
 }
 
 export const verifyUser: MutationResolvers['verifyUser'] = async ({

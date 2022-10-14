@@ -34,6 +34,9 @@ const LoginPage = () => {
     if (response.message) {
       toast(response.message)
     } else if (response.error) {
+      if (response.error === 'User not Verified') {
+        navigate(routes.verificationReset({ email: data.username }))
+      }
       toast.error(response.error)
     } else {
       toast.success('Welcome back!')

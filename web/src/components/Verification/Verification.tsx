@@ -6,9 +6,7 @@ import { toast } from '@redwoodjs/web/dist/toast'
 
 const VERIFY_TOKEN_MUTATION = gql`
   mutation VerificationMutation($token: String!) {
-    verifyUser: verifyUser(token: $token) {
-      id
-    }
+    verifyUser: verifyUser(token: $token)
   }
 `
 const Verification = ({ token }) => {
