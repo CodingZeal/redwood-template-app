@@ -1,3 +1,5 @@
+import { randomUUID } from 'node:crypto'
+
 import { DbAuthHandler } from '@redwoodjs/api'
 
 import { db } from 'src/lib/db'
@@ -120,7 +122,7 @@ export const handler = async (event, context) => {
           email: username,
           hashedPassword: hashedPassword,
           salt: salt,
-          verifyToken: crypto.randomUUID(),
+          verifyToken: randomUUID(),
         },
       })
       const buildVerifyEmailHtml = (user) => {
