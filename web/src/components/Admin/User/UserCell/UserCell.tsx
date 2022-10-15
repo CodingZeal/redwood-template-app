@@ -14,7 +14,6 @@ export const QUERY = gql`
       pronouns
       active
       admin
-      verified
       updatedAt
       createdAt
       memberships {

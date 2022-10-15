@@ -17,7 +17,6 @@ export const QUERY = gql`
       pronouns
       active
       admin
-      verified
       memberships {
         teamId
         membershipRoles {

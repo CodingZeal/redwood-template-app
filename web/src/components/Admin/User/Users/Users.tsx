@@ -86,7 +86,6 @@ const Users = ({ users }) => {
               <td>{truncate(user.pronouns)}</td>
               <td>{checkboxInputTag('active', user.active)}</td>
               <td>{checkboxInputTag('admin', user.admin)}</td>
-              <td>{checkboxInputTag('verified', user.verified)}</td>
               <td>{timeTag(user.updatedAt)}</td>
               <td>{timeTag(user.createdAt)}</td>
               <td>
