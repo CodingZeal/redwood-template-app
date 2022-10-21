@@ -40,9 +40,9 @@ const UserFormTeams = ({ roleIds, roleValue, roles, teamIds, teams }) => {
       <table className="rw-table">
         <thead>
           <tr>
-            <th>Team</th>
-            <th>Roles</th>
-            <th>&nbsp;</th>
+            <th scope="col">Team</th>
+            <th scope="col">Roles</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>

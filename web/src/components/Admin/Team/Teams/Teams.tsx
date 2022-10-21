@@ -62,13 +62,13 @@ const TeamsList = ({ teams }) => {
       <table className="rw-table">
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Active</th>
-            <th>User Count</th>
-            <th>Updated at</th>
-            <th>Created at</th>
-            <th>&nbsp;</th>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Active</th>
+            <th scope="col">User Count</th>
+            <th scope="col">Updated at</th>
+            <th scope="col">Created at</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
