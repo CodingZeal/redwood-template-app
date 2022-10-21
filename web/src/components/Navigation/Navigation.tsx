@@ -13,8 +13,8 @@ const Navigation = () => {
 
   return (
     <div>
-      <ul data-testid="nav" className="my-3 flex">
-        <div className="flex flex-row items-start">
+      <div data-testid="nav" className="my-3 flex">
+        <ul className="flex flex-row items-start">
           <LinkItem to={routes.home()}>Home</LinkItem>
           {isAuthenticated ? (
             <li data-testid="nav__link-item" className="mr-3 cursor-pointer">
@@ -26,15 +26,15 @@ const Navigation = () => {
           {hasRole('super admin') && (
             <LinkItem to={routes.adminUsers()}>Admin</LinkItem>
           )}
-        </div>
-        <div className="ml-auto">
+        </ul>
+        <ul className="ml-auto">
           {isAuthenticated && currentUser && (
             <LinkItem to={routes.profile()}>
               {currentUser.nickname || currentUser.name || currentUser.email}
             </LinkItem>
           )}
-        </div>
-      </ul>
+        </ul>
+      </div>
     </div>
   )
 }
