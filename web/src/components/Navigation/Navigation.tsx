@@ -18,7 +18,9 @@ const Navigation = () => {
           <LinkItem to={routes.home()}>Home</LinkItem>
           {isAuthenticated ? (
             <li data-testid="nav__link-item" className="mr-3 cursor-pointer">
-              <button onClick={logOut}>Logout</button>
+              <button onClick={logOut} data-testid="logout">
+                Logout
+              </button>
             </li>
           ) : (
             <LinkItem to={routes.login()}>Login</LinkItem>

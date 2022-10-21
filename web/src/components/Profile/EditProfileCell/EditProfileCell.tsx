@@ -1,3 +1,4 @@
+import { useAuth } from '@redwoodjs/auth'
 import { navigate, routes } from '@redwoodjs/router'
 import { CellFailureProps, CellSuccessProps, MetaTags } from '@redwoodjs/web'
 import { useMutation } from '@redwoodjs/web'
@@ -35,10 +36,13 @@ export const Failure = ({ error }: CellFailureProps) => (
 )
 
 export const Success = ({ profile }: CellSuccessProps) => {
+  const { reauthenticate } = useAuth()
+
   const [updateProfile, { loading, error }] = useMutation(
     UPDATE_PROFILE_MUTATION,
     {
       onCompleted: () => {
+        reauthenticate()
         toast.success('Profile updated')
         navigate(routes.home())
       },
