@@ -3,12 +3,12 @@ import userEvent from '@testing-library/user-event'
 import { Form } from '@redwoodjs/forms'
 import { render, screen, within } from '@redwoodjs/testing/web'
 
-import { standard } from '../UserFormTeamsCell/UserFormTeamsCell.mocks'
+import { standard } from '../UserFormTeamsCell/UserFormTeamsCell.mock'
 
 import { UserFormTeams } from './UserFormTeams'
 
-const [firstTeam] = standard().userFormTeams.teams
-const [firstRole, secondRole] = standard().userFormTeams.roles
+const [firstTeam] = standard().teams
+const [firstRole, secondRole] = standard().roles
 
 describe('UserFormTeams', () => {
   describe('when a value is not selected', () => {
@@ -17,10 +17,10 @@ describe('UserFormTeams', () => {
         <Form>
           <UserFormTeams
             roleIds={[]}
-            roles={standard().userFormTeams.roles}
+            roles={standard().roles}
             roleValue={jest.fn()}
             teamIds={[]}
-            teams={standard().userFormTeams.teams}
+            teams={standard().teams}
           />
         </Form>
       )
@@ -31,7 +31,7 @@ describe('UserFormTeams', () => {
 
     it('renders team name successfully', () => {
       renderComponent()
-      const [firstTeam, secondTeam] = standard().userFormTeams.teams
+      const [firstTeam, secondTeam] = standard().teams
       const firstElement = firstTeam.name
       const secondElement = secondTeam.name
       userEvent.selectOptions(
@@ -63,9 +63,9 @@ describe('UserFormTeams', () => {
         <Form>
           <UserFormTeams
             roleIds={[firstRole.id]}
-            roles={standard().userFormTeams.roles}
+            roles={standard().roles}
             teamIds={[firstTeam.id]}
-            teams={standard().userFormTeams.teams}
+            teams={standard().teams}
             roleValue={(_x, y) => y}
           />
         </Form>

@@ -1,7 +1,7 @@
 import { render } from '@redwoodjs/testing/web'
 
 import { Loading, Failure, Success } from './UserFormTeamsCell'
-import { standard } from './UserFormTeamsCell.mocks'
+import { standard } from './UserFormTeamsCell.mock'
 
 jest.mock('../UserFormTeams/UserFormTeams', () => ({
   UserFormTeams: () => {
@@ -24,7 +24,7 @@ describe('UserFormTeamsCell', () => {
 
   it('renders Success successfully', async () => {
     expect(() => {
-      render(<Success props={standard().userFormTeams} />)
+      render(<Success props={standard()} />)
     }).not.toThrow()
   })
 })

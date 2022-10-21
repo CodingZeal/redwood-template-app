@@ -11,10 +11,6 @@ import { Navigation } from './Navigation'
 const renderComponent = (props = {}) => render(<Navigation {...props} />)
 
 describe('Navigation', () => {
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
-
   it('renders navigation component', () => {
     renderComponent()
     expect(screen.getByTestId('nav')).toBeVisible()
@@ -36,6 +32,7 @@ describe('Navigation', () => {
 
   it('shows logout when authenticated', async () => {
     mockCurrentUser({ id: 'foobar' })
+
     renderComponent()
     await waitFor(() => {
       expect(screen.getByText('Logout')).toBeInTheDocument()
