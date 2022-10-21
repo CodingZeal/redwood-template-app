@@ -7,9 +7,7 @@ import { toast, Toaster } from '@redwoodjs/web/toast'
 
 const VERIFY_RESET_MUTATION = gql`
   mutation VerificationResetMutation($email: String!) {
-    verifyReset: verifyReset(email: $email) {
-      email
-    }
+    email: verifyReset(email: $email)
   }
 `
 
