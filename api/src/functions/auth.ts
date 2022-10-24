@@ -132,7 +132,7 @@ export const handler = async (event, context) => {
       sendEmail({
         to: user.email,
         subject: verificationEmail.subject(),
-        text: verificationEmail.htmlBody(user),
+        html: verificationEmail.htmlBody(user),
       })
       return user
     },

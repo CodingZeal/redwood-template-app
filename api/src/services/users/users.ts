@@ -91,7 +91,7 @@ export const verifyReset: MutationResolvers['verifyReset'] = async ({
     sendEmail({
       to: user.email,
       subject: verificationEmail.subject(),
-      text: verificationEmail.htmlBody(user),
+      html: verificationEmail.htmlBody(user),
     })
   }
   return email
