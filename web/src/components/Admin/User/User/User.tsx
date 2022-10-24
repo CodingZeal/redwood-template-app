@@ -58,35 +58,35 @@ const User = ({ user }) => {
         <table className="rw-table">
           <tbody>
             <tr>
-              <th>Id</th>
+              <th scope="row">Id</th>
               <td>{user.id}</td>
             </tr>
             <tr>
-              <th>Email</th>
+              <th scope="row">Email</th>
               <td>{user.email}</td>
             </tr>
             <tr>
-              <th>Name</th>
+              <th scope="row">Name</th>
               <td>{user.name}</td>
             </tr>
             <tr>
-              <th>Nickname</th>
+              <th scope="row">Nickname</th>
               <td>{user.nickname}</td>
             </tr>
             <tr>
-              <th>Pronouns</th>
+              <th scope="row">Pronouns</th>
               <td>{user.pronouns}</td>
             </tr>
             <tr>
-              <th>Active</th>
+              <th scope="row">Active</th>
               <td>{checkboxInputTag('active', user.active)}</td>
             </tr>
             <tr>
-              <th>Admin</th>
+              <th scope="row">Admin</th>
               <td>{checkboxInputTag('admin', user.admin)}</td>
             </tr>
             <tr>
-              <th>Teams</th>
+              <th scope="row">Teams</th>
               <td>
                 {user.memberships
                   ?.map((membership) => membership.team.name)
@@ -94,11 +94,11 @@ const User = ({ user }) => {
               </td>
             </tr>
             <tr>
-              <th>Updated at</th>
+              <th scope="row">Updated at</th>
               <td>{timeTag(user.updatedAt)}</td>
             </tr>
             <tr>
-              <th>Created at</th>
+              <th scope="row">Created at</th>
               <td>{timeTag(user.createdAt)}</td>
             </tr>
           </tbody>

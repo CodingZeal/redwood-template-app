@@ -40,11 +40,11 @@ const Role = ({ role }) => {
         <table className="rw-table">
           <tbody>
             <tr>
-              <th>Id</th>
+              <th scope="row">Id</th>
               <td>{role.id}</td>
             </tr>
             <tr>
-              <th>Name</th>
+              <th scope="row">Name</th>
               <td>{role.name}</td>
             </tr>
           </tbody>
