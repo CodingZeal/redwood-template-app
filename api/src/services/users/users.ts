@@ -101,10 +101,10 @@ export const verifyUser: MutationResolvers['verifyUser'] = async ({
   token,
 }) => {
   if (token === null) return true
-  const user = await db.user.findUnique({
-    where: { id: context.currentUser.id },
+  const user = await db.user.findFirst({
+    where: { verifyToken: token },
   })
-  if (token === user.verifyToken) {
+  if (user) {
     await db.user.update({
       where: { id: user.id },
       data: { verifyToken: null },

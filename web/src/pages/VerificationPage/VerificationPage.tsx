@@ -4,4 +4,4 @@ const VerificationPage = ({ verifyToken }) => (
   <Verification token={verifyToken} />
 )
 
-export { VerificationPage }
+export default VerificationPage

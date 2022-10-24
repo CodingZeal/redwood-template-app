@@ -13,7 +13,7 @@ const Verification = ({ token }) => {
   const [verifyUser, { loading, error }] = useMutation(VERIFY_TOKEN_MUTATION, {
     onCompleted: () => {
       toast.success('Account Verified')
-      navigate(routes.home())
+      navigate(routes.login())
     },
     onError: (error) => {
       toast.error(error.message)

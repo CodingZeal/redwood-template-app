@@ -46,8 +46,6 @@ describe('users', () => {
       expect(result.active).toEqual(true)
       expect(result.admin).toEqual(false)
       expect(result.email).toEqual('String4652567')
-      expect(result.hashedPassword).toBeTruthy()
-      expect(result.salt).toBeTruthy()
       expect(result.createdAt.getTime()).toBeGreaterThanOrEqual(
         before.getTime()
       )
@@ -206,7 +204,6 @@ describe('users', () => {
 
   describe('verify user', () => {
     scenario('with verify token', async (scenario: StandardScenario) => {
-      mockCurrentUser({ id: scenario.user.one.id })
       const result = await verifyUser({ token: scenario.user.one.verifyToken })
       const user = await db.user.findUnique({
         where: { id: scenario.user.one.id },
@@ -217,7 +214,6 @@ describe('users', () => {
     })
 
     scenario('without verify token', async (scenario: StandardScenario) => {
-      mockCurrentUser({ id: scenario.user.two.id })
       const result = await verifyUser({ token: scenario.user.two.verifyToken })
       const user = await db.user.findUnique({
         where: { id: scenario.user.two.id },
@@ -230,7 +226,6 @@ describe('users', () => {
     scenario(
       'with invalid verify token',
       async (scenario: StandardScenario) => {
-        mockCurrentUser({ id: scenario.user.one.id })
         const result = await verifyUser({ token: 'invalid' })
         const user = await db.user.findUnique({
           where: { id: scenario.user.one.id },
