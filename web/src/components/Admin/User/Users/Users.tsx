@@ -70,6 +70,7 @@ const Users = ({ users }) => {
             <th scope="col">Pronouns</th>
             <th scope="col">Active</th>
             <th scope="col">Admin</th>
+            <th scope="col">Verified</th>
             <th scope="col">Updated at</th>
             <th scope="col">Created at</th>
             <th scope="col">Actions</th>

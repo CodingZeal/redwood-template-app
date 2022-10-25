@@ -7260,6 +7260,7 @@ __metadata:
     "@redwoodjs/graphql-server": ^3.2.0
     "@types/chance": ^1.1.3
     chance: ^1.1.8
+    nodemailer: ^6.7.8
   languageName: unknown
   linkType: soft
 
@@ -17631,6 +17632,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nodemailer@npm:^6.7.8":
+  version: 6.8.0
+  resolution: "nodemailer@npm:6.8.0"
+  checksum: 6f8fd051ff33e1330903b0013f65a14a672731de8506a931a7012c582b1ea507257186244213108b966e30d41a297f8de9e295ace61a8f0a70222913255ad667
+  languageName: node
+  linkType: hard
+
 "nodemon@npm:2.0.20":
   version: 2.0.20
   resolution: "nodemon@npm:2.0.20"
@@ -23257,7 +23265,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:5.10.0, undici@npm:^5.5.1, undici@npm:^5.8.0":
+"undici@npm:5.10.0, undici@npm:^5.5.1":
   version: 5.10.0
   resolution: "undici@npm:5.10.0"
   checksum: c67eec014c92d40b27a271d0127d0297299a0507feb67e581a0bd9fb5ce32974d3a05eba2bd19357d6231a7c2bbbc15ed4cef43c2738b5210b275e585547b09c
@@ -23268,6 +23276,13 @@ __metadata:
   version: 5.5.1
   resolution: "undici@npm:5.5.1"
   checksum: 3818c32473e71f2d6405c7e202d239b5a85625faab4523e48918f324056402aa557b9764a8545a5f08b0d346088158efe1072a4061fd3d2d80e2d415618bb6ca
+  languageName: node
+  linkType: hard
+
+"undici@npm:^5.8.0":
+  version: 5.8.1
+  resolution: "undici@npm:5.8.1"
+  checksum: 9f1285950f153c28ab9b7e39cf3d4b8d1701c8e2037bde8460adc5f1fa3d3d5ab4336994310fccc9ac6679f1dacdca016b760ea2328cdab41e5e340faa684fd7
   languageName: node
   linkType: hard
 

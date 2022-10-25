@@ -1,7 +1,23 @@
 import { db } from 'src/lib/db'
 
-import { users, user, createUser, updateUser, removeUser } from './users'
+import {
+  users,
+  user,
+  createUser,
+  updateUser,
+  removeUser,
+  verifyReset,
+  verifyUser,
+} from './users'
 import type { AssociationsScenario, StandardScenario } from './users.scenarios'
+
+const mockSendEmail = jest.fn()
+
+jest.mock('src/lib/mailer', () => {
+  return {
+    sendEmail: () => mockSendEmail(),
+  }
+})
 
 describe('users', () => {
   scenario('returns all users', async (scenario: StandardScenario) => {
@@ -30,8 +46,6 @@ describe('users', () => {
       expect(result.active).toEqual(true)
       expect(result.admin).toEqual(false)
       expect(result.email).toEqual('String4652567')
-      expect(result.hashedPassword).toBeTruthy()
-      expect(result.salt).toBeTruthy()
       expect(result.createdAt.getTime()).toBeGreaterThanOrEqual(
         before.getTime()
       )
@@ -186,5 +200,79 @@ describe('users', () => {
     expect(result.pronouns).toEqual(null)
     expect(result.active).toEqual(false)
     expect(result.admin).toEqual(false)
+  })
+
+  describe('verify user', () => {
+    scenario('with verify token', async (scenario: StandardScenario) => {
+      const result = await verifyUser({ token: scenario.user.one.verifyToken })
+      const user = await db.user.findUnique({
+        where: { id: scenario.user.one.id },
+      })
+
+      expect(result).toEqual(true)
+      expect(user.verifyToken).toEqual(null)
+    })
+
+    scenario('without verify token', async (scenario: StandardScenario) => {
+      const result = await verifyUser({ token: scenario.user.two.verifyToken })
+      const user = await db.user.findUnique({
+        where: { id: scenario.user.two.id },
+      })
+
+      expect(result).toEqual(true)
+      expect(user.verifyToken).toEqual(null)
+    })
+
+    scenario(
+      'with invalid verify token',
+      async (scenario: StandardScenario) => {
+        const result = await verifyUser({ token: 'invalid' })
+        const user = await db.user.findUnique({
+          where: { id: scenario.user.one.id },
+        })
+
+        expect(result).toEqual(false)
+        expect(user.verifyToken).toEqual(scenario.user.one.verifyToken)
+      }
+    )
+  })
+
+  describe('verify reset', () => {
+    beforeEach(() => {
+      jest.clearAllMocks()
+    })
+
+    scenario(
+      'with existing email with verify token',
+      async (scenario: StandardScenario) => {
+        const email = scenario.user.one.email
+
+        expect(mockSendEmail.mock.calls.length).toBe(0)
+        const result = await verifyReset({ email })
+        expect(result).toEqual(email)
+        expect(mockSendEmail.mock.calls.length).toBe(1)
+      }
+    )
+
+    scenario(
+      'with existing email with no verify token',
+      async (scenario: StandardScenario) => {
+        const email = scenario.user.two.email
+
+        expect(mockSendEmail.mock.calls.length).toBe(0)
+        const result = await verifyReset({ email })
+        expect(result).toEqual(email)
+        expect(mockSendEmail.mock.calls.length).toBe(0)
+      }
+    )
+
+    scenario('with email that does not exist', async () => {
+      const email = 'does@not.exist'
+
+      expect(mockSendEmail.mock.calls.length).toBe(0)
+      const result = await verifyReset({ email })
+      expect(result).toEqual(email)
+      expect(mockSendEmail.mock.calls.length).toBe(0)
+    })
   })
 })

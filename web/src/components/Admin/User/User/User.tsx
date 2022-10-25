@@ -86,6 +86,10 @@ const User = ({ user }) => {
               <td>{checkboxInputTag('admin', user.admin)}</td>
             </tr>
             <tr>
+              <th scope="row">Verified</th>
+              <td>{checkboxInputTag('verified', user.verified)}</td>
+            </tr>
+            <tr>
               <th scope="row">Teams</th>
               <td>
                 {user.memberships

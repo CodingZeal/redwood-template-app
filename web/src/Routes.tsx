@@ -14,8 +14,14 @@ const Routes = () => {
       <Route path="/signup" page={SignupPage} name="signup" />
       <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
       <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
+      <Route path="/verification" page={VerificationPage} name="verification" />
+      <Route path="/verification-reset" page={VerificationResetPage} name="verificationReset" />
       <Set wrap={MainLayout}>
         <Route path="/" page={HomePage} name="home" />
+        <Route notfound page={NotFoundPage} />
+        <Route path="/forbidden" page={ForbiddenPage} name="forbidden" />
+      </Set>
+      <Set wrap={MainLayout}>
         <Private unauthenticated="forbidden">
           <Set wrap={ProfileLayout}>
             <Route path="/profile" page={ProfileEditProfilePage} name="profile" />
@@ -44,8 +50,6 @@ const Routes = () => {
             </Set>
           </Set>
         </Private>
-        <Route notfound page={NotFoundPage} />
-        <Route path="/forbidden" page={ForbiddenPage} name="forbidden" />
       </Set>
     </Router>
   )
