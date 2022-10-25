@@ -20,8 +20,8 @@ const timeTag = (datetime) => {
   )
 }
 
-const checkboxInputTag = (checked) => {
-  return <input type="checkbox" checked={checked} disabled />
+const checkboxInputTag = (label, checked) => {
+  return <input aria-label={label} type="checkbox" checked={checked} disabled />
 }
 
 const User = ({ user }) => {
@@ -58,35 +58,39 @@ const User = ({ user }) => {
         <table className="rw-table">
           <tbody>
             <tr>
-              <th>Id</th>
+              <th scope="row">Id</th>
               <td>{user.id}</td>
             </tr>
             <tr>
-              <th>Email</th>
+              <th scope="row">Email</th>
               <td>{user.email}</td>
             </tr>
             <tr>
-              <th>Name</th>
+              <th scope="row">Name</th>
               <td>{user.name}</td>
             </tr>
             <tr>
-              <th>Nickname</th>
+              <th scope="row">Nickname</th>
               <td>{user.nickname}</td>
             </tr>
             <tr>
-              <th>Pronouns</th>
+              <th scope="row">Pronouns</th>
               <td>{user.pronouns}</td>
             </tr>
             <tr>
-              <th>Active</th>
-              <td>{checkboxInputTag(user.active)}</td>
+              <th scope="row">Active</th>
+              <td>{checkboxInputTag('active', user.active)}</td>
             </tr>
             <tr>
-              <th>Admin</th>
-              <td>{checkboxInputTag(user.admin)}</td>
+              <th scope="row">Admin</th>
+              <td>{checkboxInputTag('admin', user.admin)}</td>
             </tr>
             <tr>
-              <th>Teams</th>
+              <th scope="row">Verified</th>
+              <td>{checkboxInputTag('verified', user.verified)}</td>
+            </tr>
+            <tr>
+              <th scope="row">Teams</th>
               <td>
                 {user.memberships
                   ?.map((membership) => membership.team.name)
@@ -94,11 +98,11 @@ const User = ({ user }) => {
               </td>
             </tr>
             <tr>
-              <th>Updated at</th>
+              <th scope="row">Updated at</th>
               <td>{timeTag(user.updatedAt)}</td>
             </tr>
             <tr>
-              <th>Created at</th>
+              <th scope="row">Created at</th>
               <td>{timeTag(user.createdAt)}</td>
             </tr>
           </tbody>

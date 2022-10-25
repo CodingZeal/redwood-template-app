@@ -34,6 +34,9 @@ const LoginPage = () => {
     if (response.message) {
       toast(response.message)
     } else if (response.error) {
+      if (response.error === 'User not Verified') {
+        navigate(routes.verificationReset({ email: data.username }))
+      }
       toast.error(response.error)
     } else {
       toast.success('Welcome back!')
@@ -43,8 +46,7 @@ const LoginPage = () => {
   return (
     <>
       <MetaTags title="Login" />
-
-      <main className="rw-main">
+      <main className="rw-main" data-testid="login-page">
         <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
         <div className="rw-scaffold rw-login-container">
           <div className="rw-segment">

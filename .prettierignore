@@ -3,6 +3,8 @@ dist
 *.md
 tmp
 api/types/*
+web/playwright-report/*
+web/types/*
 .github
 .yarn
 ./index.js

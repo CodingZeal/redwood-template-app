@@ -14,6 +14,7 @@ const UserFormTeams = ({ roleIds, roleValue, roles, teamIds, teams }) => {
       <HiddenField name="teamIds" />
       <div className="flex">
         <select
+          aria-label="Select a Team to Add"
           name="addTeam"
           onChange={(e) => dispatch({ type: 'ADD_TEAM', id: e.target.value })}
         >
@@ -30,6 +31,7 @@ const UserFormTeams = ({ roleIds, roleValue, roles, teamIds, teams }) => {
           }`}
           onClick={addTeam}
           title={'Add Team'}
+          type="button"
           disabled={!state.teamToAdd}
         >
           Add Team
@@ -38,9 +40,9 @@ const UserFormTeams = ({ roleIds, roleValue, roles, teamIds, teams }) => {
       <table className="rw-table">
         <thead>
           <tr>
-            <th>Team</th>
-            <th>Roles</th>
-            <th>&nbsp;</th>
+            <th scope="col">Team</th>
+            <th scope="col">Roles</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -53,6 +55,7 @@ const UserFormTeams = ({ roleIds, roleValue, roles, teamIds, teams }) => {
                   return (
                     <label key={role.id} htmlFor={name} className="rw-label">
                       <CheckboxField
+                        id={name}
                         name="roleIds"
                         className="rw-input"
                         defaultChecked={roleIds.includes(name)}

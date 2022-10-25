@@ -1,6 +1,10 @@
+import { randomUUID } from 'node:crypto'
+
 import { DbAuthHandler } from '@redwoodjs/api'
 
+import { email as verificationEmail } from 'src/emails/user-verification'
 import { db } from 'src/lib/db'
+import { sendEmail } from 'src/lib/mailer'
 
 export const handler = async (event, context) => {
   const forgotPasswordOptions = {
@@ -51,6 +55,9 @@ export const handler = async (event, context) => {
     handler: (user) => {
       if (!user.active) {
         throw new Error('User not Active')
+      }
+      if (user.verifyToken) {
+        throw new Error('User not Verified')
       }
       return user
     },
@@ -112,15 +119,22 @@ export const handler = async (event, context) => {
     // If this returns anything else, it will be returned by the
     // `signUp()` function in the form of: `{ message: 'String here' }`.
     // eslint-disable-next-line
-    handler: ({ username, hashedPassword, salt, userAttributes }) => {
-      return db.user.create({
+    handler: async ({ username, hashedPassword, salt, userAttributes }) => {
+      const user = await db.user.create({
         data: {
           email: username,
           hashedPassword: hashedPassword,
           salt: salt,
-          // name: userAttributes.name
+          verifyToken: randomUUID(),
         },
       })
+
+      sendEmail({
+        to: user.email,
+        subject: verificationEmail.subject(),
+        html: verificationEmail.htmlBody(user),
+      })
+      return user
     },
 
     errors: {

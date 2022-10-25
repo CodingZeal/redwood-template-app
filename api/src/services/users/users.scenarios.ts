@@ -10,6 +10,7 @@ export const standard = defineScenario<Prisma.UserCreateArgs>({
     one: {
       data: {
         email: 'String4589593',
+        verifyToken: 'HarryPotter',
         ...DEFAULT_FIELDS,
       },
     },

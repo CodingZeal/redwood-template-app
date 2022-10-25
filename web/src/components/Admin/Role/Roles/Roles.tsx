@@ -45,9 +45,9 @@ const RolesList = ({ roles }) => {
       <table className="rw-table">
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>&nbsp;</th>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>

@@ -52,23 +52,23 @@ const Team = ({ team }) => {
         <table className="rw-table">
           <tbody>
             <tr>
-              <th>Id</th>
+              <th scope="row">Id</th>
               <td>{team.id}</td>
             </tr>
             <tr>
-              <th>Name</th>
+              <th scope="row">Name</th>
               <td>{team.name}</td>
             </tr>
             <tr>
-              <th>Active</th>
+              <th scope="row">Active</th>
               <td>{checkboxInputTag(team.active)}</td>
             </tr>
             <tr>
-              <th>Updated at</th>
+              <th scope="row">Updated at</th>
               <td>{timeTag(team.updatedAt)}</td>
             </tr>
             <tr>
-              <th>Created at</th>
+              <th scope="row">Created at</th>
               <td>{timeTag(team.createdAt)}</td>
             </tr>
           </tbody>

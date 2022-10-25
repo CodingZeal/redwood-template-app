@@ -2,7 +2,11 @@
   "private": true,
   "license": "MIT",
   "workspaces": {
-    "packages": ["api", "web", "packages/*"]
+    "packages": [
+      "api",
+      "web",
+      "packages/*"
+    ]
   },
   "devDependencies": {
     "concurrently": "^7.4.0",
@@ -17,7 +21,8 @@
     "yarn": ">=1.15"
   },
   "prisma": {
-    "seed": "yarn rw exec seed"
+    "seed": "yarn rw exec seed",
+    "schema": "api/db/schema.prisma"
   },
   "packageManager": "yarn@3.2.1",
   "scripts": {
@@ -47,10 +52,12 @@
     "db:migrate:data": "yarn rw dataMigrate up",
     "db:seed": "yarn rw prisma db seed",
     "db:setup": "yarn db:migrate:dev && yarn db:seed && yarn db:migrate:data",
-    "db:deploy": "yarn db:migrate:deploy && yarn db:migrate:data"
+    "db:reset": "yarn rw prisma migrate reset",
+    "db:deploy": "yarn db:migrate:deploy && yarn db:migrate:data",
+    "schema:format": "npx prisma format"
   },
   "dependencies": {
-    "@redwoodjs/core": "^3.0.1",
+    "@redwoodjs/core": "^3.2.0",
     "pm2": "^5.2.0"
   }
 }

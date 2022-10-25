@@ -1,5 +1,4 @@
 import { Link, routes } from '@redwoodjs/router'
-import { Toaster } from '@redwoodjs/web/toast'
 
 type UserLayoutProps = {
   children: React.ReactNode
@@ -8,7 +7,6 @@ type UserLayoutProps = {
 const UsersLayout = ({ children }: UserLayoutProps) => {
   return (
     <div className="rw-scaffold">
-      <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
       <header className="rw-header">
         <h1 className="rw-heading rw-heading-primary">
           <Link to={routes.adminUsers()} className="rw-link">
