@@ -11,7 +11,6 @@ import { ProfileLayout } from './layouts/ProfileLayout'
 const Routes = () => {
   return (
     <Router>
-      <Route path="/foo-bar-baz-gax" page={FooBarBazGaxPage} name="foo/bar/bazGax" />
       <Route path="/login" page={LoginPage} name="login" />
       <Route path="/signup" page={SignupPage} name="signup" />
       <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
