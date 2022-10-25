@@ -1,4 +1,5 @@
 {
+  "_template": "template[tags(heroku)]",
   "scripts": {},
   "env": {
     "SESSION_SECRET": {

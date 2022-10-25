@@ -1,3 +1,4 @@
+<!-- template[tags(markdown)] -->
 # MIT License
 
 ## Copyright (YEAR) (COPYRIGHT HOLDER)
