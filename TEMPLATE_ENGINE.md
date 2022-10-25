@@ -1,4 +1,4 @@
-# Template Documentation
+# Template Engine Documentation
 
 This documentation describes the interface between this template and the [cli](https://github.com/codingzeal/lumberstack-cli). See that repo for more information.
 
