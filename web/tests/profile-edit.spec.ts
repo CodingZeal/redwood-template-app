@@ -17,8 +17,8 @@ test.beforeEach(async ({ page }) => {
   await page.locator('button:has-text("Login")').click()
   await page.waitForURL('/')
 
-  const logout = await page.locator('[data-testid="logout"]')
-  await expect(logout).toHaveText('Logout')
+  const logout = await page.locator('text=Logout')
+  await expect(logout).toBeVisible()
 
   await page.goto('/profile')
   await page.waitForURL('/profile')
