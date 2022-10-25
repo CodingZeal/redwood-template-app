@@ -2,6 +2,7 @@ import { randomUUID } from 'node:crypto'
 
 import { DbAuthHandler } from '@redwoodjs/api'
 
+import { recovery } from 'src/emails/forgot-password'
 import { email as verificationEmail } from 'src/emails/user-verification'
 import { db } from 'src/lib/db'
 import { sendEmail } from 'src/lib/mailer'
@@ -21,12 +22,13 @@ export const handler = async (event, context) => {
     // address in a toast message so the user will know it worked and where
     // to look for the email.
     handler: (user) => {
-      if (!user.active) {
-        throw new Error('User not Active')
-      }
+      sendEmail({
+        to: user.email,
+        subject: recovery.subject(),
+        text: recovery.text(user),
+      })
       return user
     },
-
     // How long the resetToken is valid for, in seconds (default is 24 hours)
     expires: 60 * 60 * 24,
 
