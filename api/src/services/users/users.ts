@@ -87,7 +87,7 @@ export const verifyReset: MutationResolvers['verifyReset'] = async ({
   const user = await db.user.findUnique({
     where: { email },
   })
-  if (user && user.verifyToken) {
+  if (user?.verifyToken) {
     sendEmail({
       to: user.email,
       subject: verificationEmail.subject(),
