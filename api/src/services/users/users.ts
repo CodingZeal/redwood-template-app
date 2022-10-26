@@ -6,6 +6,7 @@ import type {
   UserResolvers,
 } from 'types/graphql'
 
+import { createPassword } from 'src/emails/create-password'
 import { email as verificationEmail } from 'src/emails/user-verification'
 import { db } from 'src/lib/db'
 import { sendEmail } from 'src/lib/mailer'
@@ -42,6 +43,12 @@ export const createUser: MutationResolvers['createUser'] = async ({
     data: { ...userInput, salt, hashedPassword },
   })
   await createMembershipAndRolesIfNotExists(user, teamIds, roleIds)
+
+  sendEmail({
+    to: user.email,
+    subject: createPassword.subject(),
+    html: createPassword.htmlBody(user),
+  })
 
   return user
 }
