@@ -2,7 +2,7 @@ import { randomUUID } from 'node:crypto'
 
 import { DbAuthHandler } from '@redwoodjs/api'
 
-import { recovery } from 'src/emails/forgot-password'
+import { email as forgotPasswordEmail } from 'src/emails/forgot-password'
 import { email as verificationEmail } from 'src/emails/user-verification'
 import { db } from 'src/lib/db'
 import { sendEmail } from 'src/lib/mailer'
@@ -24,8 +24,8 @@ export const handler = async (event, context) => {
     handler: (user) => {
       sendEmail({
         to: user.email,
-        subject: recovery.subject(),
-        text: recovery.text(user),
+        subject: forgotPasswordEmail.subject(),
+        text: forgotPasswordEmail.text(user),
       })
       return user
     },

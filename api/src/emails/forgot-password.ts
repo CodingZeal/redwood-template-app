@@ -1,8 +1,9 @@
 import type { User } from '@prisma/client'
 
 import { logger } from 'src/lib/logger'
+import { userNameWithFallback } from 'src/lib/username'
 
-const recovery = {
+const email = {
   subject: () => 'Forgot Password',
   text: (user: User) => {
     const link = `${process.env.DOMAIN}/reset-password?resetToken=${user.resetToken}`
@@ -12,16 +13,11 @@ const recovery = {
 
     return `
         <div> Hi ${userNameWithFallback(user)}, </div>
-        <p>Please find below a link to reset your password for the ${appName}:</p>
+        <p>Please find below a link to reset your password for ${appName}:</p>
         <a href="${link}">${link}</a>
-        <p>If you did not request an account, please ignore this email.</p>
+        <p>If you did not request to reset your password, please ignore this email.</p>
       `
   },
 }
 
-// TODO: extract to utils that can be shared with api and web
-const userNameWithFallback = (user: User) => {
-  return user.name || user.nickname || user.email
-}
-
-export { recovery }
+export { email }

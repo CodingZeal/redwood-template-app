@@ -1,6 +1,7 @@
 import type { User } from '@prisma/client'
 
 import { logger } from 'src/lib/logger'
+import { userNameWithFallback } from 'src/lib/username'
 
 const email = {
   subject: () => 'Verify Email',
@@ -19,11 +20,6 @@ const email = {
         <p>If you did not request an account, please ignore this email.</p>
       `
   },
-}
-
-// TODO: extract to utils that can be shared with api and web
-const userNameWithFallback = (user: User) => {
-  return user.name || user.nickname || user.email
 }
 
 export { email }
