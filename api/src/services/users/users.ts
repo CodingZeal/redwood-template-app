@@ -8,7 +8,7 @@ import type {
   UserResolvers,
 } from 'types/graphql'
 
-import { createPassword } from 'src/emails/create-password'
+import { email as createPassword } from 'src/emails/create-password'
 import { email as verificationEmail } from 'src/emails/user-verification'
 import { db } from 'src/lib/db'
 import { sendEmail } from 'src/lib/mailer'

@@ -24,7 +24,11 @@ jest.mock('@redwoodjs/auth', () => ({
 
 const renderComponent = () =>
   render(
-    <ResetPassword resetToken={'foo'} title={''} message={'New Password'} />
+    <ResetPassword
+      resetToken={'foo'}
+      title={'test'}
+      message={'Test Password'}
+    />
   )
 
 describe('Reset Password Page', () => {
@@ -32,16 +36,18 @@ describe('Reset Password Page', () => {
     expect(renderComponent).not.toThrow()
   })
 
-  // it('sends updated password with token for reset', async () => {
-  //   renderComponent()
-  //   const passwordInput = screen.getByLabelText('New Password').closest('input')
-  //   await waitFor(() => userEvent.type(passwordInput, 'supersecret'))
+  it('sends updated password with token for reset', async () => {
+    renderComponent()
+    const passwordInput = screen
+      .getByLabelText('Test Password')
+      .closest('input')
+    await waitFor(() => userEvent.type(passwordInput, 'supersecret'))
 
-  //   const submitButton = screen.getByRole('button', { name: 'Submit' })
-  //   await waitFor(() => userEvent.click(submitButton))
-  //   expect(mockReset).toHaveBeenCalledWith({
-  //     resetToken: 'foo',
-  //     password: 'supersecret',
-  //   })
-  // })
+    const submitButton = screen.getByRole('button', { name: 'Submit' })
+    await waitFor(() => userEvent.click(submitButton))
+    expect(mockReset).toHaveBeenCalledWith({
+      resetToken: 'foo',
+      password: 'supersecret',
+    })
+  })
 })

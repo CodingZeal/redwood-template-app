@@ -1,8 +1,9 @@
 import type { User } from '@prisma/client'
 
 import { logger } from 'src/lib/logger'
+import { userNameWithFallback } from 'src/lib/username'
 
-const createPassword = {
+const email = {
   subject: () => `${process.env.APP_NAME}, Welcome`,
   htmlBody: (user: User) => {
     const link = `${process.env.DOMAIN}/create-password?resetToken=${user.resetToken}`
@@ -21,9 +22,4 @@ const createPassword = {
   },
 }
 
-// TODO: extract to utils that can be shared with api and web
-const userNameWithFallback = (user: User) => {
-  return user.name || user.nickname || user.email
-}
-
-export { createPassword }
+export { email }
