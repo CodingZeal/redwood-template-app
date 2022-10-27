@@ -1,3 +1,5 @@
+import { randomUUID } from 'node:crypto'
+
 import type { User as UserType } from '@prisma/client'
 import * as CryptoJS from 'crypto-js'
 import type {
@@ -38,13 +40,24 @@ export const createUser: MutationResolvers['createUser'] = async ({
     keySize: 256 / 32,
   }).toString()
 
+  const resetToken = randomUUID()
+  const resetTokenExpiresAt = new Date(
+    new Date().getTime() + 24 * 60 * 60 * 1000
+  )
+
   const { roleIds, teamIds, ...userInput } = input
   const user = await db.user.create({
-    data: { ...userInput, salt, hashedPassword },
+    data: {
+      ...userInput,
+      salt,
+      hashedPassword,
+      resetToken,
+      resetTokenExpiresAt,
+    },
   })
   await createMembershipAndRolesIfNotExists(user, teamIds, roleIds)
 
-  sendEmail({
+  await sendEmail({
     to: user.email,
     subject: createPassword.subject(),
     html: createPassword.htmlBody(user),
