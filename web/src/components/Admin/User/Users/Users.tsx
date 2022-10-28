@@ -63,17 +63,16 @@ const Users = ({ users }) => {
       <table className="rw-table">
         <thead>
           <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Email</th>
-            <th scope="col">Name</th>
-            <th scope="col">Nickname</th>
-            <th scope="col">Pronouns</th>
-            <th scope="col">Active</th>
-            <th scope="col">Admin</th>
-            <th scope="col">Verified</th>
-            <th scope="col">Updated at</th>
-            <th scope="col">Created at</th>
-            <th scope="col">Actions</th>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Nickname</th>
+            <th>Pronouns</th>
+            <th>Active</th>
+            <th>Admin</th>
+            <th>Updated at</th>
+            <th>Created at</th>
+            <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>

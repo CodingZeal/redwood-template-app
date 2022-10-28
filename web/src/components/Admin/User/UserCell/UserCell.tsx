@@ -1,6 +1,6 @@
 import type { FindUserById } from 'types/graphql'
 
-import { CellSuccessProps, CellFailureProps, MetaTags } from '@redwoodjs/web'
+import { CellFailureProps, CellSuccessProps, MetaTags } from '@redwoodjs/web'
 
 import User from 'src/components/Admin/User/User'
 

@@ -3,13 +3,14 @@ import { randomUUID } from 'node:crypto'
 import type { User as UserType } from '@prisma/client'
 import * as CryptoJS from 'crypto-js'
 import type {
-  QueryResolvers,
   MutationResolvers,
+  QueryResolvers,
   UserResolvers,
 } from 'types/graphql'
 
 import { email as createPassword } from 'src/emails/create-password'
 import { email as verificationEmail } from 'src/emails/user-verification'
+import { buildWhereClause } from 'src/lib/buildWhereClause'
 import { db } from 'src/lib/db'
 import { sendEmail } from 'src/lib/mailer'
 
@@ -20,8 +21,8 @@ const parseRoles = (roleIds) =>
     return acc
   }, {})
 
-export const users: QueryResolvers['users'] = () => {
-  return db.user.findMany()
+export const users: QueryResolvers['users'] = (args: { active: boolean }) => {
+  return db.user.findMany(buildWhereClause(args))
 }
 
 export const user: QueryResolvers['user'] = ({ id }) => {
