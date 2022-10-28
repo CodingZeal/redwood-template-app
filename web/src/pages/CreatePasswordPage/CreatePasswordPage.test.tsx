@@ -17,7 +17,7 @@ jest.mock('@redwoodjs/auth', () => ({
 describe('CreatePasswordPage', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<CreatePasswordPage resetToken="foo" />)
+      render(<CreatePasswordPage token="foo" />)
     }).not.toThrow()
   })
 })

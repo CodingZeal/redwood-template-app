@@ -49,10 +49,10 @@ export const createUser: MutationResolvers['createUser'] = async ({
   const user = await db.user.create({
     data: {
       ...userInput,
-      salt,
       hashedPassword,
       resetToken,
       resetTokenExpiresAt,
+      salt,
     },
   })
   await createMembershipAndRolesIfNotExists(user, teamIds, roleIds)

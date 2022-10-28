@@ -1,8 +1,8 @@
 import { ResetPassword } from 'src/components/ResetPassword'
 
-const CreatePasswordPage = ({ resetToken }) => (
+const CreatePasswordPage = ({ token }) => (
   <ResetPassword
-    resetToken={resetToken}
+    resetToken={token}
     title="Welcome"
     message="Set your password"
   />

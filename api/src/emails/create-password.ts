@@ -6,7 +6,7 @@ import { userNameWithFallback } from 'src/lib/username'
 const email = {
   subject: () => `${process.env.APP_NAME}, Welcome`,
   htmlBody: (user: User) => {
-    const link = `${process.env.DOMAIN}/create-password?resetToken=${user.resetToken}`
+    const link = `${process.env.DOMAIN}/create-password?token=${user.resetToken}`
     const appName = process.env.APP_NAME
 
     if (process.env.NODE_ENV === 'development') {
