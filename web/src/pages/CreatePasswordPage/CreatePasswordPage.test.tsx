@@ -1,6 +1,6 @@
 import { render } from '@redwoodjs/testing/web'
 
-import ResetPasswordPage from './ResetPasswordPage'
+import CreatePasswordPage from './CreatePasswordPage'
 
 const mockReset = jest.fn().mockResolvedValue({})
 
@@ -14,10 +14,10 @@ jest.mock('@redwoodjs/auth', () => ({
   }),
 }))
 
-describe('ResetPasswordPage', () => {
+describe('CreatePasswordPage', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<ResetPasswordPage resetToken="banana" />)
+      render(<CreatePasswordPage token="foo" />)
     }).not.toThrow()
   })
 })
