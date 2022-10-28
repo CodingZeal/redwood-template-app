@@ -32,7 +32,7 @@ jobs:
         run: yarn
 
       - name: Run Migrations & seeds
-        run: yarn rw prisma migrate dev
+        run: yarn rw prisma migrate dev && yarn rw prisma db seed
 
       - name: Build app
         run: yarn rw build
