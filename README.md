@@ -44,11 +44,11 @@ Authentication follows the [dbAuth provider](https://redwoodjs.com/docs/auth/dba
 
 #### Email Account Verification
 
-We default to having the email address be the login username. To verify people are signing up with valid email addresses that they are the owners of we implement a verification process.
+We default to having the email address be the login username. We verify users are the owner of the email address with the following process.
 
 Upon account creation via the Sign Up flow, we add a verification token to the users account. The user can then use the application on this initial sign-up. At the same time we email the user with a verification link.
 
-If the user tries to login to the application after the initial account creation before verifying they will receive a "Needs Verification" message and will be forwarded to a form to have them sent the verification email again.
+If the user tries to login to the application, before verifying they will receive a "Needs Verification" message and will be forwarded to a form to have them sent the verification email again.
 
 Once they click that link, they will be allowed access to the application after the initial account setup.
 
@@ -62,7 +62,7 @@ Clicking the link in the email will take them to a page to create a password for
 
 Multi-Tenancy is the ability for the application to have users be separated by different tenants. This way one tenant could be kept hidden from another. The reason we support this out of the box is it's difficult to add in later if the data isn't structured in a way to support it.
 
-While we haven't implemented much with multi-tenancy, we do take care of it when creating and maintaining accounts. The data is structure in a way that will make it easier to implement multi-tenant solutions.
+While we haven't implemented much with multi-tenancy, we do take care of it when creating and maintaining accounts. The data is structured in a way that will make it easier to implement multi-tenant solutions.
 
 #### Data Structure
 
@@ -121,6 +121,46 @@ We strive to testing things in isolation and not test anything that is tested vi
 
 Tests are located next to the files they are testing. Making it easy to find associated tests. We nest `describe` blocks for context when certain setup or data is required. Some tests are placeholders, in that they only make sure the thing being tested doesn't throw any errors. These are in place to add tests when the code becomes more involved.
 
+File Naming Example:
+```
+web/src/components/Navigation/Navigation.tsx
+web/src/components/Navigation/Navigation.test.tsx
+```
+
+Testing Example:
+```js
+describe('UserFormTeams', () => {
+
+  // Placeholder
+  it('renders successfully', () => {
+    expect(<UserFormTeams />).not.toThrow()
+  })
+
+  // Context block
+  describe('when a value is not selected', () => {
+    const renderComponent = () =>
+      render(
+        <Form>
+          <UserFormTeams
+            roleIds={[]}
+            roles={standard().roles}
+            roleValue={jest.fn()}
+            teamIds={[]}
+            teams={standard().teams}
+          />
+        </Form>
+      )
+
+    it('renders Add Team button', () => {
+      renderComponent()
+      const element = screen.getByRole('button', { name: 'Add Team' })
+
+      expect(element).toBeInTheDocument()
+    })
+  })
+})
+```
+
 **Tools:**
 
 - [RedwoodJS](https://redwoodjs.com/docs/testing#redwood-and-testing) built in tools
@@ -136,7 +176,7 @@ Tests are located next to the files they are testing. Making it easy to find ass
 
 #### Feature/End-to-End Testing
 
-Feature testing is brittle and a pain to maintain. In order to make this easier we only keep happy path tests around. We also write tests for development that may not be happy path, that we then delete after development is done.
+Feature testing is brittle and a pain to maintain. In order to make this easier we only keep happy path tests around.
 
 **Tools:**
 
