@@ -1,5 +1,5 @@
 import { useAuth } from '@redwoodjs/auth'
-import { NavLink, navigate, routes } from '@redwoodjs/router'
+import { navigate, NavLink, routes } from '@redwoodjs/router'
 
 const LinkItem = (props) => (
   <li data-testid="nav__link-item" className="mr-3 cursor-pointer">
@@ -11,9 +11,11 @@ const LinkItem = (props) => (
 const Navigation = () => {
   const { currentUser, hasRole, isAuthenticated, logOut } = useAuth()
 
-  const handleLogOut = () => {
-    navigate('/')
-    logOut() && window.location.reload()
+  const handleLogOut = async () => {
+    await logOut()
+
+    navigate(routes.home())
+    location.reload()
   }
 
   return (
