@@ -6,6 +6,13 @@ import { toast } from '@redwoodjs/web/toast'
 
 import { EditProfile } from '../EditProfile'
 
+export const beforeQuery = (props) => {
+  return {
+    variables: props,
+    fetchPolicy: 'no-cache',
+  }
+}
+
 export const QUERY = gql`
   query Profile {
     profile {
