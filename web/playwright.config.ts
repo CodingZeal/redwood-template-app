@@ -36,6 +36,9 @@ const config: PlaywrightTestConfig = {
     reuseExistingServer: true,
     command: 'yarn rw serve',
     port: 8910,
+    env: {
+      SESSION_SECRET: 'foobar',
+    },
   },
 }
 

@@ -1,7 +1,8 @@
-// import { FullConfig } from '@playwright/test'
+import seedScript from '../scripts/seed'
 
-async function globalSetup() {
-  process.env.SESSION_SECRET = 'foobar'
+const globalSetup = async () => {
+  console.log('Setting up playwright...')
+  await seedScript()
 }
 
 export default globalSetup

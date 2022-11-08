@@ -32,7 +32,7 @@ jobs:
         run: yarn
 
       - name: Run Migrations & seeds
-        run: yarn rw prisma migrate dev && yarn rw prisma db seed
+        run: yarn rw prisma migrate dev
 
       - name: Build app
         run: yarn rw build
@@ -41,6 +41,6 @@ jobs:
         run: npx playwright install-deps && npx playwright install
 
       - name: Run Playwright
-        run: yarn test:e2e
+        run: yarn test:e2e:ci
 
 
