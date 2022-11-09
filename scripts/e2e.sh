@@ -1,8 +1,10 @@
 #!/bin/bash
 
-if [ "$1" != "--skip" ]; then
+export DATABASE_URL=postgresql://postgres:development@localhost:5432/redwood_dev
+
+if [ "$1" == "--testdb" ]; then
   export DATABASE_URL=postgresql://postgres:test@localhost:5433/redwood_test
-  docker-compose rm -s testdb
+  docker-compose rm -sfv testdb
   docker volume rm redwood-template-app_redwood_test
   yarn testdb:daemon
   yarn rw prisma migrate dev
