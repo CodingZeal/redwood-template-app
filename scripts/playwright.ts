@@ -1,83 +1,178 @@
-import { execSync, exec } from 'child_process'
+#!/usr/bin/env ts-node
+
+// usage: ./scripts/playwright.ts [--reset --migrate]
+// alias: yarn test:e2e [--reset --migrate]
+
+import { execSync, spawn, SpawnOptionsWithoutStdio } from 'child_process'
 import { argv } from 'node:process'
 
-const env = {
+import { db } from '../api/src/lib/db'
+
+const { CI } = process.env
+
+// env for prisma
+const DATABASE_URL = 'postgresql://postgres:test@localhost:5433/redwood_test'
+process.env.DATABASE_URL = DATABASE_URL
+
+// env for shell commands
+const shellenv: Record<string, string> = {
   ...process.env,
-  DATABASE_URL: 'postgresql://postgres:test@localhost:5433/redwood_test',
+  DATABASE_URL,
 }
 
+const PLAYWRIGHT_COMMAND =
+  'npx playwright test -c web/playwright.config.ts --trace on --workers 1'
+
 ;(async () => {
-  const container = _dockerContainer()
+  if (CI) {
+    const [command, ...rest] = PLAYWRIGHT_COMMAND.split(' ')
+    return _rawExec(command, rest, {
+      env: shellenv,
+    })
+  }
+  _checkDocker()
+  _stopContainer()
 
   if (_shouldReset()) {
-    _destroy()
+    _resetDatabase()
   }
 
-  if (!container) {
-    _startTestDb()
-    _migrateSeed()
+  _startContainer()
+
+  if (_shouldMigrate()) {
+    _migrate()
   }
 
-  _executePlaywright()
+  if (!_shouldSeed()) {
+    _seed()
+  }
+
+  _runPlaywright()
 })()
 
-function _dockerContainer() {
+function _checkDocker() {
   try {
-    const container = _exec(
-      'docker ps --filter name=redwood-template-app-testdb --format "{{.Names}}"'
-    )
-    console.log(
-      container ? `Found container ${container}...` : 'No container found...'
-    )
-    return container
+    // need a command that doesn't use stderr (like --version)
+    _containerName()
   } catch (e) {
-    console.error('Docker is not running!')
+    console.error('Is docker running?')
     console.error({ e })
     process.exit(1)
   }
 }
 
-function _destroy() {
-  const volume = _exec(
+function _stopContainer() {
+  _log('Stopping container...')
+  _exec('docker compose rm -sf testdb > /dev/null')
+}
+
+function _startContainer() {
+  _log('Starting container...')
+  _exec('docker compose up -d testdb > /dev/null')
+}
+
+function _removeContainer() {
+  _log('Removing container...')
+  _exec('docker compose rm -sf testdb > /dev/null')
+}
+
+function _getVolume() {
+  return _exec(
     'docker volume ls --filter name=redwood_test --format "{{.Name}}"'
   )
+}
+
+function _removeVolume() {
+  _log('Removing volume...')
+  const volume = _getVolume()
   if (volume) {
-    console.log(`Removing volume ${volume}...`)
-    _exec('docker compose rm -sf testdb')
     _exec(`docker volume rm ${volume}`)
   }
 }
 
+function _resetDatabase() {
+  _log('Resetting database...', true)
+  _destroy()
+  _startContainer()
+  _migrate()
+  _seed()
+}
+
+function _destroy() {
+  _removeContainer()
+  _removeVolume()
+}
+
 function _shouldReset() {
-  console.log('Resetting database...')
   return argv.includes('--reset')
 }
 
-function _startTestDb() {
-  console.log('Starting test database...')
-  _exec('docker compose up -d testdb')
+function _shouldMigrate() {
+  return argv.includes('--migrate')
 }
 
-function _migrateSeed() {
-  console.log('Migrating and seeding database...')
+async function _shouldSeed() {
+  const hasUsers = await db.user.findMany()
+  return !!hasUsers
+}
+
+function _migrate() {
+  _log('Migrating..', true)
   _exec('yarn rw prisma migrate dev')
+}
+
+function _seed() {
+  _log('Seeding...', true)
   _exec('yarn rw prisma db seed')
 }
 
-function _executePlaywright() {
-  console.log('Executing Playwright tests...')
-  _exec('npx playwright install')
-  const child = exec('yarn test:e2e:ci', {
-    env,
+function _containerName() {
+  return _exec(
+    'docker ps --filter name=redwood-template-app-testdb --format "{{.Names}}"'
+  )
+}
+
+function _runPlaywright() {
+  _checkAndInstallPlaywright()
+  const [command, ...rest] = PLAYWRIGHT_COMMAND.split(' ')
+  _rawExec(command, rest, {
+    env: shellenv,
+    shell: '/bin/bash',
   })
-  child.stdout?.on('data', console.log)
-  child.stderr?.on('data', console.error)
+}
+function _checkAndInstallPlaywright() {
+  _log('Initializing playwright...', true)
+  _exec('npx playwright install')
+}
+
+function _log(message: string, out = false) {
+  if (_debug() || out) {
+    console.log(message)
+  }
+}
+
+function _debug() {
+  return argv.includes('--debug')
+}
+
+function _rawExec(
+  command: string,
+  args?: string[],
+  opts?: SpawnOptionsWithoutStdio
+) {
+  spawn(command, args, {
+    stdio: 'inherit',
+    ...opts,
+  })
 }
 
 function _exec(command: string) {
-  return execSync(command, {
-    env,
+  const out = execSync(command, {
+    env: shellenv,
+    shell: '/bin/bash',
   })
-    .toString('utf-8')
+    .toString()
     .trim()
+  _log(out)
+  return out
 }

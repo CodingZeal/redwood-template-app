@@ -34,7 +34,7 @@
     "dev": "yarn db:daemon && yarn rw dev",
     "test": "yarn testdb:daemon && yarn rw test",
     "test:nowatch": "yarn rw test --no-watch",
-    "test:e2e": "ts-node-esm -P scripts/tsconfig.json scripts/playwright.ts",
+    "test:e2e": "./scripts/playwright.ts",
     "test:e2e:ci": "npx playwright test -c web/playwright.config.ts --trace on --workers 1 --reporter=list",
     "test:e2e:debug": "PWDEBUG=1 npx playwright test --debug -c web/playwright.config.ts",
     "testdb": "yarn testdb:down && docker compose up testdb",
