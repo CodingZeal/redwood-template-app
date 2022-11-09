@@ -1,20 +1,23 @@
 #!/usr/bin/env ts-node
 
-// usage: ./scripts/playwright.ts [--reset --migrate]
-// alias: yarn test:e2e [--reset --migrate]
+/*
+  usage: ./scripts/playwright.ts [--reset --migrate --config --debug]
+  alias: yarn test:e2e [--reset --migrate --config --debug]
 
+  options:
+    --reset: resets the database
+    --migrate: runs migrations
+    --config: passes all of playwrights configs through
+    --debug: logs all output
+*/
 import { execSync, spawn, SpawnOptionsWithoutStdio } from 'child_process'
 import { argv } from 'node:process'
 
 import { db } from '../api/src/lib/db'
 
-const { CI } = process.env
-
-// env for prisma
 const DATABASE_URL = 'postgresql://postgres:test@localhost:5433/redwood_test'
 process.env.DATABASE_URL = DATABASE_URL
 
-// env for shell commands
 const shellenv: Record<string, string> = {
   ...process.env,
   DATABASE_URL,
@@ -24,7 +27,7 @@ const PLAYWRIGHT_COMMAND =
   'npx playwright test -c web/playwright.config.ts --trace on --workers 1'
 
 ;(async () => {
-  if (CI) {
+  if (process.env.CI) {
     const [command, ...rest] = PLAYWRIGHT_COMMAND.split(' ')
     return _rawExec(command, rest, {
       env: shellenv,
@@ -33,12 +36,14 @@ const PLAYWRIGHT_COMMAND =
   _checkDocker()
   _stopContainer()
 
+  // --reset
   if (_shouldReset()) {
     _resetDatabase()
+  } else {
+    _startContainer()
   }
 
-  _startContainer()
-
+  // --migrate
   if (_shouldMigrate()) {
     _migrate()
   }
@@ -63,17 +68,17 @@ function _checkDocker() {
 
 function _stopContainer() {
   _log('Stopping container...')
-  _exec('docker compose rm -sf testdb > /dev/null')
+  _exec('docker compose rm -sf testdb')
 }
 
 function _startContainer() {
   _log('Starting container...')
-  _exec('docker compose up -d testdb > /dev/null')
+  _exec('docker compose up -d testdb')
 }
 
 function _removeContainer() {
   _log('Removing container...')
-  _exec('docker compose rm -sf testdb > /dev/null')
+  _exec('docker compose rm -sf testdb')
 }
 
 function _getVolume() {
@@ -134,15 +139,26 @@ function _containerName() {
 
 function _runPlaywright() {
   _checkAndInstallPlaywright()
-  const [command, ...rest] = PLAYWRIGHT_COMMAND.split(' ')
+  const [command, ...rest] = _parsePlaywrightArgs()
   _rawExec(command, rest, {
     env: shellenv,
     shell: '/bin/bash',
   })
 }
+
 function _checkAndInstallPlaywright() {
   _log('Initializing playwright...', true)
   _exec('npx playwright install')
+}
+
+function _parsePlaywrightArgs(): string[] {
+  const configIndex = argv.indexOf('--config')
+  if (configIndex === -1) {
+    const [cmd, ...rest] = PLAYWRIGHT_COMMAND.split(' ')
+    return [cmd, ...rest]
+  }
+  const args = argv.slice(configIndex + 1, argv.length)
+  return ['npx', 'playwright', ...args]
 }
 
 function _log(message: string, out = false) {
