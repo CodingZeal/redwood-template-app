@@ -9,8 +9,8 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^7.5.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "ts-node": "^10.9.1"
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config",
@@ -36,7 +36,6 @@
     "test:nowatch": "yarn rw test --no-watch",
     "test:e2e": "ts-node-esm -P scripts/tsconfig.json scripts/playwright.ts",
     "test:e2e:ci": "npx playwright test -c web/playwright.config.ts --trace on --workers 1 --reporter=list",
-    "test:e2e:testdb": "./scripts/e2e.sh --testdb",
     "test:e2e:debug": "PWDEBUG=1 npx playwright test --debug -c web/playwright.config.ts",
     "testdb": "yarn testdb:down && docker compose up testdb",
     "testdb:daemon": "yarn testdb:down && docker compose up -d testdb",
