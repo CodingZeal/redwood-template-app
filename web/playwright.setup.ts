@@ -12,7 +12,7 @@ async function globalSetup() {
   await adminLogin.locator('input[name="password"]').click()
   await adminLogin.locator('input[name="password"]').fill('password')
   await adminLogin.locator('button:has-text("Login")').click()
-  await adminLogin.context().storageState({ path: 'adminUser.json' })
+  await adminLogin.context().storageState({ path: 'adminUser-pw.json' })
 
   const userLogin = await browser.newPage()
   await userLogin.goto('http://localhost:8910/login')
@@ -21,7 +21,7 @@ async function globalSetup() {
   await userLogin.locator('input[name="password"]').click()
   await userLogin.locator('input[name="password"]').fill('password')
   await userLogin.locator('button:has-text("Login")').click()
-  await userLogin.context().storageState({ path: 'basicUser.json' })
+  await userLogin.context().storageState({ path: 'basicUser-pw.json' })
 
   await browser.close()
 }
