@@ -38,6 +38,7 @@ const config: PlaywrightTestConfig = {
     port: 8910,
     env: {
       SESSION_SECRET: 'foobar',
+      DISABLE_EMAIL: 'true',
     },
   },
 }

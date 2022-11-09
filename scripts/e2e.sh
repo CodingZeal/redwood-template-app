@@ -1,14 +1,12 @@
 #!/bin/bash
 
-export DATABASE_URL=postgresql://postgres:test@localhost:5433/redwood_test
+if [ "$1" != "--skip" ]; then
+  export DATABASE_URL=postgresql://postgres:test@localhost:5433/redwood_test
+  docker-compose rm -s testdb
+  docker volume rm redwood-template-app_redwood_test
+  yarn testdb:daemon
+  yarn rw prisma migrate dev
+  yarn rw prisma db seed
+fi
 
-docker compose down
-docker volume rm redwood-template-app_redwood_test
-
-yarn testdb:daemon
-
-yarn rw prisma migrate dev
-
-yarn build
-
-npx playwright test -c web/playwright.config.ts --trace on --workers 1
+yarn test:e2e:ci

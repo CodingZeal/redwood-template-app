@@ -3,7 +3,7 @@ import { db } from 'api/src/lib/db'
 import Chance from 'chance'
 import CryptoJS from 'crypto-js'
 
-function hashPassword(password: string, salt = 'ZEAL') {
+export function hashPassword(password: string, salt = 'ZEAL') {
   const saltToUse = salt || CryptoJS.lib.WordArray.random(128 / 8).toString()
   return [
     CryptoJS.PBKDF2(password, saltToUse, { keySize: 256 / 32 }).toString(),
@@ -91,6 +91,14 @@ export default async () => {
       data: {
         admin: true,
         email: ADMIN_EMAIL,
+        hashedPassword: ADMIN_HASHED_PASSWORD,
+        salt: ADMIN_SALT,
+      },
+    })
+
+    await db.user.create({
+      data: {
+        email: 'user@example.com',
         hashedPassword: ADMIN_HASHED_PASSWORD,
         salt: ADMIN_SALT,
       },

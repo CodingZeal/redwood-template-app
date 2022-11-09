@@ -1,8 +1,14 @@
 import { test, expect } from '@playwright/test'
 
-// test.afterEach(async ({ page }, testInfo) => {
-//   console.log(`Finished ${testInfo.title} with status ${testInfo.status}`)
-// })
+import { db } from '../../api/src/lib/db'
+
+const MOCK_USER = {
+  email: 'snap@cracklepop.com',
+}
+
+test.afterAll(async () => {
+  await db.user.delete({ where: { email: MOCK_USER.email } })
+})
 
 test.describe('signup as a user', () => {
   test('should signup user', async ({ page }) => {
@@ -22,7 +28,7 @@ test.describe('signup as a user', () => {
     await expect(signupTitle).toHaveText('Signup')
 
     await page.locator('input[name="username"]').click()
-    await page.locator('input[name="username"]').fill('example@example.com')
+    await page.locator('input[name="username"]').fill(MOCK_USER.email)
     await page.locator('input[name="password"]').click()
     await page.locator('input[name="password"]').fill('example')
 
