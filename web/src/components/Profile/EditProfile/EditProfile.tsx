@@ -9,7 +9,7 @@ import {
 
 const EditProfile = ({ error, loading, profile, onSave }) => {
   return (
-    <div className="rw-form-wrapper">
+    <div id="edit-profile" className="rw-form-wrapper">
       <Form onSubmit={onSave} error={error}>
         <FormError
           error={error}
@@ -79,6 +79,7 @@ const EditProfile = ({ error, loading, profile, onSave }) => {
 
         <TextField
           name="email"
+          disabled
           defaultValue={profile.email}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
