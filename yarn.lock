@@ -1696,6 +1696,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime-corejs3@npm:7.19.4":
+  version: 7.19.4
+  resolution: "@babel/runtime-corejs3@npm:7.19.4"
+  dependencies:
+    core-js-pure: ^3.25.1
+    regenerator-runtime: ^0.13.4
+  checksum: 01b55c54c4b649d4897f873982ee0097b1f9d597b62a97491c5ca4b0e659bf9576914d00b2cd6d140f19497a8f5ace6efdb958eff123ffa499c422f338946deb
+  languageName: node
+  linkType: hard
+
 "@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.5.0, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.18.9
   resolution: "@babel/runtime@npm:7.18.9"
@@ -3477,6 +3487,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@prisma/client@npm:4.5.0":
+  version: 4.5.0
+  resolution: "@prisma/client@npm:4.5.0"
+  dependencies:
+    "@prisma/engines-version": 4.5.0-43.0362da9eebca54d94c8ef5edd3b2e90af99ba452
+  peerDependencies:
+    prisma: "*"
+  peerDependenciesMeta:
+    prisma:
+      optional: true
+  checksum: d0fe18d36ab3f4bd9deb468c7461702c68ba3a32afb1e854b3942cc0ed917bd5fbb427fc9069127c72407d9998d559cd8d48be3a81960deb413d241e032be100
+  languageName: node
+  linkType: hard
+
 "@prisma/debug@npm:4.3.1":
   version: 4.3.1
   resolution: "@prisma/debug@npm:4.3.1"
@@ -3514,6 +3538,13 @@ __metadata:
   version: 4.3.0-32.c875e43600dfe042452e0b868f7a48b817b9640b
   resolution: "@prisma/engines-version@npm:4.3.0-32.c875e43600dfe042452e0b868f7a48b817b9640b"
   checksum: b48bfa4a1cbfa590048faeab9b436471db8e51d3c01611acfc93df90d799a3b991ea3cc12a71c405fa82087ab5037ea979f5585bf1e6e0730a6a4a97da23d870
+  languageName: node
+  linkType: hard
+
+"@prisma/engines-version@npm:4.5.0-43.0362da9eebca54d94c8ef5edd3b2e90af99ba452":
+  version: 4.5.0-43.0362da9eebca54d94c8ef5edd3b2e90af99ba452
+  resolution: "@prisma/engines-version@npm:4.5.0-43.0362da9eebca54d94c8ef5edd3b2e90af99ba452"
+  checksum: 144868d0e11e5e13e206628c750bd71c45a3fc8279b52723dcd970ccd44446a34eb74ea7c2e5cdf10e6567df0b886d937c4c54a31846d58ddcc2f06141334786
   languageName: node
   linkType: hard
 
@@ -3686,7 +3717,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@redwoodjs/api@npm:3.2.0, @redwoodjs/api@npm:^3.2.0":
+"@redwoodjs/api@npm:3.2.0":
   version: 3.2.0
   resolution: "@redwoodjs/api@npm:3.2.0"
   dependencies:
@@ -3724,6 +3755,47 @@ __metadata:
     rwfw: dist/bins/rwfw.js
     tsc: dist/bins/tsc.js
   checksum: 879690cc1c9f5729cfac25003c1c9336d54a191b413efeb68e7afc1be465348ea4e36158b365010592bdc85b9784a70466ede093e74497c3fdfb5ff76d16c1c6
+  languageName: node
+  linkType: hard
+
+"@redwoodjs/api@npm:^3.3.1":
+  version: 3.4.0
+  resolution: "@redwoodjs/api@npm:3.4.0"
+  dependencies:
+    "@babel/runtime-corejs3": 7.19.4
+    "@prisma/client": 4.5.0
+    base64url: 3.0.1
+    core-js: 3.25.5
+    cross-undici-fetch: 0.4.14
+    crypto-js: 4.1.1
+    humanize-string: 2.1.0
+    jsonwebtoken: 8.5.1
+    jwks-rsa: 2.0.5
+    md5: 2.3.0
+    pascalcase: 1.0.0
+    pino: 8.6.1
+    title-case: 3.0.3
+    uuid: 9.0.0
+  peerDependencies:
+    "@clerk/clerk-sdk-node": 3.9.2
+    "@magic-sdk/admin": 1.4.1
+    "@okta/jwt-verifier": 2.6.0
+    firebase-admin: 10.3.0
+  peerDependenciesMeta:
+    "@clerk/clerk-sdk-node":
+      optional: true
+    "@magic-sdk/admin":
+      optional: true
+    "@okta/jwt-verifier":
+      optional: true
+    firebase-admin:
+      optional: true
+  bin:
+    redwood: dist/bins/redwood.js
+    rw: dist/bins/redwood.js
+    rwfw: dist/bins/rwfw.js
+    tsc: dist/bins/tsc.js
+  checksum: 687e496bc87a3f7fa5719d00758095349f1f6b452f7f11b8d85579028c34caecfbf583f6cb57d68c4aa4879ee7dac2af95f6b09a982e58efa76f7179b81e3e09
   languageName: node
   linkType: hard
 
@@ -7278,7 +7350,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "api@workspace:api"
   dependencies:
-    "@redwoodjs/api": ^3.2.0
+    "@redwoodjs/api": ^3.3.1
     "@redwoodjs/api-server": ^3.2.0
     "@redwoodjs/graphql-server": ^3.2.0
     "@types/chance": ^1.1.3
