@@ -1,3 +1,4 @@
+// template[tags(prisma,db)]
 generator client {
   provider      = "prisma-client-js"
   binaryTargets = ["native"]

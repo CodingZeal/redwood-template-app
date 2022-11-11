@@ -1,3 +1,4 @@
+<!-- template[tags(markdown),replace(redwood-template-app:${app_name})] -->
 # 🌲 $~$ redwood-template-app
 
 *This is a template application using RedwoodJS. It establishes common patterns for creating an app quickly.*

@@ -1,4 +1,5 @@
 {
+  "_template": "template[tags(config),json(scripts,workspaces)]",
   "private": true,
   "license": "MIT",
   "workspaces": {

@@ -1,4 +1,5 @@
 {
+  "_template": "template[tags(config)]",
   "compilerOptions": {
     "noEmit": true,
     "allowJs": true,

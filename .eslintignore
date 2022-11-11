@@ -1,3 +1,4 @@
+# template[tags(config)]
 api/types/*
 web/types/*
 ./index.js
