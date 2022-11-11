@@ -1,3 +1,4 @@
+// template[tags(pages,routes)]
 import { Set, Router, Route, Private } from '@redwoodjs/router'
 
 import { AdminLayout } from './layouts/Admin/AdminLayout'
