@@ -26,3 +26,4 @@ web/test-results/
 web/playwright-report/
 web/playwright/.cache/
 *pw.json
+.yarnrc.yml

@@ -31,7 +31,7 @@
     "build": "yarn rw build",
     "lint": "yarn eslint && yarn pretty",
     "eslint": "npx eslint .",
-    "pretty": "npx prettier --check --loglevel error .",
+    "pretty": "npx prettier --check .",
     "pretty:fix": "npx prettier -c -w .",
     "dev": "yarn db:daemon && yarn rw dev",
     "test": "yarn testdb:daemon && yarn rw test",
