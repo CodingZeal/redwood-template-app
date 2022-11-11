@@ -5,19 +5,19 @@
 
 version: 2
 updates:
-  - package-ecosystem: "yarn"
+  - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "weekly"
     target-branch: "auto/dependabot"
     
-  - package-ecosystem: "yarn"
+  - package-ecosystem: "npm"
     directory: "/web"
     schedule:
       interval: "weekly"
     target-branch: "auto/dependabot"
  
-  - package-ecosystem: "yarn"
+  - package-ecosystem: "npm"
     directory: "/api"
     schedule:
       interval: "weekly"
