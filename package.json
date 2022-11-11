@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "@redwoodjs/core": "^3.4.0",
-    "pm2": "^5.2.0",
+    "pm2": "^5.2.2",
     "react-use": "^17.4.0"
   }
 }

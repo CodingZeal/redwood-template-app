@@ -3571,15 +3571,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@playwright/test@npm:^1.26.1":
-  version: 1.26.1
-  resolution: "@playwright/test@npm:1.26.1"
+"@playwright/test@npm:^1.27.1":
+  version: 1.27.1
+  resolution: "@playwright/test@npm:1.27.1"
   dependencies:
     "@types/node": "*"
-    playwright-core: 1.26.1
+    playwright-core: 1.27.1
   bin:
     playwright: cli.js
-  checksum: ed3fc971434c5b9569bc5948d57149b1ef75d25438896ff68b71221de1f3e4086f7c06478d64b9cacd68b3e934e788f1c62f812f9cee278a0cf84495037da072
+  checksum: eeae9057a4c00a83576f5103671d218d4246fbb756525441ccb6489504e55e4443552e1e1862f01b3120da3152076b69d58a870eeac50923dac0ace43be0ffad
   languageName: node
   linkType: hard
 
@@ -7574,8 +7574,8 @@ __metadata:
     "@redwoodjs/api-server": ^3.4.0
     "@redwoodjs/graphql-server": ^3.4.0
     "@types/chance": ^1.1.3
-    chance: ^1.1.8
-    nodemailer: ^6.7.8
+    chance: ^1.1.9
+    nodemailer: ^6.8.0
   languageName: unknown
   linkType: soft
 
@@ -8021,12 +8021,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.4.12":
-  version: 10.4.12
-  resolution: "autoprefixer@npm:10.4.12"
+"autoprefixer@npm:^10.4.13":
+  version: 10.4.13
+  resolution: "autoprefixer@npm:10.4.13"
   dependencies:
     browserslist: ^4.21.4
-    caniuse-lite: ^1.0.30001407
+    caniuse-lite: ^1.0.30001426
     fraction.js: ^4.2.0
     normalize-range: ^0.1.2
     picocolors: ^1.0.0
@@ -8035,7 +8035,7 @@ __metadata:
     postcss: ^8.1.0
   bin:
     autoprefixer: bin/autoprefixer
-  checksum: 29e2ce3658afe9940450764266a896718b983429dfd8ef58fe55e0d3b103c0ff83712a343fcf5a7d3831616d15970ba17d729ac17d7433c5a7ec8a9c1af2fc15
+  checksum: 55ef1feb555516f68c740b3a0050d89b663c4a806a52ff23b184869ddf511b561fa56d66b2adb533bfef3798aee87b31132474582968d84fa59da133f837a230
   languageName: node
   linkType: hard
 
@@ -9139,10 +9139,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001400, caniuse-lite@npm:^1.0.30001407":
+"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001400":
   version: 1.0.30001418
   resolution: "caniuse-lite@npm:1.0.30001418"
   checksum: 0b7165f1ea0d232676d339af875038b75af2d025ee67f1651b46ab78db1bb12021875c3fa4e533e1fa1febf373d1858672f1038426ca4a1b240138bad3297ec5
+  languageName: node
+  linkType: hard
+
+"caniuse-lite@npm:^1.0.30001426":
+  version: 1.0.30001431
+  resolution: "caniuse-lite@npm:1.0.30001431"
+  checksum: 720e53b7e4afbb91cc7683d64037da23b98a3199b4d34cecbba3e702646910873c21df8e3aa7cea1c37095a99ca9aff24deff610dbccd61c0436907234d77e90
   languageName: node
   linkType: hard
 
@@ -9221,10 +9228,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chance@npm:^1.1.8":
-  version: 1.1.8
-  resolution: "chance@npm:1.1.8"
-  checksum: f5668a1860efca65879c26d9a1544871097eb7946958af7a01bfd1de66511fe38d92bdcbcb06a74e991479d5f16e8e160772862a4d096405a7bef402a756a1fb
+"chance@npm:^1.1.9":
+  version: 1.1.9
+  resolution: "chance@npm:1.1.9"
+  checksum: 8f9c1e78df5d5a67d8f37cd1f32fd05c56add49d1ea478d37287cf740b3ee24eabfc10c3278af7935ab26162c80fa4490198dc540877dc46a886dc677cdfbd3a
   languageName: node
   linkType: hard
 
@@ -9366,7 +9373,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:3.5.3, chokidar@npm:^3.4.0, chokidar@npm:^3.4.1, chokidar@npm:^3.4.2, chokidar@npm:^3.5.1, chokidar@npm:^3.5.2, chokidar@npm:^3.5.3":
+"chokidar@npm:3.5.3, chokidar@npm:^3.4.0, chokidar@npm:^3.4.1, chokidar@npm:^3.4.2, chokidar@npm:^3.5.2, chokidar@npm:^3.5.3":
   version: 3.5.3
   resolution: "chokidar@npm:3.5.3"
   dependencies:
@@ -10714,7 +10721,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:~1.8.24, dayjs@npm:~1.8.25":
+"dayjs@npm:~1.11.5":
+  version: 1.11.6
+  resolution: "dayjs@npm:1.11.6"
+  checksum: 895154633a927e22d151044ebb431642115b9cbe504d3c79ff5999418ca871880354ec1b338a5f55b33f9d64c4ad50263eed833448a9893a61d9668e4a1e11eb
+  languageName: node
+  linkType: hard
+
+"dayjs@npm:~1.8.24":
   version: 1.8.36
   resolution: "dayjs@npm:1.8.36"
   checksum: fc9e85e7b3e64130688b579ea9b328e863bc5bf2a9dede81e4ff5b34230756f1252aa3bb290a7eafbf13750663e36e7e65d16f497c6a258e138529a168f2626e
@@ -12617,7 +12631,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:3.2.12, fast-glob@npm:^3.2.11, fast-glob@npm:^3.2.9":
+"fast-glob@npm:3.2.12, fast-glob@npm:^3.2.11, fast-glob@npm:^3.2.12, fast-glob@npm:^3.2.9":
   version: 3.2.12
   resolution: "fast-glob@npm:3.2.12"
   dependencies:
@@ -17445,7 +17459,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"micromatch@npm:^4.0.2, micromatch@npm:^4.0.4":
+"micromatch@npm:^4.0.2, micromatch@npm:^4.0.4, micromatch@npm:^4.0.5":
   version: 4.0.5
   resolution: "micromatch@npm:4.0.5"
   dependencies:
@@ -18085,7 +18099,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemailer@npm:^6.7.8":
+"nodemailer@npm:^6.8.0":
   version: 6.8.0
   resolution: "nodemailer@npm:6.8.0"
   checksum: 6f8fd051ff33e1330903b0013f65a14a672731de8506a931a7012c582b1ea507257186244213108b966e30d41a297f8de9e295ace61a8f0a70222913255ad667
@@ -19282,12 +19296,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:1.26.1":
-  version: 1.26.1
-  resolution: "playwright-core@npm:1.26.1"
+"playwright-core@npm:1.27.1":
+  version: 1.27.1
+  resolution: "playwright-core@npm:1.27.1"
   bin:
     playwright: cli.js
-  checksum: 91927e04bfecca1fbd62b73ea5c98defa6d2a8cf5f42e4620cc4a304def54661b866694be68b3867e4d3c7f31fcc12cdf6e16c377f376a9fe454fd533ce29f88
+  checksum: fbe5c9db06d772b11ec040a5cad1bd45a50ba7dff14b759ddc2fb5d051b1eaabd1b1513235b9a286a2099404e4a7ff5c558d9ba33e512a54c06ebc4f3eac9afb
   languageName: node
   linkType: hard
 
@@ -19351,9 +19365,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pm2@npm:^5.2.0":
-  version: 5.2.0
-  resolution: "pm2@npm:5.2.0"
+"pm2@npm:^5.2.2":
+  version: 5.2.2
+  resolution: "pm2@npm:5.2.2"
   dependencies:
     "@pm2/agent": ~2.0.0
     "@pm2/io": ~5.0.0
@@ -19362,11 +19376,11 @@ __metadata:
     async: ~3.2.0
     blessed: 0.1.81
     chalk: 3.0.0
-    chokidar: ^3.5.1
+    chokidar: ^3.5.3
     cli-tableau: ^2.0.0
     commander: 2.15.1
     croner: ~4.1.92
-    dayjs: ~1.8.25
+    dayjs: ~1.11.5
     debug: ^4.3.1
     enquirer: 2.3.6
     eventemitter2: 5.0.1
@@ -19381,7 +19395,7 @@ __metadata:
     pm2-sysmonit: ^1.2.8
     promptly: ^2
     semver: ^7.2
-    source-map-support: 0.5.19
+    source-map-support: 0.5.21
     sprintf-js: 1.1.2
     vizion: ~2.2.1
     yamljs: 0.3.0
@@ -19393,7 +19407,7 @@ __metadata:
     pm2-dev: bin/pm2-dev
     pm2-docker: bin/pm2-docker
     pm2-runtime: bin/pm2-runtime
-  checksum: b18b6a9f8311f1dda0d087b8f5f1e40d12f41e5017d14e6277bdd4f37528da6737bfc2a6152824b3b9815549f37f36dc51bf3c179a98ea873779fed5f5b53966
+  checksum: 8690732c6508b9606552d0ee244cc4d15613faaca8f52a41774e4d16b6c5268780e0279de60bdf0857db68688413bc6f9ed07b68f7c02d26842809cf636a14a8
   languageName: node
   linkType: hard
 
@@ -19736,14 +19750,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-nested@npm:5.0.6":
-  version: 5.0.6
-  resolution: "postcss-nested@npm:5.0.6"
+"postcss-nested@npm:6.0.0":
+  version: 6.0.0
+  resolution: "postcss-nested@npm:6.0.0"
   dependencies:
-    postcss-selector-parser: ^6.0.6
+    postcss-selector-parser: ^6.0.10
   peerDependencies:
     postcss: ^8.2.14
-  checksum: cff4f05b06ec752a90a36b329b4c1b620352458b3d8e02e2fc7efdfb5073945242573ec42c0dd2b7c4beccba21233e5f089903c3e5e8aea2bbceca09c406fb8f
+  checksum: 354ffeab951ac816e3e29dfc958194b7b2f3c749b7af9218a99a7c8ebd5cad7c04fa31b7929024a2f0855c82f02e41994f5409d6377cb97421b53a917bbbad14
   languageName: node
   linkType: hard
 
@@ -19881,7 +19895,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-selector-parser@npm:^6.0.0, postcss-selector-parser@npm:^6.0.10, postcss-selector-parser@npm:^6.0.2, postcss-selector-parser@npm:^6.0.4, postcss-selector-parser@npm:^6.0.5, postcss-selector-parser@npm:^6.0.6, postcss-selector-parser@npm:^6.0.9":
+"postcss-selector-parser@npm:^6.0.0, postcss-selector-parser@npm:^6.0.10, postcss-selector-parser@npm:^6.0.2, postcss-selector-parser@npm:^6.0.4, postcss-selector-parser@npm:^6.0.5, postcss-selector-parser@npm:^6.0.9":
   version: 6.0.10
   resolution: "postcss-selector-parser@npm:6.0.10"
   dependencies:
@@ -19931,7 +19945,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.2.15, postcss@npm:^8.4.14, postcss@npm:^8.4.17, postcss@npm:^8.4.7":
+"postcss@npm:^8.2.15, postcss@npm:^8.4.17, postcss@npm:^8.4.7":
   version: 8.4.17
   resolution: "postcss@npm:8.4.17"
   dependencies:
@@ -19939,6 +19953,17 @@ __metadata:
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
   checksum: d6999ff9d97d69138a4ca890644543825792d925549366bde10b587e0fccfc0e8e2d85f627588d67238f0c24e3cf7940171017f62c74710ef36f253e4256b940
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.4.18, postcss@npm:^8.4.19":
+  version: 8.4.19
+  resolution: "postcss@npm:8.4.19"
+  dependencies:
+    nanoid: ^3.3.4
+    picocolors: ^1.0.0
+    source-map-js: ^1.0.2
+  checksum: f33594fa0a2b629043deada34171744891054255baa49150d77f08f68edec1fa7eb9740e64c3a32e6f476c16e9e592af942fcf55f93051673dd208c0aee1d60b
   languageName: node
   linkType: hard
 
@@ -21432,7 +21457,7 @@ __metadata:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@redwoodjs/core": ^3.4.0
-    pm2: ^5.2.0
+    pm2: ^5.2.2
     prettier: ^2.7.1
     react-use: ^17.4.0
     ts-node: ^10.9.1
@@ -22228,17 +22253,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"source-map-support@npm:0.5.19":
-  version: 0.5.19
-  resolution: "source-map-support@npm:0.5.19"
-  dependencies:
-    buffer-from: ^1.0.0
-    source-map: ^0.6.0
-  checksum: a232cb02dc5c2c048460dff3ca1a4c2aa44488822028932daff99b8707c8e4f87d2535dae319d65691c905096f2c06a2517793472634efb01f8a095661b9aa93
-  languageName: node
-  linkType: hard
-
-"source-map-support@npm:^0.5.16, source-map-support@npm:~0.5.12, source-map-support@npm:~0.5.20":
+"source-map-support@npm:0.5.21, source-map-support@npm:^0.5.16, source-map-support@npm:~0.5.12, source-map-support@npm:~0.5.20":
   version: 0.5.21
   resolution: "source-map-support@npm:0.5.21"
   dependencies:
@@ -22997,9 +23012,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^3.1.7":
-  version: 3.1.7
-  resolution: "tailwindcss@npm:3.1.7"
+"tailwindcss@npm:^3.2.4":
+  version: 3.2.4
+  resolution: "tailwindcss@npm:3.2.4"
   dependencies:
     arg: ^5.0.2
     chokidar: ^3.5.3
@@ -23007,18 +23022,19 @@ __metadata:
     detective: ^5.2.1
     didyoumean: ^1.2.2
     dlv: ^1.1.3
-    fast-glob: ^3.2.11
+    fast-glob: ^3.2.12
     glob-parent: ^6.0.2
     is-glob: ^4.0.3
     lilconfig: ^2.0.6
+    micromatch: ^4.0.5
     normalize-path: ^3.0.0
     object-hash: ^3.0.0
     picocolors: ^1.0.0
-    postcss: ^8.4.14
+    postcss: ^8.4.18
     postcss-import: ^14.1.0
     postcss-js: ^4.0.0
     postcss-load-config: ^3.1.4
-    postcss-nested: 5.0.6
+    postcss-nested: 6.0.0
     postcss-selector-parser: ^6.0.10
     postcss-value-parser: ^4.2.0
     quick-lru: ^5.1.1
@@ -23028,7 +23044,7 @@ __metadata:
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: d82a1ad315831d3ad4ca6f9cdd70d4ded86e011d72765a96040be5e8c8c654c55cd484e33ed2d5cf76bac017522036b7ab8698c076e0d7cb950b683964d0b466
+  checksum: c5d02bb594f3d0a1ff8e26ba312a86c7cec8a8a741dc00696375971c303116640acaeef8f35617297eaf79214524b5c88a27f2bdc1e1cfac47fcc6446b6260f7
   languageName: node
   linkType: hard
 
@@ -24573,21 +24589,21 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:web"
   dependencies:
-    "@playwright/test": ^1.26.1
+    "@playwright/test": ^1.27.1
     "@redwoodjs/auth": ^3.4.0
     "@redwoodjs/forms": ^3.4.0
     "@redwoodjs/router": ^3.4.0
     "@redwoodjs/web": ^3.4.0
     "@testing-library/user-event": ^14.4.3
-    autoprefixer: ^10.4.12
+    autoprefixer: ^10.4.13
     date-fns: ^2.29.3
-    postcss: ^8.4.17
+    postcss: ^8.4.19
     postcss-loader: ^7.0.1
     prettier-plugin-tailwindcss: ^0.1.13
     prop-types: 15.8.1
     react: 17.0.2
     react-dom: 17.0.2
-    tailwindcss: ^3.1.7
+    tailwindcss: ^3.2.4
   languageName: unknown
   linkType: soft
 
