@@ -21080,6 +21080,7 @@ __metadata:
     pm2: ^5.2.0
     prettier: ^2.7.1
     react-use: ^17.4.0
+    ts-node: ^10.9.1
   languageName: unknown
   linkType: soft
 
@@ -23203,7 +23204,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^10.8.1":
+"ts-node@npm:^10.8.1, ts-node@npm:^10.9.1":
   version: 10.9.1
   resolution: "ts-node@npm:10.9.1"
   dependencies:

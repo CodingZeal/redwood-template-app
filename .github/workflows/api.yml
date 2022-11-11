@@ -32,7 +32,7 @@ jobs:
         run: yarn install
 
       - name: Run Migrations & seeds
-        run: yarn rw prisma migrate dev && yarn rw prisma db seed
+        run: yarn db:setup
         env:
           POSTGRES_HOST: postgres
           DATABASE_URL: 'postgresql://test:test@postgres:5432/rw_test'

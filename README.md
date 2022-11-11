@@ -239,11 +239,10 @@ yarn db:setup
 yarn test # <api|web>
 yarn test:watch # <api|web>
 
-# end to end
-yarn test:e2e
+# end to end. note: first run? use --init flag
+# see ./scripts/playwright.ts for more info
+yarn test:e2e <--init|--debug|--reset|--playwright>
 
-# run e2e in headed mode
-yarn test:e2e --headed
 ```
 
 ---

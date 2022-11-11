@@ -34,8 +34,8 @@ describe('roles', () => {
     })
 
     expect(result.name).toEqual('UPDATED')
-    expect(result.createdAt.getTime()).toBeLessThan(before.getTime())
-    expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
+    expect(result.createdAt.getTime()).toBeLessThanOrEqual(before.getTime())
+    expect(result.updatedAt.getTime()).toBeGreaterThanOrEqual(before.getTime())
   })
 
   describe('deletes', () => {

@@ -4,3 +4,6 @@ web/types/*
 ./index.js
 .vscode
 tmp
+scripts/*
+web/playwright-report
+*pw.json
