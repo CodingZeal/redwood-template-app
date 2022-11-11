@@ -83,7 +83,7 @@ export default async () => {
   try {
     const hasUsers = await db.user.findMany()
     if (hasUsers.length) {
-      console.log('Has database alread been seeded?')
+      console.log('Has database already been seeded?')
       return
     }
     const usersData = [...Array(9).fill({}).map(generateUser)]
