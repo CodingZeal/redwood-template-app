@@ -25,7 +25,7 @@ describe('teams', () => {
     expect(result.name).toEqual('String')
     expect(result.active).toEqual(true)
     expect(result.createdAt.getTime()).toBeGreaterThanOrEqual(before.getTime())
-    expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
+    expect(result.updatedAt.getTime()).toBeGreaterThanOrEqual(before.getTime())
   })
 
   scenario('updates a team', async (scenario: StandardScenario) => {
@@ -37,7 +37,7 @@ describe('teams', () => {
     })
 
     expect(result.name).toEqual('String2')
-    expect(result.createdAt.getTime()).toBeLessThan(before.getTime())
+    expect(result.createdAt.getTime()).toBeLessThanOrEqual(before.getTime())
     expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
   })
 
