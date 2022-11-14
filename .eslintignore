@@ -7,3 +7,4 @@ tmp
 scripts/*
 web/playwright-report
 *pw.json
+.yarnrc.yml

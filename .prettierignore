@@ -11,3 +11,4 @@ web/types/*
 ./index.js
 .vscode
 *pw.json
+.yarnrc.yml
