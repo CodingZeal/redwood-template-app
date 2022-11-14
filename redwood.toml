@@ -10,8 +10,10 @@
   port = "${PORT:8910}"
   apiUrl = "/.redwood/functions" # you can customise graphql and dbauth urls individually too: see https://redwoodjs.com/docs/app-configuration-redwood-toml#api-paths
   includeEnvironmentVariables = [] # any ENV vars that should be available to the web side, see https://redwoodjs.com/docs/environment-variables#web
+  host = "0.0.0.0"
 [api]
-  port = 8911
+  port = "${PORT:8911}"
   apiProxyPath = '/api'
+  host = "0.0.0.0"
 [browser]
   open = true
