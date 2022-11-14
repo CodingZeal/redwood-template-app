@@ -9,7 +9,7 @@ pm2.start(
     name: 'redwood-template-app',
     node_args: '-r dotenv/config',
     script: './node_modules/.bin/redwood',
-    args: `serve api -p ${process.env.PORT || 8911} --socket /tmp/nginx.socket`,
+    args: `serve api -p ${process.env.PORT || 8911}`,
     env: {
       NODE_ENV: 'production',
     },
