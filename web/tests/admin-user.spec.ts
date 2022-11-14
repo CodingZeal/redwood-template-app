@@ -1,39 +1,44 @@
 import { test, expect } from '@playwright/test'
 
-test.beforeEach(async ({ page }) => {
-  await page.goto('/')
-
-  await page.locator('text=Login').click()
-  await page.waitForURL('/login')
-  const loginTitle = await page.locator('.rw-heading-secondary')
-  await expect(loginTitle).toBeVisible()
-  await expect(loginTitle).toHaveText('Login')
-
-  await page.locator('input[name="username"]').click()
-  await page.locator('input[name="username"]').fill('admin@example.com')
-  await page.locator('input[name="password"]').click()
-  await page.locator('input[name="password"]').fill('password')
-
-  await page.locator('button:has-text("Login")').click()
-  await page.waitForURL('/')
-
-  const logout = await page.locator('text=Logout')
-  await expect(logout).toBeVisible()
-  const admin = await page.locator('text=Admin').first()
-  await expect(admin).toBeVisible()
-
-  await page.locator('text=Admin').first().click()
-  await page.waitForURL('/admin/users')
-})
+import { db } from '../../api/src/lib/db'
 
 const MOCK_USER = {
-  email: 'endtoend@example.com',
-  name: 'E2E',
-  nickname: 'E2ENickName',
-  pronouns: 'E2EPronouns',
+  email: 'cereal@example.com',
+  name: 'SnapCracklePop',
+  nickname: 'waffleCrisp',
+  pronouns: 'cheerios',
 }
 
-test.describe('admin crud user', () => {
+const NEW_MOCK_INFO = {
+  name: 'Harry Potter',
+  nickname: 'Chosen One',
+  pronouns: 'he/him',
+}
+
+test.describe('admin crud user', async () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/')
+
+    await page.locator('text=Login').click()
+    await page.waitForURL('/login')
+    const loginTitle = await page.locator('.rw-heading-secondary')
+    await expect(loginTitle).toBeVisible()
+    await expect(loginTitle).toHaveText('Login')
+
+    await page.locator('input[name="username"]').click()
+    await page.locator('input[name="username"]').fill('admin@example.com')
+    await page.locator('input[name="password"]').click()
+    await page.locator('input[name="password"]').fill('password')
+
+    await page.locator('button:has-text("Login")').click()
+    await page.waitForURL('/')
+    const admin = await page.locator('text=Admin').first()
+    await expect(admin).toBeVisible()
+
+    await page.locator('text=Admin').first().click()
+    await page.waitForURL('/admin/users')
+  })
+
   test('admin creates a new user', async ({ page }) => {
     await page.locator('text=New User').click()
     await page.waitForURL('/admin/users/new')
@@ -48,5 +53,74 @@ test.describe('admin crud user', () => {
 
     await page.locator('button:has-text("Save")').click()
     await page.waitForURL('/admin/users')
+  })
+
+  test('admin shows a user', async ({ page }) => {
+    const newlyCreatedUser = await db.user.findUnique({
+      where: { email: MOCK_USER.email },
+    })
+    await page.goto(`/admin/users/${newlyCreatedUser?.id}`)
+
+    const mockEmail = page.locator(`text=${MOCK_USER.email}`)
+    await expect(mockEmail).toBeVisible()
+    const mockName = page.locator(`text=${MOCK_USER.name}`)
+    await expect(mockName).toBeVisible()
+    const mockNickname = page.locator(`text=${MOCK_USER.nickname}`)
+    await expect(mockNickname).toBeVisible()
+    const mockPronouns = page.locator(`text=${MOCK_USER.pronouns}`)
+    await expect(mockPronouns).toBeVisible()
+  })
+
+  test('admin edits a user', async ({ page }) => {
+    const newlyCreatedUser = await db.user.findUnique({
+      where: { email: MOCK_USER.email },
+    })
+    await page.goto(`/admin/users/${newlyCreatedUser?.id}/edit`)
+
+    await page.locator('input[name="name"]').click()
+    await page.locator('input[name="name"]').fill(NEW_MOCK_INFO.name)
+    await page.locator('input[name="nickname"]').click()
+    await page.locator('input[name="nickname"]').fill(NEW_MOCK_INFO.nickname)
+    await page.locator('input[name="pronouns"]').click()
+    await page.locator('input[name="pronouns"]').fill(NEW_MOCK_INFO.pronouns)
+
+    await page.locator('button:has-text("Save")').click()
+    await page.waitForURL('/admin/users')
+  })
+
+  test('admin removes a user', async ({ page }) => {
+    const newlyCreatedUser = await db.user.findUnique({
+      where: { email: MOCK_USER.email },
+    })
+    await page.goto(`/admin/users/${newlyCreatedUser?.id}`)
+
+    page.once('dialog', (dialog) => {
+      dialog.accept().catch(() => {})
+    })
+    await page.locator('text=Remove').click()
+
+    const toastMessage = await page.locator('text=User Removed')
+    await expect(toastMessage).toBeVisible()
+    await page.waitForURL('/admin/users')
+  })
+  test('admin archives a user', async ({ page }) => {
+    page.once('dialog', (dialog) => {
+      dialog.accept().catch(() => {})
+    })
+    await page.locator('text=Archive').first().click()
+
+    await page.waitForURL('/admin/users')
+    const toastMessage = page.locator('text=User updated')
+    await expect(toastMessage).toBeVisible()
+
+    const reactivateMessage = await page.locator('text=Reactivate').first()
+
+    await expect(reactivateMessage).toBeVisible()
+    page.once('dialog', (dialog) => {
+      dialog.accept().catch(() => {})
+    })
+    await page.locator('text=Reactivate').first().click()
+    const updatedMessage = page.locator('text=User updated')
+    await expect(updatedMessage).toBeVisible()
   })
 })
