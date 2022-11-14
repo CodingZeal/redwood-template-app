@@ -45,6 +45,7 @@ http {
     }
 
     location /api/ {
+      proxy_pass http://0.0.0.0:8911/;
       proxy_http_version 1.1;
       proxy_set_header Upgrade $http_upgrade;
       proxy_set_header Connection 'upgrade';
@@ -54,7 +55,6 @@ http {
 			proxy_set_header Host $http_host;
 			proxy_redirect off;
       proxy_pass http://app_server/;
-
     }
   }
 }
