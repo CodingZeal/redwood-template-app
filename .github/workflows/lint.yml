@@ -21,7 +21,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Eslint
-        run: yarn lint
+        run: yarn eslint
 
       - name: Prettier
         run: yarn pretty

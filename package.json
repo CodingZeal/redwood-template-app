@@ -31,7 +31,7 @@
     "build": "yarn rw build",
     "lint": "yarn eslint && yarn pretty",
     "eslint": "npx eslint .",
-    "pretty": "npx prettier -c .",
+    "pretty": "npx prettier --check .",
     "pretty:fix": "npx prettier -c -w .",
     "dev": "yarn db:daemon && yarn rw dev",
     "test": "yarn testdb:daemon && yarn rw test",
@@ -56,8 +56,8 @@
     "schema:format": "npx prisma format"
   },
   "dependencies": {
-    "@redwoodjs/core": "^3.2.0",
-    "pm2": "^5.2.0",
+    "@redwoodjs/core": "^3.4.0",
+    "pm2": "^5.2.2",
     "react-use": "^17.4.0"
   }
 }
