@@ -1,0 +1,36 @@
+upstream redwood_server {
+  server unix:/tmp/nginx.socket fail_timeout=0;
+}
+
+server {
+  root /app/web/dist;
+  server_name _;
+  index index.html;
+
+  gzip on;
+  gzip_min_length 1000;
+  gzip_types application/json text/css application/javascript application/x-javascript;
+
+  sendfile on;
+
+  keepalive_timeout 65;
+
+  error_page 404 /404.html;
+  error_page 500 /500.html;
+
+  location / {
+    try_files $uri /200.html =404;
+  }
+
+  location ^~ /static/ {
+    gzip_static on;
+    expires max;
+    add_header Cache-Control public;
+  }
+
+  location ~ /.redwood/functions(.*) {
+    rewrite ^/.redwood/functions(.*) $1 break;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_pass http://redwood_server;
+  }
+}
