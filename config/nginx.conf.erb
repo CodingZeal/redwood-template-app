@@ -1,12 +1,12 @@
 # template[tags(heroku,deploy)]
 
 daemon off;
-worker_processes ${NGINX_WORKERS:=4};
+worker_processes <%= ENV['NGINX_WORKERS'] || 4 %>;
 
 events {
 	use epoll;
 	accept_mutex on;
-	worker_connections ${NGINX_WORKER_CONNECTIONS:=1024};
+	worker_connections <%= ENV['NGINX_WORKER_CONNECTIONS'] || 1024 %>;
 }
 
 http {
@@ -18,8 +18,8 @@ http {
 	server_tokens off;
 
 	log_format l2met 'measure#nginx.service=$request_time request_id=$http_x_request_id';
-	access_log ${NGINX_ACCESS_LOG_PATH:=logs/nginx/access.log} l2met;
-	error_log ${NGINX_ERROR_LOG_PATH:=logs/nginx/error.log};
+	access_log <%= ENV['NGINX_ACCESS_LOG_PATH'] || 'logs/nginx/access.log' %> l2met;
+	error_log <%= ENV['NGINX_ERROR_LOG_PATH'] || 'logs/nginx/error.log' %>;
 
 	include mime.types;
 	default_type application/octet-stream;
@@ -34,7 +34,7 @@ http {
 
   server {
     server_name _;
-    listen ${PORT};
+    listen <%= ENV["PORT"] %>;
     keepalive_timeout 5;
 
     location / {
