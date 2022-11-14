@@ -51,7 +51,6 @@ export const Success = ({ profile }: CellSuccessProps) => {
       onCompleted: () => {
         reauthenticate()
         toast.success('Profile updated')
-        navigate(routes.home())
       },
       onError: (error) => {
         toast.error(error.message)

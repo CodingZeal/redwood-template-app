@@ -17,7 +17,6 @@ const EditPassword = ({ profile }) => {
     {
       onCompleted: () => {
         toast.success('Password updated')
-        navigate(routes.home())
       },
       onError: (error) => {
         toast.error(error.message)
