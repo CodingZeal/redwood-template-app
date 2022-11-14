@@ -43,10 +43,7 @@ test.describe('edit profile', () => {
     await pronounsInput.fill(MOCK_PROFILE.pronouns)
 
     await saveButton.click()
-    await page.waitForURL('/')
-
-    await page.goto('/profile')
-
+    await page.waitForURL('/profile')
     expect(await nameInput.inputValue()).toEqual(MOCK_PROFILE.name)
     expect(await nicknameInput.inputValue()).toEqual(MOCK_PROFILE.nickname)
     expect(await pronounsInput.inputValue()).toEqual(MOCK_PROFILE.pronouns)
@@ -62,14 +59,13 @@ test.describe('edit profile', () => {
 
     const saveButton = page.locator('text=Save')
     await saveButton.click()
-    await page.waitForURL('/')
 
     const profileLinkWithNewName = page.locator(
       `a >> text=${MOCK_PROFILE.name}`
     )
     expect(profileLinkWithNewName).toHaveText(MOCK_PROFILE.name)
 
-    await page.goto('/profile')
+    await page.waitForURL('/profile')
 
     const nicknameInput = page.locator('input[name="nickname"]')
     await nicknameInput.click()

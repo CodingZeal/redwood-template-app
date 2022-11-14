@@ -1,4 +1,3 @@
-import { navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
@@ -17,7 +16,6 @@ const EditPassword = ({ profile }) => {
     {
       onCompleted: () => {
         toast.success('Password updated')
-        navigate(routes.home())
       },
       onError: (error) => {
         toast.error(error.message)
