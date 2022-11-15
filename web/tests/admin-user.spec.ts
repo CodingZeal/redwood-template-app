@@ -2,8 +2,6 @@ import { test, expect } from '@playwright/test'
 
 import { db } from '../../api/src/lib/db'
 
-import { ADMIN_USER_STATE } from './storage/usersState'
-
 const MOCK_USER = {
   email: 'cereal@example.com',
   name: 'SnapCracklePop',
@@ -16,20 +14,24 @@ const NEW_MOCK_INFO = {
   nickname: 'Chosen One',
   pronouns: 'he/him',
 }
+test.beforeEach(async ({ page }) => {
+  await page.goto('/login')
+  await page.locator('input[name="username"]').click()
+  await page.locator('input[name="username"]').fill('admin@example.com')
+  await page.locator('input[name="password"]').click()
+  await page.locator('input[name="password"]').fill('password')
+  await page.locator('button:has-text("Login")').click()
 
-test.use({ storageState: ADMIN_USER_STATE })
+  await page.waitForURL('/')
+
+  const admin = await page.locator('text=Admin').first()
+  await expect(admin).toBeVisible()
+
+  await page.locator('text=Admin').first().click()
+  await page.waitForURL('/admin/users')
+})
 
 test.describe('admin crud user', async () => {
-  test.beforeEach(async ({ page }) => {
-    await page.waitForURL('/')
-
-    const admin = await page.locator('text=Admin').first()
-    await expect(admin).toBeVisible()
-
-    await page.locator('text=Admin').first().click()
-    await page.waitForURL('/admin/users')
-  })
-
   test('admin creates a new user', async ({ page }) => {
     await page.locator('text=New User').click()
     await page.waitForURL('/admin/users/new')
