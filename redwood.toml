@@ -9,7 +9,9 @@
   title = "${APP_NAME}"
   port = "${PORT:8910}"
   apiUrl = "/.redwood/functions"
+  host = "${HOST:localhost}"
 [api]
   port = 8911
+  host = "${HOST:localhost}"
 [browser]
   open = true
