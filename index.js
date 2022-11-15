@@ -32,7 +32,7 @@ pm2.start(
       console.log('[PM2] log stream started')
 
       bus.on('log:out', function (packet) {
-        console.log(`[App:${packet.process.name}] ${packet.data}`)
+        console.log(`[${packet.process.name}] ${packet.data}`)
       })
 
       bus.on('log:err', function (packet) {
