@@ -33,6 +33,7 @@ test.describe('signup as a user', () => {
     await page.locator('input[name="password"]').fill('example')
 
     await page.locator('button:has-text("Sign Up")').click()
+    test.slow()
     await page.waitForURL('/')
   })
 })
