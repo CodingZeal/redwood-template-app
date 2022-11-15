@@ -33,11 +33,11 @@ http {
   }
 
   server {
-    root /app/web/dist
+    root /app/web/dist;
     server_name _;
     listen <%= ENV["PORT"] %>;
     keepalive_timeout 5;
-    index index.html
+    index index.html;
 
     error_page 404 /404.html;
     error_page 500 /500.html;
