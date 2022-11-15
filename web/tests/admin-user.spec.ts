@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test'
 
 import { db } from '../../api/src/lib/db'
 
+import { ADMIN_USER_STATE } from './storage/usersState'
+
 const MOCK_USER = {
   email: 'cereal@example.com',
   name: 'SnapCracklePop',
@@ -15,23 +17,12 @@ const NEW_MOCK_INFO = {
   pronouns: 'he/him',
 }
 
+test.use({ storageState: ADMIN_USER_STATE })
+
 test.describe('admin crud user', async () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/')
-
-    await page.locator('text=Login').click()
-    await page.waitForURL('/login')
-    const loginTitle = await page.locator('.rw-heading-secondary')
-    await expect(loginTitle).toBeVisible()
-    await expect(loginTitle).toHaveText('Login')
-
-    await page.locator('input[name="username"]').click()
-    await page.locator('input[name="username"]').fill('admin@example.com')
-    await page.locator('input[name="password"]').click()
-    await page.locator('input[name="password"]').fill('password')
-
-    await page.locator('button:has-text("Login")').click()
     await page.waitForURL('/')
+
     const admin = await page.locator('text=Admin').first()
     await expect(admin).toBeVisible()
 
