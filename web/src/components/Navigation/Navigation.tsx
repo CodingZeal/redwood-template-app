@@ -1,5 +1,5 @@
 import { useAuth } from '@redwoodjs/auth'
-import { NavLink, routes } from '@redwoodjs/router'
+import { navigate, NavLink, routes } from '@redwoodjs/router'
 
 const LinkItem = (props) => (
   <li data-testid="nav__link-item" className="mr-3 cursor-pointer">
@@ -11,6 +11,10 @@ const LinkItem = (props) => (
 const Navigation = () => {
   const { currentUser, hasRole, isAuthenticated, logOut } = useAuth()
 
+  const logoutHandler = () => {
+    logOut()
+    navigate(routes.home())
+  }
   return (
     <div>
       <div data-testid="nav" className="my-3 flex">
@@ -18,7 +22,7 @@ const Navigation = () => {
           <LinkItem to={routes.home()}>Home</LinkItem>
           {isAuthenticated ? (
             <li data-testid="nav__link-item" className="mr-3 cursor-pointer">
-              <button onClick={logOut}>Logout</button>
+              <button onClick={logoutHandler}>Logout</button>
             </li>
           ) : (
             <li className="flex">
