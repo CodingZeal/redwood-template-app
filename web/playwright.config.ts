@@ -38,7 +38,6 @@ const config: PlaywrightTestConfig = {
     command: 'yarn rw serve',
     port: 8910,
     env: {
-      SESSION_SECRET: 'foobar',
       DISABLE_EMAIL: 'true',
     },
   },
