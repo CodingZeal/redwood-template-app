@@ -14,15 +14,10 @@ const NEW_MOCK_INFO = {
   nickname: 'Chosen One',
   pronouns: 'he/him',
 }
-test.beforeEach(async ({ page }) => {
-  await page.goto('/login')
-  await page.locator('input[name="username"]').click()
-  await page.locator('input[name="username"]').fill('admin@example.com')
-  await page.locator('input[name="password"]').click()
-  await page.locator('input[name="password"]').fill('password')
-  await page.locator('button:has-text("Login")').click()
 
-  await page.waitForURL('/')
+test.use({ storageState: 'web/tests/storage/adminUser-pw.json' })
+test.beforeEach(async ({ page }) => {
+  await page.goto('/')
 
   const admin = await page.locator('text=Admin').first()
   await expect(admin).toBeVisible()
