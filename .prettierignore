@@ -1,3 +1,4 @@
+# template[tags(config)]
 .redwood
 dist
 *.md
@@ -9,3 +10,5 @@ web/types/*
 .yarn
 ./index.js
 .vscode
+*pw.json
+.yarnrc.yml

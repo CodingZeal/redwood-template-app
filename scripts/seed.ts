@@ -1,9 +1,10 @@
+// template[tags(prisma,db)]
 import { Prisma } from '@prisma/client'
 import { db } from 'api/src/lib/db'
 import Chance from 'chance'
 import CryptoJS from 'crypto-js'
 
-function hashPassword(password: string, salt = 'ZEAL') {
+export function hashPassword(password: string, salt = 'ZEAL') {
   const saltToUse = salt || CryptoJS.lib.WordArray.random(128 / 8).toString()
   return [
     CryptoJS.PBKDF2(password, saltToUse, { keySize: 256 / 32 }).toString(),
@@ -81,6 +82,11 @@ async function _createRole(role) {
 
 export default async () => {
   try {
+    const hasUsers = await db.user.findMany()
+    if (hasUsers.length) {
+      console.log('Has database already been seeded?')
+      return
+    }
     const usersData = [...Array(9).fill({}).map(generateUser)]
     const users = await Promise.all(usersData.map(_upsertUser))
 
@@ -91,6 +97,14 @@ export default async () => {
       data: {
         admin: true,
         email: ADMIN_EMAIL,
+        hashedPassword: ADMIN_HASHED_PASSWORD,
+        salt: ADMIN_SALT,
+      },
+    })
+
+    await db.user.create({
+      data: {
+        email: 'user@example.com',
         hashedPassword: ADMIN_HASHED_PASSWORD,
         salt: ADMIN_SALT,
       },

@@ -1,3 +1,4 @@
+// template[tags(heroku)]
 /* eslint-disable */
 
 const fs = require('fs')
@@ -7,8 +8,8 @@ pm2.start(
   {
     name: 'redwood-template-app',
     node_args: '-r dotenv/config',
-    script: './node_modules/@redwoodjs/api-server/dist/index.js',
-    args: `-f api/dist/functions --socket /tmp/nginx.socket`,
+    script: './node_modules/.bin/redwood',
+    args: `serve api`,
     env: {
       NODE_ENV: 'production',
     },
@@ -31,7 +32,7 @@ pm2.start(
       console.log('[PM2] log stream started')
 
       bus.on('log:out', function (packet) {
-        console.log(`[App:${packet.process.name}] ${packet.data}`)
+        console.log(`[${packet.process.name}] ${packet.data}`)
       })
 
       bus.on('log:err', function (packet) {

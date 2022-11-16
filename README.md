@@ -1,3 +1,4 @@
+<!-- template[tags(markdown),replace(redwood-template-app:${app_name})] -->
 # 🌲 $~$ redwood-template-app
 
 *This is a template application using RedwoodJS. It establishes common patterns for creating an app quickly.*
@@ -238,11 +239,10 @@ yarn db:setup
 yarn test # <api|web>
 yarn test:watch # <api|web>
 
-# end to end
-yarn test:e2e
+# end to end. note: first run? use --init flag
+# see ./scripts/playwright.ts for more info
+yarn test:e2e <--init|--debug|--reset|--playwright>
 
-# run e2e in headed mode
-yarn test:e2e --headed
 ```
 
 ---
@@ -327,19 +327,17 @@ yarn db:deploy
 heroku login
 
 # Setup remotes for manual deploys
-heroku git:remote -a staging-redwood-template-app
+heroku git:remote -a redwood-template-app
 
-# heroku names new remotes 'heroku by default'
-git remote rename heroku staging
+# (optional) heroku names new remotes 'heroku by default'
+git remote rename heroku prod|staging|etc
 
 # push and deploy via heroku git
-git push staging main
-
-# NOTE: Use the same methods as above to setup prod
+git push heroku main
 
 # Show app logs example. replace -a name with your app name
-# i.e. staging-redwood-template-app
-heroku logs --tail -a redwood-temp-app-pr-23
+# i.e. redwood-template-app
+heroku logs --tail -a redwood-template-app
 ```
 
 ---

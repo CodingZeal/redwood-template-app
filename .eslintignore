@@ -1,5 +1,10 @@
+# template[tags(config)]
 api/types/*
 web/types/*
 ./index.js
 .vscode
 tmp
+scripts/*
+web/playwright-report
+*pw.json
+.yarnrc.yml

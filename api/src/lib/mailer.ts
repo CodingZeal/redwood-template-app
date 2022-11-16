@@ -10,6 +10,9 @@ interface Options {
 }
 
 export async function sendEmail({ to, subject, text, html }: Options) {
+  if (process.env.DISABLE_EMAIL === 'true') {
+    return
+  }
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT,

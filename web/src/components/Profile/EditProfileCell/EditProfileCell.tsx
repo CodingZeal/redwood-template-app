@@ -1,10 +1,16 @@
 import { useAuth } from '@redwoodjs/auth'
-import { navigate, routes } from '@redwoodjs/router'
 import { CellFailureProps, CellSuccessProps, MetaTags } from '@redwoodjs/web'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import { EditProfile } from '../EditProfile'
+
+export const beforeQuery = (props) => {
+  return {
+    variables: props,
+    fetchPolicy: 'no-cache',
+  }
+}
 
 export const QUERY = gql`
   query Profile {
@@ -44,7 +50,6 @@ export const Success = ({ profile }: CellSuccessProps) => {
       onCompleted: () => {
         reauthenticate()
         toast.success('Profile updated')
-        navigate(routes.home())
       },
       onError: (error) => {
         toast.error(error.message)

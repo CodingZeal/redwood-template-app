@@ -18,5 +18,10 @@
     },
     "typeRoots": ["../node_modules/@types"],
     "jsx": "preserve"
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
   }
 }
