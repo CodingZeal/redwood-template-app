@@ -10,23 +10,11 @@ const NEW_MOCK_INFO = {
   name: 'Example Role',
 }
 
+test.use({ storageState: 'web/tests/storage/adminUser-pw.json' })
+
 test.describe('admin crud role', async () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/')
-
-    await page.locator('text=Login').click()
-    await page.waitForURL('/login')
-    const loginTitle = await page.locator('.rw-heading-secondary')
-    await expect(loginTitle).toBeVisible()
-    await expect(loginTitle).toHaveText('Login')
-
-    await page.locator('input[name="username"]').click()
-    await page.locator('input[name="username"]').fill('admin@example.com')
-    await page.locator('input[name="password"]').click()
-    await page.locator('input[name="password"]').fill('password')
-
-    await page.locator('button:has-text("Login")').click()
-    await page.waitForURL('/')
     const admin = await page.locator('text=Admin').first()
     await expect(admin).toBeVisible()
 
