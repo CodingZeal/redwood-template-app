@@ -15,8 +15,7 @@ test.use({ storageState: 'web/tests/storage/adminUser-pw.json' })
 test.describe('admin crud role', async () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/')
-    const admin = await page.locator('text=Admin').first()
-    await expect(admin).toBeVisible()
+    await expect(page.locator('text=Admin').first()).toBeVisible()
 
     await page.locator('text=Admin').first().click()
     await page.waitForURL('/admin/users')
@@ -33,6 +32,10 @@ test.describe('admin crud role', async () => {
 
     await page.locator('button:has-text("Save")').click()
     await page.waitForURL('/admin/roles')
+    const toastNewRole = page.locator('text=Role created')
+    await expect(toastNewRole).toBeVisible()
+    const newRoleList = page.locator(`text=${MOCK_ROLE.name}`)
+    await expect(newRoleList).toBeVisible()
   })
 
   test('admin shows a role', async ({ page }) => {
@@ -55,6 +58,10 @@ test.describe('admin crud role', async () => {
 
     await page.locator('button:has-text("Save")').click()
     await page.waitForURL('/admin/roles')
+
+    await page.goto(`/admin/roles/${newlyCreatedRole?.id}`)
+    const mockName = page.locator(`text=${NEW_MOCK_INFO.name}`)
+    await expect(mockName).toBeVisible()
   })
 
   test('admin removes a role', async ({ page }) => {
@@ -71,5 +78,7 @@ test.describe('admin crud role', async () => {
     const toastMessage = await page.locator('text=Role deleted')
     await expect(toastMessage).toBeVisible()
     await page.waitForURL('/admin/roles')
+    const removedRole = page.locator(`text=${NEW_MOCK_INFO.name}`)
+    await expect(removedRole).not.toBeVisible()
   })
 })

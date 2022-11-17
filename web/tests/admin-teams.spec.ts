@@ -15,8 +15,7 @@ test.use({ storageState: 'web/tests/storage/adminUser-pw.json' })
 test.describe('admin crud team', async () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/')
-    const admin = await page.locator('text=Admin').first()
-    await expect(admin).toBeVisible()
+    await expect(page.locator('text=Admin').first()).toBeVisible()
 
     await page.locator('text=Admin').first().click()
     await page.waitForURL('/admin/users')
@@ -33,6 +32,10 @@ test.describe('admin crud team', async () => {
 
     await page.locator('button:has-text("Save")').click()
     await page.waitForURL('/admin/teams')
+    const toastNewTeam = page.locator('text=Team created')
+    await expect(toastNewTeam).toBeVisible()
+    const newTeamList = page.locator(`text=${MOCK_TEAM.name}`)
+    await expect(newTeamList).toBeVisible()
   })
 
   test('admin shows a team', async ({ page }) => {
@@ -58,6 +61,10 @@ test.describe('admin crud team', async () => {
 
     await page.locator('button:has-text("Save")').click()
     await page.waitForURL('/admin/teams')
+
+    await page.goto(`/admin/teams/${newlyCreatedTeam?.id}`)
+    const mockName = page.locator(`text=${NEW_MOCK_INFO.name}`)
+    await expect(mockName).toBeVisible()
   })
 
   test('admin removes a team', async ({ page }) => {
@@ -74,6 +81,8 @@ test.describe('admin crud team', async () => {
     const toastMessage = await page.locator('text=Team deleted')
     await expect(toastMessage).toBeVisible()
     await page.waitForURL('/admin/teams')
+    const removedTeam = page.locator(`text=${NEW_MOCK_INFO.name}`)
+    await expect(removedTeam).not.toBeVisible()
   })
 
   test('admin to delete active team error', async ({ page }) => {
