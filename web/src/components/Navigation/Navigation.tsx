@@ -21,7 +21,10 @@ const Navigation = () => {
               <button onClick={logOut}>Logout</button>
             </li>
           ) : (
-            <LinkItem to={routes.login()}>Login</LinkItem>
+            <li className="flex">
+              <LinkItem to={routes.login()}>Login</LinkItem>
+              <LinkItem to={routes.signup()}>Sign Up</LinkItem>
+            </li>
           )}
           {hasRole('super admin') && (
             <LinkItem to={routes.adminUsers()}>Admin</LinkItem>
