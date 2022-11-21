@@ -65,19 +65,14 @@ test.describe('edit profile', () => {
     )
     expect(profileLinkWithNewName).toHaveText(MOCK_PROFILE.name)
 
-    await page.waitForURL('/profile')
+    const nickNameInput = page.locator('input[name="nickname"]')
+    await nickNameInput.click()
+    await nameInput.fill(MOCK_PROFILE.name)
+    await saveButton.click()
 
-    const nicknameInput = page.locator('input[name="nickname"]')
-    await nicknameInput.click()
-    await nicknameInput.fill(MOCK_PROFILE.nickname)
-
-    const saveNewNicknameButton = page.locator('text=Save')
-    await saveNewNicknameButton.click()
-    await page.waitForSelector(`a >> text=${MOCK_PROFILE.nickname}`)
-
-    const profileLinkWithNickname = page.locator(
-      `a >> text=${MOCK_PROFILE.nickname}`
+    const profileLinkWithNewNickName = page.locator(
+      `a >> text=${MOCK_PROFILE.name}`
     )
-    expect(profileLinkWithNickname).toHaveText(MOCK_PROFILE.nickname)
+    expect(profileLinkWithNewNickName).toHaveText(MOCK_PROFILE.name)
   })
 })
