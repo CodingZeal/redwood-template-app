@@ -4,26 +4,20 @@ test.describe('login as a user', () => {
   test('should login user', async ({ page }) => {
     await page.goto('/')
 
-    await page.locator('text=Login').click()
-    await page.waitForURL('/login')
-    const loginTitle = await page.locator('.rw-heading-secondary')
-    await expect(loginTitle).toBeVisible()
-    await expect(loginTitle).toHaveText('Login')
+    await page.getByRole('link', { name: 'Login' }).click()
+    await expect(page).toHaveURL('/login')
 
-    await page.locator('input[name="username"]').click()
-    await page.locator('input[name="username"]').fill('admin@example.com')
-    await page.locator('input[name="password"]').click()
-    await page.locator('input[name="password"]').fill('password')
+    await page.getByLabel('Username').click()
 
-    await page.locator('button:has-text("Login")').click()
-    await page.waitForURL('/')
+    await page.getByLabel('Username').fill('admin@example.com')
+    await page.getByLabel('Password').click()
+    await page.getByLabel('Password').fill('password')
 
-    const logoutTitle = await page.locator('text=Logout')
-    await expect(logoutTitle).toBeVisible()
-    await page.locator('text=Logout').click()
-    await page.waitForURL('/')
+    await page.getByRole('button', { name: 'Login' }).click()
+    await expect(page).toHaveURL('/')
 
-    const title = await page.locator('text=Login')
-    await expect(title).toBeVisible()
+    await page.getByRole('button', { name: 'Logout' }).click()
+    const loginLink = page.getByRole('link', { name: 'Login' })
+    await expect(loginLink).toBeVisible()
   })
 })
