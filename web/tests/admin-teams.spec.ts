@@ -12,18 +12,18 @@ const NEW_MOCK_INFO = {
 
 test.use({ storageState: 'web/tests/storage/adminUser-pw.json' })
 
+test.beforeEach(async ({ page }) => {
+  await page.goto('/')
+  await expect(page.locator('text=Admin').first()).toBeVisible()
+
+  await page.locator('text=Admin').first().click()
+  await page.waitForURL('/admin/users')
+
+  await page.locator('text=Teams').first().click()
+  await page.waitForURL('/admin/teams')
+})
+
 test.describe('admin crud team', async () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto('/')
-    await expect(page.locator('text=Admin').first()).toBeVisible()
-
-    await page.locator('text=Admin').first().click()
-    await page.waitForURL('/admin/users')
-
-    await page.locator('text=Teams').first().click()
-    await page.waitForURL('/admin/teams')
-  })
-
   test('admin creates a new team', async ({ page }) => {
     await page.locator('text=New Team').click()
     await page.waitForURL('/admin/teams/new')

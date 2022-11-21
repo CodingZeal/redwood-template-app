@@ -12,18 +12,18 @@ const NEW_MOCK_INFO = {
 
 test.use({ storageState: 'web/tests/storage/adminUser-pw.json' })
 
+test.beforeEach(async ({ page }) => {
+  await page.goto('/')
+  await expect(page.locator('text=Admin').first()).toBeVisible()
+
+  await page.locator('text=Admin').first().click()
+  await page.waitForURL('/admin/users')
+
+  await page.locator('text=Roles').first().click()
+  await page.waitForURL('/admin/roles')
+})
+
 test.describe('admin crud role', async () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto('/')
-    await expect(page.locator('text=Admin').first()).toBeVisible()
-
-    await page.locator('text=Admin').first().click()
-    await page.waitForURL('/admin/users')
-
-    await page.locator('text=Roles').first().click()
-    await page.waitForURL('/admin/roles')
-  })
-
   test('admin creates a new role', async ({ page }) => {
     await page.locator('text=New Role').click()
     await page.waitForURL('/admin/roles/new')
