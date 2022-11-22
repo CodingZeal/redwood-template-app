@@ -11,15 +11,15 @@ import {
   useForm,
 } from '@redwoodjs/forms'
 
-const EditEmailForm = ({ error, loading, onSave }) => {
+const EditEmailForm = ({ error, loading, onSubmit }) => {
   const formMethods = useForm()
   const newEmailRef = useRef()
 
-  newEmailRef.current = formMethods.watch('newEmail', '')
+  newEmailRef.current = formMethods.watch('email', '')
 
   return (
     <div className="rw-form-wrapper">
-      <Form onSubmit={onSave} error={error} formMethods={formMethods}>
+      <Form onSubmit={onSubmit} error={error} formMethods={formMethods}>
         <FormError
           error={error}
           wrapperClassName="rw-form-error-wrapper"
@@ -58,11 +58,11 @@ const EditEmailForm = ({ error, loading, onSave }) => {
         </Label>
 
         <TextField
-          name="newEmail"
+          name="email"
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
-        <FieldError name="newEmail" className="rw-field-error" />
+        <FieldError name="email" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={loading} className="rw-button rw-button-blue">

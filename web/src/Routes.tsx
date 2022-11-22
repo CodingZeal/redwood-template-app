@@ -16,6 +16,7 @@ const Routes = () => {
       <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
       <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
       <Route path="/create-password" page={CreatePasswordPage} name="createPassword" />
+      <Route path="/update-email" page={EmailChangeVerificationPage} name="emailchange" />
       <Route path="/verification" page={VerificationPage} name="verification" />
       <Route path="/verification-reset" page={VerificationResetPage} name="verificationReset" />
       <Set wrap={MainLayout}>

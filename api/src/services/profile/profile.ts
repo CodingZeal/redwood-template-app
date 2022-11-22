@@ -1,3 +1,5 @@
+import { randomUUID } from 'node:crypto'
+
 import * as CryptoJS from 'crypto-js'
 import type { QueryResolvers, MutationResolvers } from 'types/graphql'
 
@@ -71,26 +73,36 @@ export const updatePassword: MutationResolvers['updatePassword'] = async ({
 }
 
 export const updateEmail: MutationResolvers['updateEmail'] = async ({
-  input,
+  token,
 }) => {
-  const { password, newEmail } = input
-
-  validate(password, 'Existing Password', {
-    presence: { allowEmptyString: false },
+  if (token === null) return true
+  const user = await db.user.findFirst({
+    where: { verifyToken: token },
   })
-  validate(newEmail, 'New Email', {
-    presence: { allowEmptyString: false },
-  })
+  if (user) {
+    await db.user.update({
+      where: { id: user.id },
+      data: { verifyToken: null },
+    })
+    return true
+  } else {
+    return false
+  }
+}
 
-  const user = await db.user.findFirstOrThrow({
+export const verifyEmail: MutationResolvers['verifyReset'] = async ({
+  email,
+}) => {
+  const resetToken = randomUUID()
+  const resetTokenExpiresAt = new Date(
+    new Date().getTime() + 24 * 60 * 60 * 1000
+  )
+  const user = await db.user.update({
     where: { id: context.currentUser.id },
-  })
-
-  await db.user.update({
     data: {
-      email: newEmail,
+      resetToken,
+      resetTokenExpiresAt,
     },
-    where: { id: context.currentUser.id },
   })
 
   await sendEmail({
@@ -98,6 +110,5 @@ export const updateEmail: MutationResolvers['updateEmail'] = async ({
     subject: emailUpdate.subject(),
     html: emailUpdate.htmlBody(user),
   })
-
-  return true
+  return email
 }

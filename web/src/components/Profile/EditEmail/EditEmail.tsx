@@ -4,25 +4,26 @@ import { toast } from '@redwoodjs/web/toast'
 
 import { EditEmailForm } from './EditEmailForm'
 
-const UPDATE_EMAIL_MUTATION = gql`
-  mutation UpdateEmailMutation($input: UpdateEmailInput!) {
-    updateEmail(input: $input)
+const Verify_EMAIL_MUTATION = gql`
+  mutation VerificationEmailMutation($email: String!) {
+    email: verifyEmail(email: $email)
   }
 `
 
 const EditEmail = ({ profile }) => {
-  const [updateEmail, { loading, error }] = useMutation(UPDATE_EMAIL_MUTATION, {
-    onCompleted: () => {
+  const [verifyEmail, { loading, error }] = useMutation(Verify_EMAIL_MUTATION, {
+    onCompleted: (response) => {
       toast.success(
-        `We have sent an email to: ${profile.updateEmail}. Please check your email for this message and verify your change by clicking on the verification link.`
+        `We have sent an email to: ${response.email}. Please check your email for this message and verify your change by clicking on the verification link.`
       )
     },
     onError: (error) => {
       toast.error(error.message)
     },
   })
-  const onSave = (input) => {
-    updateEmail({ variables: { input } })
+
+  const onSubmit = (data) => {
+    verifyEmail({ variables: { email: data.email } })
   }
 
   return (
@@ -40,7 +41,7 @@ const EditEmail = ({ profile }) => {
           </h2>
         </header>
         <div className="rw-segment-main">
-          <EditEmailForm error={error} loading={loading} onSave={onSave} />
+          <EditEmailForm error={error} loading={loading} onSubmit={onSubmit} />
         </div>
       </div>
     </>
