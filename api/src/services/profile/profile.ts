@@ -4,7 +4,9 @@ import type { QueryResolvers, MutationResolvers } from 'types/graphql'
 import { validate } from '@redwoodjs/api'
 import { ValidationError } from '@redwoodjs/graphql-server'
 
+import { email as emailUpdate } from 'src/emails/email-update'
 import { db } from 'src/lib/db'
+import { sendEmail } from 'src/lib/mailer'
 
 export const profile: QueryResolvers['profile'] = () => {
   return db.user.findUnique({
@@ -63,6 +65,38 @@ export const updatePassword: MutationResolvers['updatePassword'] = async ({
       salt: newSalt,
     },
     where: { id: context.currentUser.id },
+  })
+
+  return true
+}
+
+export const updateEmail: MutationResolvers['updateEmail'] = async ({
+  input,
+}) => {
+  const { password, newEmail } = input
+
+  validate(password, 'Existing Password', {
+    presence: { allowEmptyString: false },
+  })
+  validate(newEmail, 'New Email', {
+    presence: { allowEmptyString: false },
+  })
+
+  const user = await db.user.findFirstOrThrow({
+    where: { id: context.currentUser.id },
+  })
+
+  await db.user.update({
+    data: {
+      email: newEmail,
+    },
+    where: { id: context.currentUser.id },
+  })
+
+  await sendEmail({
+    to: user.email,
+    subject: emailUpdate.subject(),
+    html: emailUpdate.htmlBody(user),
   })
 
   return true

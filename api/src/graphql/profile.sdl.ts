@@ -23,8 +23,14 @@ export const schema = gql`
     confirmPassword: String!
   }
 
+  input UpdateEmailInput {
+    password: String!
+    newEmail: String!
+  }
+
   type Mutation {
     updateProfile(input: UpdateProfileInput!): Profile! @requireAuth
     updatePassword(input: UpdatePasswordInput!): Boolean! @requireAuth
+    updateEmail(input: UpdateEmailInput!): Boolean! @requireAuth
   }
 `
