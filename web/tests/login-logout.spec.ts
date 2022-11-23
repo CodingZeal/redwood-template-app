@@ -7,11 +7,13 @@ test.describe('login as a user', () => {
     await page.getByRole('link', { name: 'Login' }).click()
     await expect(page).toHaveURL('/login')
 
-    await page.getByLabel('Username').click()
+    const userNameInput = page.getByLabel('Username')
+    await userNameInput.click()
+    await userNameInput.fill('admin@example.com')
 
-    await page.getByLabel('Username').fill('admin@example.com')
-    await page.getByLabel('Password').click()
-    await page.getByLabel('Password').fill('password')
+    const passwordInput = page.getByLabel('Password')
+    await passwordInput.click()
+    await passwordInput.fill('password')
 
     await page.getByRole('button', { name: 'Login' }).click()
     await expect(page).toHaveURL('/')

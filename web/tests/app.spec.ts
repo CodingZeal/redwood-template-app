@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
 
 test.describe('home page', () => {
   test('should load home page', async ({ page }) => {
-    const rootElement = await page.locator('#redwood-app')
+    const rootElement = page.locator('#redwood-app')
     await expect(rootElement).toBeVisible()
   })
 })

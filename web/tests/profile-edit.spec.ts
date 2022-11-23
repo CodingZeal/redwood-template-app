@@ -57,7 +57,7 @@ test.describe('edit profile', () => {
     await nameInput.click()
     await nameInput.fill(MOCK_PROFILE.name)
 
-    const saveButton = page.locator('text=Save')
+    const saveButton = page.getByRole('button', { name: 'Save' })
     await saveButton.click()
 
     const profileLinkWithNewName = page.getByRole('link', {
@@ -65,7 +65,7 @@ test.describe('edit profile', () => {
     })
     expect(profileLinkWithNewName)
 
-    const nickNameInput = page.locator('input[name="nickname"]')
+    const nickNameInput = page.getByLabel('Nickname')
     await nickNameInput.click()
     await nickNameInput.fill(MOCK_PROFILE.nickname)
     await saveButton.click()

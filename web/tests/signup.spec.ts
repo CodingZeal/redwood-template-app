@@ -14,23 +14,26 @@ test.describe('signup as a user', () => {
   test('should signup user', async ({ page }) => {
     await page.goto('/')
 
-    await page.locator('text=Login').click()
+    await page.getByText('Login').click()
     await page.waitForURL('/login')
-    const loginTitle = await page.locator('.rw-heading-secondary')
-    await expect(loginTitle).toBeVisible()
+    const loginTitle = page.locator('.rw-heading-secondary')
+    expect(loginTitle)
     await expect(loginTitle).toHaveText('Login')
 
-    await page.locator('text=Sign up!').click()
+    await page.getByText('Sign up!').click()
     await page.waitForURL('/signup')
 
-    const signupTitle = await page.locator('.rw-heading-secondary')
-    await expect(signupTitle).toBeVisible()
+    const signupTitle = page.locator('.rw-heading-secondary')
+    expect(signupTitle)
     await expect(signupTitle).toHaveText('Signup')
 
-    await page.locator('input[name="username"]').click()
-    await page.locator('input[name="username"]').fill(MOCK_USER.email)
-    await page.locator('input[name="password"]').click()
-    await page.locator('input[name="password"]').fill('example')
+    const usernameInput = page.locator('input[name="username"]')
+    await usernameInput.click()
+    await usernameInput.fill(MOCK_USER.email)
+
+    const passwordInput = page.locator('input[name="password"]')
+    await passwordInput.click()
+    await passwordInput.fill('example')
 
     await page.locator('button:has-text("Sign Up")').click()
     await page.waitForURL('/')
