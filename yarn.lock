@@ -12322,7 +12322,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prettier@npm:4.2.1":
+"eslint-plugin-prettier@npm:4.2.1, eslint-plugin-prettier@npm:^4.2.1":
   version: 4.2.1
   resolution: "eslint-plugin-prettier@npm:4.2.1"
   dependencies:
@@ -21725,6 +21725,7 @@ __metadata:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@redwoodjs/core": ^3.5.0
+    eslint-plugin-prettier: ^4.2.1
     pm2: ^5.2.2
     prettier: ^2.8.0
     react-use: ^17.4.0
