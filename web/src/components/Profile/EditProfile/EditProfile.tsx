@@ -3,7 +3,7 @@ import {
   FormError,
   FieldError,
   Label,
-  TextField,
+  InputField,
   Submit,
 } from '@redwoodjs/forms'
 
@@ -26,7 +26,7 @@ const EditProfile = ({ error, loading, profile, onSave }) => {
           Name
         </Label>
 
-        <TextField
+        <InputField
           name="name"
           defaultValue={profile.name}
           className="rw-input"
@@ -43,7 +43,7 @@ const EditProfile = ({ error, loading, profile, onSave }) => {
           Nickname
         </Label>
 
-        <TextField
+        <InputField
           name="nickname"
           defaultValue={profile.nickname}
           className="rw-input"
@@ -60,7 +60,7 @@ const EditProfile = ({ error, loading, profile, onSave }) => {
           Pronouns
         </Label>
 
-        <TextField
+        <InputField
           name="pronouns"
           defaultValue={profile.pronouns}
           className="rw-input"
@@ -77,7 +77,7 @@ const EditProfile = ({ error, loading, profile, onSave }) => {
           Email
         </Label>
 
-        <TextField
+        <InputField
           name="email"
           disabled
           defaultValue={profile.email}

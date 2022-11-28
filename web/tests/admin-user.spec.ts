@@ -19,36 +19,50 @@ test.use({ storageState: 'web/tests/storage/adminUser-pw.json' })
 test.beforeEach(async ({ page }) => {
   await page.goto('/')
 
-  await expect(page.locator('text=Admin').first()).toBeVisible()
+  const admin = page.getByText('Admin').first()
+  expect(admin)
 
-  await page.locator('text=Admin').first().click()
+  await admin.click()
   await page.waitForURL('/admin/users')
 })
 
 test.describe('admin crud user', async () => {
   test('admin creates a new user', async ({ page }) => {
-    const newUser = page.locator('text=New User').first()
-    await expect(newUser).toBeVisible()
+    const newUser = page.getByText('New User').first()
+    expect(newUser)
     await newUser.click()
+
     await page.waitForURL('/admin/users/new')
-    await page.locator('input[name="email"]').click()
-    await page.locator('input[name="email"]').fill(MOCK_USER.email)
-    await page.locator('input[name="name"]').click()
-    await page.locator('input[name="name"]').fill(MOCK_USER.name)
-    await page.locator('input[name="nickname"]').click()
-    await page.locator('input[name="nickname"]').fill(MOCK_USER.nickname)
-    await page.locator('input[name="pronouns"]').click()
-    await page.locator('input[name="pronouns"]').fill(MOCK_USER.pronouns)
+
+    const emailInput = page.locator('input[name="email"]')
+    await emailInput.click()
+    await emailInput.fill(MOCK_USER.email)
+
+    const nameInput = page.locator('input[name="name"]')
+    await nameInput.click()
+    await nameInput.fill(MOCK_USER.name)
+
+    const nicknameInput = page.locator('input[name="nickname"]')
+    await nicknameInput.click()
+    await nicknameInput.fill(MOCK_USER.nickname)
+
+    const pronounsInput = page.locator('input[name="pronouns"]')
+    await pronounsInput.click()
+    await pronounsInput.fill(MOCK_USER.pronouns)
 
     await page.getByLabel('Active').check()
     expect(page.getByLabel('Active').isChecked()).toBeTruthy()
 
-    await page.locator('button:has-text("Save")').click()
+    const saveButton = page.getByRole('button', { name: 'Save' })
+    await saveButton.click()
+
     await page.waitForURL('/admin/users')
-    const newUserToast = page.locator('text=User created')
-    await expect(newUserToast).toBeVisible()
-    const newUserList = page.locator(`text=${MOCK_USER.email}`)
-    await expect(newUserList).toBeVisible()
+
+    const newUserToast = page.getByText('User created')
+    expect(newUserToast)
+
+    const newUserList = page.getByText(MOCK_USER.email)
+    expect(newUserList)
   })
 
   test('admin shows a user', async ({ page }) => {
@@ -57,14 +71,17 @@ test.describe('admin crud user', async () => {
     })
     await page.goto(`/admin/users/${newlyCreatedUser?.id}`)
 
-    const mockEmail = page.locator(`text=${MOCK_USER.email}`)
-    await expect(mockEmail).toBeVisible()
-    const mockName = page.locator(`text=${MOCK_USER.name}`)
-    await expect(mockName).toBeVisible()
-    const mockNickname = page.locator(`text=${MOCK_USER.nickname}`)
-    await expect(mockNickname).toBeVisible()
-    const mockPronouns = page.locator(`text=${MOCK_USER.pronouns}`)
-    await expect(mockPronouns).toBeVisible()
+    const mockEmail = page.getByText(MOCK_USER.email)
+    expect(mockEmail)
+
+    const mockName = page.getByText(MOCK_USER.name)
+    expect(mockName)
+
+    const mockNickname = page.getByText(MOCK_USER.nickname)
+    expect(mockNickname)
+
+    const mockPronouns = page.getByText(MOCK_USER.pronouns)
+    expect(mockPronouns)
   })
 
   test('admin edits a user', async ({ page }) => {
@@ -73,23 +90,33 @@ test.describe('admin crud user', async () => {
     })
     await page.goto(`/admin/users/${newlyCreatedUser?.id}/edit`)
 
-    await page.locator('input[name="name"]').click()
-    await page.locator('input[name="name"]').fill(NEW_MOCK_INFO.name)
-    await page.locator('input[name="nickname"]').click()
-    await page.locator('input[name="nickname"]').fill(NEW_MOCK_INFO.nickname)
-    await page.locator('input[name="pronouns"]').click()
-    await page.locator('input[name="pronouns"]').fill(NEW_MOCK_INFO.pronouns)
+    const nameInput = page.locator('input[name="name"]')
+    await nameInput.click()
+    await nameInput.fill(NEW_MOCK_INFO.name)
 
-    await page.locator('button:has-text("Save")').click()
+    const nicknameInput = page.locator('input[name="nickname"]')
+    await nicknameInput.click()
+    await nicknameInput.fill(NEW_MOCK_INFO.nickname)
+
+    const pronounsInput = page.locator('input[name="pronouns"]')
+    await pronounsInput.click()
+    await pronounsInput.fill(NEW_MOCK_INFO.pronouns)
+
+    const saveButton = page.getByRole('button', { name: 'Save' })
+    await saveButton.click()
+
     await page.waitForURL('/admin/users')
 
     await page.goto(`/admin/users/${newlyCreatedUser?.id}`)
-    const mockName = page.locator(`text=${NEW_MOCK_INFO.name}`)
-    await expect(mockName).toBeVisible()
-    const mockNickname = page.locator(`text=${NEW_MOCK_INFO.nickname}`)
-    await expect(mockNickname).toBeVisible()
-    const mockPronouns = page.locator(`text=${NEW_MOCK_INFO.pronouns}`)
-    await expect(mockPronouns).toBeVisible()
+
+    const mockName = page.getByText(NEW_MOCK_INFO.name)
+    expect(mockName)
+
+    const mockNickname = page.getByText(NEW_MOCK_INFO.nickname)
+    expect(mockNickname)
+
+    const mockPronouns = page.getByText(NEW_MOCK_INFO.pronouns)
+    expect(mockPronouns)
   })
 
   test('admin removes a user', async ({ page }) => {
@@ -101,12 +128,14 @@ test.describe('admin crud user', async () => {
     page.once('dialog', (dialog) => {
       dialog.accept().catch(() => {})
     })
-    await page.locator('text=Remove').click()
+    await page.getByText('Remove').click()
 
-    const toastMessage = page.locator('text=User Removed')
-    await expect(toastMessage).toBeVisible()
+    const toastMessage = page.getByText('User Removed')
+    expect(toastMessage)
+
     await page.waitForURL('/admin/users')
-    const removedEmail = page.locator(`text=${MOCK_USER.email}`)
+
+    const removedEmail = page.getByText(MOCK_USER.email)
     await expect(removedEmail).not.toBeVisible()
   })
 
@@ -116,18 +145,19 @@ test.describe('admin crud user', async () => {
     })
     await page.locator('text=Archive').first().click()
 
-    const toastMessage = page.locator('text=User updated')
-    await expect(toastMessage).toBeVisible()
+    const toastMessage = page.getByText('User updated')
+    expect(toastMessage)
 
-    const reactivateMessage = page.locator('text=Reactivate')
-    await expect(reactivateMessage).toBeVisible()
+    const reactivateMessage = page.getByText('Reactivate')
+    expect(reactivateMessage)
 
     page.once('dialog', (dialog) => {
       dialog.accept().catch(() => {})
     })
-    await page.locator('text=Reactivate').first().click()
-    const updatedMessage = page.locator('text=User updated')
-    await expect(updatedMessage).toBeVisible()
+    await reactivateMessage.first().click()
+
+    const updatedMessage = page.getByText('User updated')
+    expect(updatedMessage)
 
     await expect(reactivateMessage).not.toBeVisible()
   })

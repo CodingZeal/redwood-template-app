@@ -15,9 +15,9 @@ test.describe('reset password', () => {
   test('user should fill out new password input', async ({ page }) => {
     await page.goto('/reset-password?resetToken=waffleCrisp')
     await page.locator('input[name="password"]').fill('newpassword')
-    await page.locator('text=Submit').click()
+    await page.getByText('Submit').click()
     await page.waitForURL('/login')
-    const toastMessage = await page.locator('text=Password changed!')
-    await expect(toastMessage).toBeVisible()
+    const toastMessage = page.getByText('Password changed!')
+    expect(toastMessage)
   })
 })

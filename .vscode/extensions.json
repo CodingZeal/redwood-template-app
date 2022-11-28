@@ -11,6 +11,7 @@
     "graphql.vscode-graphql",
     "csstools.postcss",
     "bradlc.vscode-tailwindcss",
+    "ms-playwright.playwright"
   ],
   "unwantedRecommendations": []
 }

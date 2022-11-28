@@ -16,7 +16,7 @@ test.describe('edit profile', () => {
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPageModel(page)
     await loginPage.loginBasicUser(MOCK_USER_EMAIL)
-    await page.goto('/profile')
+    await page.goto('/profile', { waitUntil: 'domcontentloaded' })
     await page.waitForSelector('#edit-profile')
   })
 
@@ -43,36 +43,36 @@ test.describe('edit profile', () => {
     await pronounsInput.fill(MOCK_PROFILE.pronouns)
 
     await saveButton.click()
-    await page.waitForURL('/profile')
+    await page.waitForURL('/profile', { waitUntil: 'domcontentloaded' })
     expect(await nameInput.inputValue()).toEqual(MOCK_PROFILE.name)
     expect(await nicknameInput.inputValue()).toEqual(MOCK_PROFILE.nickname)
     expect(await pronounsInput.inputValue()).toEqual(MOCK_PROFILE.pronouns)
   })
 
   test('should update profile name in navigation', async ({ page }) => {
-    const profileLink = page.locator(`a >> text=${MOCK_USER_EMAIL}`)
-    expect(profileLink).toHaveText(MOCK_USER_EMAIL)
+    const profileLink = page.getByRole('link', { name: MOCK_USER_EMAIL })
+    expect(profileLink)
 
     const nameInput = page.locator('input[name="name"]')
     await nameInput.click()
     await nameInput.fill(MOCK_PROFILE.name)
 
-    const saveButton = page.locator('text=Save')
+    const saveButton = page.getByRole('button', { name: 'Save' })
     await saveButton.click()
 
-    const profileLinkWithNewName = page.locator(
-      `a >> text=${MOCK_PROFILE.name}`
-    )
-    expect(profileLinkWithNewName).toHaveText(MOCK_PROFILE.name)
+    const profileLinkWithNewName = page.getByRole('link', {
+      name: MOCK_PROFILE.name,
+    })
+    expect(profileLinkWithNewName)
 
-    const nickNameInput = page.locator('input[name="nickname"]')
+    const nickNameInput = page.getByLabel('Nickname')
     await nickNameInput.click()
-    await nameInput.fill(MOCK_PROFILE.name)
+    await nickNameInput.fill(MOCK_PROFILE.nickname)
     await saveButton.click()
 
-    const profileLinkWithNewNickName = page.locator(
-      `a >> text=${MOCK_PROFILE.name}`
-    )
-    expect(profileLinkWithNewNickName).toHaveText(MOCK_PROFILE.name)
+    const profileLinkWithNewNickName = page.getByRole('link', {
+      name: MOCK_PROFILE.nickname,
+    })
+    expect(profileLinkWithNewNickName)
   })
 })
