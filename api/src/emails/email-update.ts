@@ -6,7 +6,7 @@ import { userNameWithFallback } from 'src/lib/username'
 const email = {
   subject: () => 'Verify New Email',
   htmlBody: (user: User) => {
-    const link = `${process.env.DOMAIN}/update-email?verifyToken=${user.resetToken}`
+    const link = `${process.env.DOMAIN}/verify-email?verifyToken=${user.verifyToken}`
     const appName = process.env.APP_NAME
 
     if (process.env.NODE_ENV === 'development') {

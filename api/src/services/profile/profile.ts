@@ -72,7 +72,7 @@ export const updatePassword: MutationResolvers['updatePassword'] = async ({
   return true
 }
 
-export const updateEmail: MutationResolvers['updateEmail'] = async ({
+export const verifyEmail: MutationResolvers['verifyEmail'] = async ({
   token,
 }) => {
   if (token === null) return true
@@ -92,7 +92,7 @@ export const updateEmail: MutationResolvers['updateEmail'] = async ({
   }
 }
 
-export const verifyEmail: MutationResolvers['verifyEmail'] = async ({
+export const updateEmail: MutationResolvers['updateEmail'] = async ({
   input,
 }) => {
   const { password, newEmail } = input
@@ -113,27 +113,18 @@ export const verifyEmail: MutationResolvers['verifyEmail'] = async ({
   if (existingPasswordHashed != user.hashedPassword) {
     throw new ValidationError('Your existing password is not correct')
   }
-  if (newEmail === user.email) {
-    throw new ValidationError('Entered current email')
-  }
-
-  const resetToken = randomUUID()
-  const resetTokenExpiresAt = new Date(
-    new Date().getTime() + 24 * 60 * 60 * 1000
-  )
   await db.user.update({
     where: { id: context.currentUser.id },
     data: {
-      resetToken,
-      resetTokenExpiresAt,
+      verifyToken: randomUUID(),
       email: newEmail,
     },
   })
-
   await sendEmail({
-    to: user.email,
+    to: newEmail,
     subject: emailUpdate.subject(),
     html: emailUpdate.htmlBody(user),
   })
+
   return true
 }

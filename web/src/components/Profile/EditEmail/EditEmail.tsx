@@ -5,21 +5,18 @@ import { toast } from '@redwoodjs/web/toast'
 
 import { EditEmailForm } from './EditEmailForm'
 
-const Verify_EMAIL_MUTATION = gql`
-  mutation VerificationEmailMutation($input: UpdateEmailInput!) {
-    verifyEmail(input: $input)
+const Update_EMAIL_MUTATION = gql`
+  mutation UpdateEmailMutation($input: UpdateEmailInput!) {
+    updateEmail(input: $input)
   }
 `
 
 const EditEmail = ({ profile }) => {
   const { reauthenticate } = useAuth()
 
-  const [verifyEmail, { loading, error }] = useMutation(Verify_EMAIL_MUTATION, {
-    onCompleted: async (input) => {
+  const [updateEmail, { loading, error }] = useMutation(Update_EMAIL_MUTATION, {
+    onCompleted: async () => {
       await reauthenticate()
-      toast.success(
-        `We have sent an email to: ${input.email}. Please check your email for this message and verify your change by clicking on the verification link.`
-      )
     },
     onError: (error) => {
       toast.error(error.message)
@@ -27,7 +24,13 @@ const EditEmail = ({ profile }) => {
   })
 
   const onSubmit = (input) => {
-    verifyEmail({ variables: { input } })
+    if (input.newEmail === profile.email) {
+      return null
+    }
+    updateEmail({ variables: { input } })
+    toast.success(
+      `We have sent an email to: ${input.newEmail}. Please check your email for this message and verify your change by clicking on the verification link.`
+    )
   }
 
   return (

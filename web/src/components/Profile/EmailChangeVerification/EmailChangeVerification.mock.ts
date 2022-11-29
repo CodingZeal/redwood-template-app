@@ -1,1 +1,1 @@
-mockGraphQLMutation('VerificationMutation', { verifyUser: true })
+mockGraphQLMutation('VerificationMutation', { verifyEmail: true })

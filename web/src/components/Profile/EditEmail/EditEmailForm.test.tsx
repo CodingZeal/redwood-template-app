@@ -1,86 +1,88 @@
-// import userEvent from '@testing-library/user-event'
+import userEvent from '@testing-library/user-event'
 
-// import { render, screen, waitFor } from '@redwoodjs/testing/web'
+import { render, screen, waitFor } from '@redwoodjs/testing/web'
 
-// import { EditEmailForm } from './EditEmailForm'
+import { EditEmailForm } from './EditEmailForm'
 
-// describe('EditPasswordForm', () => {
-//   it('renders successfully', () => {
-//     expect(() => {
-//       render(
-//         <EditEmailForm
-//           error={undefined}
-//           loading={undefined}
-//           onSave={undefined}
-//         />
-//       )
-//     }).not.toThrow()
-//   })
+describe('EditPasswordForm', () => {
+  it('renders successfully', () => {
+    expect(() => {
+      render(
+        <EditEmailForm
+          error={undefined}
+          loading={undefined}
+          onSubmit={undefined}
+        />
+      )
+    }).not.toThrow()
+  })
 
-//   it('renders existing password input', () => {
-//     render(
-//       <EditEmailForm error={undefined} loading={undefined} onSave={undefined} />
-//     )
-//     const oldPassword = screen.getByLabelText('Your Existing Password')
+  it('renders password input', () => {
+    render(
+      <EditEmailForm
+        error={undefined}
+        loading={undefined}
+        onSubmit={undefined}
+      />
+    )
+    const password = screen.getByLabelText('Your Password')
 
-//     expect(oldPassword).toBeInTheDocument()
-//     expect(oldPassword).toBeVisible()
-//   })
+    expect(password).toBeInTheDocument()
+    expect(password).toBeVisible()
+  })
 
-//   it('renders new password input', () => {
-//     render(
-//       <EditEmailForm error={undefined} loading={undefined} onSave={undefined} />
-//     )
-//     const oldPassword = screen.getByLabelText('New Password')
+  it('renders new email input', () => {
+    render(
+      <EditEmailForm
+        error={undefined}
+        loading={undefined}
+        onSubmit={undefined}
+      />
+    )
+    const newEmail = screen.getByLabelText('Your New Email')
 
-//     expect(oldPassword).toBeInTheDocument()
-//     expect(oldPassword).toBeVisible()
-//   })
+    expect(newEmail).toBeInTheDocument()
+    expect(newEmail).toBeVisible()
+  })
 
-//   it('renders confirm password input', () => {
-//     render(
-//       <EditEmailForm error={undefined} loading={undefined} onSave={undefined} />
-//     )
-//     const oldPassword = screen.getByLabelText('Confirm New Password')
+  it('requires all fields', async () => {
+    const mockSave = jest.fn()
+    render(
+      <EditEmailForm
+        error={undefined}
+        loading={undefined}
+        onSubmit={mockSave}
+      />
+    )
+    const save = screen.getByRole('button')
+    await waitFor(() => userEvent.click(save))
 
-//     expect(oldPassword).toBeInTheDocument()
-//     expect(oldPassword).toBeVisible()
-//   })
+    expect(screen.getByText('Password is required')).toBeVisible()
+    expect(screen.getByText('New Email is required')).toBeVisible()
 
-//   it('requires all fields', async () => {
-//     const mockSave = jest.fn()
-//     render(
-//       <EditEmailForm error={undefined} loading={undefined} onSave={mockSave} />
-//     )
-//     const save = screen.getByRole('button')
-//     await waitFor(() => userEvent.click(save))
+    expect(mockSave.mock.calls.length).toBe(0)
+  })
 
-//     expect(screen.getByText('Existing Password is required')).toBeVisible()
-//     expect(screen.getByText('New Password is required')).toBeVisible()
-//     expect(screen.getByText('Confirm New Password is required')).toBeVisible()
+  it('submits then calls onSave', async () => {
+    const mockSave = jest.fn()
+    render(
+      <EditEmailForm
+        error={undefined}
+        loading={undefined}
+        onSubmit={mockSave}
+      />
+    )
 
-//     expect(mockSave.mock.calls.length).toBe(0)
-//   })
+    expect(mockSave.mock.calls.length).toBe(0)
 
-//   it('submits then calls onSave', async () => {
-//     const mockSave = jest.fn()
-//     render(
-//       <EditEmailForm error={undefined} loading={undefined} onSave={mockSave} />
-//     )
+    const passwordInput = screen.getByLabelText('Your Password')
+    await waitFor(() => userEvent.type(passwordInput, 'supersecret'))
 
-//     expect(mockSave.mock.calls.length).toBe(0)
+    const newPasswordInput = screen.getByLabelText('Your New Email')
+    await waitFor(() => userEvent.type(newPasswordInput, 'foobar@example.com'))
 
-//     const passwordInput = screen.getByLabelText('Your Existing Password')
-//     await waitFor(() => userEvent.type(passwordInput, 'supersecret'))
-
-//     const newPasswordInput = screen.getByLabelText('New Password')
-//     await waitFor(() => userEvent.type(newPasswordInput, 'halloween'))
-
-//     const confirmPasswordInput = screen.getByLabelText('Confirm New Password')
-//     await waitFor(() => userEvent.type(confirmPasswordInput, 'halloween'))
-
-//     const save = screen.getByRole('button')
-//     await waitFor(() => userEvent.click(save))
-//     expect(mockSave.mock.calls.length).toBe(1)
-//   })
-// })
+    const save = screen.getByRole('button')
+    await waitFor(() => userEvent.click(save))
+    expect(mockSave.mock.calls.length).toBe(1)
+  })
+})

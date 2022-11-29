@@ -1,6 +1,6 @@
 import { db } from 'src/lib/db'
 
-import { profile, updateProfile, updatePassword } from './profile'
+import { profile, updateProfile, updatePassword, updateEmail } from './profile'
 import { StandardScenario, defaultProfilePassword } from './profile.scenarios'
 
 describe('profile', () => {
@@ -99,6 +99,35 @@ describe('profile', () => {
       expect(
         updatePassword({ input: { ...input, confirmPassword: '' } })
       ).rejects.toThrowError('must be present')
+    }
+  )
+
+  scenario('updates email', async (scenario: StandardScenario) => {
+    mockCurrentUser(defaultCurrentUser(scenario.user.profile))
+
+    expect(
+      updateEmail({
+        input: {
+          password: defaultProfilePassword,
+          newEmail: 'foobar@example.com',
+        },
+      })
+    ).resolves.toEqual(true)
+  })
+
+  scenario(
+    'email update fails when password is invalid',
+    async (scenario: StandardScenario) => {
+      mockCurrentUser(defaultCurrentUser(scenario.user.profile))
+
+      expect(
+        updateEmail({
+          input: {
+            password: 'INVALID',
+            newEmail: 'NEW',
+          },
+        })
+      ).rejects.toThrowError('password is not correct')
     }
   )
 })

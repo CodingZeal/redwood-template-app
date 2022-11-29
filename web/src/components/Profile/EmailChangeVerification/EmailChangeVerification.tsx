@@ -4,13 +4,13 @@ import { navigate, routes } from '@redwoodjs/router'
 import { MetaTags, useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/dist/toast'
 
-const UPDATE_EMAIL_MUTATION = gql`
-  mutation UpdateEmailMutation($token: String!) {
-    updateEmail: updateEmail(token: $token)
+const VERIFY_EMAIL_MUTATION = gql`
+  mutation VerifyEmailMutation($token: String!) {
+    verifyEmail(token: $token)
   }
 `
 const EmailChangeVerification = ({ token }) => {
-  const [updateEmail, { loading, error }] = useMutation(UPDATE_EMAIL_MUTATION, {
+  const [verifyEmail, { loading, error }] = useMutation(VERIFY_EMAIL_MUTATION, {
     onCompleted: () => {
       toast.success('Account Verified')
       navigate(routes.login())
@@ -21,8 +21,8 @@ const EmailChangeVerification = ({ token }) => {
   })
 
   useEffect(() => {
-    updateEmail({ variables: { token } })
-  }, [updateEmail, token])
+    verifyEmail({ variables: { token } })
+  }, [verifyEmail, token])
 
   return (
     <>

@@ -42,7 +42,7 @@ const EditEmailForm = ({ error, loading, onSubmit }) => {
           validation={{
             required: {
               value: true,
-              message: 'Existing Password is required',
+              message: 'Password is required',
             },
           }}
         />
@@ -59,10 +59,17 @@ const EditEmailForm = ({ error, loading, onSubmit }) => {
         <h2 className="rw-heading rw-heading-secondary">
           Requires verification via email message
         </h2>
+
         <TextField
           name="newEmail"
           className="rw-input"
           errorClassName="rw-input rw-input-error"
+          validation={{
+            required: {
+              value: true,
+              message: 'New Email is required',
+            },
+          }}
         />
         <FieldError name="newEmail" className="rw-field-error" />
 
