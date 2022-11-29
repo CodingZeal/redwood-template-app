@@ -168,16 +168,7 @@ export const handler = async (event, context) => {
 
     // Specifies attributes on the cookie that dbAuth sets in order to remember
     // who is logged in. See https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies
-    cookie: {
-      HttpOnly: true,
-      Path: '/',
-      SameSite: 'Strict',
-      Secure: process.env.NODE_ENV !== 'development',
-
-      // If you need to allow other domains (besides the api side) access to
-      // the dbAuth session cookie:
-      // Domain: 'example.com',
-    },
+    cookie: createCookie(event.headers),
 
     forgotPassword: forgotPasswordOptions,
     login: loginOptions,
@@ -186,4 +177,19 @@ export const handler = async (event, context) => {
   })
 
   return await authHandler.invoke()
+}
+
+const createCookie = ({ referer }) => {
+  const isLocalhost = referer.startsWith('http://localhost:8910')
+
+  return {
+    HttpOnly: true,
+    Path: '/',
+    SameSite: 'Strict',
+    Secure: process.env.NODE_ENV !== 'development' && !isLocalhost,
+  }
+
+  // If you need to allow other domains (besides the api side) access to
+  // the dbAuth session cookie:
+  // Domain: 'example.com',
 }
