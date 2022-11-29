@@ -15,7 +15,7 @@ const EditEmailForm = ({ error, loading, onSubmit }) => {
   const formMethods = useForm()
   const newEmailRef = useRef()
 
-  newEmailRef.current = formMethods.watch('email', '')
+  newEmailRef.current = formMethods.watch('newEmail', '')
 
   return (
     <div className="rw-form-wrapper">
@@ -45,24 +45,26 @@ const EditEmailForm = ({ error, loading, onSubmit }) => {
               message: 'Existing Password is required',
             },
           }}
-          autoComplete="current-password"
         />
         <FieldError name="password" className="rw-field-error" />
 
         <Label
-          name="email"
+          name="newEmail"
           className="rw-label"
           errorClassName="rw-label rw-label-error"
         >
           Your New Email
         </Label>
 
+        <h2 className="rw-heading rw-heading-secondary">
+          Requires verification via email message
+        </h2>
         <TextField
-          name="email"
+          name="newEmail"
           className="rw-input"
           errorClassName="rw-input rw-input-error"
         />
-        <FieldError name="email" className="rw-field-error" />
+        <FieldError name="newEmail" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={loading} className="rw-button rw-button-blue">

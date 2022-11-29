@@ -82,7 +82,9 @@ export const updateEmail: MutationResolvers['updateEmail'] = async ({
   if (user) {
     await db.user.update({
       where: { id: user.id },
-      data: { verifyToken: null },
+      data: {
+        verifyToken: null,
+      },
     })
     return true
   } else {
@@ -90,18 +92,41 @@ export const updateEmail: MutationResolvers['updateEmail'] = async ({
   }
 }
 
-export const verifyEmail: MutationResolvers['verifyReset'] = async ({
-  email,
+export const verifyEmail: MutationResolvers['verifyEmail'] = async ({
+  input,
 }) => {
+  const { password, newEmail } = input
+
+  validate(password, 'Existing Password', {
+    presence: { allowEmptyString: false },
+  })
+  validate(newEmail, 'New Email', {
+    presence: { allowEmptyString: false },
+  })
+  const user = await db.user.findFirstOrThrow({
+    where: { id: context.currentUser.id },
+  })
+  const existingPasswordHashed = CryptoJS.PBKDF2(password, user.salt, {
+    keySize: 256 / 32,
+  }).toString()
+
+  if (existingPasswordHashed != user.hashedPassword) {
+    throw new ValidationError('Your existing password is not correct')
+  }
+  if (newEmail === user.email) {
+    throw new ValidationError('Entered current email')
+  }
+
   const resetToken = randomUUID()
   const resetTokenExpiresAt = new Date(
     new Date().getTime() + 24 * 60 * 60 * 1000
   )
-  const user = await db.user.update({
+  await db.user.update({
     where: { id: context.currentUser.id },
     data: {
       resetToken,
       resetTokenExpiresAt,
+      email: newEmail,
     },
   })
 
@@ -110,5 +135,5 @@ export const verifyEmail: MutationResolvers['verifyReset'] = async ({
     subject: emailUpdate.subject(),
     html: emailUpdate.htmlBody(user),
   })
-  return email
+  return true
 }
