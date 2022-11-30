@@ -107,78 +107,81 @@ describe('profile', () => {
       ).rejects.toThrowError('must be present')
     }
   )
-})
 
-describe('update profile email', () => {
-  scenario('updates email', async (scenario: StandardScenario) => {
-    mockCurrentUser(defaultCurrentUser(scenario.user.profile))
-    expect(
-      updateEmail({
-        input: {
-          password: defaultProfilePassword,
-          newEmail: 'foobar@example.com',
-        },
-      })
-    ).resolves.toEqual(true)
-  })
-
-  scenario(
-    'email update fails when password is invalid',
-    async (scenario: StandardScenario) => {
+  describe('update profile email', () => {
+    scenario('updates email', async (scenario: StandardScenario) => {
       mockCurrentUser(defaultCurrentUser(scenario.user.profile))
-
       expect(
         updateEmail({
           input: {
-            password: 'INVALID',
-            newEmail: 'NEW',
+            password: defaultProfilePassword,
+            newEmail: 'foobar@example.com',
           },
         })
-      ).rejects.toThrowError('password is not correct')
-    }
-  )
-  scenario(
-    'email update fails when missing arguments',
-    async (scenario: StandardScenario) => {
-      mockCurrentUser(defaultCurrentUser(scenario.user.profile))
+      ).resolves.toEqual(true)
+    })
 
-      const input = {
-        password: defaultProfilePassword,
-        newEmail: 'foobar@example.com',
+    scenario(
+      'email update fails when password is invalid',
+      async (scenario: StandardScenario) => {
+        mockCurrentUser(defaultCurrentUser(scenario.user.profile))
+
+        expect(
+          updateEmail({
+            input: {
+              password: 'INVALID',
+              newEmail: 'NEW',
+            },
+          })
+        ).rejects.toThrowError('password is not correct')
       }
+    )
+    scenario(
+      'email update fails when missing arguments',
+      async (scenario: StandardScenario) => {
+        mockCurrentUser(defaultCurrentUser(scenario.user.profile))
 
-      expect(
-        updateEmail({ input: { ...input, password: '' } })
-      ).rejects.toThrowError('must be present')
+        const input = {
+          password: defaultProfilePassword,
+          newEmail: 'foobar@example.com',
+        }
 
-      expect(
-        updateEmail({ input: { ...input, newEmail: '' } })
-      ).rejects.toThrowError('must be present')
-    }
-  )
-})
+        expect(
+          updateEmail({ input: { ...input, password: '' } })
+        ).rejects.toThrowError('must be present')
 
-describe('verify user', () => {
-  scenario('with verify token', async (scenario: StandardScenario) => {
-    const result = await verifyEmail({
-      token: scenario.user.profile.verifyToken,
-    })
-    const user = await db.user.findUnique({
-      where: { id: scenario.user.profile.id },
-    })
-
-    expect(result).toEqual(true)
-    expect(user.verifyToken).toEqual(null)
+        expect(
+          updateEmail({ input: { ...input, newEmail: '' } })
+        ).rejects.toThrowError('must be present')
+      }
+    )
   })
 
-  scenario('with invalid verify token', async (scenario: StandardScenario) => {
-    const result = await verifyEmail({ token: 'invalid' })
-    const user = await db.user.findUnique({
-      where: { id: scenario.user.profile.id },
+  describe('verify user', () => {
+    scenario('with verify token', async (scenario: StandardScenario) => {
+      const result = await verifyEmail({
+        token: scenario.user.profile.verifyToken,
+      })
+      const user = await db.user.findUnique({
+        where: { id: scenario.user.profile.id },
+      })
+
+      expect(result).toEqual(true)
+      expect(user.verifyToken).toEqual(null)
     })
 
-    expect(result).toEqual(false)
-    expect(user.verifyToken).toEqual(scenario.user.profile.verifyToken)
+    scenario(
+      'with invalid verify token',
+      async (scenario: StandardScenario) => {
+        const result = await verifyEmail({ token: 'invalid' })
+        const user = await db.user.findUnique({
+          where: { id: scenario.user.profile.id },
+        })
+
+        expect(result).toEqual(false)
+        expect(user.verifyToken).toEqual(scenario.user.profile.verifyToken)
+      }
+    )
   })
 })
 
