@@ -39,7 +39,7 @@ describe('profile', () => {
     mockCurrentUser(defaultCurrentUser(scenario.user.profile))
 
     const newPassword = `${defaultProfilePassword}-UPDATE`
-    expect(
+    await expect(
       updatePassword({
         input: {
           existingPassword: defaultProfilePassword,
