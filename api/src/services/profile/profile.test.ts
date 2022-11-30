@@ -25,8 +25,8 @@ describe('profile', () => {
     })
 
     expect(user.email).toEqual('String61961682')
-    expect(user.createdAt.getTime()).toBeLessThan(before.getTime())
-    expect(user.updatedAt.getTime()).toBeGreaterThan(before.getTime())
+    expect(user.createdAt.getTime()).toBeLessThanOrEqual(before.getTime())
+    expect(user.updatedAt.getTime()).toBeGreaterThanOrEqual(before.getTime())
   })
 
   scenario('updates profile password', async (scenario: StandardScenario) => {

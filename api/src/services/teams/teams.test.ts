@@ -38,7 +38,7 @@ describe('teams', () => {
 
     expect(result.name).toEqual('String2')
     expect(result.createdAt.getTime()).toBeLessThanOrEqual(before.getTime())
-    expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
+    expect(result.updatedAt.getTime()).toBeGreaterThanOrEqual(before.getTime())
   })
 
   describe('deletes', () => {
