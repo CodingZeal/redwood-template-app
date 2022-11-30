@@ -6,7 +6,7 @@ import type { QueryResolvers, MutationResolvers } from 'types/graphql'
 import { validate } from '@redwoodjs/api'
 import { ValidationError } from '@redwoodjs/graphql-server'
 
-import { email as emailUpdate } from 'src/emails/email-update'
+import { email as emailUpdate } from 'src/emails/user-verification'
 import { db } from 'src/lib/db'
 import { sendEmail } from 'src/lib/mailer'
 
@@ -113,7 +113,7 @@ export const updateEmail: MutationResolvers['updateEmail'] = async ({
   if (existingPasswordHashed != user.hashedPassword) {
     throw new ValidationError('Your existing password is not correct')
   }
-  await db.user.update({
+  const profile = await db.user.update({
     where: { id: context.currentUser.id },
     data: {
       verifyToken: randomUUID(),
@@ -121,9 +121,9 @@ export const updateEmail: MutationResolvers['updateEmail'] = async ({
     },
   })
   await sendEmail({
-    to: newEmail,
+    to: profile.email,
     subject: emailUpdate.subject(),
-    html: emailUpdate.htmlBody(user),
+    html: emailUpdate.htmlBody(profile),
   })
 
   return true

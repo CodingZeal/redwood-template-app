@@ -7,7 +7,6 @@ import {
   user,
   users,
   verifyReset,
-  verifyUser,
 } from './users'
 import type { AssociationsScenario, StandardScenario } from './users.scenarios'
 
@@ -206,41 +205,6 @@ describe('users', () => {
     expect(result.pronouns).toEqual(null)
     expect(result.active).toEqual(false)
     expect(result.admin).toEqual(false)
-  })
-
-  describe('verify user', () => {
-    scenario('with verify token', async (scenario: StandardScenario) => {
-      const result = await verifyUser({ token: scenario.user.one.verifyToken })
-      const user = await db.user.findUnique({
-        where: { id: scenario.user.one.id },
-      })
-
-      expect(result).toEqual(true)
-      expect(user.verifyToken).toEqual(null)
-    })
-
-    scenario('without verify token', async (scenario: StandardScenario) => {
-      const result = await verifyUser({ token: scenario.user.two.verifyToken })
-      const user = await db.user.findUnique({
-        where: { id: scenario.user.two.id },
-      })
-
-      expect(result).toEqual(true)
-      expect(user.verifyToken).toEqual(null)
-    })
-
-    scenario(
-      'with invalid verify token',
-      async (scenario: StandardScenario) => {
-        const result = await verifyUser({ token: 'invalid' })
-        const user = await db.user.findUnique({
-          where: { id: scenario.user.one.id },
-        })
-
-        expect(result).toEqual(false)
-        expect(user.verifyToken).toEqual(scenario.user.one.verifyToken)
-      }
-    )
   })
 
   describe('verify reset', () => {

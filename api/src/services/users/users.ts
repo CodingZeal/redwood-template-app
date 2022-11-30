@@ -118,24 +118,6 @@ export const verifyReset: MutationResolvers['verifyReset'] = async ({
   return email
 }
 
-export const verifyUser: MutationResolvers['verifyUser'] = async ({
-  token,
-}) => {
-  if (token === null) return true
-  const user = await db.user.findFirst({
-    where: { verifyToken: token },
-  })
-  if (user) {
-    await db.user.update({
-      where: { id: user.id },
-      data: { verifyToken: null },
-    })
-    return true
-  } else {
-    return false
-  }
-}
-
 export const User: UserResolvers = {
   memberships: (_obj, { root }) =>
     db.membership.findMany({ where: { userId: root.id } }),

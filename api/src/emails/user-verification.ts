@@ -17,7 +17,7 @@ const email = {
         <div> Hi ${userNameWithFallback(user)}, </div>
         <p>Please find below a link to verify your email for the ${appName}:</p>
         <a href="${link}">${link}</a>
-        <p>If you did not request an account, please ignore this email.</p>
+        <p>If you did not request this action, please ignore this email.</p>
       `
   },
 }
