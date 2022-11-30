@@ -38,7 +38,7 @@ const config: PlaywrightTestConfig = {
   ],
   webServer: {
     reuseExistingServer: true,
-    command: 'yarn rw dev',
+    command: 'yarn rw serve',
     port: 8910,
     env: {
       DISABLE_EMAIL: 'true',
