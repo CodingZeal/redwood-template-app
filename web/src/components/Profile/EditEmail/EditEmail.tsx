@@ -40,7 +40,7 @@ const EditEmail = ({ profile }) => {
           profile?.nickname || profile?.name || profile?.email
         } | Edit Email`}
       />
-      <div className="rw-segment">
+      <div className="rw-segment" id="edit-email">
         <header className="rw-segment-header">
           <h2 className="rw-heading rw-heading-secondary">Edit Email</h2>
         </header>

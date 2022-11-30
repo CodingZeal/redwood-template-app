@@ -27,11 +27,8 @@ test.describe('edit profile', () => {
   test('should save profile changes', async ({ page }) => {
     const nameInput = page.locator('input[name="name"]')
     const nicknameInput = page.locator('input[name="nickname"]')
-    const emailInput = page.locator('input[name="email"]')
     const pronounsInput = page.locator('input[name="pronouns"]')
     const saveButton = page.locator('text=Save')
-
-    expect(await emailInput.inputValue()).toEqual(MOCK_USER_EMAIL)
 
     await nameInput.click()
     await nameInput.fill(MOCK_PROFILE.name)
