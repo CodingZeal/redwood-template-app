@@ -1,26 +1,18 @@
 import { test, expect } from '@playwright/test'
 
-import { LoginPageModel } from './poms/LoginPagePom'
-
 const MOCK_PROFILE = {
   password: 'password',
   newEmail: 'lucky@charms.com',
 }
 
-const MOCK_USER_EMAIL = 'snap@crackle.com'
+test.use({ storageState: 'web/tests/storage/basicUser-pw.json' })
 
 test.describe('edit profile', () => {
-  let loginPage: LoginPageModel
-
   test.beforeEach(async ({ page }) => {
-    loginPage = new LoginPageModel(page)
-    await loginPage.loginBasicUser(MOCK_USER_EMAIL)
+    await page.goto('/')
+
     await page.goto('/profile/edit_email', { waitUntil: 'domcontentloaded' })
     await page.waitForSelector('#edit-email')
-  })
-
-  test.afterEach(async () => {
-    await loginPage.reset()
   })
 
   test('should save email update', async ({ page }) => {

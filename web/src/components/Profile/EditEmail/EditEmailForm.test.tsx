@@ -17,7 +17,7 @@ describe('EditPasswordForm', () => {
     }).not.toThrow()
   })
 
-  it('renders password input', () => {
+  it('renders a working form', () => {
     render(
       <EditEmailForm
         error={undefined}
@@ -26,20 +26,10 @@ describe('EditPasswordForm', () => {
       />
     )
     const password = screen.getByLabelText('Your Password')
+    const newEmail = screen.getByLabelText('Your New Email')
 
     expect(password).toBeInTheDocument()
     expect(password).toBeVisible()
-  })
-
-  it('renders new email input', () => {
-    render(
-      <EditEmailForm
-        error={undefined}
-        loading={undefined}
-        onSubmit={undefined}
-      />
-    )
-    const newEmail = screen.getByLabelText('Your New Email')
 
     expect(newEmail).toBeInTheDocument()
     expect(newEmail).toBeVisible()

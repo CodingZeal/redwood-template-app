@@ -69,15 +69,6 @@ const EditProfile = ({ error, loading, profile, onSave }) => {
 
         <FieldError name="pronouns" className="rw-field-error" />
 
-        <div className="rw-segment mt-8">
-          <table className="rw-table">
-            <tr>
-              <th scope="row">Email</th>
-              <td>{profile.email}</td>
-            </tr>
-          </table>
-        </div>
-
         <div className="rw-button-group">
           <Submit disabled={loading} className="rw-button rw-button-blue">
             Save
