@@ -21,6 +21,7 @@ export const standard = defineScenario<Prisma.UserCreateArgs>({
         pronouns: 'he/him',
         salt,
         hashedPassword: hashPassword(defaultProfilePassword, salt),
+        verifyToken: 'Tolkien',
       },
     },
   },

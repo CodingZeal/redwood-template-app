@@ -1,10 +1,14 @@
+import { randomUUID } from 'node:crypto'
+
 import * as CryptoJS from 'crypto-js'
 import type { QueryResolvers, MutationResolvers } from 'types/graphql'
 
 import { validate } from '@redwoodjs/api'
 import { ValidationError } from '@redwoodjs/graphql-server'
 
+import { email as emailUpdate } from 'src/emails/user-verification'
 import { db } from 'src/lib/db'
+import { sendEmail } from 'src/lib/mailer'
 
 export const profile: QueryResolvers['profile'] = () => {
   return db.user.findUnique({
@@ -63,6 +67,63 @@ export const updatePassword: MutationResolvers['updatePassword'] = async ({
       salt: newSalt,
     },
     where: { id: context.currentUser.id },
+  })
+
+  return true
+}
+
+export const verifyEmail: MutationResolvers['verifyEmail'] = async ({
+  token,
+}) => {
+  if (token === null) return true
+  const user = await db.user.findFirst({
+    where: { verifyToken: token },
+  })
+  if (user) {
+    await db.user.update({
+      where: { id: user.id },
+      data: {
+        verifyToken: null,
+      },
+    })
+    return true
+  } else {
+    return false
+  }
+}
+
+export const updateEmail: MutationResolvers['updateEmail'] = async ({
+  input,
+}) => {
+  const { password, newEmail } = input
+
+  validate(password, 'Existing Password', {
+    presence: { allowEmptyString: false },
+  })
+  validate(newEmail, 'New Email', {
+    presence: { allowEmptyString: false },
+  })
+  const user = await db.user.findFirstOrThrow({
+    where: { id: context.currentUser.id },
+  })
+  const existingPasswordHashed = CryptoJS.PBKDF2(password, user.salt, {
+    keySize: 256 / 32,
+  }).toString()
+
+  if (existingPasswordHashed != user.hashedPassword) {
+    throw new ValidationError('Your existing password is not correct')
+  }
+  const profile = await db.user.update({
+    where: { id: context.currentUser.id },
+    data: {
+      verifyToken: randomUUID(),
+      email: newEmail,
+    },
+  })
+  await sendEmail({
+    to: profile.email,
+    subject: emailUpdate.subject(),
+    html: emailUpdate.htmlBody(profile),
   })
 
   return true

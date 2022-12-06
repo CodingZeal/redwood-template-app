@@ -14,6 +14,7 @@ const ProfileLayout = ({ children }: ProfileLayoutProps) => {
         <SubNavigation>
           <LinkItem to={routes.profile()}>Edit Profile</LinkItem>
           <LinkItem to={routes.editPassword()}>Edit Password</LinkItem>
+          <LinkItem to={routes.editEmail()}>Edit Email</LinkItem>
         </SubNavigation>
       </div>
       <div className="flex-1">

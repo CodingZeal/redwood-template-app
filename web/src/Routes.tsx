@@ -28,6 +28,7 @@ const Routes = () => {
           <Set wrap={ProfileLayout}>
             <Route path="/profile" page={ProfileEditProfilePage} name="profile" />
             <Route path="/profile/edit_password" page={ProfileEditPasswordPage} name="editPassword" />
+            <Route path="/profile/edit_email" page={ProfileEditEmailPage} name="editEmail" />
           </Set>
         </Private>
         <Private roles="super admin" unauthenticated="forbidden">

@@ -69,24 +69,6 @@ const EditProfile = ({ error, loading, profile, onSave }) => {
 
         <FieldError name="pronouns" className="rw-field-error" />
 
-        <Label
-          name="email"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Email
-        </Label>
-
-        <InputField
-          name="email"
-          disabled
-          defaultValue={profile.email}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-
-        <FieldError name="email" className="rw-field-error" />
-
         <div className="rw-button-group">
           <Submit disabled={loading} className="rw-button rw-button-blue">
             Save
