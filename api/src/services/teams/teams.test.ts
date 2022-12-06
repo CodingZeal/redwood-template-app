@@ -38,7 +38,7 @@ describe('teams', () => {
 
     expect(result.name).toEqual('String2')
     expect(result.createdAt.getTime()).toBeLessThanOrEqual(before.getTime())
-    expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
+    expect(result.updatedAt.getTime()).toBeGreaterThanOrEqual(before.getTime())
   })
 
   describe('deletes', () => {
@@ -53,7 +53,9 @@ describe('teams', () => {
       'associations',
       'when has users',
       async (scenario: AssociationsScenario) => {
-        expect(deleteTeam({ id: scenario.team.withUser.id })).rejects.toThrow(
+        await expect(
+          deleteTeam({ id: scenario.team.withUser.id })
+        ).rejects.toThrow(
           new ValidationError('Please remove users before deleting team')
         )
 

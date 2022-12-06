@@ -106,8 +106,10 @@ describe('users', () => {
         })
 
         expect(result.email).toEqual('String61961682')
-        expect(result.createdAt.getTime()).toBeLessThan(before.getTime())
-        expect(result.updatedAt.getTime()).toBeGreaterThan(before.getTime())
+        expect(result.createdAt.getTime()).toBeLessThanOrEqual(before.getTime())
+        expect(result.updatedAt.getTime()).toBeGreaterThanOrEqual(
+          before.getTime()
+        )
       }
     )
 

@@ -1,3 +1,5 @@
+import { ValidationError } from '@redwoodjs/graphql-server'
+
 import { roles, role, createRole, updateRole, deleteRole } from './roles'
 import type { AssociationsScenario, StandardScenario } from './roles.scenarios'
 
@@ -54,8 +56,12 @@ describe('roles', () => {
       'associations',
       'when has users',
       async (scenario: AssociationsScenario) => {
-        expect(deleteRole({ id: scenario.role.withUser.id })).rejects.toThrow(
-          Error('Role is in use, please remove memberships before deletion')
+        await expect(
+          deleteRole({ id: scenario.role.withUser.id })
+        ).rejects.toThrow(
+          new ValidationError(
+            'Role is in use, please remove memberships before deletion'
+          )
         )
 
         const result = await role({ id: scenario.role.withUser.id })
