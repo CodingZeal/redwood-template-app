@@ -12,7 +12,8 @@
     "paths": {
       "src/*": ["./src/*", "../.redwood/types/mirror/api/src/*"],
       "types/*": ["./types/*", "../types/*"],
-      "@redwoodjs/testing": ["../node_modules/@redwoodjs/testing/api"]
+      "@redwoodjs/testing": ["../node_modules/@redwoodjs/testing/api"],
+      "@common-work/*": ["../common/*"]
     },
     "typeRoots": ["../node_modules/@types", "./node_modules/@types"],
     "types": ["jest"]

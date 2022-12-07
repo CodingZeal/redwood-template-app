@@ -1,6 +1,8 @@
 import { useRef } from 'react'
 import { useEffect } from 'react'
 
+import { verifyMessageError } from '@common-work/error-message'
+
 import { useAuth } from '@redwoodjs/auth'
 import {
   Form,
@@ -34,7 +36,7 @@ const LoginPage = () => {
     if (response.message) {
       toast(response.message)
     } else if (response.error) {
-      if (response.error === 'User not Verified') {
+      if (response.error === verifyMessageError) {
         navigate(routes.verificationReset({ email: data.username }))
       }
       toast.error(response.error)

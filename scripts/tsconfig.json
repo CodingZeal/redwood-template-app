@@ -14,7 +14,8 @@
       "web/*": ["../web/*"],
       "$web/src/*": ["../web/src/*", "../.redwood/types/mirror/web/src/*"],
       "web/src/*": ["../web/src/*", "../.redwood/types/mirror/web/src/*"],
-      "types/*": ["../types/*", "../web/types/*", "../api/types/*"]
+      "types/*": ["../types/*", "../web/types/*", "../api/types/*"],
+      "@common-work/*": ["../common/*"]
     },
     "typeRoots": ["../node_modules/@types"],
     "jsx": "preserve"
