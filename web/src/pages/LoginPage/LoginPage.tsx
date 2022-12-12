@@ -18,7 +18,7 @@ import { toast, Toaster } from '@redwoodjs/web/toast'
 
 const LoginPage = () => {
   const { isAuthenticated, logIn } = useAuth()
-  dope();
+  console.log(dope());
 
   useEffect(() => {
     if (isAuthenticated) {
