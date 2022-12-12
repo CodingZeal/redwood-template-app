@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { useEffect } from 'react'
 
-import { verifyMessageError } from '@common-work/error-message'
+import { dope } from 'coolbeans'
 
 import { useAuth } from '@redwoodjs/auth'
 import {
@@ -18,6 +18,7 @@ import { toast, Toaster } from '@redwoodjs/web/toast'
 
 const LoginPage = () => {
   const { isAuthenticated, logIn } = useAuth()
+  dope();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -36,7 +37,7 @@ const LoginPage = () => {
     if (response.message) {
       toast(response.message)
     } else if (response.error) {
-      if (response.error === verifyMessageError) {
+      if (response.error === 'hello') {
         navigate(routes.verificationReset({ email: data.username }))
       }
       toast.error(response.error)
