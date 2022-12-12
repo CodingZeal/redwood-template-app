@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "noEmit": true,
+    "noEmit": false,
     "allowJs": true,
     "esModuleInterop": true,
     "target": "esnext",
@@ -22,11 +22,12 @@
       ],
       "types/*": ["./types/*", "../types/*"],
       "@redwoodjs/testing": ["../node_modules/@redwoodjs/testing/web"],
-      "@common-work/*": ["../common/*"]
+      "@common": ["../common/*"]
     },
     "typeRoots": ["../node_modules/@types", "./node_modules/@types"],
     "types": ["jest", "@testing-library/jest-dom"],
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "composite": true
   },
   "include": [
     "src",
@@ -35,5 +36,10 @@
     "../types",
     "./types"
   ],
-  "exclude": ["tmp"]
+  "exclude": ["tmp"],
+  "references": [
+    {
+      "path": "../common"
+    }
+  ]
 }
