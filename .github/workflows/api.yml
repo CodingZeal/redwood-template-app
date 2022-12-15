@@ -4,8 +4,8 @@ on: push
 
 jobs:
   api_test:
-    runs-on: ubuntu-latest
-    container: node:16
+    runs-on: ubuntu-20.04
+    container: node:16-alpine
     services:
       postgres:
         image: postgres
