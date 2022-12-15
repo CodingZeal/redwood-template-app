@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.0",
+    "prettier": "^2.8.1",
     "ts-node": "^10.9.1"
   },
   "eslintConfig": {
@@ -57,7 +57,7 @@
     "schema:format": "npx prisma format"
   },
   "dependencies": {
-    "@redwoodjs/core": "^3.5.0",
+    "@redwoodjs/core": "^3.7.1",
     "pm2": "^5.2.2",
     "react-use": "^17.4.0"
   }
