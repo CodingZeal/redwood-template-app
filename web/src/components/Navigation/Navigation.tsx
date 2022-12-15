@@ -2,11 +2,14 @@ import { useAuth } from '@redwoodjs/auth'
 import { navigate, NavLink, routes } from '@redwoodjs/router'
 
 const LinkItem = (props) => (
-  <li data-testid="nav__link-item" className="mr-3 cursor-pointer">
-    <NavLink activeClassName="bg-orange-300" {...props}>
-      {props.children}
-    </NavLink>
-  </li>
+  <NavLink
+    data-testid="nav__link-item"
+    className="mr-3 cursor-pointer"
+    activeClassName="bg-orange-300"
+    {...props}
+  >
+    {props.children}
+  </NavLink>
 )
 const Navigation = () => {
   const { currentUser, hasRole, isAuthenticated, logOut } = useAuth()

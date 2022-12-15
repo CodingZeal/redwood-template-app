@@ -4,8 +4,8 @@ on: push
 
 jobs:
   api_test:
-    runs-on: ubuntu-latest
-    container: node:16-alpine
+    runs-on: ubuntu-20.04
+    container: node:16
     services:
       postgres:
         image: postgres
@@ -35,7 +35,7 @@ jobs:
         run: yarn db:setup
         env:
           POSTGRES_HOST: postgres
-          DATABASE_URL: 'postgresql://test:test@postgres:5432/rw_test'
+          DATABASE_URL: postgresql://test:test@postgres:5432/rw_test
 
       - name: Run api tests
         run: yarn rw test api
