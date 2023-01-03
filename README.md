@@ -7,27 +7,22 @@
 
 &nbsp;
 
-## 🧑‍💻 $~$ Additional Core Components
+## 🧑‍💻 $~$ Additional Core Com have multiple memberships. A membership connects a user to a team and roles (for more role information see the section on Authorization).
 
-The following is a list of frameworks, utilities, libraries, components, etc... that have been added to the template to streamline the development experience.
+#### Implementation Strategies
 
-- 🏷️ $~$ [TypeScript](https://www.typescriptlang.org/)
-- 🗃️ $~$ [PostgreSQL](https://www.postgresql.org/)
-- 🚢 $~$ [Docker](https://www.docker.com/)
-- 💄 $~$ [TailwindCSS](https://tailwindcss.com/)
+We have left it open to the implementers how they want to handle the multi-tenancy. There are two big strategies to choose from:
 
----
+1. Team membership - With this method the UI is a little more flexible. The user can see what teams they are a part of and can switch between them with ease.
+1. White-labeling - This is a little more rigid where a user usually only belongs to one tenant. Usually there is some custom branding per tenant and there isn't a way to switch between tenants. Usually this is established via a sub-domain (e.g. myteam.app.com)
 
-&nbsp;
+Which ever you choose the data structure should be able to handle it. What it can't handle is if you want to implement both at the same time. If that is something you require a more complicated data structure will need to be created.
 
-## ✨ $~$ Features
+### Authorization
 
-The following is a list of features this template has
+Authorization somewhat follows the [RedwoodJS RDAC documentation](https://redwoodjs.com/docs/how-to/role-based-access-control-rbac). We have tweaked it to support multi-tenancy (see above) and along with that a whole application level "super admin".
 
-- [Authentication](#authentication)
-  - [Email Account Verification](#email-account-verification)
-  - [Account Creation by Administrator](#account-creation-by-administrator)
-- [Multi-Tenancy](#multi-tenancy)
+Roles are aggregated from all memberships the user is a part of. They are a "super admin" if their user has the `admin` attribute set. You can see how the roles are put toge
   - [Data Structure](#data-structure)
   - [Implementation Strategies](#implementation-strategies)
 - [Authorization](#authorization)
@@ -46,28 +41,7 @@ Authentication follows the [dbAuth provider](https://redwoodjs.com/docs/auth/dba
 #### Email Account Verification
 
 We default to having the email address be the login username. We verify users are the owner of the email address with the following process.
-
-Upon account creation via the Sign Up flow, we add a verification token to the users account. The user can then use the application on this initial sign-up. At the same time we email the user with a verification link.
-
-If the user tries to login to the application, before verifying they will receive a "Needs Verification" message and will be forwarded to a form to have them sent the verification email again.
-
-Once they click that link, they will be allowed access to the application after the initial account setup.
-
-#### Account Creation by Administrator
-
-When an administrator creates an account, the new user will receive an email that contains a link to the application for them to establish an account. On the backend, when the account is created, it is created with a random password and a password reset token is set.
-
-Clicking the link in the email will take them to a page to create a password for their account and then allows them to use the application. This clears the token and sets a new password in the backend.
-
-### Multi-Tenancy
-
-Multi-Tenancy is the ability for the application to have users be separated by different tenants. This way one tenant could be kept hidden from another. The reason we support this out of the box is it's difficult to add in later if the data isn't structured in a way to support it.
-
-While we haven't implemented much with multi-tenancy, we do take care of it when creating and maintaining accounts. The data is structured in a way that will make it easier to implement multi-tenant solutions.
-
-#### Data Structure
-
-A user can have multiple memberships. A membership connects a user to a team and roles (for more role information see the section on Authorization).
+ have multiple memberships. A membership connects a user to a team and roles (for more role information see the section on Authorization).
 
 #### Implementation Strategies
 
@@ -82,38 +56,59 @@ Which ever you choose the data structure should be able to handle it. What it ca
 
 Authorization somewhat follows the [RedwoodJS RDAC documentation](https://redwoodjs.com/docs/how-to/role-based-access-control-rbac). We have tweaked it to support multi-tenancy (see above) and along with that a whole application level "super admin".
 
-Roles are aggregated from all memberships the user is a part of. They are a "super admin" if their user has the `admin` attribute set. You can see how the roles are put together in the `getCurrentUser` function of the `api/src/lib/auth.ts` file. And see how we validate a role via the `hasRole` function in the same file.
+Roles are aggregated from all memberships the user is a part of. They are a "super admin" if their user has the `admin` attribute set. You can see how the roles are put togethis out of the box is it's difficult to add in later if the data isn't structured in a way to support it.
 
-### User Profile
+While we haven't implemented much with multi-tenancy, we do take care of it when creating and maintaining accounts. The data is structured in a way that will make it easier to implement multi-tenant solutions.
 
-Along with all the user authentication and authorization handling, we have added profile management. This allows a user to manage their account information. Currently this is limited to basic information like name, email, etc and password reset.
+#### Data Structure
 
-### Email System
+A user can have multiple memberships. A membership connects a user to a team and roles (for more role information see the section on Authorization).
 
-In order to send users email for their forgotten passwords, account creation, and verification we have added mail handling via `nodemailer` under the hood. In order to use this, set your environment variables as you see in the `.env.example` file:
+#### Implementation Strategies
 
-```
-DOMAIN=<Domain, which will form the base links>
+We have left it open to the implementers how they want to handle the multi-tenancy. There are two big strategies to choose from:
+
+1. Team membership - With this method the UI is a little more flexible. The user can see what teams they are a part of and can switch between them with ease.
+1. White-labeling - This is a little more rigid where a user usually only belongs to one tenant. Usually there is some custom branding per t have multiple memberships. A membership connects a user to a team and roles (for more role information see the section on Authorization).
+
+#### Implementation Strategies
+
+We have left it open to the implementers how they want to handle the multi-tenancy. There are two big strategies to choose from:
+ have multiple memberships. A membership connects a user to a team and roles (for more role information see the section on Authorization).
+
+#### Implementation Strategies
+
+We have left it open to the implementers how they want to handle the multi-tenancy. There are two big strategies to choose from:
+
+1. Team membership - With this method the UI is a little more flexible. The user can see what teams they are a part of and can switch between them with ease.
+1. White-labeling - This is a little more rigid where a user usually only belongs to one tenant. Usually there is some custom branding per tenant and there isn't a way to switch between tenants. Usually this is established via a sub-domain (e.g. myteam.app.com)
+
+Which ever you choose the data structure should be able to handle it. What it can't handle is if you want to implement both at the same time. If that is something you require a more complicated data structure will need to be created.
+
+### Authorization
+
+Authorization somewhat follows the [RedwoodJS RDAC documentation](https://redwoodjs.com/docs/how-to/role-based-access-control-rbac). We have tweaked it to support multi-tenancy (see above) and along with that a whole application level "super admin".
+
+Roles are aggregated from all memberships the user is a part of. They are a "super admin" if their user has the `admin` attribute set. You can see how the roles are put toge
 SMTP_HOST=<SMTP Host Server>
 SMTP_PORT=<SMTP Port>
 SMTP_USER=<SMTP User>
-SMTP_KEY=<SMTP Key>
-```
+SMTP_KEY=<SMTP Key> have multiple memberships. A membership connects a user to a team and roles (for more role information see the section on Authorization).
 
-### Database
+#### Implementation Strategies
 
-We have chosen to use PostgreSQL as our defacto database. You can change this, but will require some tweaks to make things work (like our UUIDs).
+We have left it open to the implementers how they want to handle the multi-tenancy. There are two big strategies to choose from:
 
-You can view the [database design](https://dbdiagram.io/d/62e3cd87f31da965e83e5d90) to see how we implement our multi-tenancy approach.
+1. Team membership - With this method the UI is a little more flexible. The user can see what teams they are a part of and can switch between them with ease.
+1. White-labeling - This is a little more rigid where a user usually only belongs to one tenant. Usually there is some custom branding per tenant and there isn't a way to switch between tenants. Usually this is established via a sub-domain (e.g. myteam.app.com)
 
-Along with that we have also decided to use UUIDs instead of auto incremented integers for all row identification.
+Which ever you choose the data structure should be able to handle it. What it can't handle is if you want to implement both at the same time. If that is something you require a more complicated data structure will need to be created.
 
-You can modify the `schema.prisma` file to add anything to the database. If you make changes to what is there, you may need to tweak things in the code in order to get all the different features working.
+### Authorization
 
-### Testing Framework and Philosophy
+Authorization somewhat follows the [RedwoodJS RDAC documentation](https://redwoodjs.com/docs/how-to/role-based-access-control-rbac). We have tweaked it to support multi-tenancy (see above) and along with that a whole application level "super admin".
 
-This is a brief description of your testing frameworks and the philosophy behind how and what we test. Over all we put most of our testing effort into unit tests while we focus on happy path for our feature tests.
-
+Roles are aggregated from all memberships the user is a part of. They are a "super admin" if their user has the `admin` attribute set. You can see how the roles are put toge
 We use the built in setup that [RedwoodJS](https://redwoodjs.com/docs/testing#redwood-and-testing) has implemented on the unit testing side and have implemented [Playwright](https://playwright.dev/) on the feature testing side
 
 #### Unit Testing
@@ -125,22 +120,22 @@ Tests are located next to the files they are testing. Making it easy to find ass
 File Naming Example:
 ```
 web/src/components/Navigation/Navigation.tsx
-web/src/components/Navigation/Navigation.test.tsx
-```
+web/src/components/Navigation have multiple memberships. A membership connects a user to a team and roles (for more role information see the section on Authorization).
 
-Testing Example:
-```js
-describe('UserFormTeams', () => {
+#### Implementation Strategies
 
-  // Placeholder
-  it('renders successfully', () => {
-    expect(<UserFormTeams />).not.toThrow()
-  })
+We have left it open to the implementers how they want to handle the multi-tenancy. There are two big strategies to choose from:
 
-  // Context block
-  describe('when a value is not selected', () => {
-    const renderComponent = () =>
-      render(
+1. Team membership - With this method the UI is a little more flexible. The user can see what teams they are a part of and can switch between them with ease.
+1. White-labeling - This is a little more rigid where a user usually only belongs to one tenant. Usually there is some custom branding per tenant and there isn't a way to switch between tenants. Usually this is established via a sub-domain (e.g. myteam.app.com)
+
+Which ever you choose the data structure should be able to handle it. What it can't handle is if you want to implement both at the same time. If that is something you require a more complicated data structure will need to be created.
+
+### Authorization
+
+Authorization somewhat follows the [RedwoodJS RDAC documentation](https://redwoodjs.com/docs/how-to/role-based-access-control-rbac). We have tweaked it to support multi-tenancy (see above) and along with that a whole application level "super admin".
+
+Roles are aggregated from all memberships the user is a part of. They are a "super admin" if their user has the `admin` attribute set. You can see how the roles are put toge
         <Form>
           <UserFormTeams
             roleIds={[]}
