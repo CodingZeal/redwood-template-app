@@ -22138,6 +22138,7 @@ __metadata:
     pm2: ^5.2.2
     prettier: ^2.8.1
     react-use: ^17.4.0
+    rta-cli: 0.0.2
     ts-node: ^10.9.1
   languageName: unknown
   linkType: soft
@@ -22146,6 +22147,17 @@ __metadata:
   version: 4.8.5
   resolution: "rsvp@npm:4.8.5"
   checksum: 7978f01060a48204506a8ebe15cdbd468498f5ae538b1d7ee3e7630375ba7cb2f98df2f596c12d3f4d5d5c21badc1c6ca8009f5142baded8511609a28eabd19a
+  languageName: node
+  linkType: hard
+
+"rta-cli@npm:0.0.2":
+  version: 0.0.2
+  resolution: "rta-cli@npm:0.0.2"
+  dependencies:
+    yargs: ^17.6.2
+  bin:
+    rta: dist/index.js
+  checksum: 0484d9fa6155d98918b56a0fa715469f9790ab3dffc3109042586531659a569e2021c8860d4526e9f882e9ecc180de6571530f46fc49e08b077517b6651232df
   languageName: node
   linkType: hard
 
@@ -26211,7 +26223,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yargs@npm:17.6.2":
+"yargs@npm:17.6.2, yargs@npm:^17.6.2":
   version: 17.6.2
   resolution: "yargs@npm:17.6.2"
   dependencies:
