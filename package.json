@@ -29,7 +29,7 @@
   "packageManager": "yarn@3.2.1",
   "scripts": {
     "start": "node index.js",
-    "build": "yarn rw build",
+    "build": "./scripts/build.sh",
     "lint": "yarn eslint && yarn pretty",
     "eslint": "npx eslint .",
     "pretty": "npx prettier --check .",
