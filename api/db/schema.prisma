@@ -4,23 +4,16 @@ generator client {
   binaryTargets = ["native"]
 }
 
-generator erd_png {
-  provider = "prisma-erd-generator"
-  output   = "../../documentation/ERD.png"
-  theme    = "neutral"
-  includeRelationFromFields = true
-}
-
 generator erd_svg {
   provider = "prisma-erd-generator"
-  output   = "../../documentation/ERD.svg"
+  output   = "../../documentation/schema/ERD.svg"
   theme    = "neutral"
   includeRelationFromFields = true
 }
 
 generator erd_mermaid {
   provider = "prisma-erd-generator"
-  output   = "../../documentation/ERD.md"
+  output   = "../../documentation/schema/ERD.md"
   theme    = "neutral"
   includeRelationFromFields = true
 }
