@@ -21,6 +21,8 @@ erDiagram
 
   Membership {
     String id PK 
+    String userId  
+    String teamId  
     }
   
 
@@ -35,6 +37,8 @@ erDiagram
 
   MembershipRole {
     String id PK 
+    String membershipId  
+    String roleId  
     }
   
 
