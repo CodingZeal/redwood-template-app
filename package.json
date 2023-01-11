@@ -10,8 +10,10 @@
     ]
   },
   "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^9.3.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.1",
+    "prisma-erd-generator": "^1.2.4",
     "ts-node": "^10.9.1"
   },
   "eslintConfig": {
