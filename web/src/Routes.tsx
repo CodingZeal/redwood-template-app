@@ -1,6 +1,7 @@
 // template[tags(pages,routes)]
 import { Set, Router, Route, Private } from '@redwoodjs/router'
 
+import { useAuth } from './auth'
 import { AdminLayout } from './layouts/Admin/AdminLayout'
 import { RolesLayout } from './layouts/Admin/RolesLayout'
 import { TeamsLayout } from './layouts/Admin/TeamsLayout'
@@ -10,7 +11,7 @@ import { ProfileLayout } from './layouts/ProfileLayout'
 
 const Routes = () => {
   return (
-    <Router>
+    <Router useAuth={useAuth}>
       <Route path="/login" page={LoginPage} name="login" />
       <Route path="/signup" page={SignupPage} name="signup" />
       <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />

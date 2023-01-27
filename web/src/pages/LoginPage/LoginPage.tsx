@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { useEffect } from 'react'
 
-import { useAuth } from '@redwoodjs/auth'
+import { useAuth } from 'src/auth'
 import {
   Form,
   Label,

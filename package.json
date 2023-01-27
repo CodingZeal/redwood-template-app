@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@mermaid-js/mermaid-cli": "^9.3.0",
+    "@redwoodjs/auth-dbauth-setup": "4.0.0-rc.623",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.1",
     "prisma-erd-generator": "^1.2.4",
@@ -59,7 +60,7 @@
     "schema:format": "npx prisma format"
   },
   "dependencies": {
-    "@redwoodjs/core": "^3.7.1",
+    "@redwoodjs/core": "^4.0.0-rc.623",
     "pm2": "^5.2.2",
     "react-use": "^17.4.0"
   }

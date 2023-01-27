@@ -1,4 +1,4 @@
-import { useAuth } from '@redwoodjs/auth'
+import { useAuth } from 'src/auth'
 import { CellFailureProps, CellSuccessProps, MetaTags } from '@redwoodjs/web'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'

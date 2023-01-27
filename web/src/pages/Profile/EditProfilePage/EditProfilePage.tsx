@@ -1,4 +1,4 @@
-import { useAuth } from '@redwoodjs/auth'
+import { useAuth } from 'src/auth'
 import { MetaTags } from '@redwoodjs/web'
 
 import ProfileCell from 'src/components/Profile/EditProfileCell'
