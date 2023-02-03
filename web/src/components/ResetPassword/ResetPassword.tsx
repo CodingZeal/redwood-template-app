@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { useAuth } from 'src/auth'
 import {
   Form,
   Label,
@@ -11,6 +10,8 @@ import {
 import { navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
+
+import { useAuth } from 'src/auth'
 
 const ResetPassword = ({ resetToken, title, message }) => {
   const { isAuthenticated, reauthenticate, validateResetToken, resetPassword } =
