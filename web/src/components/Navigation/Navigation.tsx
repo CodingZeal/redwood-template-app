@@ -1,5 +1,6 @@
-import { useAuth } from '@redwoodjs/auth'
 import { navigate, NavLink, routes } from '@redwoodjs/router'
+
+import { useAuth } from 'src/auth'
 
 const LinkItem = (props) => (
   <NavLink

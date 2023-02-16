@@ -1,6 +1,6 @@
-import { useAuth } from '@redwoodjs/auth'
 import { MetaTags } from '@redwoodjs/web'
 
+import { useAuth } from 'src/auth'
 import { EditEmail } from 'src/components/Profile/EditEmail'
 
 const EditEmailPage = () => {

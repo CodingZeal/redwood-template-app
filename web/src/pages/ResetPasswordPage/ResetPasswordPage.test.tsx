@@ -4,8 +4,8 @@ import ResetPasswordPage from './ResetPasswordPage'
 
 const mockReset = jest.fn().mockResolvedValue({})
 
-jest.mock('@redwoodjs/auth', () => ({
-  ...jest.requireActual('@redwoodjs/auth'),
+jest.mock('src/auth', () => ({
+  ...jest.requireActual('src/auth'),
   useAuth: () => ({
     isAuthenticated: false,
     validateResetToken: jest.fn().mockResolvedValue({}),

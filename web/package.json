@@ -13,10 +13,12 @@
     ]
   },
   "dependencies": {
-    "@redwoodjs/auth": "^3.7.1",
-    "@redwoodjs/forms": "^3.7.1",
-    "@redwoodjs/router": "^3.7.1",
-    "@redwoodjs/web": "^3.7.1",
+    "@redwoodjs/auth": "4.0.1",
+    "@redwoodjs/auth-dbauth-web": "4.0.1",
+    "@redwoodjs/forms": "4.0.1",
+    "@redwoodjs/router": "4.0.1",
+    "@redwoodjs/web": "4.0.1",
+    "@simplewebauthn/browser": "^7.0.0",
     "date-fns": "^2.29.3",
     "prop-types": "15.8.1",
     "react": "17.0.2",
