@@ -17,6 +17,7 @@
     "@redwoodjs/auth-dbauth-web": "4.1.2",
     "@redwoodjs/forms": "4.1.2",
     "@redwoodjs/router": "4.1.2",
+    "@redwoodjs/vite": "4.1.2",
     "@redwoodjs/web": "4.1.2",
     "@simplewebauthn/browser": "^7.0.0",
     "date-fns": "^2.29.3",
