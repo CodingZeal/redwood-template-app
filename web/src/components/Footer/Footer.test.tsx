@@ -1,4 +1,4 @@
-import { render } from '@redwoodjs/testing/web'
+import { render, screen } from '@redwoodjs/testing/web'
 
 import { Footer } from './Footer'
 
@@ -10,5 +10,21 @@ describe('Footer', () => {
     expect(() => {
       render(<Footer />)
     }).not.toThrow()
+  })
+
+  it('shows copyright when unauthenticated', () => {
+    render(<Footer />)
+    const element = screen.getByTestId('copyright')
+
+    expect(element).toBeInTheDocument()
+  })
+
+  it('shows social media icons when unauthenticated', () => {
+    render(<Footer />)
+    const element = screen.getByTestId('twitterIcon')
+    const element2 = screen.getByTestId('githubIcon')
+
+    expect(element).toBeInTheDocument()
+    expect(element2).toBeInTheDocument()
   })
 })

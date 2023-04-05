@@ -5,7 +5,7 @@ import { Navigation } from 'src/components/Navigation/Navigation'
 
 const MainLayout = ({ children }) => {
   return (
-    <div className="m-4">
+    <div>
       <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
       <Navigation />
       {children}
