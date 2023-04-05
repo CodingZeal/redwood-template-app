@@ -26,7 +26,7 @@ describe('TeamsLayout', () => {
 
   it('Has link to add new team form', () => {
     renderComponent({ children })
-    expect(screen.getByText('New Team')).toHaveAttribute(
+    expect(screen.getByText('Add Team')).toHaveAttribute(
       'href',
       routes.adminNewTeam()
     )

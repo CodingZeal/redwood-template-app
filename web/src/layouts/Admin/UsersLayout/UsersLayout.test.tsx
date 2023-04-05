@@ -26,7 +26,7 @@ describe('UsersLayout', () => {
 
   it('Has link to add new user form', () => {
     renderComponent({ children })
-    expect(screen.getByText('New User')).toHaveAttribute(
+    expect(screen.getByText('Add User')).toHaveAttribute(
       'href',
       routes.adminNewUser()
     )
