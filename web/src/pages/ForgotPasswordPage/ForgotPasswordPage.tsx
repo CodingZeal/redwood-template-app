@@ -1,11 +1,12 @@
 import { useEffect, useRef } from 'react'
 
 import { Form, Label, TextField, Submit, FieldError } from '@redwoodjs/forms'
-import { navigate, routes } from '@redwoodjs/router'
+import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
 
 import { useAuth } from 'src/auth'
+import { ZealLogo } from 'src/components/ZealLogo'
 
 const ForgotPasswordPage = () => {
   const { isAuthenticated, forgotPassword } = useAuth()
@@ -40,50 +41,50 @@ const ForgotPasswordPage = () => {
   return (
     <>
       <MetaTags title="Forgot Password" />
+      <div className="grid w-full grid-cols-2 py-10">
+        <main className="m-auto w-[410px] font-sn ">
+          <div className="text-blackBean">
+            <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
+            <h2 className="font-sans text-[90px] leading-none">
+              Forgot Password?
+            </h2>
 
-      <main className="rw-main">
-        <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-        <div className="rw-scaffold rw-login-container">
-          <div className="rw-segment">
-            <header className="rw-segment-header">
-              <h2 className="rw-heading rw-heading-secondary">
-                Forgot Password
-              </h2>
-            </header>
+            <Form onSubmit={onSubmit}>
+              <Label
+                name="username"
+                className="rw-label text-blackBean"
+                errorClassName="rw-label rw-label-error"
+              >
+                Username
+              </Label>
+              <TextField
+                name="username"
+                placeholder="Enter your username"
+                className="rw-input text-blackBean"
+                errorClassName="rw-input rw-input-error"
+                ref={usernameRef}
+                validation={{
+                  required: true,
+                }}
+              />
 
-            <div className="rw-segment-main">
-              <div className="rw-form-wrapper">
-                <Form onSubmit={onSubmit} className="rw-form-wrapper">
-                  <div className="text-left">
-                    <Label
-                      name="username"
-                      className="rw-label"
-                      errorClassName="rw-label rw-label-error"
-                    >
-                      Username
-                    </Label>
-                    <TextField
-                      name="username"
-                      className="rw-input"
-                      errorClassName="rw-input rw-input-error"
-                      ref={usernameRef}
-                      validation={{
-                        required: true,
-                      }}
-                    />
+              <FieldError name="username" className="rw-field-error" />
 
-                    <FieldError name="username" className="rw-field-error" />
-                  </div>
-
-                  <div className="rw-button-group">
-                    <Submit className="rw-button rw-button-blue">Submit</Submit>
-                  </div>
-                </Form>
-              </div>
+              <Submit className="my-5 h-12 w-full rounded-lg bg-rustyOrange text-white">
+                Send me a Reset Email
+              </Submit>
+            </Form>
+            <div className="flex justify-center ">
+              <Link to={routes.login()} className="underline">
+                Ready to Login!
+              </Link>
             </div>
           </div>
+        </main>
+        <div className="mx-5">
+          <ZealLogo />
         </div>
-      </main>
+      </div>
     </>
   )
 }
