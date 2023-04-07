@@ -3,6 +3,10 @@ import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import { QUERY } from 'src/components/Admin/Team/TeamsCell'
+import { Avatar } from 'src/components/Avatar'
+import { Archive } from 'src/components/Icon/Archive'
+import { Eye } from 'src/components/Icon/Eye'
+import { Pen } from 'src/components/Icon/Pen'
 
 const DELETE_TEAM_MUTATION = gql`
   mutation DeleteTeamMutation($id: String!) {
@@ -20,20 +24,6 @@ const truncate = (text) => {
     output = output.substring(0, MAX_STRING_LENGTH) + '...'
   }
   return output
-}
-
-const timeTag = (datetime) => {
-  return (
-    datetime && (
-      <time dateTime={datetime} title={datetime}>
-        {new Date(datetime).toUTCString()}
-      </time>
-    )
-  )
-}
-
-const checkboxInputTag = (checked) => {
-  return <input type="checkbox" checked={checked} disabled />
 }
 
 const TeamsList = ({ teams }) => {
@@ -58,17 +48,13 @@ const TeamsList = ({ teams }) => {
   }
 
   return (
-    <div className="rw-segment rw-table-wrapper-responsive">
+    <div className="rw-segment rw-table-wrapper-responsive font-int text-grey">
       <table className="rw-table">
         <thead>
           <tr>
-            <th scope="col">Id</th>
             <th scope="col">Name</th>
-            <th scope="col">Active</th>
-            <th scope="col">User Count</th>
-            <th scope="col">Updated at</th>
-            <th scope="col">Created at</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Members</th>
+            <th scope="col">Status</th>
           </tr>
         </thead>
         <tbody>
@@ -76,27 +62,37 @@ const TeamsList = ({ teams }) => {
             const userCount = team.memberships.length
             return (
               <tr key={team.id}>
-                <td>{truncate(team.id)}</td>
-                <td>{truncate(team.name)}</td>
-                <td>{checkboxInputTag(team.active)}</td>
-                <td>{userCount}</td>
-                <td>{timeTag(team.updatedAt)}</td>
-                <td>{timeTag(team.createdAt)}</td>
+                <td className="flex flex-row items-center text-white">
+                  <Avatar user={team} className="mr-4" />
+                  {truncate(team.name)}
+                </td>
                 <td>
-                  <nav className="rw-table-actions">
+                  {team.memberships?.map((membership) => {
+                    return (
+                      <div className="inline-block" key={membership.user?.id}>
+                        <Avatar user={membership?.user} />
+                      </div>
+                    )
+                  })}
+                </td>
+                <td>{truncate(team.active) && 'Active'}</td>
+                <td>
+                  <nav className="rw-table-actions opacity-50">
                     <Link
+                      data-testid="showTeam"
                       to={routes.adminTeam({ id: team.id })}
                       title={'Show team ' + team.id + ' detail'}
                       className="rw-button rw-button-small"
                     >
-                      Show
+                      <Eye />
                     </Link>
                     <Link
+                      data-testid="editTeam"
                       to={routes.adminEditTeam({ id: team.id })}
                       title={'Edit team ' + team.id}
                       className="rw-button rw-button-small rw-button-blue"
                     >
-                      Edit
+                      <Pen />
                     </Link>
                     <button
                       type="button"
@@ -107,7 +103,7 @@ const TeamsList = ({ teams }) => {
                       onClick={() => onDeleteClick(team.id)}
                       disabled={userCount > 0}
                     >
-                      Delete
+                      <Archive />
                     </button>
                   </nav>
                 </td>

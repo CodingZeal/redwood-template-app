@@ -16,7 +16,10 @@ export const QUERY = gql`
       memberships {
         id
         user {
+          id
+          email
           name
+          nickname
         }
       }
     }

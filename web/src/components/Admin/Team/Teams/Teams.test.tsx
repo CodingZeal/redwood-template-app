@@ -19,18 +19,6 @@ describe('TeamsList', () => {
     expect(element).toBeInTheDocument()
   })
 
-  it('renders a team id', () => {
-    render(<TeamsList teams={standard().teams} />)
-    const [firstTeam, secondTeam] = standard().teams
-    const [firstElement] = screen.getAllByText(firstTeam.id)
-    const [secondElement] = screen.getAllByText(secondTeam.id)
-
-    expect(firstElement).toBeInTheDocument()
-    expect(firstElement).toContainHTML('365')
-    expect(secondElement).toBeInTheDocument()
-    expect(secondElement).toContainHTML('10')
-  })
-
   it('renders a team name', () => {
     render(<TeamsList teams={standard().teams} />)
     const [firstTeam, secondTeam] = standard().teams
@@ -46,7 +34,7 @@ describe('TeamsList', () => {
   it('renders link to team show', () => {
     render(<TeamsList teams={standard().teams} />)
     const [firstTeam, secondTeam] = standard().teams
-    const [firstElement, secondElement] = screen.getAllByText('Show')
+    const [firstElement, secondElement] = screen.getAllByTestId('showTeam')
 
     expect(firstElement).toHaveAttribute(
       'href',
@@ -61,7 +49,7 @@ describe('TeamsList', () => {
   it('renders link to team edit', () => {
     render(<TeamsList teams={standard().teams} />)
     const [firstTeam, secondTeam] = standard().teams
-    const [firstElement, secondElement] = screen.getAllByText('Edit')
+    const [firstElement, secondElement] = screen.getAllByTestId('editTeam')
 
     expect(firstElement).toHaveAttribute(
       'href',
@@ -75,7 +63,7 @@ describe('TeamsList', () => {
 
   it('renders delete button', () => {
     render(<TeamsList teams={standard().teams} />)
-    const [firstElement, secondElement] = screen.getAllByText('Delete')
+    const [firstElement, secondElement] = screen.getAllByTestId('archiveIcon')
 
     expect(firstElement).toBeInTheDocument()
     expect(secondElement).toBeInTheDocument()
