@@ -60,6 +60,7 @@ const RolesList = ({ roles }) => {
                 <td>
                   <nav className="rw-table-actions opacity-50">
                     <Link
+                      data-testid="showRole"
                       to={routes.adminRole({ id: role.id })}
                       title={'Show role ' + role.id + ' detail'}
                       className="rw-button rw-button-small"
@@ -67,6 +68,7 @@ const RolesList = ({ roles }) => {
                       <Eye />
                     </Link>
                     <Link
+                      data-testid="editRole"
                       to={routes.adminEditRole({ id: role.id })}
                       title={'Edit role ' + role.id}
                       className="rw-button rw-button-small rw-button-blue"

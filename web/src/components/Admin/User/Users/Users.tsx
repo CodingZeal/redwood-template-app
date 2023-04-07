@@ -92,6 +92,7 @@ const Users = ({ users }) => {
               <td>
                 <nav className="rw-table-actions opacity-50">
                   <Link
+                    data-testid="showUser"
                     to={routes.adminUser({ id: user.id })}
                     title={'Show user ' + user.id + ' detail'}
                     className="rw-button rw-button-small"
@@ -99,6 +100,7 @@ const Users = ({ users }) => {
                     <Eye />
                   </Link>
                   <Link
+                    data-testid="editUser"
                     to={routes.adminEditUser({ id: user.id })}
                     title={'Edit user ' + user.id}
                     className="rw-button rw-button-small rw-button-blue"

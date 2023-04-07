@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         rustyOrange: '#BC611E',
         blackBean: '#371108',
+        beige: '#FCF5F0',
         grey: '#2E3747',
       },
       fontFamily: {
