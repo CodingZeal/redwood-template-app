@@ -47,10 +47,10 @@ const SignupPage = () => {
     <>
       <MetaTags title="Signup" />
       <div className="grid w-full grid-cols-2 py-10">
-        <main className="m-auto w-[410px] font-sn">
+        <main className="font-inter m-auto w-[410px]">
           <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
           <div className="text-blackBean">
-            <h2 className="font-sans text-[90px]">Signup</h2>
+            <h2 className="font-sans text-[90px] font-bold">Signup</h2>
 
             <Form onSubmit={onSubmit}>
               <Label
@@ -95,7 +95,7 @@ const SignupPage = () => {
               />
               <FieldError name="password" className="rw-field-error" />
 
-              <Submit className="my-5 h-12 w-full rounded-lg bg-rustyOrange text-white">
+              <Submit className="my-5 h-12 w-full rounded-lg bg-rustyOrange font-sans text-lg font-bold text-white">
                 Sign Up
               </Submit>
             </Form>

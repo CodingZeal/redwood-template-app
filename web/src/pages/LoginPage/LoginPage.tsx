@@ -49,10 +49,10 @@ const LoginPage = () => {
     <>
       <MetaTags title="Login" />
       <div className="grid w-full grid-cols-2 items-start py-10">
-        <main className="m-auto w-[410px] font-sn" data-testid="login-page">
+        <main className="font-inter m-auto w-[410px]" data-testid="login-page">
           <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
           <div className="text-blackBean">
-            <h2 className="font-sans text-[90px]">Login</h2>
+            <h2 className="font-sans text-[90px] font-bold">Login</h2>
 
             <Form onSubmit={onSubmit}>
               <Label
@@ -107,7 +107,7 @@ const LoginPage = () => {
 
               <FieldError name="password" className="rw-field-error" />
 
-              <Submit className="my-5 h-12 w-full rounded-lg bg-rustyOrange text-white">
+              <Submit className="my-5 h-12 w-full rounded-lg bg-rustyOrange font-sans text-lg font-bold text-white">
                 Login
               </Submit>
             </Form>

@@ -42,10 +42,10 @@ const ForgotPasswordPage = () => {
     <>
       <MetaTags title="Forgot Password" />
       <div className="grid w-full grid-cols-2 py-10">
-        <main className="m-auto w-[410px] font-sn ">
+        <main className="font-inter m-auto w-[410px]">
           <div className="text-blackBean">
             <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-            <h2 className="font-sans text-[90px] leading-none">
+            <h2 className="font-sans text-[90px] font-bold leading-none">
               Forgot Password?
             </h2>
 
@@ -70,11 +70,11 @@ const ForgotPasswordPage = () => {
 
               <FieldError name="username" className="rw-field-error" />
 
-              <Submit className="my-5 h-12 w-full rounded-lg bg-rustyOrange text-white">
+              <Submit className="my-5 h-12 w-full rounded-lg bg-rustyOrange font-sans text-lg font-bold text-white">
                 Send me a Reset Email
               </Submit>
             </Form>
-            <div className="flex justify-center ">
+            <div className="flex justify-center">
               <Link to={routes.login()} className="underline">
                 Ready to Login!
               </Link>
