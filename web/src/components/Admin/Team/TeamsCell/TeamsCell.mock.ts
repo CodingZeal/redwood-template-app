@@ -9,6 +9,12 @@ export const standard = () => ({
       memberships: [
         {
           id: 'monkey1',
+          user: {
+            id: '42',
+            email: 'foo@bar.com',
+            name: 'Foo Bar',
+            nickname: 'Bar',
+          },
         },
       ],
     },
@@ -21,6 +27,12 @@ export const standard = () => ({
       memberships: [
         {
           id: 'monkey1',
+          user: {
+            id: '42',
+            email: 'foo@bar.com',
+            name: 'Foo Bar',
+            nickname: 'Bar',
+          },
         },
       ],
     },
