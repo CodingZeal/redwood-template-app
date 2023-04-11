@@ -3,7 +3,7 @@ import type { ComponentMeta } from '@storybook/react'
 import VerificationResetPage from './VerificationResetPage'
 
 export const generated = () => {
-  return <VerificationResetPage />
+  return <VerificationResetPage email="foobar.com" />
 }
 
 export default {

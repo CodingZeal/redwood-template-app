@@ -8,7 +8,7 @@ import VerificationResetPage from './VerificationResetPage'
 describe('VerificationResetPage', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<VerificationResetPage />)
+      render(<VerificationResetPage email="foobar.com" />)
     }).not.toThrow()
   })
 })

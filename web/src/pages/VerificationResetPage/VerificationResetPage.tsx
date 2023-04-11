@@ -40,7 +40,7 @@ const VerificationResetPage = ({ email }) => {
       <MetaTags title="Forgot Password" />
 
       <div className="grid w-full grid-cols-2 py-10">
-        <main className="m-auto w-[410px] font-sn">
+        <main className="font-sn m-auto w-[410px]">
           <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
           <div className="text-blackBean">
             <h2 className="font-sans text-[80px] leading-none">
