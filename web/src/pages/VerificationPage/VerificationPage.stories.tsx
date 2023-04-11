@@ -1,4 +1,4 @@
-import { VerificationPage } from './VerificationPage'
+import VerificationPage from './VerificationPage'
 
 export const generated = (args) => {
   return <VerificationPage {...args} />
