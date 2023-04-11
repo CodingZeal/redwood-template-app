@@ -1,5 +1,6 @@
 import { Link, routes } from '@redwoodjs/router'
 
+import { Addition } from 'src/components/Icon/Addition'
 import { Arrow } from 'src/components/Icon/Arrow'
 
 type TeamLayoutProps = {
@@ -17,10 +18,13 @@ const TeamsLayout = ({ children }: TeamLayoutProps) => {
             Teams
           </Link>
         </h1>
-        <div className="flex justify-end">
-          <div className="flex h-12 items-center justify-center rounded-lg border-2 border-rustyOrange bg-rustyOrange px-8 font-sans text-lg font-bold text-white">
-            <Link to={routes.adminNewTeam()}>Add Team</Link>
-          </div>
+        <div className="grid justify-items-end">
+          <Link to={routes.adminNewTeam()}>
+            <Addition className="sm:block md:hidden" />
+            <div className="hidden h-12 items-center justify-center rounded-lg border-2 border-rustyOrange bg-rustyOrange px-8 font-sans text-lg font-bold text-white md:flex">
+              Add Team
+            </div>
+          </Link>
         </div>
       </header>
       <main>{children}</main>

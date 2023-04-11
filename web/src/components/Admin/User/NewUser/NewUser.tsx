@@ -28,13 +28,9 @@ const NewUser = () => {
   }
 
   return (
-    <div className="rw-segment">
-      <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">New User</h2>
-      </header>
-      <div className="rw-segment-main">
-        <UserForm onSave={onSave} loading={loading} error={error} />
-      </div>
+    <div className="flex max-w-[500px] flex-col text-blackBean">
+      <h2 className="font-sans text-2xl font-bold">Add User</h2>
+      <UserForm onSave={onSave} loading={loading} error={error} />
     </div>
   )
 }

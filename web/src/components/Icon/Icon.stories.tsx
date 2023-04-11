@@ -2,6 +2,11 @@ import { Icon, IIcon } from './Icon'
 
 const Template = (args: IIcon) => <Icon {...args} />
 
+export const Addition = Template.bind({})
+Addition.args = {
+  name: 'Addition',
+}
+
 export const Archive = Template.bind({})
 Archive.args = {
   name: 'Archive',
@@ -20,11 +25,6 @@ Check.args = {
 export const Eye = Template.bind({})
 Eye.args = {
   name: 'Eye',
-}
-
-export const Gear = Template.bind({})
-Gear.args = {
-  name: 'Gear',
 }
 
 export const Github = Template.bind({})

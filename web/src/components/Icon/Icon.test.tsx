@@ -9,6 +9,16 @@ describe('Icon', () => {
     }).not.toThrow()
   })
 
+  // addition icon
+  it('renders the addition icon', () => {
+    const { getByTestId } = render(<Icon name="addition" />)
+    expect(getByTestId('additionIcon')).toBeInTheDocument()
+  })
+
+  it('matches the addition icon snapshot', () => {
+    expect(render(<Icon name="addition" />)).toMatchSnapshot()
+  })
+
   // archive icon
   it('renders the archive icon', () => {
     const { getByTestId } = render(<Icon name="archive" />)
@@ -47,16 +57,6 @@ describe('Icon', () => {
 
   it('matches the eye icon snapshot', () => {
     expect(render(<Icon name="eye" />)).toMatchSnapshot()
-  })
-
-  // gear icon
-  it('renders the gear icon', () => {
-    const { getByTestId } = render(<Icon name="gear" />)
-    expect(getByTestId('gearIcon')).toBeInTheDocument()
-  })
-
-  it('matches the gear icon snapshot', () => {
-    expect(render(<Icon name="gear" />)).toMatchSnapshot()
   })
 
   // github icon

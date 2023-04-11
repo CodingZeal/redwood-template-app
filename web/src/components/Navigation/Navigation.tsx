@@ -1,13 +1,17 @@
+import { useState } from 'react'
+
 import { navigate, NavLink, routes } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
 
 import { Avatar } from '../Avatar'
-import { Gear } from '../Icon/Gear'
+import { NavMenu } from '../Icon/NavMenu'
+
+import { MobileMenu } from './MobileMenu/MobileMenu'
 
 const LinkItem = (props) => (
   <NavLink
-    data-testid="nav__link-item"
+    data-testid="mobile-nav__link-item"
     className="cursor-pointer no-underline"
     {...props}
   >
@@ -15,6 +19,19 @@ const LinkItem = (props) => (
   </NavLink>
 )
 const Navigation = () => {
+  return (
+    <div data-testid="nav">
+      <div className="hidden lg:block">
+        <DesktopNavigation />
+      </div>
+      <div className="block lg:hidden">
+        <MobileNavigation />
+      </div>
+    </div>
+  )
+}
+
+const DesktopNavigation = () => {
   const { currentUser, hasRole, isAuthenticated, logOut } = useAuth()
 
   const logoutHandler = () => {
@@ -24,9 +41,8 @@ const Navigation = () => {
   return (
     <>
       <div
-        data-testid="nav"
         className="flex-col-2 border-#EEF2F6 flex h-20 w-full items-center
-        border-b-2 border-neutral-300 py-3 px-10"
+  border-b-2 border-neutral-300 py-3 px-10"
       >
         <div className="flex flex-row items-center">
           <LinkItem
@@ -36,18 +52,22 @@ const Navigation = () => {
             LUMBERSTACK
           </LinkItem>
           <div className="mx-10">
-            <LinkItem
+            <a
+              href="http://codingzeal.com"
+              target="_blank"
               className="mx-4	font-int text-lg text-blackBean no-underline"
-              to={routes.home()}
+              rel="noopener noreferrer"
             >
               ZEAL
-            </LinkItem>
-            <LinkItem
+            </a>
+            <a
+              href="https://redwoodjs.com/docs/introduction"
+              target="_blank"
               className="mx-4	font-int text-lg text-blackBean no-underline"
-              to={routes.home()}
+              rel="noopener noreferrer"
             >
               RedwoodJS Docs
-            </LinkItem>
+            </a>
             <LinkItem
               className="mx-4 font-int text-lg text-blackBean no-underline"
               to={routes.home()}
@@ -57,19 +77,24 @@ const Navigation = () => {
           </div>
         </div>
         <ul className="ml-auto">
-          <div className="flex flex-row justify-end">
+          <div className="flex flex-row items-center justify-end">
+            {hasRole('super admin') && (
+              <LinkItem className="px-4" to={routes.adminUsers()}>
+                Admin
+              </LinkItem>
+            )}
             {isAuthenticated ? (
-              <div className="ml-auto mr-3 flex cursor-pointer items-center">
-                <button onClick={logoutHandler}>
-                  <Gear />
-                </button>
+              <div className="ml-auto flex cursor-pointer items-center">
                 {isAuthenticated && currentUser && (
-                  <LinkItem className="px-5" to={routes.profile()}>
-                    <Avatar user={currentUser} />
-                  </LinkItem>
-                )}
-                {hasRole('super admin') && (
-                  <LinkItem to={routes.adminUsers()}>Admin</LinkItem>
+                  <>
+                    <LinkItem className="px-4" to={routes.profile()}>
+                      Profile
+                    </LinkItem>
+                    <button className="px-4" onClick={logoutHandler}>
+                      Logout
+                    </button>
+                    <Avatar className="mx-4" user={currentUser} />
+                  </>
                 )}
               </div>
             ) : (
@@ -91,6 +116,30 @@ const Navigation = () => {
           </div>
         </ul>
       </div>
+    </>
+  )
+}
+
+const MobileNavigation = () => {
+  const [isMobileMenuOpen, setisMobileMenuOpen] = useState(false)
+  return (
+    <>
+      <div
+        className="border-#EEF2F6 flex h-20 w-full flex-row items-center justify-between
+  border-b-2 border-neutral-300 px-5 py-3"
+      >
+        <LinkItem
+          className="mx-2 font-sans text-4xl font-bold text-rustyOrange no-underline"
+          to={routes.home()}
+        >
+          LUMBERSTACK
+        </LinkItem>
+
+        <button onClick={() => setisMobileMenuOpen(!isMobileMenuOpen)}>
+          <NavMenu />
+        </button>
+      </div>
+      <MobileMenu isOpen={isMobileMenuOpen} toggleOpen={setisMobileMenuOpen} />
     </>
   )
 }

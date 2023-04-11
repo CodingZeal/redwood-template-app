@@ -1,5 +1,108 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Icon matches the addition icon snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <svg
+        class=""
+        data-testid="additionIcon"
+        fill="none"
+        height="40"
+        viewBox="0 0 44 44"
+        width="40"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          fill="#BC611E"
+          height="44"
+          rx="8"
+          width="44"
+        />
+        <path
+          d="M30.4611 23.6923H23.6919V30.4616C23.6919 30.9104 23.5136 31.3408 23.1962 31.6582C22.8788 31.9756 22.4484 32.1539 21.9995 32.1539C21.5507 32.1539 21.1203 31.9756 20.8029 31.6582C20.4855 31.3408 20.3072 30.9104 20.3072 30.4616V23.6923H13.538C13.0892 23.6923 12.6587 23.514 12.3414 23.1967C12.024 22.8793 11.8457 22.4489 11.8457 22C11.8457 21.5512 12.024 21.1208 12.3414 20.8034C12.6587 20.486 13.0892 20.3077 13.538 20.3077H20.3072V13.5385C20.3072 13.0897 20.4855 12.6592 20.8029 12.3419C21.1203 12.0245 21.5507 11.8462 21.9995 11.8462C22.4484 11.8462 22.8788 12.0245 23.1962 12.3419C23.5136 12.6592 23.6919 13.0897 23.6919 13.5385V20.3077H30.4611C30.9099 20.3077 31.3404 20.486 31.6577 20.8034C31.9751 21.1208 32.1534 21.5512 32.1534 22C32.1534 22.4489 31.9751 22.8793 31.6577 23.1967C31.3404 23.514 30.9099 23.6923 30.4611 23.6923Z"
+          fill="white"
+        />
+      </svg>
+    </div>
+  </body>,
+  "container": <div>
+    <svg
+      class=""
+      data-testid="additionIcon"
+      fill="none"
+      height="40"
+      viewBox="0 0 44 44"
+      width="40"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        fill="#BC611E"
+        height="44"
+        rx="8"
+        width="44"
+      />
+      <path
+        d="M30.4611 23.6923H23.6919V30.4616C23.6919 30.9104 23.5136 31.3408 23.1962 31.6582C22.8788 31.9756 22.4484 32.1539 21.9995 32.1539C21.5507 32.1539 21.1203 31.9756 20.8029 31.6582C20.4855 31.3408 20.3072 30.9104 20.3072 30.4616V23.6923H13.538C13.0892 23.6923 12.6587 23.514 12.3414 23.1967C12.024 22.8793 11.8457 22.4489 11.8457 22C11.8457 21.5512 12.024 21.1208 12.3414 20.8034C12.6587 20.486 13.0892 20.3077 13.538 20.3077H20.3072V13.5385C20.3072 13.0897 20.4855 12.6592 20.8029 12.3419C21.1203 12.0245 21.5507 11.8462 21.9995 11.8462C22.4484 11.8462 22.8788 12.0245 23.1962 12.3419C23.5136 12.6592 23.6919 13.0897 23.6919 13.5385V20.3077H30.4611C30.9099 20.3077 31.3404 20.486 31.6577 20.8034C31.9751 21.1208 32.1534 21.5512 32.1534 22C32.1534 22.4489 31.9751 22.8793 31.6577 23.1967C31.3404 23.514 30.9099 23.6923 30.4611 23.6923Z"
+        fill="white"
+      />
+    </svg>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
 exports[`Icon matches the archive icon snapshot 1`] = `
 {
   "asFragment": [Function],
@@ -339,97 +442,6 @@ exports[`Icon matches the eye icon snapshot 1`] = `
       <path
         d="M31.2576 19.9433C31.2248 19.8693 30.4307 18.1077 28.6654 16.3424C26.3132 13.9902 23.3423 12.7471 20.0723 12.7471C16.8023 12.7471 13.8313 13.9902 11.4791 16.3424C9.71382 18.1077 8.91601 19.8721 8.88694 19.9433C8.8443 20.0392 8.82227 20.143 8.82227 20.248C8.82227 20.353 8.8443 20.4568 8.88694 20.5527C8.91976 20.6268 9.71382 22.3874 11.4791 24.1527C13.8313 26.5039 16.8023 27.7471 20.0723 27.7471C23.3423 27.7471 26.3132 26.5039 28.6654 24.1527C30.4307 22.3874 31.2248 20.6268 31.2576 20.5527C31.3002 20.4568 31.3222 20.353 31.3222 20.248C31.3222 20.143 31.3002 20.0392 31.2576 19.9433ZM20.0723 23.9971C19.3306 23.9971 18.6056 23.7771 17.9889 23.3651C17.3722 22.953 16.8915 22.3674 16.6077 21.6821C16.3239 20.9969 16.2496 20.2429 16.3943 19.5155C16.539 18.7881 16.8962 18.1199 17.4206 17.5954C17.9451 17.071 18.6132 16.7138 19.3407 16.5691C20.0681 16.4244 20.8221 16.4987 21.5073 16.7825C22.1925 17.0664 22.7782 17.547 23.1903 18.1637C23.6023 18.7804 23.8223 19.5054 23.8223 20.2471C23.8223 21.2416 23.4272 22.1955 22.7239 22.8987C22.0206 23.602 21.0668 23.9971 20.0723 23.9971Z"
         fill="#2E3747"
-      />
-    </svg>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
-`;
-
-exports[`Icon matches the gear icon snapshot 1`] = `
-{
-  "asFragment": [Function],
-  "baseElement": <body>
-    <div>
-      <svg
-        class=""
-        data-testid="gearIcon"
-        fill="none"
-        height="44"
-        viewBox="0 0 44 44"
-        width="44"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M32.3066 20.0509C32.2857 19.9453 32.2423 19.8454 32.1794 19.7581C32.1164 19.6707 32.0354 19.5979 31.9419 19.5447L29.1453 17.9509L29.1341 14.799C29.1337 14.6905 29.1098 14.5833 29.064 14.4849C29.0182 14.3865 28.9516 14.2992 28.8688 14.229C27.8543 13.3709 26.6861 12.7134 25.4263 12.2912C25.327 12.2577 25.2219 12.2452 25.1176 12.2547C25.0133 12.2643 24.9121 12.2955 24.8206 12.3465L21.9997 13.9234L19.1759 12.3437C19.0844 12.2924 18.9831 12.2609 18.8786 12.2513C18.7741 12.2416 18.6688 12.2539 18.5694 12.2875C17.3103 12.7123 16.1434 13.3725 15.1306 14.2328C15.0479 14.3028 14.9814 14.39 14.9356 14.4882C14.8898 14.5865 14.8658 14.6935 14.8653 14.8019L14.8513 17.9565L12.0547 19.5503C11.9611 19.6036 11.8801 19.6763 11.8172 19.7637C11.7543 19.8511 11.7109 19.9509 11.69 20.0565C11.4341 21.3427 11.4341 22.6667 11.69 23.9528C11.7109 24.0584 11.7543 24.1583 11.8172 24.2456C11.8801 24.333 11.9611 24.4058 12.0547 24.459L14.8513 26.0528L14.8625 29.2056C14.8628 29.3142 14.8867 29.4213 14.9325 29.5198C14.9784 29.6182 15.045 29.7055 15.1278 29.7756C16.1423 30.6337 17.3105 31.2913 18.5703 31.7134C18.6695 31.747 18.7747 31.7594 18.879 31.7499C18.9833 31.7404 19.0845 31.7091 19.1759 31.6581L21.9997 30.0765L24.8234 31.6562C24.9352 31.7185 25.0611 31.7508 25.1891 31.75C25.271 31.75 25.3523 31.7367 25.43 31.7106C26.6888 31.286 27.8556 30.6265 28.8688 29.7672C28.9515 29.6971 29.018 29.61 29.0638 29.5117C29.1096 29.4135 29.1336 29.3065 29.1341 29.1981L29.1481 26.0434L31.9447 24.4497C32.0383 24.3964 32.1192 24.3236 32.1822 24.2363C32.2451 24.1489 32.2885 24.049 32.3094 23.9434C32.5639 22.6583 32.5629 21.3357 32.3066 20.0509ZM21.9997 25.75C21.258 25.75 20.533 25.5301 19.9163 25.118C19.2996 24.7059 18.819 24.1203 18.5351 23.435C18.2513 22.7498 18.1771 21.9958 18.3217 21.2684C18.4664 20.541 18.8236 19.8728 19.348 19.3483C19.8725 18.8239 20.5407 18.4667 21.2681 18.322C21.9955 18.1773 22.7495 18.2516 23.4348 18.5354C24.12 18.8193 24.7056 19.2999 25.1177 19.9166C25.5298 20.5333 25.7497 21.2583 25.7497 22C25.7497 22.9945 25.3546 23.9484 24.6513 24.6516C23.9481 25.3549 22.9943 25.75 21.9997 25.75Z"
-          fill="#BC611E"
-        />
-      </svg>
-    </div>
-  </body>,
-  "container": <div>
-    <svg
-      class=""
-      data-testid="gearIcon"
-      fill="none"
-      height="44"
-      viewBox="0 0 44 44"
-      width="44"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M32.3066 20.0509C32.2857 19.9453 32.2423 19.8454 32.1794 19.7581C32.1164 19.6707 32.0354 19.5979 31.9419 19.5447L29.1453 17.9509L29.1341 14.799C29.1337 14.6905 29.1098 14.5833 29.064 14.4849C29.0182 14.3865 28.9516 14.2992 28.8688 14.229C27.8543 13.3709 26.6861 12.7134 25.4263 12.2912C25.327 12.2577 25.2219 12.2452 25.1176 12.2547C25.0133 12.2643 24.9121 12.2955 24.8206 12.3465L21.9997 13.9234L19.1759 12.3437C19.0844 12.2924 18.9831 12.2609 18.8786 12.2513C18.7741 12.2416 18.6688 12.2539 18.5694 12.2875C17.3103 12.7123 16.1434 13.3725 15.1306 14.2328C15.0479 14.3028 14.9814 14.39 14.9356 14.4882C14.8898 14.5865 14.8658 14.6935 14.8653 14.8019L14.8513 17.9565L12.0547 19.5503C11.9611 19.6036 11.8801 19.6763 11.8172 19.7637C11.7543 19.8511 11.7109 19.9509 11.69 20.0565C11.4341 21.3427 11.4341 22.6667 11.69 23.9528C11.7109 24.0584 11.7543 24.1583 11.8172 24.2456C11.8801 24.333 11.9611 24.4058 12.0547 24.459L14.8513 26.0528L14.8625 29.2056C14.8628 29.3142 14.8867 29.4213 14.9325 29.5198C14.9784 29.6182 15.045 29.7055 15.1278 29.7756C16.1423 30.6337 17.3105 31.2913 18.5703 31.7134C18.6695 31.747 18.7747 31.7594 18.879 31.7499C18.9833 31.7404 19.0845 31.7091 19.1759 31.6581L21.9997 30.0765L24.8234 31.6562C24.9352 31.7185 25.0611 31.7508 25.1891 31.75C25.271 31.75 25.3523 31.7367 25.43 31.7106C26.6888 31.286 27.8556 30.6265 28.8688 29.7672C28.9515 29.6971 29.018 29.61 29.0638 29.5117C29.1096 29.4135 29.1336 29.3065 29.1341 29.1981L29.1481 26.0434L31.9447 24.4497C32.0383 24.3964 32.1192 24.3236 32.1822 24.2363C32.2451 24.1489 32.2885 24.049 32.3094 23.9434C32.5639 22.6583 32.5629 21.3357 32.3066 20.0509ZM21.9997 25.75C21.258 25.75 20.533 25.5301 19.9163 25.118C19.2996 24.7059 18.819 24.1203 18.5351 23.435C18.2513 22.7498 18.1771 21.9958 18.3217 21.2684C18.4664 20.541 18.8236 19.8728 19.348 19.3483C19.8725 18.8239 20.5407 18.4667 21.2681 18.322C21.9955 18.1773 22.7495 18.2516 23.4348 18.5354C24.12 18.8193 24.7056 19.2999 25.1177 19.9166C25.5298 20.5333 25.7497 21.2583 25.7497 22C25.7497 22.9945 25.3546 23.9484 24.6513 24.6516C23.9481 25.3549 22.9943 25.75 21.9997 25.75Z"
-        fill="#BC611E"
       />
     </svg>
   </div>,

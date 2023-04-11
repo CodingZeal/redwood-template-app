@@ -13,7 +13,7 @@ const RoleForm = (props) => {
   }
 
   return (
-    <div className="rw-form-wrapper">
+    <div>
       <Form onSubmit={onSubmit} error={props.error}>
         <FormError
           error={props.error}
@@ -24,7 +24,7 @@ const RoleForm = (props) => {
 
         <Label
           name="name"
-          className="rw-label"
+          className="rw-label font-int text-blackBean"
           errorClassName="rw-label rw-label-error"
         >
           Name
@@ -32,6 +32,7 @@ const RoleForm = (props) => {
 
         <TextField
           name="name"
+          placeholder="Enter role name"
           defaultValue={props.role?.name}
           className="rw-input"
           errorClassName="rw-input rw-input-error"
@@ -40,8 +41,11 @@ const RoleForm = (props) => {
 
         <FieldError name="name" className="rw-field-error" />
 
-        <div className="rw-button-group">
-          <Submit disabled={props.loading} className="rw-button rw-button-blue">
+        <div className="my-4 flex">
+          <Submit
+            disabled={props.loading}
+            className="flex h-12 w-full items-center justify-center rounded-lg border-2 border-rustyOrange bg-rustyOrange font-sans text-lg font-bold text-white"
+          >
             Save
           </Submit>
         </div>

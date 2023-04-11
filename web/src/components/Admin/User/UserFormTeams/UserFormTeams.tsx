@@ -10,7 +10,7 @@ const UserFormTeams = ({ roleIds, roleValue, roles, teamIds, teams }) => {
 
   return (
     <>
-      <div className="rw-label">Teams</div>
+      <div className="rw-label font-int text-blackBean">Teams</div>
       <HiddenField name="teamIds" />
       <div className="flex">
         <select

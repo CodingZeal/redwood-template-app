@@ -50,20 +50,11 @@ export const Success = ({ team }: CellSuccessProps<EditTeamById>) => {
   return (
     <>
       <MetaTags title={`${team.name} | Edit Team`} />
-      <div className="rw-segment">
-        <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">
-            Edit Team {team.id}
-          </h2>
-        </header>
-        <div className="rw-segment-main">
-          <TeamForm
-            team={team}
-            onSave={onSave}
-            error={error}
-            loading={loading}
-          />
-        </div>
+      <div className="flex max-w-[500px] flex-col text-blackBean">
+        <h2 className="my-5 font-sans text-2xl font-bold">
+          Edit Team {team.id}
+        </h2>
+        <TeamForm team={team} onSave={onSave} error={error} loading={loading} />
       </div>
     </>
   )

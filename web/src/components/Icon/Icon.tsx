@@ -1,20 +1,22 @@
+import { Addition } from './Addition'
 import { Archive } from './Archive'
 import { Arrow } from './Arrow'
 import { Check } from './Check'
 import { Eye } from './Eye'
-import { Gear } from './Gear'
 import { Github } from './Github'
+import { NavMenu } from './NavMenu'
 import { Pen } from './Pen'
 import { Twitter } from './Twitter'
 
 export interface IIcon {
   name:
+    | 'addition'
     | 'archive'
     | 'arrow'
     | 'check'
     | 'eye'
-    | 'gear'
     | 'github'
+    | 'navmenu'
     | 'pen'
     | 'twitter'
   className?: string
@@ -24,6 +26,8 @@ export interface IIcon {
 
 const Icon = ({ name, className = '', width, height }: IIcon): JSX.Element => {
   switch (name.toLowerCase()) {
+    case 'addition':
+      return <Addition className={className} width={width} height={height} />
     case 'archive':
       return <Archive className={className} width={width} height={height} />
     case 'arrow':
@@ -32,8 +36,8 @@ const Icon = ({ name, className = '', width, height }: IIcon): JSX.Element => {
       return <Check className={className} width={width} height={height} />
     case 'eye':
       return <Eye className={className} width={width} height={height} />
-    case 'gear':
-      return <Gear className={className} width={width} height={height} />
+    case 'navmenu':
+      return <NavMenu className={className} width={width} height={height} />
     case 'github':
       return <Github className={className} width={width} height={height} />
     case 'pen':
