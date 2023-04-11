@@ -43,9 +43,9 @@ const Team = ({ team }) => {
 
   return (
     <>
-      <div className="rw-segment">
+      <div className="rw-segment text-blackBean">
         <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">
+          <h2 className="rw-heading rw-heading-secondary text-blackBean">
             Team {team.id} Detail
           </h2>
         </header>
@@ -74,16 +74,13 @@ const Team = ({ team }) => {
           </tbody>
         </table>
       </div>
-      <nav className="rw-button-group">
-        <Link
-          to={routes.adminEditTeam({ id: team.id })}
-          className="rw-button rw-button-blue"
-        >
-          Edit
-        </Link>
+      <nav className="my-4 flex flex-row items-center">
+        <div className="flex h-12 items-center justify-center rounded-lg border-2 border-seaFoam bg-seaFoam px-8 font-sans text-lg font-bold text-white">
+          <Link to={routes.adminEditTeam({ id: team.id })}>Edit</Link>
+        </div>
         <button
           type="button"
-          className="rw-button rw-button-red"
+          className="mx-5 text-red-500 underline"
           onClick={() => onDeleteClick(team.id)}
         >
           Delete

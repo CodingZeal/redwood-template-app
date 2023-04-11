@@ -9,7 +9,8 @@ const UsersPage = () => {
   return (
     <>
       <MetaTags title="Users" />
-      <div className="ml-4 mb-4 flex">
+      <UsersCell showInactive={showInactive} />
+      <div className="my-4 ml-4 flex">
         <div className="mr-2 text-sm font-light">Show inactive: </div>
         <input
           className="mt-0.5 cursor-pointer"
@@ -18,7 +19,6 @@ const UsersPage = () => {
           onChange={toggleShowInactive}
         />
       </div>
-      <UsersCell showInactive={showInactive} />
     </>
   )
 }

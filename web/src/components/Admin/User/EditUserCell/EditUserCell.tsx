@@ -60,20 +60,11 @@ export const Success = ({ user }: CellSuccessProps<EditUserById>) => {
   return (
     <>
       <MetaTags title={`${user.name || user.email} | Edit User`} />
-      <div className="rw-segment">
-        <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">
-            Edit User {user.id}
-          </h2>
-        </header>
-        <div className="rw-segment-main">
-          <UserForm
-            user={user}
-            onSave={onSave}
-            error={error}
-            loading={loading}
-          />
-        </div>
+      <div className="flex max-w-[500px] flex-col text-blackBean">
+        <h2 className="my-5 font-sans text-2xl font-bold">
+          Edit User {user.id}
+        </h2>
+        <UserForm user={user} onSave={onSave} error={error} loading={loading} />
       </div>
     </>
   )

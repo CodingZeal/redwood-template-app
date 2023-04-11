@@ -1,4 +1,4 @@
-import { Link, routes } from '@redwoodjs/router'
+import { Link, NavLink, routes } from '@redwoodjs/router'
 
 import { Addition } from 'src/components/Icon/Addition'
 import { Arrow } from 'src/components/Icon/Arrow'
@@ -19,12 +19,16 @@ const RolesLayout = ({ children }: RoleLayoutProps) => {
           </Link>
         </h1>
         <div className="grid justify-items-end">
-          <Link data-testid="role-add" to={routes.adminNewRole()}>
+          <NavLink
+            data-testid="role-add"
+            to={routes.adminNewRole()}
+            activeClassName="hidden"
+          >
             <Addition className="sm:block md:hidden" />
             <div className="hidden h-12 items-center justify-center rounded-lg border-2 border-rustyOrange bg-rustyOrange px-8 font-sans text-lg font-bold text-white md:flex">
               Add Role
             </div>
-          </Link>
+          </NavLink>
         </div>
       </header>
       <main>{children}</main>

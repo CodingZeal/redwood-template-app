@@ -44,9 +44,9 @@ const RoleForm = (props) => {
         <div className="my-4 flex">
           <Submit
             disabled={props.loading}
-            className="flex h-12 w-full items-center justify-center rounded-lg border-2 border-rustyOrange bg-rustyOrange font-sans text-lg font-bold text-white"
+            className="flex h-12 items-center justify-center rounded-lg border-2 border-rustyOrange bg-rustyOrange px-10 font-sans text-lg font-bold text-white"
           >
-            Save
+            Add Role
           </Submit>
         </div>
       </Form>

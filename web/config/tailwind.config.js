@@ -7,6 +7,7 @@ module.exports = {
         rustyOrange: '#BC611E',
         blackBean: '#371108',
         beige: '#FCF5F0',
+        seaFoam: '#009788',
         grey: '#2E3747',
       },
       fontFamily: {
