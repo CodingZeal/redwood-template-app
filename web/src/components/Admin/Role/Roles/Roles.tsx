@@ -78,8 +78,8 @@ const RolesList = ({ roles }) => {
                     <button
                       type="button"
                       title={'Delete role ' + role.id}
-                      className={`rw-button rw-button-small ${
-                        membershipRoleCount === 0 && 'rw-button-red'
+                      className={`rw-button rw-button-small opacity-20 ${
+                        membershipRoleCount === 0 && 'rw-button-red opacity-100'
                       }`}
                       onClick={() => onDeleteClick(role.id)}
                       disabled={membershipRoleCount > 0}

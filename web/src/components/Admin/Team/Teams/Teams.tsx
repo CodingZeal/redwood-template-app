@@ -97,8 +97,8 @@ const TeamsList = ({ teams }) => {
                     <button
                       type="button"
                       title={'Delete team ' + team.id}
-                      className={`rw-button rw-button-small ${
-                        userCount == 0 && 'rw-button-red'
+                      className={`rw-button rw-button-small opacity-20 ${
+                        userCount == 0 && 'rw-button-red opacity-100'
                       }`}
                       onClick={() => onDeleteClick(team.id)}
                       disabled={userCount > 0}
