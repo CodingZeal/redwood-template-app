@@ -19,7 +19,7 @@ const UsersLayout = ({ children }: UserLayoutProps) => {
           </Link>
         </h1>
         <div className="grid justify-items-end">
-          <Link to={routes.adminNewUser()}>
+          <Link data-testid="user-add" to={routes.adminNewUser()}>
             <Addition className="sm:block md:hidden" />
             <div className="hidden h-12 items-center justify-center rounded-lg border-2 border-rustyOrange bg-rustyOrange px-8 font-sans text-lg font-bold text-white md:flex">
               Add User

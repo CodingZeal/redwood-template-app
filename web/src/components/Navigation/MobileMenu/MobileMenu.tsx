@@ -6,11 +6,7 @@ import { useAuth } from 'src/auth'
 import { Avatar } from 'src/components/Avatar'
 
 const LinkItem = (props) => (
-  <NavLink
-    data-testid="nav__link-item"
-    className="cursor-pointer p-2 no-underline"
-    {...props}
-  >
+  <NavLink className="cursor-pointer p-2 no-underline" {...props}>
     {props.children}
   </NavLink>
 )

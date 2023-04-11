@@ -10,11 +10,7 @@ import { NavMenu } from '../Icon/NavMenu'
 import { MobileMenu } from './MobileMenu/MobileMenu'
 
 const LinkItem = (props) => (
-  <NavLink
-    data-testid="mobile-nav__link-item"
-    className="cursor-pointer no-underline"
-    {...props}
-  >
+  <NavLink className="cursor-pointer no-underline" {...props}>
     {props.children}
   </NavLink>
 )
@@ -46,6 +42,7 @@ const DesktopNavigation = () => {
       >
         <div className="flex flex-row items-center">
           <LinkItem
+            data-testid="home"
             className="mx-2 font-sans text-4xl font-bold text-rustyOrange no-underline"
             to={routes.home()}
           >
@@ -129,6 +126,7 @@ const MobileNavigation = () => {
   border-b-2 border-neutral-300 px-5 py-3"
       >
         <LinkItem
+          data-testid="home"
           className="mx-2 font-sans text-4xl font-bold text-rustyOrange no-underline"
           to={routes.home()}
         >
