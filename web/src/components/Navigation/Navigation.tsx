@@ -90,7 +90,7 @@ const DesktopNavigation = () => {
                     <button className="px-4" onClick={logoutHandler}>
                       Logout
                     </button>
-                    <Avatar className="mx-4" user={currentUser} />
+                    <Avatar className="mx-1" user={currentUser} />
                   </>
                 )}
               </div>

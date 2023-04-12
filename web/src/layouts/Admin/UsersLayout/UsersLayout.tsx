@@ -11,7 +11,7 @@ const UsersLayout = ({ children }: UserLayoutProps) => {
   return (
     <div className="px-10">
       <header className="my-8 grid grid-cols-2">
-        <h1 className="font-inter flex flex-row items-center text-3xl text-blackBean">
+        <h1 className="flex flex-row items-center font-int text-3xl text-blackBean">
           Admin
           <Arrow className="mx-2" />
           <Link to={routes.adminUsers()} className="font-sans font-bold">
