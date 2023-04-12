@@ -6,14 +6,14 @@ import { MobileMenu } from './MobileMenu'
 describe('Navigation', () => {
   const mock = jest.fn()
 
-  it('renders navigation component', () => {
+  it('renders mobile navigation component', () => {
     mockCurrentUser({ id: 'foobar', name: 'FooBar' })
 
     render(<MobileMenu isOpen={mock} toggleOpen={mock} />)
     expect(screen.getByTestId('mobileMenu')).toBeInTheDocument()
   })
 
-  it('renders navigation component', () => {
+  it('renders mobile navigation component', () => {
     mockCurrentUser({ id: 'foobar', name: 'FooBar' })
     render(<MobileMenu isOpen={mock} toggleOpen={mock} />)
     const profile = screen.getByText('My Profile')

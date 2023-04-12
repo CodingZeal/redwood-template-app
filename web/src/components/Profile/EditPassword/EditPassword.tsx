@@ -33,13 +33,9 @@ const EditPassword = ({ profile }) => {
           profile?.nickname || profile?.name || profile?.email
         } | Edit Password`}
       />
-      <div className="rw-segment">
-        <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">Edit Password</h2>
-        </header>
-        <div className="rw-segment-main">
-          <EditPasswordForm error={error} loading={loading} onSave={onSave} />
-        </div>
+      <div className="my-10 flex max-w-[500px] flex-col px-10 text-blackBean">
+        <h2 className="font-sans text-5xl font-bold">Edit Password</h2>
+        <EditPasswordForm error={error} loading={loading} onSave={onSave} />
       </div>
     </>
   )

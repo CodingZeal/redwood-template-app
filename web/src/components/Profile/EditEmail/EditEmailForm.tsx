@@ -18,7 +18,7 @@ const EditEmailForm = ({ error, loading, onSubmit }) => {
   newEmailRef.current = formMethods.watch('newEmail', '')
 
   return (
-    <div className="rw-form-wrapper">
+    <div>
       <Form onSubmit={onSubmit} error={error} formMethods={formMethods}>
         <FormError
           error={error}
@@ -29,7 +29,7 @@ const EditEmailForm = ({ error, loading, onSubmit }) => {
 
         <Label
           name="password"
-          className="rw-label"
+          className="rw-label text-blackBean"
           errorClassName="rw-label rw-label-error"
         >
           Your Password
@@ -50,7 +50,7 @@ const EditEmailForm = ({ error, loading, onSubmit }) => {
 
         <Label
           name="newEmail"
-          className="rw-label"
+          className="rw-label text-blackBean"
           errorClassName="rw-label rw-label-error"
         >
           Your New Email
@@ -73,8 +73,11 @@ const EditEmailForm = ({ error, loading, onSubmit }) => {
         />
         <FieldError name="newEmail" className="rw-field-error" />
 
-        <div className="rw-button-group">
-          <Submit disabled={loading} className="rw-button rw-button-blue">
+        <div className="my-4 flex">
+          <Submit
+            disabled={loading}
+            className="flex h-12 items-center justify-center rounded-lg border-2 border-rustyOrange bg-rustyOrange px-10 font-sans text-lg font-bold text-white"
+          >
             Update Email
           </Submit>
         </div>

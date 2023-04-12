@@ -17,7 +17,7 @@ const EditPasswordForm = ({ error, loading, onSave }) => {
   newPasswordRef.current = formMethods.watch('newPassword', '')
 
   return (
-    <div className="rw-form-wrapper">
+    <div>
       <Form onSubmit={onSave} error={error} formMethods={formMethods}>
         <FormError
           error={error}
@@ -28,14 +28,14 @@ const EditPasswordForm = ({ error, loading, onSave }) => {
 
         <Label
           name="existingPassword"
-          className="rw-label"
+          className="rw-label text-blackBean"
           errorClassName="rw-label rw-label-error"
         >
           Your Existing Password
         </Label>
         <PasswordField
           name="existingPassword"
-          className="rw-input"
+          className="rw-input text-blackBean"
           errorClassName="rw-input rw-input-error"
           validation={{
             required: {
@@ -70,7 +70,7 @@ const EditPasswordForm = ({ error, loading, onSave }) => {
 
         <Label
           name="confirmPassword"
-          className="rw-label"
+          className="rw-label text-blackBean"
           errorClassName="rw-label rw-label-error"
         >
           Confirm New Password
@@ -94,8 +94,11 @@ const EditPasswordForm = ({ error, loading, onSave }) => {
         />
         <FieldError name="confirmPassword" className="rw-field-error" />
 
-        <div className="rw-button-group">
-          <Submit disabled={loading} className="rw-button rw-button-blue">
+        <div className="my-4 flex">
+          <Submit
+            disabled={loading}
+            className="flex h-12 items-center justify-center rounded-lg border-2 border-rustyOrange bg-rustyOrange px-10 font-sans text-lg font-bold text-white"
+          >
             Update Password
           </Submit>
         </div>

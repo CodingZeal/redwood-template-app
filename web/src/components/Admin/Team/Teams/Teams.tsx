@@ -67,13 +67,18 @@ const TeamsList = ({ teams }) => {
                   {truncate(team.name)}
                 </td>
                 <td>
-                  {team.memberships?.map((membership) => {
-                    return (
-                      <div className="inline-block" key={membership.user?.id}>
-                        <Avatar user={membership?.user} />
-                      </div>
-                    )
-                  })}
+                  <div className="flex flex-row-reverse justify-end">
+                    {team.memberships?.map((membership) => {
+                      return (
+                        <div
+                          className="z-10 -ml-2 rounded-full border-[1px]"
+                          key={membership.user?.id}
+                        >
+                          <Avatar user={membership?.user} />
+                        </div>
+                      )
+                    })}
+                  </div>
                 </td>
                 <td>{truncate(team.active) && 'Active'}</td>
                 <td>

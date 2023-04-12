@@ -9,7 +9,7 @@ import {
 
 const EditProfile = ({ error, loading, profile, onSave }) => {
   return (
-    <div id="edit-profile" className="rw-form-wrapper">
+    <div id="edit-profile">
       <Form onSubmit={onSave} error={error}>
         <FormError
           error={error}
@@ -20,7 +20,7 @@ const EditProfile = ({ error, loading, profile, onSave }) => {
 
         <Label
           name="name"
-          className="rw-label"
+          className="rw-label text-blackBean"
           errorClassName="rw-label rw-label-error"
         >
           Name
@@ -37,7 +37,7 @@ const EditProfile = ({ error, loading, profile, onSave }) => {
 
         <Label
           name="nickname"
-          className="rw-label"
+          className="rw-label text-blackBean"
           errorClassName="rw-label rw-label-error"
         >
           Nickname
@@ -54,7 +54,7 @@ const EditProfile = ({ error, loading, profile, onSave }) => {
 
         <Label
           name="pronouns"
-          className="rw-label"
+          className="rw-label text-blackBean"
           errorClassName="rw-label rw-label-error"
         >
           Pronouns
@@ -69,8 +69,11 @@ const EditProfile = ({ error, loading, profile, onSave }) => {
 
         <FieldError name="pronouns" className="rw-field-error" />
 
-        <div className="rw-button-group">
-          <Submit disabled={loading} className="rw-button rw-button-blue">
+        <div className="my-4 flex">
+          <Submit
+            disabled={loading}
+            className="flex h-12 items-center justify-center rounded-lg border-2 border-rustyOrange bg-rustyOrange px-10 font-sans text-lg font-bold text-white"
+          >
             Save
           </Submit>
         </div>
