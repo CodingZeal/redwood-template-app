@@ -2,10 +2,15 @@ import { Addition } from './Addition'
 import { Archive } from './Archive'
 import { Arrow } from './Arrow'
 import { Check } from './Check'
+import { Email } from './Email'
 import { Eye } from './Eye'
 import { Github } from './Github'
+import { Lock } from './Lock'
+import { Logout } from './Logout'
 import { NavMenu } from './NavMenu'
 import { Pen } from './Pen'
+import { Profile } from './Profile'
+import { Security } from './Security'
 import { Twitter } from './Twitter'
 
 export interface IIcon {
@@ -14,10 +19,15 @@ export interface IIcon {
     | 'archive'
     | 'arrow'
     | 'check'
+    | 'email'
     | 'eye'
     | 'github'
+    | 'lock'
+    | 'logout'
     | 'navmenu'
     | 'pen'
+    | 'profile'
+    | 'security'
     | 'twitter'
   className?: string
   width?: string
@@ -34,14 +44,24 @@ const Icon = ({ name, className = '', width, height }: IIcon): JSX.Element => {
       return <Arrow className={className} width={width} height={height} />
     case 'check':
       return <Check className={className} width={width} height={height} />
+    case 'email':
+      return <Email className={className} width={width} height={height} />
     case 'eye':
       return <Eye className={className} width={width} height={height} />
-    case 'navmenu':
-      return <NavMenu className={className} width={width} height={height} />
     case 'github':
       return <Github className={className} width={width} height={height} />
+    case 'lock':
+      return <Lock className={className} width={width} height={height} />
+    case 'logout':
+      return <Logout className={className} width={width} height={height} />
+    case 'navmenu':
+      return <NavMenu className={className} width={width} height={height} />
     case 'pen':
       return <Pen className={className} width={width} height={height} />
+    case 'profile':
+      return <Profile className={className} width={width} height={height} />
+    case 'security':
+      return <Security className={className} width={width} height={height} />
     case 'twitter':
       return <Twitter className={className} width={width} height={height} />
     default:

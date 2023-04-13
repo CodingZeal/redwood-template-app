@@ -49,6 +49,16 @@ describe('Icon', () => {
     expect(render(<Icon name="check" />)).toMatchSnapshot()
   })
 
+  // email icon
+  it('renders the email icon', () => {
+    const { getByTestId } = render(<Icon name="email" />)
+    expect(getByTestId('emailIcon')).toBeInTheDocument()
+  })
+
+  it('matches the email icon snapshot', () => {
+    expect(render(<Icon name="email" />)).toMatchSnapshot()
+  })
+
   // eye icon
   it('renders the eye icon', () => {
     const { getByTestId } = render(<Icon name="eye" />)
@@ -69,6 +79,36 @@ describe('Icon', () => {
     expect(render(<Icon name="github" />)).toMatchSnapshot()
   })
 
+  // lock icon
+  it('renders the lock icon', () => {
+    const { getByTestId } = render(<Icon name="lock" />)
+    expect(getByTestId('lockIcon')).toBeInTheDocument()
+  })
+
+  it('matches the lock icon snapshot', () => {
+    expect(render(<Icon name="lock" />)).toMatchSnapshot()
+  })
+
+  // logout icon
+  it('renders the logout icon', () => {
+    const { getByTestId } = render(<Icon name="logout" />)
+    expect(getByTestId('logoutIcon')).toBeInTheDocument()
+  })
+
+  it('matches the logout icon snapshot', () => {
+    expect(render(<Icon name="logout" />)).toMatchSnapshot()
+  })
+
+  // navmenu icon
+  it('renders the navmenu icon', () => {
+    const { getByTestId } = render(<Icon name="navmenu" />)
+    expect(getByTestId('navmenuIcon')).toBeInTheDocument()
+  })
+
+  it('matches the navmenu icon snapshot', () => {
+    expect(render(<Icon name="navmenu" />)).toMatchSnapshot()
+  })
+
   // pen icon
   it('renders the pen icon', () => {
     const { getByTestId } = render(<Icon name="pen" />)
@@ -77,6 +117,26 @@ describe('Icon', () => {
 
   it('matches the pen icon snapshot', () => {
     expect(render(<Icon name="pen" />)).toMatchSnapshot()
+  })
+
+  // profile icon
+  it('renders the profile icon', () => {
+    const { getByTestId } = render(<Icon name="profile" />)
+    expect(getByTestId('profileIcon')).toBeInTheDocument()
+  })
+
+  it('matches the profile icon snapshot', () => {
+    expect(render(<Icon name="profile" />)).toMatchSnapshot()
+  })
+
+  // security icon
+  it('renders the security icon', () => {
+    const { getByTestId } = render(<Icon name="security" />)
+    expect(getByTestId('securityIcon')).toBeInTheDocument()
+  })
+
+  it('matches the security icon snapshot', () => {
+    expect(render(<Icon name="security" />)).toMatchSnapshot()
   })
 
   // twitter icon

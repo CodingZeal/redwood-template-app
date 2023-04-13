@@ -22,6 +22,11 @@ Check.args = {
   name: 'Check',
 }
 
+export const Email = Template.bind({})
+Email.args = {
+  name: 'Email',
+}
+
 export const Eye = Template.bind({})
 Eye.args = {
   name: 'Eye',
@@ -32,9 +37,34 @@ Github.args = {
   name: 'Github',
 }
 
+export const Lock = Template.bind({})
+Lock.args = {
+  name: 'Lock',
+}
+
+export const Logout = Template.bind({})
+Logout.args = {
+  name: 'Logout',
+}
+
+export const NavMenu = Template.bind({})
+NavMenu.args = {
+  name: 'NavMenu',
+}
+
 export const Pen = Template.bind({})
 Pen.args = {
   name: 'Pen',
+}
+
+export const Profile = Template.bind({})
+Profile.args = {
+  name: 'Profile',
+}
+
+export const Security = Template.bind({})
+Security.args = {
+  name: 'Security',
 }
 
 export const Twitter = Template.bind({})

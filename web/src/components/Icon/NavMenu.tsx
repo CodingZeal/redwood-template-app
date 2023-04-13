@@ -1,4 +1,4 @@
-interface IGear {
+interface INavMenu {
   className?: string
   height?: string
   width?: string
@@ -8,12 +8,12 @@ const NavMenu = ({
   className = '',
   height = '44',
   width = '44',
-}: IGear): JSX.Element => {
+}: INavMenu): JSX.Element => {
   return (
     <div className="flex h-8 flex-col">
       <svg
         className={className}
-        data-testid="hamburgerIcon"
+        data-testid="navmenuIcon"
         width={width}
         height={height}
         viewBox="0 0 34 4"
@@ -24,7 +24,7 @@ const NavMenu = ({
       </svg>
       <svg
         className={className}
-        data-testid="hamburgerIcon"
+        data-testid="navmenuIcon"
         width={width}
         height={height}
         viewBox="0 0 34 4"
@@ -35,7 +35,7 @@ const NavMenu = ({
       </svg>
       <svg
         className={className}
-        data-testid="hamburgerIcon"
+        data-testid="navmenuIcon"
         width={width}
         height={height}
         viewBox="0 0 34 4"
