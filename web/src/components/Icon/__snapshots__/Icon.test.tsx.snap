@@ -368,10 +368,10 @@ exports[`Icon matches the email icon snapshot 1`] = `
       <svg
         class=""
         data-testid="emailIcon"
-        fill="none"
-        height="40"
+        fill="currentColor"
+        height="16"
         viewBox="0 0 16 16"
-        width="40"
+        width="16"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
@@ -384,10 +384,10 @@ exports[`Icon matches the email icon snapshot 1`] = `
     <svg
       class=""
       data-testid="emailIcon"
-      fill="none"
-      height="40"
+      fill="currentColor"
+      height="16"
       viewBox="0 0 16 16"
-      width="40"
+      width="16"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -671,10 +671,10 @@ exports[`Icon matches the lock icon snapshot 1`] = `
       <svg
         class=""
         data-testid="lockIcon"
-        fill="none"
-        height="40"
+        fill="currentColor"
+        height="16"
         viewBox="0 0 16 16"
-        width="40"
+        width="16"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
@@ -687,10 +687,10 @@ exports[`Icon matches the lock icon snapshot 1`] = `
     <svg
       class=""
       data-testid="lockIcon"
-      fill="none"
-      height="40"
+      fill="currentColor"
+      height="16"
       viewBox="0 0 16 16"
-      width="40"
+      width="16"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -760,10 +760,10 @@ exports[`Icon matches the logout icon snapshot 1`] = `
       <svg
         class=""
         data-testid="logoutIcon"
-        fill="none"
-        height="40"
+        fill="currentColor"
+        height="16"
         viewBox="0 0 16 16"
-        width="40"
+        width="16"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
@@ -776,10 +776,10 @@ exports[`Icon matches the logout icon snapshot 1`] = `
     <svg
       class=""
       data-testid="logoutIcon"
-      fill="none"
-      height="40"
+      fill="currentColor"
+      height="16"
       viewBox="0 0 16 16"
-      width="40"
+      width="16"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -866,7 +866,6 @@ exports[`Icon matches the navmenu icon snapshot 1`] = `
         </svg>
         <svg
           class=""
-          data-testid="hamburgerIcon"
           fill="none"
           height="44"
           viewBox="0 0 34 4"
@@ -881,7 +880,6 @@ exports[`Icon matches the navmenu icon snapshot 1`] = `
         </svg>
         <svg
           class=""
-          data-testid="hamburgerIcon"
           fill="none"
           height="44"
           viewBox="0 0 34 4"
@@ -918,7 +916,6 @@ exports[`Icon matches the navmenu icon snapshot 1`] = `
       </svg>
       <svg
         class=""
-        data-testid="hamburgerIcon"
         fill="none"
         height="44"
         viewBox="0 0 34 4"
@@ -933,7 +930,6 @@ exports[`Icon matches the navmenu icon snapshot 1`] = `
       </svg>
       <svg
         class=""
-        data-testid="hamburgerIcon"
         fill="none"
         height="44"
         viewBox="0 0 34 4"
@@ -1101,10 +1097,10 @@ exports[`Icon matches the profile icon snapshot 1`] = `
       <svg
         class=""
         data-testid="profileIcon"
-        fill="none"
-        height="40"
+        fill="currentColor"
+        height="16"
         viewBox="0 0 16 16"
-        width="40"
+        width="16"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
@@ -1117,10 +1113,10 @@ exports[`Icon matches the profile icon snapshot 1`] = `
     <svg
       class=""
       data-testid="profileIcon"
-      fill="none"
-      height="40"
+      fill="currentColor"
+      height="16"
       viewBox="0 0 16 16"
-      width="40"
+      width="16"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -1190,10 +1186,10 @@ exports[`Icon matches the security icon snapshot 1`] = `
       <svg
         class=""
         data-testid="securityIcon"
-        fill="none"
-        height="40"
+        fill="currentColor"
+        height="16"
         viewBox="0 0 16 16"
-        width="40"
+        width="16"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
@@ -1206,10 +1202,10 @@ exports[`Icon matches the security icon snapshot 1`] = `
     <svg
       class=""
       data-testid="securityIcon"
-      fill="none"
-      height="40"
+      fill="currentColor"
+      height="16"
       viewBox="0 0 16 16"
-      width="40"
+      width="16"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

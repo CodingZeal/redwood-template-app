@@ -24,7 +24,6 @@ const NavMenu = ({
       </svg>
       <svg
         className={className}
-        data-testid="navmenuIcon"
         width={width}
         height={height}
         viewBox="0 0 34 4"
@@ -35,7 +34,6 @@ const NavMenu = ({
       </svg>
       <svg
         className={className}
-        data-testid="navmenuIcon"
         width={width}
         height={height}
         viewBox="0 0 34 4"

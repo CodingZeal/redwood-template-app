@@ -1,12 +1,13 @@
 import { useState } from 'react'
 
-import { navigate, NavLink, routes } from '@redwoodjs/router'
+import { NavLink, routes } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
 
 import { Avatar } from '../Avatar'
 import { NavMenu } from '../Icon/NavMenu'
 
+import { AvatarMenu } from './AvatarMenu/AvatarMenu'
 import { MobileMenu } from './MobileMenu/MobileMenu'
 
 const LinkItem = (props) => (
@@ -28,16 +29,14 @@ const Navigation = () => {
 }
 
 const DesktopNavigation = () => {
-  const { currentUser, hasRole, isAuthenticated, logOut } = useAuth()
+  const { currentUser, isAuthenticated } = useAuth()
 
-  const logoutHandler = () => {
-    logOut()
-    navigate(routes.home())
-  }
+  const [isAvatarMenuOpen, setisAvatarMenuOpen] = useState(false)
+
   return (
     <>
       <div
-        className="flex-col-2 border-#EEF2F6 flex h-20 w-full items-center
+        className="border-#EEF2F6 flex-col-2 flex h-20 w-full items-center
   border-b-2 border-neutral-300 py-3 px-10"
       >
         <div className="flex flex-row items-center">
@@ -48,7 +47,7 @@ const DesktopNavigation = () => {
           >
             LUMBERSTACK
           </LinkItem>
-          <div className="mx-10">
+          <div className="mx-10 flex">
             <a
               href="http://codingzeal.com"
               target="_blank"
@@ -73,45 +72,37 @@ const DesktopNavigation = () => {
             </LinkItem>
           </div>
         </div>
-        <ul className="ml-auto">
-          <div className="flex flex-row items-center justify-end">
-            {hasRole('super admin') && (
-              <LinkItem className="px-4" to={routes.adminUsers()}>
-                Admin
-              </LinkItem>
-            )}
-            {isAuthenticated ? (
-              <div className="ml-auto flex cursor-pointer items-center">
-                {isAuthenticated && currentUser && (
-                  <>
-                    <LinkItem className="px-4" to={routes.profile()}>
-                      Profile
-                    </LinkItem>
-                    <button className="px-4" onClick={logoutHandler}>
-                      Logout
-                    </button>
-                    <Avatar className="mx-1" user={currentUser} />
-                  </>
-                )}
-              </div>
-            ) : (
-              <div className="flex justify-end font-sans font-bold">
-                <LinkItem
-                  className="mx-4 flex h-12 w-28 items-center justify-center rounded-lg border-2 border-rustyOrange text-rustyOrange no-underline"
-                  to={routes.login()}
-                >
-                  Login
-                </LinkItem>
-                <LinkItem
-                  className="flex h-12 w-32 items-center justify-center rounded-lg border-2 border-rustyOrange bg-rustyOrange text-white no-underline"
-                  to={routes.signup()}
-                >
-                  Signup
-                </LinkItem>
-              </div>
-            )}
+        {isAuthenticated ? (
+          <div className="ml-auto flex">
+            <div className="relative top-[140px] left-16">
+              <AvatarMenu
+                isOpen={isAvatarMenuOpen}
+                toggleOpen={setisAvatarMenuOpen}
+              />
+            </div>
+            <button
+              className=""
+              onClick={() => setisAvatarMenuOpen(!isAvatarMenuOpen)}
+            >
+              <Avatar user={currentUser} />
+            </button>
           </div>
-        </ul>
+        ) : (
+          <div className="ml-auto flex font-sans font-bold">
+            <LinkItem
+              className="mx-4 flex h-12 w-28 items-center justify-center rounded-lg border-2 border-rustyOrange text-rustyOrange no-underline"
+              to={routes.login()}
+            >
+              Login
+            </LinkItem>
+            <LinkItem
+              className="flex h-12 w-32 items-center justify-center rounded-lg border-2 border-rustyOrange bg-rustyOrange text-white no-underline"
+              to={routes.signup()}
+            >
+              Signup
+            </LinkItem>
+          </div>
+        )}
       </div>
     </>
   )

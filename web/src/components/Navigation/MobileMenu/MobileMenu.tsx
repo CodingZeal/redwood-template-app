@@ -17,6 +17,7 @@ const MobileMenu = ({ isOpen, toggleOpen }) => {
   const logoutHandler = () => {
     logOut()
     navigate(routes.home())
+    toggleOpen(!isOpen)
   }
   const menuRef = useRef(null)
 

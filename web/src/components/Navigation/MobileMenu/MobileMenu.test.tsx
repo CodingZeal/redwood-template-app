@@ -16,7 +16,7 @@ describe('Navigation', () => {
   it('renders mobile navigation component', () => {
     mockCurrentUser({ id: 'foobar', name: 'FooBar' })
     render(<MobileMenu isOpen={mock} toggleOpen={mock} />)
-    const profile = screen.getByText('My Profile')
+    const profile = screen.getByText('Edit Profile')
     const logout = screen.getByText('Logout')
 
     expect(profile).toBeVisible()
