@@ -52,7 +52,7 @@ const MobileMenu = ({ isOpen, toggleOpen }) => {
       } fixed	 h-screen w-screen bg-rustyOrange font-sans text-2xl text-white`}
     >
       {hasRole('super admin') && (
-        <div className="flex h-1/3 flex-col border-b-2 border-[#D0722C] pt-5 pl-5">
+        <div className="flex h-1/4 flex-col border-b-2 border-[#D0722C] pt-5 pl-5">
           <LinkItem
             onClick={() => toggleOpen(!isOpen)}
             to={routes.adminUsers()}
@@ -74,7 +74,7 @@ const MobileMenu = ({ isOpen, toggleOpen }) => {
         </div>
       )}
 
-      <div className="flex h-1/4 flex-col border-b-2 border-[#D0722C] pt-5 pl-5">
+      <div className="flex h-1/4 flex-col border-b-2 border-[#D0722C] pt-4 pl-5">
         <a
           onClick={() => toggleOpen(!isOpen)}
           href="http://codingzeal.com"
@@ -98,10 +98,10 @@ const MobileMenu = ({ isOpen, toggleOpen }) => {
         </LinkItem>
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex h-1/4 flex-col">
         {isAuthenticated ? (
           <div className="cursor-pointer">
-            <div className="flex flex-col border-b-2 py-5 pl-5">
+            <div className="flex flex-col border-b-2 py-4 pl-5">
               {hasRole('super admin') && (
                 <LinkItem
                   onClick={() => toggleOpen(!isOpen)}
@@ -112,9 +112,21 @@ const MobileMenu = ({ isOpen, toggleOpen }) => {
               )}
               <LinkItem
                 onClick={() => toggleOpen(!isOpen)}
+                to={routes.editEmail()}
+              >
+                Edit Email
+              </LinkItem>
+              <LinkItem
+                onClick={() => toggleOpen(!isOpen)}
+                to={routes.editPassword()}
+              >
+                Edit Password
+              </LinkItem>
+              <LinkItem
+                onClick={() => toggleOpen(!isOpen)}
                 to={routes.profile()}
               >
-                My Profile
+                Edit Profile
               </LinkItem>
             </div>
             <div className="flex flex-row items-center pl-5 pt-5">
