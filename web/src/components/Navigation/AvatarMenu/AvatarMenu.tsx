@@ -55,8 +55,14 @@ const AvatarMenu = ({ isOpen, toggleOpen }) => {
         ref={avatarMenuRef}
         className={`${
           isOpen ? '' : 'hidden'
-        } shadow-[0px 2px 4px rgba(0, 0, 0, 0.25)] relative flex h-48 w-40 flex-col items-start justify-evenly rounded-lg border-[1px] bg-white font-sans text-sm`}
+        } relative flex h-48 w-40 flex-col items-start justify-evenly rounded-lg border-[1px] bg-white font-sans text-sm`}
       >
+        <span
+          ref={avatarMenuRef}
+          className={`${
+            isOpen ? '' : 'hidden'
+          } absolute left-[115.5px] -top-[22px] flex h-10 w-0 -rotate-90 border-t-4 border-l-4 border-b-4 border-l-white border-t-transparent border-b-transparent py-2`}
+        ></span>
         {hasRole('super admin') && (
           <Link
             className="group flex w-full py-1 px-4 text-blackBean hover:bg-rustyOrange"
