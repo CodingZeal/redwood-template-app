@@ -1,7 +1,6 @@
 import { getYear } from 'date-fns'
 
-import { Github } from '../Icon/Github'
-import { Twitter } from '../Icon/Twitter'
+import { Icon } from '../Icon'
 
 const getCurrentYear = (): string => {
   const year = getYear(new Date(Date.now())).toString()
@@ -20,19 +19,22 @@ const Footer = () => {
           <a
             href="http://codingzeal.com"
             target="_blank"
-            className="text-blackBean no-underline"
+            className="text-blackBean no-underline hover:underline"
             rel="noopener noreferrer"
           >
-            ZEAL LLC{' '}
+            ZEAL
           </a>
-          All rights reserved.
+          . All Rights Reserved.
         </div>
         <div className="flex flex-row justify-end">
-          <a href="/" className="">
-            <Twitter />
+          <a
+            href="https://twitter.com/codingzeal"
+            className="text-primary hover:text-black"
+          >
+            <Icon name="twitter" />
           </a>
-          <a href="/" className="">
-            <Github />
+          <a href="/" className="text-primary hover:text-black">
+            <Icon name="github" />
           </a>
         </div>
       </footer>

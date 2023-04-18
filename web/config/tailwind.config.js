@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        primary: '#BC611E',
         rustyOrange: '#BC611E',
         blackBean: '#371108',
         beige: '#FCF5F0',
@@ -13,6 +14,7 @@ module.exports = {
       fontFamily: {
         sans: ['Jost', 'sans-serif'],
         int: ['Inter', 'sans-serif'],
+        mono: ['Roboto Mono', 'monospace'],
       },
     },
   },
