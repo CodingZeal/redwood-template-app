@@ -21,28 +21,27 @@ function HomePage() {
             <p className="mb-5 text-xl ">
               You can{' '}
               <Link
-                className="border-b-2 border-rustyOrange font-bold text-rustyOrange"
+                className="border-b-2 border-rustyOrange font-bold text-rustyOrange hover:text-black"
                 to={routes.login()}
               >
-                login{' '}
-              </Link>
+                login
+              </Link>{' '}
               as an admin:
             </p>
-            <div className="border-1 my-8 flex h-24 w-full flex-col items-start justify-center bg-[#EFEFEF] px-5 text-lg">
+            <code className="border-1 text-mono my-8 flex h-24 w-full flex-col items-start justify-center bg-[#EFEFEF] px-5 text-lg">
               <p>Username: admin@example.com</p>
               <p>Password: password</p>
-            </div>
+            </code>
           </div>
 
           <div>
             <h3 className="mb-2 text-xl font-bold ">Create a New User</h3>
             <p className="mb-5 text-xl ">
-              You can create a new generic user by registering them on the
+              You can create a new generic user by registering them on the{' '}
               <Link
-                className="border-b-2 border-rustyOrange font-bold text-rustyOrange"
+                className="border-b-2 border-rustyOrange font-bold text-primary hover:text-black"
                 to={routes.signup()}
               >
-                {' '}
                 sign-up page
               </Link>
               .
