@@ -21,7 +21,11 @@
 }
 
 @layer components {
+  .nav-link {
+    @apply cursor-pointer p-2 no-underline;
+  }
 
+  .active-nav-link {}
 }
 
 @layer utilities {

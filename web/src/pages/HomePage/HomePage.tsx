@@ -28,6 +28,7 @@ function HomePage() {
               </Link>{' '}
               as an admin:
             </p>
+            {/* TODO: Replace with environmental variables */}
             <code className="border-1 text-mono my-8 flex h-24 w-full flex-col items-start justify-center bg-[#EFEFEF] px-5 text-lg">
               <p>Username: admin@example.com</p>
               <p>Password: password</p>

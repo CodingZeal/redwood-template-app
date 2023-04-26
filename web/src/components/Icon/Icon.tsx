@@ -7,7 +7,6 @@ import { Eye } from './Eye'
 import { Github } from './Github'
 import { Lock } from './Lock'
 import { Logout } from './Logout'
-import { NavMenu } from './NavMenu'
 import { Pen } from './Pen'
 import { Profile } from './Profile'
 import { Security } from './Security'
@@ -24,7 +23,6 @@ export interface IIcon {
     | 'github'
     | 'lock'
     | 'logout'
-    | 'navmenu'
     | 'pen'
     | 'profile'
     | 'security'
@@ -54,8 +52,6 @@ const Icon = ({ name, className = '', width, height }: IIcon): JSX.Element => {
       return <Lock className={className} width={width} height={height} />
     case 'logout':
       return <Logout className={className} width={width} height={height} />
-    case 'navmenu':
-      return <NavMenu className={className} width={width} height={height} />
     case 'pen':
       return <Pen className={className} width={width} height={height} />
     case 'profile':

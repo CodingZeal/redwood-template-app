@@ -99,16 +99,6 @@ describe('Icon', () => {
     expect(render(<Icon name="logout" />)).toMatchSnapshot()
   })
 
-  // navmenu icon
-  it('renders the navmenu icon', () => {
-    const { getByTestId } = render(<Icon name="navmenu" />)
-    expect(getByTestId('navmenuIcon')).toBeInTheDocument()
-  })
-
-  it('matches the navmenu icon snapshot', () => {
-    expect(render(<Icon name="navmenu" />)).toMatchSnapshot()
-  })
-
   // pen icon
   it('renders the pen icon', () => {
     const { getByTestId } = render(<Icon name="pen" />)
