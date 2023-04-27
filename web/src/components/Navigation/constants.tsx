@@ -15,8 +15,13 @@ const NAVIGATION = {
     },
   ],
   ADMIN: [
-    { name: 'Admin', path: () => routes.adminUsers() },
-    { name: 'My Profile', path: () => routes.profile() },
+    { name: 'Edit Email', path: () => routes.editEmail() },
+    { name: 'Edit Password', path: () => routes.editPassword() },
+    { name: 'Edit Profile', path: () => routes.profile() },
+  ],
+  AUTH: [
+    { name: 'Login', path: () => routes.login() },
+    { name: 'Signup', path: () => routes.signup() },
   ],
 }
 

@@ -1,7 +1,7 @@
-import { NavLink } from '@redwoodjs/router'
+import { Link } from '@redwoodjs/router'
 
 interface LinkItemProps {
-  linkClass: string
+  linkClass?: string
   path: string | (() => string)
   name: string
   handleClick?: () => void
@@ -25,9 +25,9 @@ const LinkItem = ({
           {name}
         </a>
       ) : (
-        <NavLink activeClassName="" onClick={handleClick} to={path()}>
+        <Link className={linkClass} onClick={handleClick} to={path()}>
           {name}
-        </NavLink>
+        </Link>
       )}
     </li>
   )

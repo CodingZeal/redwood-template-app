@@ -1,21 +1,19 @@
 import { routes } from '@redwoodjs/router'
 import { mockCurrentUser, render, screen } from '@redwoodjs/testing/web'
 
-import { MobileMenu } from './MobileMenu'
+import { MobileNavigation } from './MobileNavigation'
 
-describe('Navigation', () => {
-  const mock = jest.fn()
-
+describe('MobileNavigation', () => {
   it('renders mobile navigation component', () => {
     mockCurrentUser({ id: 'foobar', name: 'FooBar' })
 
-    render(<MobileMenu isOpen={mock} toggleOpen={mock} />)
-    expect(screen.getByTestId('mobileMenu')).toBeInTheDocument()
+    render(<MobileNavigation />)
+    expect(screen.getByTestId('mobileNav')).toBeInTheDocument()
   })
 
   it('renders mobile navigation component', () => {
     mockCurrentUser({ id: 'foobar', name: 'FooBar' })
-    render(<MobileMenu isOpen={mock} toggleOpen={mock} />)
+    render(<MobileNavigation />)
     const profile = screen.getByText('Edit Profile')
     const logout = screen.getByText('Logout')
 
