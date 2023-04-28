@@ -21,19 +21,19 @@ const DesktopNavigation = () => {
 
   return (
     <div
-      className="border-#EEF2F6 flex-col-2 flex h-20 w-full items-center
-  border-b-2 border-neutral-300 py-3 px-10"
+      className="border-#EEF2F6 flex h-20 items-center
+  justify-between border-b-2 border-neutral-300 py-3 px-10"
     >
-      <div className="flex flex-row items-center">
+      <div className="flex items-center justify-between">
         <Link
           data-testid="home"
-          className="mx-2 font-sans text-4xl font-bold text-rustyOrange no-underline"
+          className="font-sans text-4xl font-bold text-rustyOrange no-underline"
           to={routes.home()}
         >
           LUMBERSTACK
         </Link>
         <nav>
-          <ul className="mx-10 flex">
+          <ul className="flex">
             {NAVIGATION.DOCUMENTATION.map((item, index) => (
               <LinkItem
                 key={index}
@@ -58,7 +58,7 @@ const DesktopNavigation = () => {
           </button>
         </div>
       ) : (
-        <div className="ml-auto flex font-sans font-bold">
+        <div className="flex font-sans font-bold">
           <Link
             className="mx-4 flex h-12 w-28 items-center justify-center rounded-lg border-2 border-rustyOrange text-rustyOrange no-underline"
             to={routes.login()}

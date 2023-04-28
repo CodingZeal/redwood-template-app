@@ -49,7 +49,7 @@ const EditPasswordForm = ({ error, loading, onSave }) => {
 
         <Label
           name="newPassword"
-          className="rw-label"
+          className="rw-label text-blackBean"
           errorClassName="rw-label rw-label-error"
         >
           New Password

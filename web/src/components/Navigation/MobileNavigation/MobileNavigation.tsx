@@ -93,11 +93,11 @@ const MobileMenu = ({ isOpen, toggleOpen }) => {
       ref={menuRef}
       className={`${
         isOpen ? '' : 'hidden'
-      } fixed h-screen w-screen bg-rustyOrange font-sans text-2xl text-white`}
+      } fixed h-screen w-screen overflow-hidden bg-rustyOrange font-sans text-2xl text-white`}
     >
       {hasRole('super admin') && (
         <nav className="border-b-2 border-[#D0722C] py-4 pl-5">
-          <ul>
+          <ul className="flex h-40 flex-col justify-evenly">
             {NAVIGATION.SCHEMAS.map((item, index) => (
               <LinkItem
                 handleClick={() => toggleOpen(!isOpen)}
@@ -112,7 +112,7 @@ const MobileMenu = ({ isOpen, toggleOpen }) => {
       )}
 
       <nav className="border-b-2 border-[#D0722C] py-4 pl-5">
-        <ul>
+        <ul className="flex h-40 flex-col justify-evenly">
           {NAVIGATION.DOCUMENTATION.map((item, index) => (
             <LinkItem
               handleClick={() => toggleOpen(!isOpen)}
@@ -139,7 +139,7 @@ const MobileMenu = ({ isOpen, toggleOpen }) => {
                   </Link>
                 )}
                 <nav>
-                  <ul>
+                  <ul className="flex h-40 flex-col justify-evenly">
                     {NAVIGATION.ADMIN.map((item, index) => (
                       <LinkItem
                         handleClick={() => toggleOpen(!isOpen)}
@@ -169,7 +169,7 @@ const MobileMenu = ({ isOpen, toggleOpen }) => {
             </>
           ) : (
             <nav className="pl-5">
-              <ul>
+              <ul className="flex h-32 flex-col justify-evenly">
                 {NAVIGATION.AUTH.map((item, index) => (
                   <LinkItem
                     handleClick={() => toggleOpen(!isOpen)}
