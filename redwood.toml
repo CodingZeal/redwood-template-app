@@ -6,12 +6,13 @@
 # https://redwoodjs.com/docs/app-configuration-redwood-toml
 
 [web]
+  bundler = "webpack" # You can choose to run with vite instead of webpack
   title = "${APP_NAME}"
   port = "${PORT:8910}"
   apiUrl = "/.redwood/functions"
   host = "${HOST:localhost}"
 [api]
-  port = 8911
+  port = 8912
   host = "${HOST:localhost}"
 [browser]
   open = false
