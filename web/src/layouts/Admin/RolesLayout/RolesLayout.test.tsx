@@ -26,7 +26,7 @@ describe('RolesLayout', () => {
 
   it('Has link to add new role form', () => {
     renderComponent({ children })
-    expect(screen.getByText('New Role')).toHaveAttribute(
+    expect(screen.getByTestId('role-add')).toHaveAttribute(
       'href',
       routes.adminNewRole()
     )

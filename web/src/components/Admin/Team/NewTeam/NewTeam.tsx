@@ -28,13 +28,9 @@ const NewTeam = () => {
   }
 
   return (
-    <div className="rw-segment">
-      <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">New Team</h2>
-      </header>
-      <div className="rw-segment-main">
-        <TeamForm onSave={onSave} loading={loading} error={error} />
-      </div>
+    <div className="flex max-w-[500px] flex-col text-blackBean">
+      <h2 className="my-5 font-sans text-2xl font-bold">New Team</h2>
+      <TeamForm onSave={onSave} loading={loading} error={error} />
     </div>
   )
 }

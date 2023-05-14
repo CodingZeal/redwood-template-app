@@ -5,6 +5,8 @@ import { navigate, routes } from '@redwoodjs/router'
 import { MetaTags, useMutation } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
 
+import { ZealLogo } from 'src/components/ZealLogo'
+
 const VERIFY_RESET_MUTATION = gql`
   mutation VerificationResetMutation($email: String!) {
     email: verifyReset(email: $email)
@@ -37,55 +39,50 @@ const VerificationResetPage = ({ email }) => {
     <>
       <MetaTags title="Forgot Password" />
 
-      <main className="rw-main">
-        <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-        <div className="rw-scaffold rw-login-container">
-          <div className="rw-segment">
-            <header className="rw-segment-header">
-              <h2 className="rw-heading rw-heading-secondary">
-                Resend Verification Email
-              </h2>
-            </header>
+      <div className="grid w-full grid-cols-2 py-10">
+        <main className="font-sn m-auto w-[410px]">
+          <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
+          <div className="text-blackBean">
+            <h2 className="font-sans text-[80px] leading-none">
+              Resend Verification Email
+            </h2>
 
-            <div className="rw-segment-main">
-              <div className="rw-form-wrapper">
-                <Form onSubmit={onSubmit} className="rw-form-wrapper">
-                  <div className="text-left">
-                    <Label
-                      name="email"
-                      className="rw-label"
-                      errorClassName="rw-label rw-label-error"
-                    >
-                      Email
-                    </Label>
-                    <TextField
-                      name="email"
-                      className="rw-input"
-                      errorClassName="rw-input rw-input-error"
-                      defaultValue={email}
-                      ref={emailRef}
-                      validation={{
-                        required: true,
-                      }}
-                    />
+            <Form onSubmit={onSubmit} className="rw-form-wrapper">
+              <div className="text-left">
+                <Label
+                  name="email"
+                  className="rw-label text-blackBean"
+                  errorClassName="rw-label rw-label-error"
+                >
+                  Email
+                </Label>
+                <TextField
+                  name="email"
+                  className="rw-input"
+                  errorClassName="rw-input rw-input-error"
+                  defaultValue={email}
+                  ref={emailRef}
+                  validation={{
+                    required: true,
+                  }}
+                />
 
-                    <FieldError name="email" className="rw-field-error" />
-                  </div>
-
-                  <div className="rw-button-group">
-                    <Submit
-                      disabled={loading}
-                      className="rw-button rw-button-blue"
-                    >
-                      Send Email
-                    </Submit>
-                  </div>
-                </Form>
+                <FieldError name="email" className="rw-field-error" />
               </div>
-            </div>
+
+              <Submit
+                disabled={loading}
+                className="my-5 h-12 w-full rounded-lg bg-rustyOrange text-white"
+              >
+                Send Email
+              </Submit>
+            </Form>
           </div>
+        </main>
+        <div className="mx-5">
+          <ZealLogo />
         </div>
-      </main>
+      </div>
     </>
   )
 }

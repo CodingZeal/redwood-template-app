@@ -13,6 +13,8 @@ import { toast, Toaster } from '@redwoodjs/web/toast'
 
 import { useAuth } from 'src/auth'
 
+import { ZealLogo } from '../ZealLogo'
+
 const ResetPassword = ({ resetToken, title, message }) => {
   const { isAuthenticated, reauthenticate, validateResetToken, resetPassword } =
     useAuth()
@@ -61,58 +63,51 @@ const ResetPassword = ({ resetToken, title, message }) => {
   return (
     <>
       <MetaTags title="Reset Password" />
+      <div className="grid w-full grid-cols-2 items-start py-10">
+        <main className="font-inter m-auto w-[410px]">
+          <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
+          <div className="text-blackBean">
+            <h2 className="font-sans text-[90px] font-bold leading-none">
+              {title}
+            </h2>
 
-      <main className="rw-main">
-        <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-        <div className="rw-scaffold rw-login-container">
-          <div className="rw-segment">
-            <header className="rw-segment-header">
-              <h2 className="rw-heading rw-heading-secondary">{title}</h2>
-            </header>
+            <Form onSubmit={onSubmit}>
+              <Label
+                name="password"
+                className="rw-label text-blackBean"
+                errorClassName="rw-label rw-label-error"
+              >
+                {message}
+              </Label>
+              <PasswordField
+                name="password"
+                autoComplete="new-password"
+                className="rw-input"
+                errorClassName="rw-input rw-input-error"
+                disabled={!enabled}
+                ref={passwordRef}
+                validation={{
+                  required: {
+                    value: true,
+                    message: 'Password is required',
+                  },
+                }}
+              />
 
-            <div className="rw-segment-main">
-              <div className="rw-form-wrapper">
-                <Form onSubmit={onSubmit} className="rw-form-wrapper">
-                  <div className="text-left">
-                    <Label
-                      name="password"
-                      className="rw-label"
-                      errorClassName="rw-label rw-label-error"
-                    >
-                      {message}
-                    </Label>
-                    <PasswordField
-                      name="password"
-                      autoComplete="new-password"
-                      className="rw-input"
-                      errorClassName="rw-input rw-input-error"
-                      disabled={!enabled}
-                      ref={passwordRef}
-                      validation={{
-                        required: {
-                          value: true,
-                          message: 'Password is required',
-                        },
-                      }}
-                    />
-
-                    <FieldError name="password" className="rw-field-error" />
-                  </div>
-
-                  <div className="rw-button-group">
-                    <Submit
-                      className="rw-button rw-button-blue"
-                      disabled={!enabled}
-                    >
-                      Submit
-                    </Submit>
-                  </div>
-                </Form>
-              </div>
-            </div>
+              <FieldError name="password" className="rw-field-error" />
+              <Submit
+                disabled={!enabled}
+                className="my-5 h-12 w-full rounded-lg bg-rustyOrange font-sans text-lg font-bold text-white"
+              >
+                Reset Password
+              </Submit>
+            </Form>
           </div>
+        </main>
+        <div className="mx-5">
+          <ZealLogo />
         </div>
-      </main>
+      </div>
     </>
   )
 }

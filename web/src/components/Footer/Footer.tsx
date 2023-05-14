@@ -1,5 +1,7 @@
 import { getYear } from 'date-fns'
 
+import { Icon } from '../Icon'
+
 const getCurrentYear = (): string => {
   const year = getYear(new Date(Date.now())).toString()
   return year
@@ -7,21 +9,34 @@ const getCurrentYear = (): string => {
 
 const Footer = () => {
   return (
-    <div>
+    <div className="static m-10 border-t-2">
       <footer
-        className="text-center text-sm italic text-gray-500"
+        className="grid grid-cols-2 justify-start py-5 font-int text-base text-blackBean"
         data-testid="copyright"
       >
-        Copyright &copy;{getCurrentYear()}.{' '}
-        <a
-          href="http://codingzeal.com"
-          target="_blank"
-          className="underline"
-          rel="noopener noreferrer"
-        >
-          Coding ZEAL
-        </a>
-        . All Rights Reserved.
+        <div>
+          Copyright &copy;{getCurrentYear()}{' '}
+          <a
+            href="http://codingzeal.com"
+            target="_blank"
+            className="text-blackBean no-underline hover:underline"
+            rel="noopener noreferrer"
+          >
+            ZEAL
+          </a>
+          . All Rights Reserved.
+        </div>
+        <div className="flex flex-row justify-end">
+          <a
+            href="https://twitter.com/codingzeal"
+            className="text-primary hover:text-black"
+          >
+            <Icon name="twitter" />
+          </a>
+          <a href="/" className="text-primary hover:text-black">
+            <Icon name="github" />
+          </a>
+        </div>
       </footer>
     </div>
   )

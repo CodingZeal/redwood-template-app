@@ -1,0 +1,1391 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon matches the addition icon snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <svg
+        class=""
+        data-testid="additionIcon"
+        fill="none"
+        height="40"
+        viewBox="0 0 44 44"
+        width="40"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M30.4611 23.6923H23.6919V30.4616C23.6919 30.9104 23.5136 31.3408 23.1962 31.6582C22.8788 31.9756 22.4484 32.1539 21.9995 32.1539C21.5507 32.1539 21.1203 31.9756 20.8029 31.6582C20.4855 31.3408 20.3072 30.9104 20.3072 30.4616V23.6923H13.538C13.0892 23.6923 12.6587 23.514 12.3414 23.1967C12.024 22.8793 11.8457 22.4489 11.8457 22C11.8457 21.5512 12.024 21.1208 12.3414 20.8034C12.6587 20.486 13.0892 20.3077 13.538 20.3077H20.3072V13.5385C20.3072 13.0897 20.4855 12.6592 20.8029 12.3419C21.1203 12.0245 21.5507 11.8462 21.9995 11.8462C22.4484 11.8462 22.8788 12.0245 23.1962 12.3419C23.5136 12.6592 23.6919 13.0897 23.6919 13.5385V20.3077H30.4611C30.9099 20.3077 31.3404 20.486 31.6577 20.8034C31.9751 21.1208 32.1534 21.5512 32.1534 22C32.1534 22.4489 31.9751 22.8793 31.6577 23.1967C31.3404 23.514 30.9099 23.6923 30.4611 23.6923Z"
+        />
+      </svg>
+    </div>
+  </body>,
+  "container": <div>
+    <svg
+      class=""
+      data-testid="additionIcon"
+      fill="none"
+      height="40"
+      viewBox="0 0 44 44"
+      width="40"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M30.4611 23.6923H23.6919V30.4616C23.6919 30.9104 23.5136 31.3408 23.1962 31.6582C22.8788 31.9756 22.4484 32.1539 21.9995 32.1539C21.5507 32.1539 21.1203 31.9756 20.8029 31.6582C20.4855 31.3408 20.3072 30.9104 20.3072 30.4616V23.6923H13.538C13.0892 23.6923 12.6587 23.514 12.3414 23.1967C12.024 22.8793 11.8457 22.4489 11.8457 22C11.8457 21.5512 12.024 21.1208 12.3414 20.8034C12.6587 20.486 13.0892 20.3077 13.538 20.3077H20.3072V13.5385C20.3072 13.0897 20.4855 12.6592 20.8029 12.3419C21.1203 12.0245 21.5507 11.8462 21.9995 11.8462C22.4484 11.8462 22.8788 12.0245 23.1962 12.3419C23.5136 12.6592 23.6919 13.0897 23.6919 13.5385V20.3077H30.4611C30.9099 20.3077 31.3404 20.486 31.6577 20.8034C31.9751 21.1208 32.1534 21.5512 32.1534 22C32.1534 22.4489 31.9751 22.8793 31.6577 23.1967C31.3404 23.514 30.9099 23.6923 30.4611 23.6923Z"
+      />
+    </svg>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Icon matches the archive icon snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <svg
+        class=""
+        data-testid="archiveIcon"
+        fill="none"
+        height="40"
+        viewBox="0 0 40 40"
+        width="40"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M29.3027 12.7471H11.3027C10.9049 12.7471 10.5234 12.9051 10.2421 13.1864C9.96077 13.4677 9.80273 13.8492 9.80273 14.2471V16.4971C9.80273 16.8949 9.96077 17.2764 10.2421 17.5577C10.5234 17.839 10.9049 17.9971 11.3027 17.9971V26.2471C11.3027 26.6449 11.4608 27.0264 11.7421 27.3077C12.0234 27.589 12.4049 27.7471 12.8027 27.7471H27.8027C28.2006 27.7471 28.5821 27.589 28.8634 27.3077C29.1447 27.0264 29.3027 26.6449 29.3027 26.2471V17.9971C29.7006 17.9971 30.0821 17.839 30.3634 17.5577C30.6447 17.2764 30.8027 16.8949 30.8027 16.4971V14.2471C30.8027 13.8492 30.6447 13.4677 30.3634 13.1864C30.0821 12.9051 29.7006 12.7471 29.3027 12.7471ZM22.5527 21.7471H18.0527C17.8538 21.7471 17.6631 21.6681 17.5224 21.5274C17.3818 21.3867 17.3027 21.196 17.3027 20.9971C17.3027 20.7982 17.3818 20.6074 17.5224 20.4667C17.6631 20.3261 17.8538 20.2471 18.0527 20.2471H22.5527C22.7516 20.2471 22.9424 20.3261 23.0831 20.4667C23.2237 20.6074 23.3027 20.7982 23.3027 20.9971C23.3027 21.196 23.2237 21.3867 23.0831 21.5274C22.9424 21.6681 22.7516 21.7471 22.5527 21.7471ZM29.3027 16.4971H11.3027V14.2471H29.3027V16.4971Z"
+          fill="#2E3747"
+        />
+      </svg>
+    </div>
+  </body>,
+  "container": <div>
+    <svg
+      class=""
+      data-testid="archiveIcon"
+      fill="none"
+      height="40"
+      viewBox="0 0 40 40"
+      width="40"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M29.3027 12.7471H11.3027C10.9049 12.7471 10.5234 12.9051 10.2421 13.1864C9.96077 13.4677 9.80273 13.8492 9.80273 14.2471V16.4971C9.80273 16.8949 9.96077 17.2764 10.2421 17.5577C10.5234 17.839 10.9049 17.9971 11.3027 17.9971V26.2471C11.3027 26.6449 11.4608 27.0264 11.7421 27.3077C12.0234 27.589 12.4049 27.7471 12.8027 27.7471H27.8027C28.2006 27.7471 28.5821 27.589 28.8634 27.3077C29.1447 27.0264 29.3027 26.6449 29.3027 26.2471V17.9971C29.7006 17.9971 30.0821 17.839 30.3634 17.5577C30.6447 17.2764 30.8027 16.8949 30.8027 16.4971V14.2471C30.8027 13.8492 30.6447 13.4677 30.3634 13.1864C30.0821 12.9051 29.7006 12.7471 29.3027 12.7471ZM22.5527 21.7471H18.0527C17.8538 21.7471 17.6631 21.6681 17.5224 21.5274C17.3818 21.3867 17.3027 21.196 17.3027 20.9971C17.3027 20.7982 17.3818 20.6074 17.5224 20.4667C17.6631 20.3261 17.8538 20.2471 18.0527 20.2471H22.5527C22.7516 20.2471 22.9424 20.3261 23.0831 20.4667C23.2237 20.6074 23.3027 20.7982 23.3027 20.9971C23.3027 21.196 23.2237 21.3867 23.0831 21.5274C22.9424 21.6681 22.7516 21.7471 22.5527 21.7471ZM29.3027 16.4971H11.3027V14.2471H29.3027V16.4971Z"
+        fill="#2E3747"
+      />
+    </svg>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Icon matches the arrow icon snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <svg
+        class=""
+        data-testid="arrowIcon"
+        fill="none"
+        height="24"
+        viewBox="0 0 24 25"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M17.0306 13.0307L9.53063 20.5307C9.42573 20.6357 9.29204 20.7073 9.14648 20.7362C9.00092 20.7652 8.85002 20.7504 8.71291 20.6936C8.57579 20.6368 8.45861 20.5405 8.37621 20.4171C8.29381 20.2936 8.24988 20.1485 8.25 20.0001V5.0001C8.24988 4.85168 8.29381 4.70656 8.37621 4.58312C8.45861 4.45967 8.57579 4.36345 8.71291 4.30664C8.85002 4.24982 9.00092 4.23497 9.14648 4.26396C9.29204 4.29294 9.42573 4.36447 9.53063 4.46948L17.0306 11.9695C17.1004 12.0391 17.1557 12.1218 17.1934 12.2129C17.2312 12.3039 17.2506 12.4015 17.2506 12.5001C17.2506 12.5987 17.2312 12.6963 17.1934 12.7873C17.1557 12.8784 17.1004 12.9611 17.0306 13.0307Z"
+          fill="#371108"
+        />
+      </svg>
+    </div>
+  </body>,
+  "container": <div>
+    <svg
+      class=""
+      data-testid="arrowIcon"
+      fill="none"
+      height="24"
+      viewBox="0 0 24 25"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M17.0306 13.0307L9.53063 20.5307C9.42573 20.6357 9.29204 20.7073 9.14648 20.7362C9.00092 20.7652 8.85002 20.7504 8.71291 20.6936C8.57579 20.6368 8.45861 20.5405 8.37621 20.4171C8.29381 20.2936 8.24988 20.1485 8.25 20.0001V5.0001C8.24988 4.85168 8.29381 4.70656 8.37621 4.58312C8.45861 4.45967 8.57579 4.36345 8.71291 4.30664C8.85002 4.24982 9.00092 4.23497 9.14648 4.26396C9.29204 4.29294 9.42573 4.36447 9.53063 4.46948L17.0306 11.9695C17.1004 12.0391 17.1557 12.1218 17.1934 12.2129C17.2312 12.3039 17.2506 12.4015 17.2506 12.5001C17.2506 12.5987 17.2312 12.6963 17.1934 12.7873C17.1557 12.8784 17.1004 12.9611 17.0306 13.0307Z"
+        fill="#371108"
+      />
+    </svg>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Icon matches the check icon snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <svg
+        class=""
+        data-testid="checkIcon"
+        fill="none"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12.4234 18.57L5.83398 13.6279L7.77663 11.0377L11.5467 13.8662L17.0871 5L19.834 6.716L12.4234 18.57Z"
+        />
+      </svg>
+    </div>
+  </body>,
+  "container": <div>
+    <svg
+      class=""
+      data-testid="checkIcon"
+      fill="none"
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.4234 18.57L5.83398 13.6279L7.77663 11.0377L11.5467 13.8662L17.0871 5L19.834 6.716L12.4234 18.57Z"
+      />
+    </svg>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Icon matches the email icon snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <svg
+        class=""
+        data-testid="emailIcon"
+        fill="currentColor"
+        height="16"
+        viewBox="0 0 16 16"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M13.334 2.6665H2.66732C1.93398 2.6665 1.34065 3.2665 1.34065 3.99984L1.33398 11.9998C1.33398 12.7332 1.93398 13.3332 2.66732 13.3332H13.334C14.0673 13.3332 14.6673 12.7332 14.6673 11.9998V3.99984C14.6673 3.2665 14.0673 2.6665 13.334 2.6665ZM13.334 5.33317L8.00065 8.6665L2.66732 5.33317V3.99984L8.00065 7.33317L13.334 3.99984V5.33317Z"
+        />
+      </svg>
+    </div>
+  </body>,
+  "container": <div>
+    <svg
+      class=""
+      data-testid="emailIcon"
+      fill="currentColor"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M13.334 2.6665H2.66732C1.93398 2.6665 1.34065 3.2665 1.34065 3.99984L1.33398 11.9998C1.33398 12.7332 1.93398 13.3332 2.66732 13.3332H13.334C14.0673 13.3332 14.6673 12.7332 14.6673 11.9998V3.99984C14.6673 3.2665 14.0673 2.6665 13.334 2.6665ZM13.334 5.33317L8.00065 8.6665L2.66732 5.33317V3.99984L8.00065 7.33317L13.334 3.99984V5.33317Z"
+      />
+    </svg>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Icon matches the eye icon snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <svg
+        class=""
+        data-testid="eyeIcon"
+        fill="none"
+        height="44"
+        viewBox="0 0 44 44"
+        width="44"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M31.2576 19.9433C31.2248 19.8693 30.4307 18.1077 28.6654 16.3424C26.3132 13.9902 23.3423 12.7471 20.0723 12.7471C16.8023 12.7471 13.8313 13.9902 11.4791 16.3424C9.71382 18.1077 8.91601 19.8721 8.88694 19.9433C8.8443 20.0392 8.82227 20.143 8.82227 20.248C8.82227 20.353 8.8443 20.4568 8.88694 20.5527C8.91976 20.6268 9.71382 22.3874 11.4791 24.1527C13.8313 26.5039 16.8023 27.7471 20.0723 27.7471C23.3423 27.7471 26.3132 26.5039 28.6654 24.1527C30.4307 22.3874 31.2248 20.6268 31.2576 20.5527C31.3002 20.4568 31.3222 20.353 31.3222 20.248C31.3222 20.143 31.3002 20.0392 31.2576 19.9433ZM20.0723 23.9971C19.3306 23.9971 18.6056 23.7771 17.9889 23.3651C17.3722 22.953 16.8915 22.3674 16.6077 21.6821C16.3239 20.9969 16.2496 20.2429 16.3943 19.5155C16.539 18.7881 16.8962 18.1199 17.4206 17.5954C17.9451 17.071 18.6132 16.7138 19.3407 16.5691C20.0681 16.4244 20.8221 16.4987 21.5073 16.7825C22.1925 17.0664 22.7782 17.547 23.1903 18.1637C23.6023 18.7804 23.8223 19.5054 23.8223 20.2471C23.8223 21.2416 23.4272 22.1955 22.7239 22.8987C22.0206 23.602 21.0668 23.9971 20.0723 23.9971Z"
+          fill="#2E3747"
+        />
+      </svg>
+    </div>
+  </body>,
+  "container": <div>
+    <svg
+      class=""
+      data-testid="eyeIcon"
+      fill="none"
+      height="44"
+      viewBox="0 0 44 44"
+      width="44"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M31.2576 19.9433C31.2248 19.8693 30.4307 18.1077 28.6654 16.3424C26.3132 13.9902 23.3423 12.7471 20.0723 12.7471C16.8023 12.7471 13.8313 13.9902 11.4791 16.3424C9.71382 18.1077 8.91601 19.8721 8.88694 19.9433C8.8443 20.0392 8.82227 20.143 8.82227 20.248C8.82227 20.353 8.8443 20.4568 8.88694 20.5527C8.91976 20.6268 9.71382 22.3874 11.4791 24.1527C13.8313 26.5039 16.8023 27.7471 20.0723 27.7471C23.3423 27.7471 26.3132 26.5039 28.6654 24.1527C30.4307 22.3874 31.2248 20.6268 31.2576 20.5527C31.3002 20.4568 31.3222 20.353 31.3222 20.248C31.3222 20.143 31.3002 20.0392 31.2576 19.9433ZM20.0723 23.9971C19.3306 23.9971 18.6056 23.7771 17.9889 23.3651C17.3722 22.953 16.8915 22.3674 16.6077 21.6821C16.3239 20.9969 16.2496 20.2429 16.3943 19.5155C16.539 18.7881 16.8962 18.1199 17.4206 17.5954C17.9451 17.071 18.6132 16.7138 19.3407 16.5691C20.0681 16.4244 20.8221 16.4987 21.5073 16.7825C22.1925 17.0664 22.7782 17.547 23.1903 18.1637C23.6023 18.7804 23.8223 19.5054 23.8223 20.2471C23.8223 21.2416 23.4272 22.1955 22.7239 22.8987C22.0206 23.602 21.0668 23.9971 20.0723 23.9971Z"
+        fill="#2E3747"
+      />
+    </svg>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Icon matches the github icon snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <svg
+        class=""
+        data-testid="githubIcon"
+        fill="none"
+        height="44"
+        viewBox="0 0 44 44"
+        width="44"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g
+          clip-path="url(#clip0_69_1542)"
+        >
+          <path
+            d="M22 10C15.4 10 10 15.4 10 22C10 28.6 15.4 34 22 34C28.6 34 34 28.6 34 22C34 15.4 28.6 10 22 10ZM29.125 29.125C28.225 30.025 27.1 30.775 25.9 31.3C25.6 31.45 25.3 31.525 25 31.675V29.875C25 28.9 24.7 28.225 24.025 27.775C24.4 27.7 24.775 27.7 25.15 27.625C25.525 27.55 25.825 27.475 26.2 27.325C26.575 27.175 26.95 27.025 27.25 26.875C27.55 26.725 27.85 26.425 28.15 26.125C28.45 25.825 28.675 25.525 28.825 25.15C28.975 24.775 29.125 24.325 29.275 23.8C29.35 23.275 29.425 22.675 29.425 22.075C29.425 20.875 29.05 19.825 28.225 19C28.6 18.1 28.525 17.05 28.075 15.925H27.775C27.55 15.925 27.175 16 26.65 16.15C26.125 16.375 25.525 16.675 24.85 17.125C23.95 16.9 22.975 16.75 21.925 16.75C20.95 16.75 19.975 16.9 19.075 17.125C18.625 16.825 18.25 16.6 17.875 16.45C17.65 16.15 17.35 16.075 17.125 16C16.9 15.925 16.675 15.85 16.45 15.85C16.225 15.85 16.15 15.85 16.075 15.85C16 15.85 16 15.85 15.925 15.85C15.475 16.975 15.475 17.95 15.775 18.925C14.95 19.75 14.575 20.8 14.575 22C14.575 22.6 14.65 23.2 14.725 23.725C14.8 24.25 14.95 24.7 15.175 25.075C15.325 25.45 15.625 25.75 15.85 26.05C16.15 26.35 16.45 26.575 16.75 26.8C17.05 26.95 17.425 27.175 17.8 27.25C18.175 27.4 18.55 27.475 18.85 27.55C19.225 27.625 19.6 27.7 19.975 27.7C19.3 28.15 19 28.825 19 29.8V31.6C18.625 31.525 18.325 31.375 17.95 31.225C16.75 30.7 15.7 30.025 14.725 29.05C13.825 28.15 13.075 27.025 12.55 25.825C12.025 24.55 11.725 23.275 11.725 21.925C11.725 20.575 12.025 19.225 12.55 18.025C13.075 16.825 13.75 15.775 14.725 14.8C15.625 13.9 16.75 13.15 17.95 12.625C19.225 12.1 20.5 11.8 21.85 11.8C23.2 11.8 24.55 12.1 25.75 12.625C26.95 13.15 28 13.825 28.975 14.8C29.875 15.7 30.625 16.825 31.15 18.025C31.675 19.3 31.975 20.575 31.975 21.925C31.975 23.275 31.675 24.625 31.15 25.825C30.775 27.1 30.025 28.225 29.125 29.125Z"
+            fill="#BC611E"
+          />
+        </g>
+        <defs>
+          <clippath
+            id="clip0_69_1542"
+          >
+            <rect
+              fill="white"
+              height="24"
+              transform="translate(10 10)"
+              width="24"
+            />
+          </clippath>
+        </defs>
+      </svg>
+    </div>
+  </body>,
+  "container": <div>
+    <svg
+      class=""
+      data-testid="githubIcon"
+      fill="none"
+      height="44"
+      viewBox="0 0 44 44"
+      width="44"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        clip-path="url(#clip0_69_1542)"
+      >
+        <path
+          d="M22 10C15.4 10 10 15.4 10 22C10 28.6 15.4 34 22 34C28.6 34 34 28.6 34 22C34 15.4 28.6 10 22 10ZM29.125 29.125C28.225 30.025 27.1 30.775 25.9 31.3C25.6 31.45 25.3 31.525 25 31.675V29.875C25 28.9 24.7 28.225 24.025 27.775C24.4 27.7 24.775 27.7 25.15 27.625C25.525 27.55 25.825 27.475 26.2 27.325C26.575 27.175 26.95 27.025 27.25 26.875C27.55 26.725 27.85 26.425 28.15 26.125C28.45 25.825 28.675 25.525 28.825 25.15C28.975 24.775 29.125 24.325 29.275 23.8C29.35 23.275 29.425 22.675 29.425 22.075C29.425 20.875 29.05 19.825 28.225 19C28.6 18.1 28.525 17.05 28.075 15.925H27.775C27.55 15.925 27.175 16 26.65 16.15C26.125 16.375 25.525 16.675 24.85 17.125C23.95 16.9 22.975 16.75 21.925 16.75C20.95 16.75 19.975 16.9 19.075 17.125C18.625 16.825 18.25 16.6 17.875 16.45C17.65 16.15 17.35 16.075 17.125 16C16.9 15.925 16.675 15.85 16.45 15.85C16.225 15.85 16.15 15.85 16.075 15.85C16 15.85 16 15.85 15.925 15.85C15.475 16.975 15.475 17.95 15.775 18.925C14.95 19.75 14.575 20.8 14.575 22C14.575 22.6 14.65 23.2 14.725 23.725C14.8 24.25 14.95 24.7 15.175 25.075C15.325 25.45 15.625 25.75 15.85 26.05C16.15 26.35 16.45 26.575 16.75 26.8C17.05 26.95 17.425 27.175 17.8 27.25C18.175 27.4 18.55 27.475 18.85 27.55C19.225 27.625 19.6 27.7 19.975 27.7C19.3 28.15 19 28.825 19 29.8V31.6C18.625 31.525 18.325 31.375 17.95 31.225C16.75 30.7 15.7 30.025 14.725 29.05C13.825 28.15 13.075 27.025 12.55 25.825C12.025 24.55 11.725 23.275 11.725 21.925C11.725 20.575 12.025 19.225 12.55 18.025C13.075 16.825 13.75 15.775 14.725 14.8C15.625 13.9 16.75 13.15 17.95 12.625C19.225 12.1 20.5 11.8 21.85 11.8C23.2 11.8 24.55 12.1 25.75 12.625C26.95 13.15 28 13.825 28.975 14.8C29.875 15.7 30.625 16.825 31.15 18.025C31.675 19.3 31.975 20.575 31.975 21.925C31.975 23.275 31.675 24.625 31.15 25.825C30.775 27.1 30.025 28.225 29.125 29.125Z"
+          fill="#BC611E"
+        />
+      </g>
+      <defs>
+        <clippath
+          id="clip0_69_1542"
+        >
+          <rect
+            fill="white"
+            height="24"
+            transform="translate(10 10)"
+            width="24"
+          />
+        </clippath>
+      </defs>
+    </svg>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Icon matches the lock icon snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <svg
+        class=""
+        data-testid="lockIcon"
+        fill="currentColor"
+        height="16"
+        viewBox="0 0 16 16"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M11.9993 5.33317H11.3327V3.99984C11.3327 2.15984 9.83935 0.666504 7.99935 0.666504C6.15935 0.666504 4.66602 2.15984 4.66602 3.99984V5.33317H3.99935C3.26602 5.33317 2.66602 5.93317 2.66602 6.6665V13.3332C2.66602 14.0665 3.26602 14.6665 3.99935 14.6665H11.9993C12.7327 14.6665 13.3327 14.0665 13.3327 13.3332V6.6665C13.3327 5.93317 12.7327 5.33317 11.9993 5.33317ZM5.99935 3.99984C5.99935 2.89317 6.89268 1.99984 7.99935 1.99984C9.10602 1.99984 9.99935 2.89317 9.99935 3.99984V5.33317H5.99935V3.99984ZM11.9993 13.3332H3.99935V6.6665H11.9993V13.3332ZM7.99935 11.3332C8.73268 11.3332 9.33268 10.7332 9.33268 9.99984C9.33268 9.2665 8.73268 8.6665 7.99935 8.6665C7.26602 8.6665 6.66602 9.2665 6.66602 9.99984C6.66602 10.7332 7.26602 11.3332 7.99935 11.3332Z"
+        />
+      </svg>
+    </div>
+  </body>,
+  "container": <div>
+    <svg
+      class=""
+      data-testid="lockIcon"
+      fill="currentColor"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M11.9993 5.33317H11.3327V3.99984C11.3327 2.15984 9.83935 0.666504 7.99935 0.666504C6.15935 0.666504 4.66602 2.15984 4.66602 3.99984V5.33317H3.99935C3.26602 5.33317 2.66602 5.93317 2.66602 6.6665V13.3332C2.66602 14.0665 3.26602 14.6665 3.99935 14.6665H11.9993C12.7327 14.6665 13.3327 14.0665 13.3327 13.3332V6.6665C13.3327 5.93317 12.7327 5.33317 11.9993 5.33317ZM5.99935 3.99984C5.99935 2.89317 6.89268 1.99984 7.99935 1.99984C9.10602 1.99984 9.99935 2.89317 9.99935 3.99984V5.33317H5.99935V3.99984ZM11.9993 13.3332H3.99935V6.6665H11.9993V13.3332ZM7.99935 11.3332C8.73268 11.3332 9.33268 10.7332 9.33268 9.99984C9.33268 9.2665 8.73268 8.6665 7.99935 8.6665C7.26602 8.6665 6.66602 9.2665 6.66602 9.99984C6.66602 10.7332 7.26602 11.3332 7.99935 11.3332Z"
+      />
+    </svg>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Icon matches the logout icon snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <svg
+        class=""
+        data-testid="logoutIcon"
+        fill="currentColor"
+        height="16"
+        viewBox="0 0 16 16"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M11.334 4.66667L10.394 5.60667L12.114 7.33333H5.33398V8.66667H12.114L10.394 10.3867L11.334 11.3333L14.6673 8L11.334 4.66667ZM2.66732 3.33333H8.00065V2H2.66732C1.93398 2 1.33398 2.6 1.33398 3.33333V12.6667C1.33398 13.4 1.93398 14 2.66732 14H8.00065V12.6667H2.66732V3.33333Z"
+        />
+      </svg>
+    </div>
+  </body>,
+  "container": <div>
+    <svg
+      class=""
+      data-testid="logoutIcon"
+      fill="currentColor"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M11.334 4.66667L10.394 5.60667L12.114 7.33333H5.33398V8.66667H12.114L10.394 10.3867L11.334 11.3333L14.6673 8L11.334 4.66667ZM2.66732 3.33333H8.00065V2H2.66732C1.93398 2 1.33398 2.6 1.33398 3.33333V12.6667C1.33398 13.4 1.93398 14 2.66732 14H8.00065V12.6667H2.66732V3.33333Z"
+      />
+    </svg>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Icon matches the navmenu icon snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="flex h-8 flex-col"
+      >
+        <svg
+          class=""
+          data-testid="navmenuIcon"
+          fill="none"
+          height="44"
+          viewBox="0 0 34 4"
+          width="44"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            fill="#BC611E"
+            height="4"
+            width="34"
+          />
+        </svg>
+        <svg
+          class=""
+          fill="none"
+          height="44"
+          viewBox="0 0 34 4"
+          width="44"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            fill="#BC611E"
+            height="4"
+            width="34"
+          />
+        </svg>
+        <svg
+          class=""
+          fill="none"
+          height="44"
+          viewBox="0 0 34 4"
+          width="44"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            fill="#BC611E"
+            height="4"
+            width="34"
+          />
+        </svg>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="flex h-8 flex-col"
+    >
+      <svg
+        class=""
+        data-testid="navmenuIcon"
+        fill="none"
+        height="44"
+        viewBox="0 0 34 4"
+        width="44"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          fill="#BC611E"
+          height="4"
+          width="34"
+        />
+      </svg>
+      <svg
+        class=""
+        fill="none"
+        height="44"
+        viewBox="0 0 34 4"
+        width="44"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          fill="#BC611E"
+          height="4"
+          width="34"
+        />
+      </svg>
+      <svg
+        class=""
+        fill="none"
+        height="44"
+        viewBox="0 0 34 4"
+        width="44"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          fill="#BC611E"
+          height="4"
+          width="34"
+        />
+      </svg>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Icon matches the pen icon snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <svg
+        class=""
+        data-testid="penIcon"
+        fill="none"
+        height="40"
+        viewBox="0 0 40 40"
+        width="40"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M29.5369 15.1252L25.3481 10.9356C25.2088 10.7962 25.0435 10.6857 24.8615 10.6103C24.6794 10.5349 24.4844 10.4961 24.2874 10.4961C24.0903 10.4961 23.8953 10.5349 23.7132 10.6103C23.5312 10.6857 23.3659 10.7962 23.2266 10.9356L11.6663 22.4968C11.5264 22.6356 11.4155 22.8008 11.34 22.9828C11.2645 23.1648 11.2259 23.3601 11.2266 23.5571V27.7468C11.2266 28.1446 11.3846 28.5262 11.6659 28.8075C11.9472 29.0888 12.3287 29.2468 12.7266 29.2468H16.9163C17.1133 29.2474 17.3085 29.2089 17.4906 29.1334C17.6726 29.0579 17.8378 28.947 17.9766 28.8071L29.5369 17.2468C29.6762 17.1075 29.7867 16.9421 29.8621 16.7601C29.9375 16.5781 29.9763 16.383 29.9763 16.186C29.9763 15.989 29.9375 15.7939 29.8621 15.6119C29.7867 15.4299 29.6762 15.2645 29.5369 15.1252ZM26.2266 18.4356L22.0369 14.2468L24.2869 11.9968L28.4766 16.1856L26.2266 18.4356Z"
+          fill="#2E3747"
+        />
+      </svg>
+    </div>
+  </body>,
+  "container": <div>
+    <svg
+      class=""
+      data-testid="penIcon"
+      fill="none"
+      height="40"
+      viewBox="0 0 40 40"
+      width="40"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M29.5369 15.1252L25.3481 10.9356C25.2088 10.7962 25.0435 10.6857 24.8615 10.6103C24.6794 10.5349 24.4844 10.4961 24.2874 10.4961C24.0903 10.4961 23.8953 10.5349 23.7132 10.6103C23.5312 10.6857 23.3659 10.7962 23.2266 10.9356L11.6663 22.4968C11.5264 22.6356 11.4155 22.8008 11.34 22.9828C11.2645 23.1648 11.2259 23.3601 11.2266 23.5571V27.7468C11.2266 28.1446 11.3846 28.5262 11.6659 28.8075C11.9472 29.0888 12.3287 29.2468 12.7266 29.2468H16.9163C17.1133 29.2474 17.3085 29.2089 17.4906 29.1334C17.6726 29.0579 17.8378 28.947 17.9766 28.8071L29.5369 17.2468C29.6762 17.1075 29.7867 16.9421 29.8621 16.7601C29.9375 16.5781 29.9763 16.383 29.9763 16.186C29.9763 15.989 29.9375 15.7939 29.8621 15.6119C29.7867 15.4299 29.6762 15.2645 29.5369 15.1252ZM26.2266 18.4356L22.0369 14.2468L24.2869 11.9968L28.4766 16.1856L26.2266 18.4356Z"
+        fill="#2E3747"
+      />
+    </svg>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Icon matches the profile icon snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <svg
+        class=""
+        data-testid="profileIcon"
+        fill="currentColor"
+        height="16"
+        viewBox="0 0 16 16"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7.99284 1.3335C4.31284 1.3335 1.32617 4.32016 1.32617 8.00016C1.32617 11.6802 4.31284 14.6668 7.99284 14.6668C11.6728 14.6668 14.6595 11.6802 14.6595 8.00016C14.6595 4.32016 11.6728 1.3335 7.99284 1.3335ZM10.3995 5.56016C11.1128 5.56016 11.6862 6.1335 11.6862 6.84683C11.6862 7.56016 11.1128 8.1335 10.3995 8.1335C9.68617 8.1335 9.11284 7.56016 9.11284 6.84683C9.10617 6.1335 9.68617 5.56016 10.3995 5.56016ZM6.39951 4.50683C7.26617 4.50683 7.97284 5.2135 7.97284 6.08016C7.97284 6.94683 7.26617 7.6535 6.39951 7.6535C5.53284 7.6535 4.82617 6.94683 4.82617 6.08016C4.82617 5.20683 5.52617 4.50683 6.39951 4.50683ZM6.39951 10.5935V13.0935C4.79951 12.5935 3.53284 11.3602 2.97284 9.78683C3.67284 9.04016 5.41951 8.66016 6.39951 8.66016C6.75284 8.66016 7.1995 8.7135 7.66617 8.80683C6.57284 9.38683 6.39951 10.1535 6.39951 10.5935ZM7.99284 13.3335C7.81284 13.3335 7.6395 13.3268 7.46617 13.3068V10.5935C7.46617 9.64683 9.42617 9.1735 10.3995 9.1735C11.1128 9.1735 12.3462 9.4335 12.9595 9.94016C12.1795 11.9202 10.2528 13.3335 7.99284 13.3335Z"
+        />
+      </svg>
+    </div>
+  </body>,
+  "container": <div>
+    <svg
+      class=""
+      data-testid="profileIcon"
+      fill="currentColor"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M7.99284 1.3335C4.31284 1.3335 1.32617 4.32016 1.32617 8.00016C1.32617 11.6802 4.31284 14.6668 7.99284 14.6668C11.6728 14.6668 14.6595 11.6802 14.6595 8.00016C14.6595 4.32016 11.6728 1.3335 7.99284 1.3335ZM10.3995 5.56016C11.1128 5.56016 11.6862 6.1335 11.6862 6.84683C11.6862 7.56016 11.1128 8.1335 10.3995 8.1335C9.68617 8.1335 9.11284 7.56016 9.11284 6.84683C9.10617 6.1335 9.68617 5.56016 10.3995 5.56016ZM6.39951 4.50683C7.26617 4.50683 7.97284 5.2135 7.97284 6.08016C7.97284 6.94683 7.26617 7.6535 6.39951 7.6535C5.53284 7.6535 4.82617 6.94683 4.82617 6.08016C4.82617 5.20683 5.52617 4.50683 6.39951 4.50683ZM6.39951 10.5935V13.0935C4.79951 12.5935 3.53284 11.3602 2.97284 9.78683C3.67284 9.04016 5.41951 8.66016 6.39951 8.66016C6.75284 8.66016 7.1995 8.7135 7.66617 8.80683C6.57284 9.38683 6.39951 10.1535 6.39951 10.5935ZM7.99284 13.3335C7.81284 13.3335 7.6395 13.3268 7.46617 13.3068V10.5935C7.46617 9.64683 9.42617 9.1735 10.3995 9.1735C11.1128 9.1735 12.3462 9.4335 12.9595 9.94016C12.1795 11.9202 10.2528 13.3335 7.99284 13.3335Z"
+      />
+    </svg>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Icon matches the security icon snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <svg
+        class=""
+        data-testid="securityIcon"
+        fill="currentColor"
+        height="16"
+        viewBox="0 0 16 16"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8 0.666504L2 3.33317V7.33317C2 11.0332 4.56 14.4932 8 15.3332C11.44 14.4932 14 11.0332 14 7.33317V3.33317L8 0.666504ZM8 7.99317H12.6667C12.3133 10.7398 10.48 13.1865 8 13.9532V7.99984H3.33333V4.19984L8 2.1265V7.99317Z"
+        />
+      </svg>
+    </div>
+  </body>,
+  "container": <div>
+    <svg
+      class=""
+      data-testid="securityIcon"
+      fill="currentColor"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 0.666504L2 3.33317V7.33317C2 11.0332 4.56 14.4932 8 15.3332C11.44 14.4932 14 11.0332 14 7.33317V3.33317L8 0.666504ZM8 7.99317H12.6667C12.3133 10.7398 10.48 13.1865 8 13.9532V7.99984H3.33333V4.19984L8 2.1265V7.99317Z"
+      />
+    </svg>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Icon matches the twitter icon snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <svg
+        class=""
+        data-testid="twitterIcon"
+        fill="none"
+        height="44"
+        viewBox="0 0 44 44"
+        width="44"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g
+          clip-path="url(#clip0_69_1540)"
+        >
+          <path
+            d="M34.0008 14.575C33.1008 14.95 32.2008 15.25 31.1508 15.325C32.2008 14.725 32.9508 13.75 33.3258 12.625C32.3508 13.225 31.3008 13.6 30.1758 13.825C29.3508 12.85 28.0008 12.25 26.6508 12.25C23.9508 12.25 21.7008 14.425 21.7008 17.2C21.7008 17.575 21.7758 17.95 21.8508 18.325C17.7258 18.1 14.1258 16.15 11.6508 13.15C11.2008 13.9 10.9758 14.725 10.9758 15.625C10.9758 17.35 11.8758 18.85 13.1508 19.75C12.3258 19.75 11.5758 19.525 10.9008 19.15V19.225C10.9008 21.625 12.6258 23.575 14.8758 24.025C14.4258 24.1 14.0508 24.175 13.6008 24.175C13.3008 24.175 13.0008 24.175 12.7008 24.1C13.3008 26.05 15.1758 27.475 17.2758 27.55C15.6258 28.9 13.4508 29.65 11.1258 29.65C10.7508 29.65 10.3008 29.65 9.92578 29.575C12.1008 31 14.7258 31.825 17.5008 31.825C26.5758 31.825 31.5258 24.325 31.5258 17.8C31.5258 17.575 31.5258 17.35 31.5258 17.2C32.5008 16.45 33.3258 15.55 34.0008 14.575Z"
+            fill="#BC611E"
+          />
+        </g>
+        <defs>
+          <clippath
+            id="clip0_69_1540"
+          >
+            <rect
+              fill="white"
+              height="24"
+              transform="translate(10 10)"
+              width="24"
+            />
+          </clippath>
+        </defs>
+      </svg>
+    </div>
+  </body>,
+  "container": <div>
+    <svg
+      class=""
+      data-testid="twitterIcon"
+      fill="none"
+      height="44"
+      viewBox="0 0 44 44"
+      width="44"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        clip-path="url(#clip0_69_1540)"
+      >
+        <path
+          d="M34.0008 14.575C33.1008 14.95 32.2008 15.25 31.1508 15.325C32.2008 14.725 32.9508 13.75 33.3258 12.625C32.3508 13.225 31.3008 13.6 30.1758 13.825C29.3508 12.85 28.0008 12.25 26.6508 12.25C23.9508 12.25 21.7008 14.425 21.7008 17.2C21.7008 17.575 21.7758 17.95 21.8508 18.325C17.7258 18.1 14.1258 16.15 11.6508 13.15C11.2008 13.9 10.9758 14.725 10.9758 15.625C10.9758 17.35 11.8758 18.85 13.1508 19.75C12.3258 19.75 11.5758 19.525 10.9008 19.15V19.225C10.9008 21.625 12.6258 23.575 14.8758 24.025C14.4258 24.1 14.0508 24.175 13.6008 24.175C13.3008 24.175 13.0008 24.175 12.7008 24.1C13.3008 26.05 15.1758 27.475 17.2758 27.55C15.6258 28.9 13.4508 29.65 11.1258 29.65C10.7508 29.65 10.3008 29.65 9.92578 29.575C12.1008 31 14.7258 31.825 17.5008 31.825C26.5758 31.825 31.5258 24.325 31.5258 17.8C31.5258 17.575 31.5258 17.35 31.5258 17.2C32.5008 16.45 33.3258 15.55 34.0008 14.575Z"
+          fill="#BC611E"
+        />
+      </g>
+      <defs>
+        <clippath
+          id="clip0_69_1540"
+        >
+          <rect
+            fill="white"
+            height="24"
+            transform="translate(10 10)"
+            width="24"
+          />
+        </clippath>
+      </defs>
+    </svg>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

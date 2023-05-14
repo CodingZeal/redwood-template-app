@@ -43,7 +43,7 @@ describe('Reset Password Page', () => {
       .closest('input')
     await waitFor(() => userEvent.type(passwordInput, 'supersecret'))
 
-    const submitButton = screen.getByRole('button', { name: 'Submit' })
+    const submitButton = screen.getByRole('button', { name: 'Reset Password' })
     await waitFor(() => userEvent.click(submitButton))
     expect(mockReset).toHaveBeenCalledWith({
       resetToken: 'foo',

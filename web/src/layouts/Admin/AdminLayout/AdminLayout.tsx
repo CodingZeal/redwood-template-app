@@ -1,19 +1,32 @@
-import { routes } from '@redwoodjs/router'
-
-import { LinkItem } from 'src/components/Navigation/LinkItem/LinkItem'
-import { SubNavigation } from 'src/components/Navigation/SubNavigation'
+import { NavLink, routes } from '@redwoodjs/router'
 
 const AdminLayout = ({ children }) => {
   return (
-    <div className="m-4 flex flex-row items-start">
-      <div className="w-20 sm:w-60">
-        <SubNavigation>
-          <LinkItem to={routes.adminUsers()}>Users</LinkItem>
-          <LinkItem to={routes.adminTeams()}>Teams</LinkItem>
-          <LinkItem to={routes.adminRoles()}>Roles</LinkItem>
-        </SubNavigation>
+    <div className="flex flex-col">
+      <div className="border-b-#EEF2F6 flex h-12 flex-row border-b-2 px-8 font-int text-xl text-blackBean no-underline">
+        <NavLink
+          activeClassName="bg-beige border-b-4 flex justify-center border-blackBean"
+          className="px-4 py-2"
+          to={routes.adminUsers()}
+        >
+          Users
+        </NavLink>
+        <NavLink
+          activeClassName="bg-beige border-b-4 flex justify-center border-blackBean"
+          className="px-4 py-2"
+          to={routes.adminTeams()}
+        >
+          Teams
+        </NavLink>
+        <NavLink
+          activeClassName="bg-beige border-b-4 flex justify-center border-blackBean"
+          className="px-4 py-2"
+          to={routes.adminRoles()}
+        >
+          Roles
+        </NavLink>
       </div>
-      <div className="rw-scaffold flex-1">
+      <div className="rw-scaffold">
         <main className="rw-main">{children}</main>
       </div>
     </div>

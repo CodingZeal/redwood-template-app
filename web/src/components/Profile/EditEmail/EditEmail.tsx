@@ -41,13 +41,9 @@ const EditEmail = ({ profile }) => {
           profile?.nickname || profile?.name || profile?.email
         } | Edit Email`}
       />
-      <div className="rw-segment" id="edit-email">
-        <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">Edit Email</h2>
-        </header>
-        <div className="rw-segment-main">
-          <EditEmailForm error={error} loading={loading} onSubmit={onSubmit} />
-        </div>
+      <div className="my-10 flex max-w-[500px] flex-col px-10 text-blackBean">
+        <h2 className="font-sans text-5xl font-bold">Edit Email</h2>
+        <EditEmailForm error={error} loading={loading} onSubmit={onSubmit} />
       </div>
     </>
   )

@@ -1,12 +1,34 @@
-import { NavLink } from '@redwoodjs/router'
+import { Link } from '@redwoodjs/router'
 
-const LinkItem = ({ children, ...props }) => {
-  const { to, ...rest } = props
+interface LinkItemProps {
+  linkClass?: string
+  path: string | (() => string)
+  name: string
+  handleClick?: () => void
+}
+
+const LinkItem = ({
+  linkClass,
+  path,
+  name,
+  handleClick = () => {},
+}: LinkItemProps) => {
   return (
-    <li data-testid="admin__link-item" className="mr-3 cursor-pointer">
-      <NavLink activeClassName="bg-orange-300" to={to} {...rest}>
-        {children}
-      </NavLink>
+    <li>
+      {typeof path === 'string' ? (
+        <a
+          href={path}
+          target="_blank"
+          className={`whitespace-nowrap ${linkClass}`}
+          rel="noopener noreferrer"
+        >
+          {name}
+        </a>
+      ) : (
+        <Link className={linkClass} onClick={handleClick} to={path()}>
+          {name}
+        </Link>
+      )}
     </li>
   )
 }

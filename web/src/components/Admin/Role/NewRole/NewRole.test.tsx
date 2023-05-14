@@ -9,12 +9,6 @@ describe('NewRole', () => {
     }).not.toThrow()
   })
 
-  it('renders a header', () => {
-    render(<NewRole />)
-
-    expect(screen.getByText('New Role')).toBeInTheDocument()
-  })
-
   it('renders RoleForm successfully', () => {
     render(<NewRole />)
     const element = screen.getByText('Name')

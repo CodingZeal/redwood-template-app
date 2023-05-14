@@ -7,30 +7,27 @@ import { RolesLayout } from './layouts/Admin/RolesLayout'
 import { TeamsLayout } from './layouts/Admin/TeamsLayout'
 import { UsersLayout } from './layouts/Admin/UsersLayout'
 import { MainLayout } from './layouts/MainLayout/MainLayout'
-import { ProfileLayout } from './layouts/ProfileLayout'
 
 const Routes = () => {
   return (
     <Router useAuth={useAuth}>
-      <Route path="/login" page={LoginPage} name="login" />
-      <Route path="/signup" page={SignupPage} name="signup" />
-      <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
-      <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
-      <Route path="/create-password" page={CreatePasswordPage} name="createPassword" />
-      <Route path="/verification" page={VerificationPage} name="verification" />
-      <Route path="/verification-reset" page={VerificationResetPage} name="verificationReset" />
       <Set wrap={MainLayout}>
+        <Route path="/login" page={LoginPage} name="login" />
+        <Route path="/signup" page={SignupPage} name="signup" />
+        <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+        <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
+        <Route path="/create-password" page={CreatePasswordPage} name="createPassword" />
+        <Route path="/verification" page={VerificationPage} name="verification" />
+        <Route path="/verification-reset" page={VerificationResetPage} name="verificationReset" />
         <Route path="/" page={HomePage} name="home" />
         <Route notfound page={NotFoundPage} />
         <Route path="/forbidden" page={ForbiddenPage} name="forbidden" />
       </Set>
       <Set wrap={MainLayout}>
         <Private unauthenticated="forbidden">
-          <Set wrap={ProfileLayout}>
-            <Route path="/profile" page={ProfileEditProfilePage} name="profile" />
-            <Route path="/profile/edit_password" page={ProfileEditPasswordPage} name="editPassword" />
-            <Route path="/profile/edit_email" page={ProfileEditEmailPage} name="editEmail" />
-          </Set>
+          <Route path="/profile" page={ProfileEditProfilePage} name="profile" />
+          <Route path="/profile/edit_password" page={ProfileEditPasswordPage} name="editPassword" />
+          <Route path="/profile/edit_email" page={ProfileEditEmailPage} name="editEmail" />
         </Private>
         <Private roles="super admin" unauthenticated="forbidden">
           <Set wrap={AdminLayout}>

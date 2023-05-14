@@ -1,4 +1,7 @@
-import { Link, routes } from '@redwoodjs/router'
+import { Link, NavLink, routes } from '@redwoodjs/router'
+
+import { Addition } from 'src/components/Icon/Addition'
+import { Arrow } from 'src/components/Icon/Arrow'
 
 type UserLayoutProps = {
   children: React.ReactNode
@@ -6,18 +9,29 @@ type UserLayoutProps = {
 
 const UsersLayout = ({ children }: UserLayoutProps) => {
   return (
-    <div className="rw-scaffold">
-      <header className="rw-header">
-        <h1 className="rw-heading rw-heading-primary">
-          <Link to={routes.adminUsers()} className="rw-link">
+    <div className="px-10">
+      <header className="my-8 grid grid-cols-2">
+        <h1 className="flex flex-row items-center font-int text-3xl text-blackBean">
+          Admin
+          <Arrow className="mx-2" />
+          <Link to={routes.adminUsers()} className="font-sans font-bold">
             Users
           </Link>
         </h1>
-        <Link to={routes.adminNewUser()} className="rw-button rw-button-green">
-          <div className="rw-button-icon">+</div> New User
-        </Link>
+        <div className="grid justify-items-end">
+          <NavLink
+            data-testid="user-add"
+            to={routes.adminNewUser()}
+            activeClassName="hidden"
+          >
+            <Addition className="sm:block md:hidden" />
+            <div className="hidden h-12 items-center justify-center rounded-lg border-2 border-rustyOrange bg-rustyOrange px-8 font-sans text-lg font-bold text-white md:flex">
+              Add User
+            </div>
+          </NavLink>
+        </div>
       </header>
-      <main className="rw-main">{children}</main>
+      <main>{children}</main>
     </div>
   )
 }

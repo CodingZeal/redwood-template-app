@@ -22,7 +22,7 @@ describe('Users', () => {
   it('shows user', () => {
     render(<Users users={standard().users} />)
     const [firstUser, secondUser] = standard().users
-    const [firstElement, secondElement] = screen.getAllByText('Show')
+    const [firstElement, secondElement] = screen.getAllByTestId('showUser')
 
     expect(firstElement).toHaveAttribute(
       'href',
@@ -37,7 +37,7 @@ describe('Users', () => {
   it('shows edit', () => {
     render(<Users users={standard().users} />)
     const [firstUser, secondUser] = standard().users
-    const [firstElement, secondElement] = screen.getAllByText('Edit')
+    const [firstElement, secondElement] = screen.getAllByTestId('editUser')
 
     expect(firstElement).toHaveAttribute(
       'href',
@@ -49,17 +49,11 @@ describe('Users', () => {
     )
   })
 
-  it('shows archive user button', () => {
+  it('shows archive', () => {
     render(<Users users={standard().users} />)
-    const element = screen.getByRole('button', { name: 'Archive' })
+    const [firstElement, secondElement] = screen.getAllByTestId('archiveIcon')
 
-    expect(element).toBeInTheDocument()
-  })
-
-  it('shows reactivate user button', () => {
-    render(<Users users={standard().users} />)
-
-    const element = screen.getByRole('button', { name: 'Reactivate' })
-    expect(element).toBeInTheDocument()
+    expect(firstElement).toBeInTheDocument()
+    expect(secondElement).toBeInTheDocument()
   })
 })
