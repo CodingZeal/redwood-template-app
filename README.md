@@ -243,6 +243,8 @@ yarn test:watch # <api|web>
 # see ./scripts/playwright.ts for more info
 yarn test:e2e <--init|--debug|--reset|--playwright>
 
+# run a individual test
+yarn test:e2e --debug --playwright test reset-password.spec.ts -c web/playwright.config.ts
 ```
 
 ---
