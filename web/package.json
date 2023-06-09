@@ -13,12 +13,12 @@
     ]
   },
   "dependencies": {
-    "@redwoodjs/auth": "5.1.4",
-    "@redwoodjs/auth-dbauth-web": "5.1.4",
-    "@redwoodjs/forms": "5.1.4",
-    "@redwoodjs/router": "5.1.4",
-    "@redwoodjs/vite": "5.1.4",
-    "@redwoodjs/web": "5.1.4",
+    "@redwoodjs/auth": "5.3.0",
+    "@redwoodjs/auth-dbauth-web": "5.3.0",
+    "@redwoodjs/forms": "5.3.0",
+    "@redwoodjs/router": "5.3.0",
+    "@redwoodjs/vite": "5.3.0",
+    "@redwoodjs/web": "5.3.0",
     "@simplewebauthn/browser": "^7.0.0",
     "date-fns": "^2.29.3",
     "prop-types": "15.8.1",
